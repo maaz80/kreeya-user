@@ -1,0 +1,76 @@
+@media (hover:hover) {
+
+     .animated-card::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          width: 10px;
+          height: 10px;
+          bottom: -300px;
+          background: #FF5500;
+          border-radius: 50%;
+          transform: scale(0);
+          transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          z-index: 0;
+     }
+
+     .group:hover .animated-card::after {
+          transform: scale(80);
+     }
+
+     .animated-card * {
+          position: relative;
+          z-index: 1;
+     }
+
+}
+
+.blog-content h1 {
+     font-size: 36px;
+     font-weight: 700;
+     margin-top: 20px;
+     margin-bottom: 10px;
+}
+
+.blog-content h2 {
+     font-size: 28px;
+     font-weight: 600;
+     margin-top: 18px;
+     margin-bottom: 8px;
+}
+
+.blog-content p {
+     font-size: 16px;
+     line-height: 1.7;
+     margin-bottom: 10px;
+}
+
+.blog-content ul {
+     padding-left: 20px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+}
+
+.blog-content li {
+     list-style: disc;
+     margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px) {
+     .blog-content h1 {
+          line-height: 35px;
+     }
+}
+
+.blog-content strong {
+     font-weight: 800;
+}
+
+.blog-content h1 strong {
+     font-weight: 900;
+}
+
+.blog-content h2 strong {
+     font-weight: 800;
+}

@@ -1,0 +1,241 @@
+# ================================================================
+# SECURITY & PERFORMANCE .htaccess (FINAL STABLE VERSION)
+# ================================================================
+
+# ----------------------------------------------------------------
+# 1. DISABLE DIRECTORY LISTING & SERVER SIGNATURE
+# ----------------------------------------------------------------
+Options -Indexes
+ServerSignature Off
+
+# ----------------------------------------------------------------
+# 2. REWRITE ENGINE
+# ----------------------------------------------------------------
+RewriteEngine On
+RewriteBase /
+
+# ----------------------------------------------------------------
+# 3. BLOCK BAD BOTS & EMPTY USER AGENTS
+# ----------------------------------------------------------------
+<IfModule mod_rewrite.c>
+     RewriteCond %{HTTP_USER_AGENT} (curl|wget|python|nikto|sqlmap|masscan|zgrab|nmap|dirbuster|gobuster|wfuzz|hydra|metasploit) [NC,OR]
+     RewriteCond %{HTTP_USER_AGENT} ^-?$ [NC]
+     RewriteRule .* - [F,L]
+</IfModule>
+
+# ----------------------------------------------------------------
+# 4. BLOCK MALICIOUS REQUEST METHODS
+# ----------------------------------------------------------------
+<IfModule mod_rewrite.c>
+     RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK|DELETE|PATCH|PUT|CONNECT) [NC]
+     RewriteRule .* - [F,L]
+</IfModule>
+
+# ----------------------------------------------------------------
+# 5. BLOCK SQL INJECTION & XSS IN URL
+# ----------------------------------------------------------------
+<IfModule mod_rewrite.c>
+     RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+     RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+     RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+     RewriteCond %{QUERY_STRING} (union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|order|exec|set\+name) [NC,OR]
+     RewriteCond %{QUERY_STRING} (\.\./|\.\.%2F|%2E%2E%2F) [NC]
+     RewriteRule .* - [F,L]
+</IfModule>
+
+# ----------------------------------------------------------------
+# 6. BLOCK SENSITIVE FILES
+# ----------------------------------------------------------------
+<FilesMatch "(^\.|\.(env|git|svn|htpasswd|htaccess|log|bak|backup|sql|db|sqlite)|package(-lock)?\.json$|vite\.config\.js$|eslint\.config\.js$|postcss\.config\.js$|tailwind\.config\.js$|README\.md$|Js-Bundle\.html$|bundle-stats\.html$)">
+     Require all denied
+</FilesMatch>
+
+# ----------------------------------------------------------------
+# 7. BLOCK SERVER-SIDE SCRIPT EXECUTION
+# ----------------------------------------------------------------
+<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|jsp|asp|aspx|sh|cgi|rb)$">
+     Require all denied
+</FilesMatch>
+
+# ----------------------------------------------------------------
+# 8. WWW → NON-WWW REDIRECT
+# ----------------------------------------------------------------
+<IfModule mod_rewrite.c>
+     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+     RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# ----------------------------------------------------------------
+# 9. HTTP → HTTPS REDIRECT
+# ----------------------------------------------------------------
+<IfModule mod_rewrite.c>
+     RewriteCond %{HTTPS} off
+     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ----------------------------------------------------------------
+# 10. REACT ROUTER FALLBACK
+# ----------------------------------------------------------------
+<IfModule mod_rewrite.c>
+     RewriteRule ^index\.html$ - [L]
+     RewriteCond %{REQUEST_FILENAME} !-f
+     RewriteCond %{REQUEST_FILENAME} !-d
+     RewriteRule . /index.html [L]
+</IfModule>
+
+# ----------------------------------------------------------------
+# 11. SECURITY HEADERS (CLEANED & FIXED)
+# ----------------------------------------------------------------
+<IfModule mod_headers.c>
+
+     # HSTS
+     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+
+     # Prevent MIME sniffing
+     Header always set X-Content-Type-Options "nosniff"
+
+     # Clickjacking protection
+     Header always set X-Frame-Options "SAMEORIGIN"
+
+     # Referrer Policy
+     Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+     # Disable legacy XSS auditor
+     Header always set X-XSS-Protection "0"
+
+     # Permissions Policy
+    Header always set Permissions-Policy "accelerometer=(), autoplay=*, camera=(), display-capture=(), encrypted-media=*, fullscreen=*, geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=*, publickey-credentials-get=(), screen-wake-lock=(), usb=(), web-share=*"
+
+     # Content Security Policy (Comprehensive Google/Ads Fix)
+     Header always set Content-Security-Policy "default-src 'self'; \
+          base-uri 'self'; \
+          object-src 'none'; \
+          frame-ancestors 'self' https://www.google.com https://*.google.com; \
+          form-action 'self' https://api.hsforms.com; \
+          script-src 'self' 'unsafe-inline' \
+               https://www.googletagmanager.com \
+               https://www.google-analytics.com \
+               https://connect.facebook.net \
+               https://pagead2.googlesyndication.com \
+               https://googleads.g.doubleclick.net \
+               https://tpc.googlesyndication.com \
+               https://*.adtrafficquality.google; \
+          style-src 'self' 'unsafe-inline' \
+               https://fonts.googleapis.com; \
+          img-src 'self' data: blob: \
+               https://res.cloudinary.com \
+               https://www.googletagmanager.com \
+               https://www.google-analytics.com \
+               https://www.facebook.com \
+               https://googleads.g.doubleclick.net \
+               https://*.googlesyndication.com \
+               https://*.adtrafficquality.google; \
+          font-src 'self' data: \
+               https://fonts.gstatic.com; \
+          connect-src 'self' \
+               https://api.kreeyadesign.com \
+               https://api.hsforms.com \
+               https://www.google-analytics.com \
+               https://region1.google-analytics.com \
+               https://analytics.google.com \
+               https://stats.g.doubleclick.net \
+               https://www.facebook.com \
+               https://*.adtrafficquality.google \
+               https://pagead2.googlesyndication.com \
+               https://*.googlesyndication.com \
+               https://googleads.g.doubleclick.net \
+               https://capig.datah04.com \
+               https://csi.gstatic.com \
+               https://region1.analytics.google.com \
+               https://www.googletagmanager.com; \
+          media-src 'self' blob: \
+               https://res.cloudinary.com; \
+          frame-src 'self' \
+               https://www.googletagmanager.com \
+               https://googleads.g.doubleclick.net \
+               https://*.googlesyndication.com \
+               https://*.adtrafficquality.google \
+               https://www.google.com \
+               https://www.youtube.com \
+               https://www.youtube-nocookie.com; \
+          worker-src 'self' blob:; \
+          manifest-src 'self'; \
+          upgrade-insecure-requests"
+
+</IfModule>
+
+# ----------------------------------------------------------------
+# 12. REMOVE SERVER INFO HEADERS
+# ----------------------------------------------------------------
+<IfModule mod_headers.c>
+     Header unset X-Powered-By
+     Header unset Server
+     Header always unset X-Powered-By
+</IfModule>
+
+# ----------------------------------------------------------------
+# 13. BROWSER CACHING
+# ----------------------------------------------------------------
+<IfModule mod_expires.c>
+     ExpiresActive On
+     ExpiresByType image/jpg          "access plus 1 year"
+     ExpiresByType image/jpeg         "access plus 1 year"
+     ExpiresByType image/png          "access plus 1 year"
+     ExpiresByType image/webp         "access plus 1 year"
+     ExpiresByType image/gif          "access plus 1 year"
+     ExpiresByType image/svg+xml      "access plus 1 year"
+     ExpiresByType image/x-icon       "access plus 1 year"
+     ExpiresByType font/woff2         "access plus 1 year"
+     ExpiresByType font/woff          "access plus 1 year"
+     ExpiresByType text/css           "access plus 1 month"
+     ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+     # Static assets — long cache
+     <FilesMatch "\.(?:js|css|webp|png|jpg|jpeg|gif|svg|ico|woff2?|mp4)$">
+          Header set Cache-Control "public, max-age=31536000, immutable"
+     </FilesMatch>
+
+     # HTML/JSON — no cache
+     <FilesMatch "\.(?:html|json|xml|txt)$">
+          Header set Cache-Control "no-cache, no-store, must-revalidate"
+          Header set Pragma "no-cache"
+          Header set Expires "0"
+     </FilesMatch>
+</IfModule>
+
+# ----------------------------------------------------------------
+# 14. GZIP COMPRESSION
+# ----------------------------------------------------------------
+<IfModule mod_deflate.c>
+     AddOutputFilterByType DEFLATE text/html
+     AddOutputFilterByType DEFLATE text/css
+     AddOutputFilterByType DEFLATE application/javascript
+     AddOutputFilterByType DEFLATE application/json
+     AddOutputFilterByType DEFLATE image/svg+xml
+     AddOutputFilterByType DEFLATE font/woff2
+     AddOutputFilterByType DEFLATE font/woff
+
+     # Don't compress already compressed files
+     SetEnvIfNoCase Request_URI \.(gif|jpg|jpeg|png|webp|ico|mp4|woff2)$ no-gzip
+</IfModule>
+
+# ----------------------------------------------------------------
+# 15. RATE LIMITING (if mod_ratelimit available)
+# ----------------------------------------------------------------
+<IfModule mod_ratelimit.c>
+     <Location "/api">
+          SetOutputFilter RATE_LIMIT
+          SetEnv rate-limit 400
+     </Location>
+</IfModule>
+
+# ----------------------------------------------------------------
+# 16. HOTLINK PROTECTION (images)
+# ----------------------------------------------------------------
+<IfModule mod_rewrite.c>
+     RewriteCond %{HTTP_REFERER} !^$
+     RewriteCond %{HTTP_REFERER} !^https://(www\.)?kreeyadesign\.com [NC]
+     RewriteRule \.(jpg|jpeg|png|gif|webp|svg|mp4)$ - [F,L]
+</IfModule>

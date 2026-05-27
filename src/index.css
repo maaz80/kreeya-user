@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+html,
+body {
+     padding: 0;
+     margin: 0;
+     overflow-x: hidden;
+     /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; */
+}
+
+html.no-scroll,
+html.no-scroll body {
+     overflow: hidden !important;
+     height: 100% !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+     font-family: inherit;
+     will-change: auto;
+}
+
+.poiret-one-regular,
+.plus-jakarta-sans {
+     font-display: swap;
+}
+
+.work-showcase-section,
+.for-white-icons,
+#services-section {
+     contain: layout style;
+     transform: translateZ(0);
+}
+
+.poiret-one-regular {
+     font-family: "Poiret One", Georgia, sans-serif;
+     font-style: normal;
+}
+
+.plus-jakarta-sans {
+     font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+     font-optical-sizing: auto;
+     font-weight: 400;
+     font-style: normal;
+}
+
+
+.poppins-regular {
+     font-family: "Poppins", sans-serif;
+}
+
+@theme {
+     --color-heading: #161616;
+     --color-white: #FAFAFA;
+     --color-light-gray: #FAFAFA81;
+     --color-dark-black: #161616;
+     --color-dark-gray: #1616167d;
+     --color-blue: #003D63;
+     --color-cust-orange: #FF5500;
+     --color-error: #C20001;
+}
+
+@media (hover: hover) {
+
+     .header-btn::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          width: 10px;
+          height: 10px;
+          bottom: -50px;
+          background: white;
+          border-radius: 50%;
+          transform: scale(0);
+          transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          z-index: 0;
+     }
+
+     .header-btn:hover::after {
+          transform: scale(60);
+     }
+
+}
+
+.typing-dot {
+     width: 8px;
+     height: 8px;
+     background: #cbd5e0;
+     border-radius: 50%;
+     animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+     animation-delay: 0.3s;
+}
+
+.typing-dot:nth-child(3) {
+     animation-delay: 0.6s;
+}
+
+@keyframes typing {
+
+     0%,
+     60%,
+     100% {
+          transform: translateY(0);
+          opacity: 0.7;
+     }
+
+     30% {
+          transform: translateY(-6px);
+          opacity: 1;
+     }
+}
+
+.marquee-left {
+     width: max-content;
+     animation: marquee-left 25s linear infinite;
+}
+
+@keyframes marquee-left {
+     from {
+          transform: translateX(0);
+     }
+
+     to {
+          transform: translateX(-50%);
+     }
+}
+
+.marquee-right {
+     width: max-content;
+     animation: marquee-right 25s linear infinite;
+}
+
+@keyframes marquee-right {
+     from {
+          transform: translateX(-50%);
+     }
+
+     to {
+          transform: translateX(0);
+     }
+}

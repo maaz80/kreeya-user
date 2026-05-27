@@ -1,0 +1,26 @@
+.whatsapp_cont {
+     box-shadow: #8b8b8b 0px 1px 12px;
+     animation: whatsappAnim 1s cubic-bezier(.034, 1.59, .64, 1) infinite;
+}
+
+@keyframes whatsappAnim {
+     0% {
+          transform: scale(1.1);
+     }
+
+     25% {
+          transform: scale(1.1);
+     }
+
+     50% {
+          transform: scale(1.1);
+     }
+
+     75% {
+          transform: scale(1.1);
+     }
+
+     100% {
+          transform: scale(1.0);
+     }
+}

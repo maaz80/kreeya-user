@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="/src/assets/logo.webp" fetchpriority="high">
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Poiret+One&family=Poppins:wght@500&display=swap">
+  
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Poiret+One&family=Poppins:wght@500&display=swap"
+    media="print" onload="this.media='all'">
+  
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Poiret+One&family=Poppins:wght@500&display=swap">
+  </noscript>
+
+  <link rel="preconnect" href="https://res.cloudinary.com">
+  <!-- <link rel="preconnect" href="https://api.kreeyadesign.com"> -->
+  <!-- Inline critical CSS for hero section to unblock initial render -->
+  <!-- <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      /* border-width: 0; */
+      border-style: solid;
+      /* border-color: currentColor */
+    }
+
+    html {
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+      tab-size: 4;
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      line-height: inherit
+    }
+
+    /* h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin: 0
+    } */
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      content-visibility: auto
+    }
+
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      overflow-x: hidden
+    }
+
+    .plus-jakarta-sans {
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal
+    }
+
+    .poiret-one-regular {
+      font-family: "Poiret One", Georgia, serif;
+      font-style: normal
+    }
+
+    #root {
+      min-height: 100vh;
+      display: flow-root
+    }
+
+    /* Additional critical styles for LCP element */
+    .text-end {
+      text-align: right;
+    }
+
+    .text-blue {
+      color: #003D63;
+    }
+
+    .max-w-69 {
+      max-width: 276px;
+    }
+
+    /* .mt-10 {
+      margin-top: 40px;
+    } */
+
+    .ml-auto {
+      margin-left: auto;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    /* .min-h-\[72px\] {
+      min-height: 72px;
+    }
+
+    .min-h-\[44px\] {
+      min-height: 44px;
+      contain-intrinsic-size: 0 44px;
+    }
+
+    .min-h-\[62px\] {
+      min-height: 62px;
+      contain-intrinsic-size: 0 62px;
+    }
+
+    .min-h-\[132px\] {
+      min-height: 132px;
+      contain-intrinsic-size: 0 132px;
+    } */
+
+    /* .mt-1 {
+      margin-top: 4px;
+    } */
+
+    .leading-\[1\.1\] {
+      line-height: 1.1;
+    }
+
+    .tracking-tight {
+      letter-spacing: -0.025em;
+    }
+
+    .container {
+      width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+      padding-right: 1.25rem;
+      padding-left: 1.25rem
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 768px;
+      }
+
+      .md\:max-w-110 {
+        max-width: 440px;
+      }
+
+      /* .md\:text-lg {
+        font-size: 1.125rem;
+      }
+
+      .md\:min-h-\[84px\] {
+        min-height: 84px;
+      }
+
+      .md\:min-h-\[62px\] {
+        min-height: 62px;
+      }
+
+      .md\:min-h-\[72px\] {
+        min-height: 72px;
+      } */
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 1024px;
+      }
+
+      /* .lg\:min-h-\[132px\] {
+        min-height: 132px;
+      }
+
+      .lg\:min-h-\[138px\] {
+        min-height: 138px;
+      }
+
+      .lg\:text-\[120px\] {
+        font-size: 120px;
+      } */
+    }
+
+    @media (min-width: 1280px) {
+      .container {
+        max-width: 1280px
+      }
+    }
+  </style> -->
+  <!-- Defer main CSS until after render -->
+  <main id="root"></main>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>
+    // Optimized analytics loading
+    let scriptsLoaded = false;
+
+    function injectScript(src, options = {}) {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        if (options.crossOrigin) script.crossOrigin = options.crossOrigin;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+      });
+    }
+
+    function loadAllAnalyticsAndAds() {
+      if (scriptsLoaded) return;
+      scriptsLoaded = true;
+
+      // 1. Load GTM Base Immediately on interaction
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-5TVLVVFF');
+
+      // 2. Load Adsense & Meta Pixel after 1.5s delay
+      setTimeout(() => {
+        // Adsense
+        injectScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5296398606051524", { crossOrigin: "anonymous" });
+
+        // Improved Meta Pixel Logic (Initialization + Loading)
+        !function (f, b, e, v, n, t, s) {
+          if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+              n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          };
+          if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+          n.queue = []; t = b.createElement(e); t.async = !0;
+          t.src = v; s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', '1659893741690531');
+        fbq('track', 'PageView');
+      }, 1500);
+    }
+
+    // Trigger on real user interaction only
+    const interactionEvents = ['scroll', 'touchstart', 'click', 'mousemove'];
+    interactionEvents.forEach(event => {
+      window.addEventListener(event, loadAllAnalyticsAndAds, { once: true, passive: true });
+    });
+  </script>
+
+  <!-- <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-MP3DK6CMKD');
+  </script> -->
+  <!-- <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "WebSite",
+    "name": "Kreeya Design",
+    "url": "https://kreeyadesign.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://kreeyadesign.com/{search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script> -->
+
+  <!-- Organistion -->
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kreeya Design",
+    "url": "https://kreeyadesign.com/",
+    "logo": "https://kreeyadesign.com/assets/logo.webp",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "9311500423",
+      "contactType": "customer service",
+      "contactOption": "TollFree",
+      "areaServed": "IN",
+      "availableLanguage": "en"
+    },
+    "sameAs": [
+      "https://www.instagram.com/kreeyadesignofficial/",
+      "https://www.facebook.com/kreeyadesignofficial/",
+      "https://www.youtube.com/@kreeyadesignofficial"
+    ]
+  }
+  </script>
+
+  <!-- Local Business -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Kreeya Design",
+    "image": "https://kreeyadesign.com/assets/logo.webp",
+    "@id": "",
+    "url": "https://kreeyadesign.com/",
+    "telephone": "9311500423",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Spring Board Co-Working Space", 
+      "addressLocality": "Noida",                     
+      "addressRegion": "Uttar Pradesh",              
+      "postalCode": "201301",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+       "latitude": 28.5355,
+       "longitude": 77.3910
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": [
+     "https://www.instagram.com/kreeyadesignofficial/",
+      "https://www.facebook.com/kreeyadesignofficial/",
+      "https://www.youtube.com/@kreeyadesignofficial"
+    ] 
+  }
+  </script>
+
+  <!-- Breadcumbs -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/", 
+    "@type": "BreadcrumbList", 
+    "itemListElement": [{
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home Page",
+      "item": "https://kreeyadesign.com/"  
+    },{
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "Contact Us",
+      "item": "https://kreeyadesign.com/contact-us"  
+    },{
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "Blogs",
+      "item": "https://kreeyadesign.com/blogs"  
+    },{
+      "@type": "ListItem", 
+      "position": 4, 
+      "name": "Portfolio 1",
+      "item": "https://kreeyadesign.com/portfolio-beyekls"  
+    },{
+      "@type": "ListItem", 
+      "position": 5, 
+      "name": "Portfolio 2",
+      "item": "https://kreeyadesign.com/portfolio-nectar"  
+    },{
+      "@type": "ListItem", 
+      "position": 6, 
+      "name": "Portfolio 3",
+      "item": "https://kreeyadesign.com/portfolio-coinpay"  
+    },{
+      "@type": "ListItem", 
+      "position": 7, 
+      "name": "Portfolio 4",
+      "item": "https://kreeyadesign.com/portfolio-daccord"  
+    },{
+      "@type": "ListItem", 
+      "position": 8, 
+      "name": "Privacy Policy",
+      "item": "https://kreeyadesign.com/policy"  
+    },{
+      "@type": "ListItem", 
+      "position": 9, 
+      "name": "Disclaimer",
+      "item": "https://kreeyadesign.com/disclaimer"  
+    },{
+      "@type": "ListItem", 
+      "position": 10, 
+      "name": "Landing Page",
+      "item": "https://kreeyadesign.com/landing-page"  
+    },{
+      "@type": "ListItem", 
+      "position": 11, 
+      "name": "Blog Details",
+      "item": "https://kreeyadesign.com/blogs_details/5_mistakes_startups_make_in_branding"  
+    },{
+      "@type": "ListItem", 
+      "position": 11, 
+      "name": "Blog Details",
+      "item": "https://kreeyadesign.com/blogs_details/5_mistakes_startups_make_in_branding"  
+    },{
+      "@type": "ListItem", 
+      "position": 12, 
+      "name": "About Us",
+      "item": "https://kreeyadesign.com/about-us"  
+    }]
+  }
+  </script>
+
+  <!-- FAQ -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "Q1. What services do UI UX design agencies offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "User research, UX strategy, wireframing, UI design, prototyping, and usability testing are all provided by UI/UX design firms to produce user-friendly, conversion-focused digital products for the web and mobile platforms."
+      }
+    },{
+      "@type": "Question",
+      "name": "Q2. Why do I need a UI UX design company for my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By matching design with business objectives, a UI/UX design firm assists you in creating aesthetically pleasing, user-friendly solutions that enhance customer happiness, boost conversions, and minimize expensive usability problems."
+      }
+    },{
+      "@type": "Question",
+      "name": "Q3. How long does it take to complete a UI UX design project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depending on scope, research depth, number of screens, and iterations, a UI/UX design project usually takes four to eight weeks to complete; simpler projects are completed more quickly, whereas complicated products take longer."
+      }
+    },{
+      "@type": "Question",
+      "name": "Q4. Why do I need a UI UX design company for my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A UI/UX design firm assists you in developing user-friendly, intuitive digital experiences that increase conversions, lower friction, and foster trust—all of which help you achieve your business objectives and transform users into devoted clients."
+      }
+    },{
+      "@type": "Question",
+      "name": "Q5. How do I choose the right UI UX design agency for my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When selecting a UI/UX design firm, make sure they can address your unique business difficulties by looking at their portfolio relevancy, customer testimonials, industry experience, design process clarity, and alignment with your budget and objectives."
+      }
+    },{
+      "@type": "Question",
+      "name": "Q6. What is a UI UX design agency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A UI/UX design firm specializes in creating user-centered digital experiences by fusing interaction design, visual design, and user research to create products that are simple to use, captivating, and efficient."
+      }
+    }]
+  }
+  </script>
+  </body>
+
+</html>

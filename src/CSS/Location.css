@@ -1,0 +1,121 @@
+@media (hover: hover) {
+
+     .btn::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          width: 10px;
+          height: 10px;
+          bottom: -50px;
+          background: #FF5500;
+          border-radius: 50%;
+          transform: scale(0);
+          transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          z-index: 0;
+     }
+
+     .btn:hover::after {
+          transform: scale(60);
+     }
+
+     .service-btn::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          width: 10px;
+          height: 10px;
+          bottom: -50px;
+          background: #ffffff;
+          border-radius: 50%;
+          transform: scale(0);
+          transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          z-index: 0;
+     }
+
+     .service-btn:hover::after {
+          transform: scale(60);
+     }
+
+}
+
+.testimonial-anim {
+     opacity: 0;
+     transform: translateX(20px);
+}
+
+.testimonial-anim.show {
+     opacity: 1;
+     transform: translateX(0);
+     transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.blog-content h1 {
+     font-size: 36px;
+     font-weight: 700;
+     margin-top: 15px;
+     margin-bottom: 15px;
+
+}
+
+.blog-content h2 {
+     font-size: 28px;
+     font-weight: 600;
+     margin-top: 15px;
+     margin-bottom: 15px;
+}
+
+.blog-content p {
+     font-size: 16px;
+     line-height: 1.7;
+     margin-bottom: 10px;
+}
+
+.blog-content ul {
+     padding-left: 20px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+}
+
+.blog-content li {
+     list-style: disc;
+     margin-bottom: 5px;
+}
+
+.blog-content a {
+     color: #2563eb;
+     text-decoration: none;
+     /* text-underline-offset: 3px; */
+     transition: color 0.15s;
+}
+
+.blog-content a:hover {
+     color: #1d4ed8;
+}
+
+@media screen and (max-width: 768px) {
+     .blog-content h1 {
+          line-height: 35px;
+     }
+
+     .blog-content h2 {
+          line-height: 35px;
+     }
+
+     .blog-content h3 {
+          line-height: 30px;
+     }
+}
+
+/* .blog-content strong {
+        font-weight: 800;
+   }
+
+   .blog-content h1 strong {
+        font-weight: 900;
+   }
+
+   .blog-content h2 strong {
+        font-weight: 800;
+   } */
