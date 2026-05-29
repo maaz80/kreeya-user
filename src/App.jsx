@@ -11,11 +11,11 @@ const ChatBot = lazy(() => import("./components/ChatBot"));
 
 // import Home from "./pages/Home";
 import { usePageSEO } from "./hooks/usePageSEO";
-import Location from "./pages/Location";
-import ItemPage from "./pages/ItemPage";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Portfolios from "./pages/Portfolios";
+const Location = lazy(() => import("./pages/Location"));
+const ItemPage = lazy(() => import("./pages/ItemPage"));
+const About = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const Portfolios = lazy(() => import("./pages/Portfolios"));
 
 const Home = lazy(() => import("./pages/Home"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));

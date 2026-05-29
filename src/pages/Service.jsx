@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { getServices } from '../utils/service'
 import { Helmet } from 'react-helmet-async';
 import { matchesRouteSlug } from '../utils/slug';
+import staticData from '../data/staticData.json';
 
 //  Lazy sections
 const HelpSection = lazy(() => import('../components/Service/HelpSection'))
@@ -17,26 +18,47 @@ const FaqSection = lazy(() => import('../components/Location/LocationFaq'))
 
 const Service = () => {
   const { itemSlug } = useParams();
-  const [service, setService] = useState(null)
+
+  const getLocalService = () => {
+    const localServices = staticData.services || [];
+    for (const s of localServices) {
+      const found = s.items?.find((i) => matchesRouteSlug(i, itemSlug));
+      if (found) return found;
+    }
+    return null;
+  };
+
+  const [service, setService] = useState(getLocalService);
+
   useEffect(() => {
+    // 1. Sync from local staticData instantly (0ms)
+    const localItem = getLocalService();
+    if (localItem) {
+      setService(localItem);
+    }
 
+    // 2. Asynchronously fetch latest data in background silently
     const fetchSingleService = async () => {
-      const allServices = await getServices();
+      try {
+        const allServices = await getServices();
+        let selectedItem = null;
 
-      let selectedItem = null;
+        for (const s of allServices) {
+          const found = s.items?.find(
+            (i) => matchesRouteSlug(i, itemSlug)
+          );
 
-      for (const service of allServices) {
-        const found = service.items?.find(
-          (i) => matchesRouteSlug(i, itemSlug)
-        );
-
-        if (found) {
-          selectedItem = found;
-          break;
+          if (found) {
+            selectedItem = found;
+            break;
+          }
         }
+        if (selectedItem) {
+          setService(selectedItem);
+        }
+      } catch (err) {
+        console.error("Background service fetch failed:", err);
       }
-
-      setService(selectedItem);
     };
 
     if (itemSlug) fetchSingleService();

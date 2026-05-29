@@ -8,6 +8,7 @@ import Service from './Service'
 import Portfolios from './Portfolios'
 import NotFound from './404NotFound'
 import { matchesRouteSlug } from '../utils/slug'
+import staticData from '../data/staticData.json'
 
 const ItemPage = () => {
      const { itemSlug } = useParams()
@@ -30,36 +31,74 @@ const ItemPage = () => {
                     return
                }
 
-               const [locations, services, portfolios] = await Promise.all([
-                    getLocations(),
-                    getServices(),
-                    getPortfolios(),
-               ])
+               // 1. Try to resolve from local staticData instantly (0ms)
+               const localLocations = staticData.locations || []
+               const localServices = staticData.services || []
+               const localPortfolios = staticData.portfolios || []
 
-               const isLocation = locations.some((location) =>
+               const isLocationLocal = localLocations.some((location) =>
                     location.items?.some((item) => matchesRouteSlug(item, itemSlug))
                )
-
-               if (isLocation) {
+               if (isLocationLocal) {
                     setPageType('location')
                     return
                }
 
-               const isService = services.some((service) =>
+               const isServiceLocal = localServices.some((service) =>
                     service.items?.some((item) => matchesRouteSlug(item, itemSlug))
                )
-
-               if (isService) {
+               if (isServiceLocal) {
                     setPageType('service')
                     return
                }
 
-               const isPortfolio = portfolios.some((portfolio) => {
+               const isPortfolioLocal = localPortfolios.some((portfolio) => {
                     const slug = portfolio.name.toLowerCase().replace(/\s+/g, '-');
                     return slug === itemSlug;
                })
+               if (isPortfolioLocal) {
+                    setPageType('portfolio')
+                    return
+               }
 
-               setPageType(isPortfolio ? 'portfolio' : 'notfound')
+               // 2. Fallback to dynamic live API calls in case sitemap/build is not updated yet
+               try {
+                    const [locations, services, portfolios] = await Promise.all([
+                         getLocations(),
+                         getServices(),
+                         getPortfolios(),
+                    ])
+
+                    const isLocation = locations.some((location) =>
+                         location.items?.some((item) => matchesRouteSlug(item, itemSlug))
+                    )
+                    if (isLocation) {
+                         setPageType('location')
+                         return
+                    }
+
+                    const isService = services.some((service) =>
+                         service.items?.some((item) => matchesRouteSlug(item, itemSlug))
+                    )
+                    if (isService) {
+                         setPageType('service')
+                         return
+                    }
+
+                    const isPortfolio = portfolios.some((portfolio) => {
+                         const slug = portfolio.name.toLowerCase().replace(/\s+/g, '-');
+                         return slug === itemSlug;
+                    })
+                    if (isPortfolio) {
+                         setPageType('portfolio')
+                         return
+                    }
+
+                    setPageType('notfound')
+               } catch (err) {
+                    console.error("Error dynamically resolving page:", err)
+                    setPageType('notfound')
+               }
           }
 
           resolvePage()

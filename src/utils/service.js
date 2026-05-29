@@ -1,16 +1,22 @@
-const API = import.meta.env.VITE_API_URL;
-let cachedServices = null;
+import staticData from '../data/staticData.json';
 
-export const getServices = async () => {
-     if (cachedServices) {
+const API = import.meta.env.VITE_API_URL;
+let cachedServices = staticData.services || [];
+let hasFetchedServices = false;
+
+export const getServices = async (forceRefresh = false) => {
+     if (hasFetchedServices && !forceRefresh && cachedServices && cachedServices.length > 0) {
           return cachedServices;
      }
      try {
           const res = await fetch(`${API}/services`);
-          cachedServices = await res.json();
+          if (res.ok) {
+               cachedServices = await res.json();
+               hasFetchedServices = true;
+          }
           return cachedServices;
      } catch (err) {
-          console.error(err);
-          return [];
+          console.error("Error fetching services:", err);
+          return cachedServices || [];
      }
 };

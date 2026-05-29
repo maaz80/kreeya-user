@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { matchesRouteSlug } from "../utils/slug";
 
 const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/$/, "");
 const DEFAULT_TITLE = "Kreeya Design | Social Media & Web Design/Development Agency";
@@ -161,23 +162,49 @@ export function usePageSEO() {
           };
 
           const resolveItemSlugSeo = async (slug) => {
-               const [allLocations, allServices] = await Promise.all([
-                    normalizeListResponse(await fetchJson(`${API_URL}/locations`)),
-                    normalizeListResponse(await fetchJson(`${API_URL}/services`)),
-               ]);
+               // 1. Dynamically import staticData to keep initial bundle size tiny
+               const { default: staticData } = await import("../data/staticData.json");
 
-               const locationItem = allLocations
+               // Try to resolve from local staticData instantly (0ms)
+               const localLocations = staticData.locations || [];
+               const localServices = staticData.services || [];
+
+               const locationItem = localLocations
                     .flatMap((location) => location.items || [])
-                    .find((item) => item.slug === slug || item._id === slug);
+                    .find((item) => matchesRouteSlug(item, slug));
                if (locationItem) {
                     return getItemSeo(locationItem);
                }
 
-               const serviceItem = allServices
+               const serviceItem = localServices
                     .flatMap((service) => service.items || [])
-                    .find((item) => item.slug === slug || item._id === slug);
+                    .find((item) => matchesRouteSlug(item, slug));
                if (serviceItem) {
                     return getItemSeo(serviceItem);
+               }
+
+               // 2. Fallback to dynamic live API calls in case sitemap/build is not updated yet
+               try {
+                    const [allLocations, allServices] = await Promise.all([
+                         normalizeListResponse(await fetchJson(`${API_URL}/locations`)),
+                         normalizeListResponse(await fetchJson(`${API_URL}/services`)),
+                    ]);
+
+                    const dynamicLocationItem = allLocations
+                         .flatMap((location) => location.items || [])
+                         .find((item) => matchesRouteSlug(item, slug));
+                    if (dynamicLocationItem) {
+                         return getItemSeo(dynamicLocationItem);
+                    }
+
+                    const dynamicServiceItem = allServices
+                         .flatMap((service) => service.items || [])
+                         .find((item) => matchesRouteSlug(item, slug));
+                    if (dynamicServiceItem) {
+                         return getItemSeo(dynamicServiceItem);
+                    }
+               } catch (err) {
+                    console.error("Background SEO fetch failed:", err);
                }
 
                return null;

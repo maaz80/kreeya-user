@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { HiPlus, HiMinus } from "react-icons/hi";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getServices } from "../../utils/service";
 import { getTestimonials } from "../../utils/testimonial";
-import { loadGSAP } from "../../utils/gsapLoader";
 import { useH2Data } from "../../hooks/useH2data";
 import { normalizeRouteSlug } from "../../utils/slug";
 import TemplateImage from '../../assets/service1.webp';
@@ -49,7 +48,6 @@ export default function HelpSection() {
 
      const [active, setActive] = useState(null);
      const [current, setCurrent] = useState(0);
-     const contentRef = useRef(null);
      const location = useLocation();
      const [services, setServices] = useState(servicesData)
      const [testimonials, setTestimonials] = useState([])
@@ -91,22 +89,7 @@ export default function HelpSection() {
      }, [location]);
 
 
-     //   Testimonial animation - UPDATED with lazy load
-     useEffect(() => {
-          const animateContent = async () => {
-               const gsap = await loadGSAP();
 
-               if (contentRef.current) {
-                    gsap.fromTo(
-                         contentRef.current,
-                         { opacity: 0, x: 20 },
-                         { opacity: 1, x: 0, duration: 0.4 }
-                    );
-               }
-          };
-
-          animateContent();
-     }, [current]);
 
      // arrow functions 
      const nextSlide = () => {
@@ -135,9 +118,14 @@ export default function HelpSection() {
                     <div className="hidden lg:block">
 
                          {services.map((service, index) => {
+                              const validItems = service?.items?.filter((item) => {
+                                   if (!item?._id && !item?.slug) return true;
+                                   return !!item?.hero?.title;
+                              }) || [];
+                              if (validItems.length === 0) return null;
 
-                              const leftPoints = service?.items?.filter((_, i) => i % 2 === 0) || [];
-                              const rightPoints = service?.items?.filter((_, i) => i % 2 !== 0) || [];
+                              const leftPoints = validItems.filter((_, i) => i % 2 === 0);
+                              const rightPoints = validItems.filter((_, i) => i % 2 !== 0);
 
                               return (
 
@@ -170,7 +158,7 @@ export default function HelpSection() {
                                              <ul className="space-y-3 w-58">
                                                   {leftPoints.map((item, i) => (
                                                        <li className="cursor-pointer" onClick={() => {
-                                                            if (!item?.page?.help?.title) return;
+                                                            if (!item?.hero?.title) return;
                                                             navigate(getServiceItemRoute(service, item));
                                                        }} key={i}>{item.title}</li>
                                                   ))}
@@ -179,7 +167,7 @@ export default function HelpSection() {
                                              <ul className="space-y-3 w-58">
                                                   {rightPoints.map((item, i) => (
                                                        <li className="cursor-pointer" onClick={() => {
-                                                            if (!item?.page?.help?.title) return;
+                                                            if (!item?.hero?.title) return;
                                                             navigate(getServiceItemRoute(service, item));
                                                        }} key={i}>{item.title}</li>
                                                   ))}
@@ -202,8 +190,15 @@ export default function HelpSection() {
                          {services.map((service, index) => {
 
                               const open = active === index;
-                              const leftPoints = service?.items?.filter((_, i) => i % 2 === 0);
-                              const rightPoints = service?.items?.filter((_, i) => i % 2 !== 0);
+                              const validItems = service?.items?.filter((item) => {
+                                   if (!item?._id && !item?.slug) return true;
+                                   return !!item?.hero?.title;
+                              }) || [];
+                              if (validItems.length === 0) return null;
+
+                              const leftPoints = validItems.filter((_, i) => i % 2 === 0);
+                              const rightPoints = validItems.filter((_, i) => i % 2 !== 0);
+
                               return (
 
                                    <div key={index}
@@ -239,7 +234,7 @@ export default function HelpSection() {
                                                             {leftPoints.map((item, i) => (
                                                                  <li
                                                                       onClick={() => {
-                                                                           if (!item?.page?.help?.title) return;
+                                                                           if (!item?.hero?.title) return;
 
                                                                            setActive(open ? null : index);
                                                                            navigate(getServiceItemRoute(service, item));
@@ -251,7 +246,7 @@ export default function HelpSection() {
                                                             {rightPoints.map((item, i) => (
                                                                  <li
                                                                       onClick={() => {
-                                                                           if (!item?.page?.help?.title) return;
+                                                                           if (!item?.hero?.title) return;
 
                                                                            setActive(open ? null : index);
                                                                            navigate(getServiceItemRoute(service, item));
@@ -319,7 +314,7 @@ export default function HelpSection() {
                          <div className="flex flex-col gap-2">
 
                               {/* Animated content */}
-                              <div ref={contentRef} className="flex flex-col gap-2">
+                              <div key={current} className="flex flex-col gap-2 testimonial-fade-slide-in">
 
                                    <p className="text-[12px] md:text-[20px] opacity-90 max-w-full lg:max-w-100">
                                         “{testimonial.quote}”

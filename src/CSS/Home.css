@@ -24,3 +24,19 @@
           transform: scale(1.0);
      }
 }
+
+.testimonial-fade-slide-in {
+     animation: testimonialFadeSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes testimonialFadeSlideIn {
+     from {
+          opacity: 0;
+          transform: translateX(20px);
+     }
+
+     to {
+          opacity: 1;
+          transform: translateX(0);
+     }
+}

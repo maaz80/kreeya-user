@@ -291,22 +291,25 @@ const Footer = () => {
 
                     {/* Locations */}
                     {locations?.length > 0 &&
-                         locations.map((location) => (
-                              location.items?.length > 0 && (
-                                   <div key={location.slug} className="pt-12">
+                         locations.map((location) => {
+                              const validItems = location.items?.filter((item) => {
+                                   if (!item?._id && !item?.slug) return true;
+                                   return !!item?.hero?.title;
+                              }) || [];
+                              if (validItems.length === 0) return null;
+
+                              return (
+                                   <div key={location.slug || location._id} className="pt-12">
                                         <h2 className="text-white text-[18px]">
                                              {location.title}
                                         </h2>
 
                                         <div className="flex gap-2 text-base mt-5 flex-wrap">
-                                             {location.items.map((item) => (
-                                                  <div key={item.slug} className="flex items-center gap-2">
+                                             {validItems.map((item) => (
+                                                  <div key={item.slug || item._id} className="flex items-center gap-2">
                                                        <Link
-                                                            to={item?.hero?.title ? `/${item.slug || item._id}` : "#"}
-                                                            className={`${item?.hero?.title
-                                                                      ? "text-white/70 hover:text-white cursor-pointer"
-                                                                      : "text-white/30 pointer-events-none cursor-not-allowed"
-                                                                 }`}
+                                                            to={`/${item.slug || item._id}`}
+                                                            className="text-white/70 hover:text-white cursor-pointer"
                                                        >
                                                             {item.title}
                                                        </Link>
@@ -316,8 +319,8 @@ const Footer = () => {
                                              ))}
                                         </div>
                                    </div>
-                              )
-                         ))}
+                              );
+                         })}
                     {/* DIVIDER */}
 
                     <div className="border-t border-white/40 mt-14 pt-6 flex flex-col md:flex-row md:justify-center items-center gap-5 md:gap-15 text-[12px] md:text-sm lg:text-base">

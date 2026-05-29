@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { getVideos } from "../utils/openingVideo";
 import { optimizeVideo } from "../utils/cloudinary";
-import { loadGSAP } from "../utils/gsapLoader";
 
 const OpeningVideo = ({ onFinish }) => {
-     const containerRef = useRef();
      const videoRef = useRef();
      const [videoUrl, setVideoUrl] = useState(null);
      const [isReady, setIsReady] = useState(false);
      const [showLoader, setShowLoader] = useState(true);
+     const [isAnimatingOut, setIsAnimatingOut] = useState(false);
 
      // 🔹 Disable scroll when video is active
      useEffect(() => {
@@ -112,29 +111,18 @@ const OpeningVideo = ({ onFinish }) => {
 
      // 🔹 On video end → animate out
      const handleVideoEnd = () => {
-          const animateOut = async () => {
-               const gsap = await loadGSAP();
-               gsap.to(containerRef.current, {
-                    y: "-100%",
-                    duration: 0.5,
-                    ease: "power3.inOut",
-                    onComplete: () => {
-                         onFinish();
-                         // Completely remove from DOM
-                         if (containerRef.current) {
-                              containerRef.current.style.display = "none";
-                         }
-                    },
-               });
-          };
-          animateOut();
+          setIsAnimatingOut(true);
+          setTimeout(() => {
+               onFinish();
+          }, 500);
      };
 
      return (
           <div
-               ref={containerRef}
                aria-hidden="true"
-               className="fixed inset-0 z-99999 bg-linear-to-b from-[#226296] via-[#5777ce] to-[#226296] flex items-center justify-center"
+               className={`fixed inset-0 z-99999 bg-linear-to-b from-[#226296] via-[#5777ce] to-[#226296] flex items-center justify-center transition-transform duration-500 ease-in-out ${
+                    isAnimatingOut ? "-translate-y-full" : "translate-y-0"
+               }`}
           >
                {/* 🔹 Loader - Only show if needed */}
                {showLoader && (

@@ -14,6 +14,9 @@ ServerSignature Off
 RewriteEngine On
 RewriteBase /
 
+# Route sitemap.xml to the dynamic sitemap.php script
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
 # ----------------------------------------------------------------
 # 3. BLOCK BAD BOTS & EMPTY USER AGENTS
 # ----------------------------------------------------------------
@@ -53,9 +56,23 @@ RewriteBase /
 # ----------------------------------------------------------------
 # 7. BLOCK SERVER-SIDE SCRIPT EXECUTION
 # ----------------------------------------------------------------
-<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|jsp|asp|aspx|sh|cgi|rb)$">
-     Require all denied
-</FilesMatch>
+ <FilesMatch ".(php3|php4|php5|phtml|pl|py|jsp|asp|aspx|sh|cgi|rb)$">
+         Require all denied
+    </FilesMatch>
+
+    # Block all PHP files by default
+    <FilesMatch ".php$">
+         Require all denied
+    </FilesMatch>
+
+    # Allow only our index.php and sitemap.php scripts
+    <Files "index.php">
+         Require all granted
+    </Files>
+
+    <Files "sitemap.php">
+         Require all granted
+    </Files>
 
 # ----------------------------------------------------------------
 # 8. WWW → NON-WWW REDIRECT
@@ -77,10 +94,10 @@ RewriteBase /
 # 10. REACT ROUTER FALLBACK
 # ----------------------------------------------------------------
 <IfModule mod_rewrite.c>
-     RewriteRule ^index\.html$ - [L]
+     RewriteRule ^index\.php$ - [L]
      RewriteCond %{REQUEST_FILENAME} !-f
      RewriteCond %{REQUEST_FILENAME} !-d
-     RewriteRule . /index.html [L]
+     RewriteRule . /index.php [L]
 </IfModule>
 
 # ----------------------------------------------------------------
