@@ -5,11 +5,12 @@ import shakingHand from '../assets/contact-bg.webp';
 import { useH2Data } from "../hooks/useH2data";
 import { useH1Data } from "../hooks/useH1Data";
 import { useh3Data } from "../hooks/useH3Data";
+import useFaq from "../hooks/useFaq";
 // import Details from "../components/Contact/Details";
 
 const Breadcrumb = lazy(() => import('../components/Breadcrumb'));
 const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
-const FaqSection = lazy(() => import('../components/Contact/Faq'));
+const FaqSection = lazy(() => import('../components/FaqSection'));
 const YouMayLike = lazy(() => import('../components/YouMayLike'));
 
 const ContactUs = () => {
@@ -31,6 +32,7 @@ const ContactUs = () => {
      const h3Contact = useh3Data()
      const h2Contact = useH2Data()
      const h1Contact = useH1Data()
+     const { faqData } = useFaq();
      //   Auto hide success message after 5 seconds
      useEffect(() => {
           if (successMessage) {
@@ -578,7 +580,7 @@ const ContactUs = () => {
                <Suspense fallback={<div className="min-h-40" />}>
                     <YouMayLike />
                     <div className="mt-10 md:mt-20">
-                         <FaqSection />
+                         <FaqSection faqData={faqData} />
                     </div>
                </Suspense>
           </section>

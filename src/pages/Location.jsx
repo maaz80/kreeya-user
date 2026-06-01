@@ -6,7 +6,7 @@ import { getLocations } from '../utils/locations'
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async'
 import { matchesRouteSlug } from '../utils/slug';
-import staticData from '../data/staticData.json';
+import useFaq from '../hooks/useFaq'
 
 //  Lazy sections
 const HelpSection = lazy(() => import('../components/Location/HelpSection'))
@@ -18,24 +18,24 @@ const FaqSection = lazy(() => import('../components/Location/LocationFaq'))
 
 const Location = () => {
   const { itemSlug } = useParams();
-
-  const getLocalLocation = () => {
-    const localLocations = staticData.locations || [];
-    for (const l of localLocations) {
-      const found = l.items?.find((i) => matchesRouteSlug(i, itemSlug));
-      if (found) return found;
-    }
-    return null;
-  };
-
-  const [location, setLocation] = useState(getLocalLocation);
+  const { faqData } = useFaq();
+  const [location, setLocation] = useState(null);
 
   useEffect(() => {
-    // 1. Sync from local staticData instantly (0ms)
-    const localItem = getLocalLocation();
-    if (localItem) {
-      setLocation(localItem);
-    }
+    // 1. Asynchronously fetch fallback data from dynamic staticData import
+    import('../data/staticData.json').then((module) => {
+      const staticData = module.default;
+      const localLocations = staticData.locations || [];
+      for (const l of localLocations) {
+        const found = l.items?.find((i) => matchesRouteSlug(i, itemSlug));
+        if (found) {
+          setLocation((prev) => prev || found);
+          break;
+        }
+      }
+    }).catch((err) => {
+      console.error("Dynamic staticData load failed:", err);
+    });
 
     // 2. Asynchronously fetch latest data in background silently
     const fetchSingleService = async () => {
@@ -100,7 +100,7 @@ const Location = () => {
 
         <div className="py-24">
           <Suspense fallback={<div className="min-h-75" />}>
-            <FaqSection location={location} />
+            <FaqSection location={location} faqData={faqData} />
           </Suspense>
         </div>
       </div>

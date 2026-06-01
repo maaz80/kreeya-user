@@ -4,12 +4,14 @@ import Breadcrumb from '../components/BreadCrumb';
 const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
 import SeoTags from '../components/SeoTags';
 import { useH1Data } from '../hooks/useH1Data';
+import useFaq from '../hooks/useFaq';
 
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
 
 const PrivacyPolicy = () => {
      const h1Policy = useH1Data();
+     const { faqData } = useFaq();
      useEffect(() => {
           window.scrollTo(0, 0);
      }, []);
@@ -335,7 +337,7 @@ const PrivacyPolicy = () => {
                <Suspense fallback={<div className="min-h-40" />}>
                     <YouMayLike />
                     <div className="mt-10 md:mt-20">
-                         <FaqSection />
+                         <FaqSection faqData={faqData} />
                     </div>
                </Suspense>
 

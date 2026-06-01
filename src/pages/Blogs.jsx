@@ -1,9 +1,9 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import blogImg from "../assets/blog-thumbnail.webp";
 import HomeNavbar from "../components/HomeNavbar";
-import FaqSection from "../components/FaqSection";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 const BackgroundShapes = lazy(() => import("../components/BackgroundShapes"));
+// const FaqSection = lazy(() => import("../components/FaqSection"));
 import { useNavigate } from "react-router-dom";
 import Breadcrumb from "../components/BreadCrumb";
 import { Helmet } from "react-helmet-async";
@@ -12,6 +12,8 @@ import '../CSS/Blogs.css'
 import { getBlogs } from "../utils/blogService";
 import { useH1Data } from "../hooks/useH1Data";
 import { useh3Data } from "../hooks/useH3Data";
+import useFaq from "../hooks/useFaq";
+import OptimizedImage from "../components/OptimizedImage";
 
 
 const Blogs = () => {
@@ -22,7 +24,7 @@ const Blogs = () => {
      const h1Blogs = useH1Data();
      const h3Blogs = useh3Data();
      const totalPages = Math.ceil(blogs.length / blogsPerPage);
-
+     const { faqData } = useFaq();
      const startIndex = (currentPage - 1) * blogsPerPage;
      const currentBlogs = blogs.slice(startIndex, startIndex + blogsPerPage);
 
@@ -143,23 +145,17 @@ const Blogs = () => {
 
                               {/* Image */}
 
-                              <div className="overflow-hidden min-h-55 max-h-55">
+                              <div className="overflow-hidden min-h-[220px] max-h-[220px]">
 
-                                   <img
-                                        src={blog.image ? optimizeImage(blog.image, 500) : blogImg}
+                                   <OptimizedImage
+                                        src={blog.image || blogImg}
                                         alt={blog.alt}
-                                        width="500"
-                                        height="220"
-                                        loading={index < 3 ? "eager" : "lazy"}        //   pehli eager
-                                        fetchPriority={index < 3 ? "high" : "low"}    //   pehli high
-                                        decoding={index < 3 ? "sync" : "async"}
-                                        srcSet={`
-                                        ${optimizeImage(blog.image, 300)} 480w,
-                                        ${optimizeImage(blog.image, 500)} 768w,
-                                        ${optimizeImage(blog.image, 800)} 1200w
-                                        `}
-                                        sizes="(max-width: 768px) 100vw, 33vw"
-                                        className=" w-full min-h-55 max-h-55 object-fill transition duration-500 group-hover:scale-105 "
+                                        width={500}
+                                        height={220}
+                                        aspectRatio="25:11"
+                                        sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) calc(50vw - 40px), 386px"
+                                        loading={index < 3 ? "eager" : "lazy"}
+                                        className="w-full min-h-[220px] max-h-[220px] object-fill transition duration-500 group-hover:scale-105"
                                    />
 
                               </div>
@@ -246,7 +242,9 @@ const Blogs = () => {
                     </button>
 
                </div>
-               {/* <FaqSection paddings={'pt-10 pb-24 md:py-24 px-1 md:px-20'} /> */}
+               {/* <Suspense fallback={null}>
+                    <FaqSection paddings={'pt-10 pb-24 md:py-24 px-1 md:px-20'} faqData={faqData} />
+               </Suspense> */}
           </section>
      );
 };

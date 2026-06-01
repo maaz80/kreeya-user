@@ -4,12 +4,13 @@ import Breadcrumb from '../components/BreadCrumb'
 import Details from '../components/About/Details'
 import Hero from '../components/About/Hero'
 import Youtube from '../components/About/Youtube'
+import useFaq from '../hooks/useFaq'
 
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
-const FaqSection = lazy(() => import('../components/About/Faq'))
+const FaqSection = lazy(() => import('../components/FaqSection'))
 
 const About = () => {
-
+     const { faqData } = useFaq();
 
      return (
           <div>
@@ -25,7 +26,7 @@ const About = () => {
 
                     <div className="py-24">
                          <Suspense fallback={<div className="min-h-75" />}>
-                              <FaqSection />
+                              <FaqSection faqData={faqData} />
                          </Suspense>
                     </div>
                </div>

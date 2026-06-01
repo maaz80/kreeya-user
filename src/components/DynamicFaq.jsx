@@ -5,6 +5,12 @@ import { HiMinus, HiPlus } from "react-icons/hi";
 const FaqSection = ({ faq }) => {
      const [faqs, setFaqs] = useState(faq);
      const [activeIndex, setActiveIndex] = useState(0);
+
+     useEffect(() => {
+          setFaqs(faq);
+          setActiveIndex(0);
+     }, [faq]);
+
      const toggleFaq = (index) => {
           setActiveIndex(index === activeIndex ? null : index);
      };

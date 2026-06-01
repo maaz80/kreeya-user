@@ -4,13 +4,15 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import Breadcrumb from "../components/BreadCrumb";
 // import SeoTags from "../components/SeoTags";
 import { getBlogBySlug } from "../utils/blogService";
+import useFaq from "../hooks/useFaq";
+import OptimizedImage from "../components/OptimizedImage";
 
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
 
 const BlogDetails = () => {
 
-
+     const { faqData } = useFaq();
      const { slug } = useParams();
      const [blog, setBlog] = useState(null);
 
@@ -73,21 +75,14 @@ const BlogDetails = () => {
                <div className="mb-10">
 
                     {blog && (
-                         <img
-                              fetchPriority="high"
-                              loading="eager"
-                              decoding="sync"
-                              src={optimizeImage(blog.image, 640)}
-                              srcSet={`
-      ${optimizeImage(blog.image, 320)} 320w,
-      ${optimizeImage(blog.image, 480)} 480w,
-      ${optimizeImage(blog.image, 640)} 640w,
-      ${optimizeImage(blog.image, 890)} 890w
-    `}
-                              sizes="(max-width: 768px) 100vw, 380px"
+                         <OptimizedImage
+                              src={blog.image}
                               alt={blog.alt}
-                              width={380}
-                              height={252}
+                              width={776}
+                              height={350}
+                              aspectRatio="133:60"
+                              sizes="(max-width: 768px) 100vw, 1330px"
+                              loading="eager"
                               className="w-full max-w-[1330px] h-50 md:h-90 lg:h-180 object-cover rounded-md mx-auto"
                          />
                     )}
@@ -103,7 +98,7 @@ const BlogDetails = () => {
                <Suspense fallback={<div className="min-h-40" />}>
                     <YouMayLike />
 
-                    <FaqSection paddings={'px-0 pb-10 pt-10 md:pt-20'} />
+                    <FaqSection paddings={'px-0 pb-10 pt-10 md:pt-20'} faqData={faqData} />
                </Suspense>
           </section>
      );

@@ -2,12 +2,13 @@ import { lazy, Suspense } from 'react'
 import HomeNavbar from '../components/HomeNavbar'
 import Breadcrumb from '../components/BreadCrumb'
 import Cards from '../components/Services/Cards'
+import useFaq from '../hooks/useFaq'
 
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
-const FaqSection = lazy(() => import('../components/About/Faq'))
+const FaqSection = lazy(() => import('../components/FaqSection'))
 
 const Services = () => {
-
+     const { faqData } = useFaq();
 
      return (
           <div>
@@ -21,7 +22,7 @@ const Services = () => {
 
                     <div className="py-24">
                          <Suspense fallback={<div className="min-h-75" />}>
-                              <FaqSection />
+                              <FaqSection faqData={faqData} />
                          </Suspense>
                     </div>
                </div>

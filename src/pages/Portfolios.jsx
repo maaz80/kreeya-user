@@ -1,8 +1,10 @@
+import { useEffect, useState, lazy, Suspense } from 'react'
+import { useParams } from 'react-router-dom'
+import { getPortfolios } from '../utils/portfolio'
 import HomeNavbar from '../components/HomeNavbar'
 import Breadcrumb from '../components/BreadCrumb'
 import Hero from '../components/Portfolios/Hero'
 import PortfolioSection from '../components/Portfolios/PortfolioSection'
-import { lazy, Suspense } from 'react'
 
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
 const FaqSection = lazy(() => import('../components/DynamicFaq'))
@@ -27,10 +29,39 @@ const defaultFaqs = [
           question: "How can I contact Kreeya Design?",
           answer: "You can contact Kreeya Design for UI/UX design, branding, and digital creative services through the official website or social media channels."
      },
- 
 ];
 
 const Portfolios = () => {
+     const { itemSlug } = useParams();
+     const [faqs, setFaqs] = useState(defaultFaqs);
+
+     useEffect(() => {
+          const loadFaqs = async () => {
+               try {
+                    const portfolios = await getPortfolios();
+                    if (itemSlug && portfolios.length > 0) {
+                         const matched = portfolios.find(
+                              (p) => p.name.toLowerCase().replace(/\s+/g, '-') === itemSlug
+                         );
+                         if (matched?.faq && matched.faq.length > 0) {
+                              const portfolioFaqs = matched.faq.map((f) => ({
+                                   question: f.ques || "",
+                                   answer: f.ans || "",
+                              }));
+                              setFaqs(portfolioFaqs);
+                              return;
+                         }
+                    }
+                    setFaqs(defaultFaqs);
+               } catch (err) {
+                    console.error("Error setting portfolio FAQs:", err);
+                    setFaqs(defaultFaqs);
+               }
+          };
+
+          loadFaqs();
+     }, [itemSlug]);
+
      return (
           <div className=''>
                <HomeNavbar />
@@ -45,11 +76,11 @@ const Portfolios = () => {
 
                <div className="py-24 max-w-325 mx-auto px-2 md:px-0">
                     <Suspense fallback={<div className="min-h-75" />}>
-                         <FaqSection faq={defaultFaqs}/>
+                         <FaqSection faq={faqs}/>
                     </Suspense>
                </div>
           </div>
      )
 }
 
-export default Portfolios
+export default Portfolios;

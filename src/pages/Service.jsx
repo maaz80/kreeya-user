@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 import { getServices } from '../utils/service'
 import { Helmet } from 'react-helmet-async';
 import { matchesRouteSlug } from '../utils/slug';
-import staticData from '../data/staticData.json';
 
 //  Lazy sections
 const HelpSection = lazy(() => import('../components/Service/HelpSection'))
@@ -18,24 +17,23 @@ const FaqSection = lazy(() => import('../components/Location/LocationFaq'))
 
 const Service = () => {
   const { itemSlug } = useParams();
-
-  const getLocalService = () => {
-    const localServices = staticData.services || [];
-    for (const s of localServices) {
-      const found = s.items?.find((i) => matchesRouteSlug(i, itemSlug));
-      if (found) return found;
-    }
-    return null;
-  };
-
-  const [service, setService] = useState(getLocalService);
+  const [service, setService] = useState(null);
 
   useEffect(() => {
-    // 1. Sync from local staticData instantly (0ms)
-    const localItem = getLocalService();
-    if (localItem) {
-      setService(localItem);
-    }
+    // 1. Asynchronously fetch fallback data from dynamic staticData import
+    import('../data/staticData.json').then((module) => {
+      const staticData = module.default;
+      const localServices = staticData.services || [];
+      for (const s of localServices) {
+        const found = s.items?.find((i) => matchesRouteSlug(i, itemSlug));
+        if (found) {
+          setService((prev) => prev || found);
+          break;
+        }
+      }
+    }).catch((err) => {
+      console.error("Dynamic staticData load failed:", err);
+    });
 
     // 2. Asynchronously fetch latest data in background silently
     const fetchSingleService = async () => {

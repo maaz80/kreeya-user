@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import BgImage from "../assets/bg.webp";
 // import SeoTags from '../components/SeoTags';
 import { useH1Data } from "../hooks/useH1Data";
+import useFaq from "../hooks/useFaq";
 
 const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
 const Breadcrumb = lazy(() => import('../components/Breadcrumb'))
@@ -10,6 +11,7 @@ const YouMayLike = lazy(() => import('../components/YouMayLike'))
 
 const Disclaimer = () => {
      const h1Disclaimer = useH1Data();
+     const { faqData } = useFaq();
      useEffect(() => {
           window.scrollTo({
                top: 0,
@@ -338,7 +340,7 @@ const Disclaimer = () => {
                <Suspense fallback={<div className="min-h-40" />}>
                     <YouMayLike />
                     <div className="mt-10 md:mt-20">
-                         <FaqSection />
+                         <FaqSection faqData={faqData} />
                     </div>
                </Suspense>
 

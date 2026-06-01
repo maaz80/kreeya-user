@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getBlogs } from "../utils/blogService";
 import blogImg from '../assets/blog-thumbnail.webp'
 import { useYouMayH2Data } from "../hooks/useYouMayH2Data";
+import OptimizedImage from "./OptimizedImage";
 
 const YouMayLike = () => {
      const navigate = useNavigate()
@@ -24,15 +25,6 @@ const YouMayLike = () => {
 
           fetchBlogs();
      }, []);
-
-     const optimizeImage = (url, width = 500) => {
-          if (!url) return "";
-
-          return url.replace(
-               "/upload/",
-               `/upload/ar_25:11,c_fill,g_auto,w_${width},q_auto:eco,f_auto/`
-          );
-     };
 
      return (
           <section className="relative z-999 mt-10 md:mt-20">
@@ -78,25 +70,19 @@ const YouMayLike = () => {
 
                                         {/* Image */}
 
-                                        <div className="overflow-hidden min-h-55 max-h-55">
+                                        <div className="overflow-hidden min-h-[220px] max-h-[220px]">
 
-                                             <img
-                                                  src={blog.image ? optimizeImage(blog.image, 500) : blogImg}
+                                             <OptimizedImage
+                                                  src={blog.image || blogImg}
                                                   alt={blog.alt}
-                                                  width="500"
-                                                  height="220"
-                                                  loading={index === 0 ? "eager" : "lazy"}        //   pehli eager
-                                                  fetchPriority={index === 0 ? "high" : "low"}    //   pehli high
-                                                  decoding={index === 0 ? "sync" : "async"}
-                                                  srcSet={`
-                                             ${optimizeImage(blog.image, 300)} 480w,
-                                             ${optimizeImage(blog.image, 500)} 768w,
-                                             ${optimizeImage(blog.image, 800)} 1200w
-                                             `}
-                                                  sizes="(max-width: 768px) 100vw, 33vw"
+                                                  width={500}
+                                                  height={220}
+                                                  aspectRatio="25:11"
+                                                  sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) calc(50vw - 40px), 386px"
+                                                  loading={index === 0 ? "eager" : "lazy"}
                                                   className="
                         w-full
-                        min-h-55 max-h-55 
+                        min-h-[220px] max-h-[220px] 
                         object-fill
                         transition
                         duration-500

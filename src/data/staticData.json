@@ -3787,9 +3787,10 @@
         }
       ],
       "createdAt": "2026-05-25T08:09:57.121Z",
-      "updatedAt": "2026-05-26T06:31:53.997Z",
+      "updatedAt": "2026-06-01T06:47:06.596Z",
       "__v": 0,
-      "sequenceNumber": 1
+      "sequenceNumber": 1,
+      "faq": []
     },
     {
       "_id": "6a13fed9be6db16c44cc06d4",
@@ -3846,7 +3847,8 @@
       "createdAt": "2026-05-25T07:48:41.933Z",
       "updatedAt": "2026-05-27T14:32:28.369Z",
       "__v": 0,
-      "sequenceNumber": 2
+      "sequenceNumber": 2,
+      "faq": []
     },
     {
       "_id": "6a15224f2b1509b852962d1e",
@@ -3908,7 +3910,8 @@
       "createdAt": "2026-05-26T04:32:15.371Z",
       "updatedAt": "2026-05-28T07:49:58.187Z",
       "__v": 0,
-      "sequenceNumber": 3
+      "sequenceNumber": 3,
+      "faq": []
     },
     {
       "_id": "6a183c5666d14cefa2ab07fd",
@@ -3965,8 +3968,9 @@
       ],
       "createdAt": "2026-05-28T13:00:06.352Z",
       "updatedAt": "2026-05-29T12:44:31.650Z",
-      "__v": 0
+      "__v": 0,
+      "faq": []
     }
   ],
-  "updatedAt": "2026-05-29T13:14:17.165Z"
+  "updatedAt": "2026-06-01T09:38:38.658Z"
 }

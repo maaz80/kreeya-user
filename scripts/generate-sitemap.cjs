@@ -9,6 +9,16 @@ const TODAY = new Date().toISOString().split('T')[0];
 function fetchJson(url) {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
+      // Follow HTTP redirects (301, 302, 307, 308)
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        try {
+          const redirectUrl = new URL(res.headers.location, url).toString();
+          return fetchJson(redirectUrl).then(resolve).catch(reject);
+        } catch (err) {
+          return reject(new Error(`Failed to resolve redirect URL: ${err.message}`));
+        }
+      }
+
       if (res.statusCode < 200 || res.statusCode >= 300) {
         return reject(new Error(`API failed: ${res.statusCode} ${res.statusMessage}`));
       }

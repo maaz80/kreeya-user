@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 
 import HeroSection from "../components/HeroSection";
 import OpeningVideo from "../components/OpeningVideo";
+import useFaq from "../hooks/useFaq";
 
 const HomeNavbar = lazy(() => import("../components/HomeNavbar"));
 const FaqSection = lazy(() => import("../components/FaqSection"));
@@ -17,7 +18,7 @@ const Home = ({ onOpeningVideoFinished }) => {
      const [showOpening, setShowOpening] = useState(true);
      const [isVideoFinished, setIsVideoFinished] = useState(false);
      const [isLowPriorityReady, setIsLowPriorityReady] = useState(false);
-
+     const { faqData } = useFaq();
      useEffect(() => {
           // Delay non-critical components to free up main thread for LCP
           const timer = setTimeout(() => {
@@ -122,7 +123,7 @@ const Home = ({ onOpeningVideoFinished }) => {
                          {isLowPriorityReady && <GrowthJournal />}
                     </Suspense>
                     <Suspense fallback={null}>
-                         {isLowPriorityReady && <FaqSection paddings={'pt-10 pb-24 md:py-24 px-4 md:px-20'} />}
+                         {isLowPriorityReady && <FaqSection paddings={'pt-10 pb-24 md:py-24 px-4 md:px-20'} faqData={faqData} />}
                     </Suspense>
                </div>
           </>

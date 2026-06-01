@@ -29,7 +29,7 @@ const defaultFaqs = [
           answer: "A UI/UX design firm specializes in creating user-centered digital experiences by fusing interaction design, visual design, and user research to create products that are simple to use, captivating, and efficient."
      }
 ];
-const FaqSection = ({ paddings }) => {
+const FaqSection = ({ paddings, faqData }) => {
      const [faqs, setFaqs] = useState(defaultFaqs);
      const [activeIndex, setActiveIndex] = useState(0);
      const h3Data = useh3Data();
@@ -39,20 +39,13 @@ const FaqSection = ({ paddings }) => {
 
 
      useEffect(() => {
-          const fetchFaqs = async () => {
-               try {
-                    const data = await getFaqs();
+          if (faqData?.faq && faqData.faq.length > 0) {
+               setFaqs(faqData.faq);
+          } else {
+               setFaqs(defaultFaqs);
+          }
+     }, [faqData]);
 
-                    if (data && data.length > 0) {
-                         setFaqs(data);
-                    }
-               } catch (error) {
-                    console.log("FAQ fetch failed, using default");
-               }
-          };
-
-          fetchFaqs();
-     }, []);
      return (
           <section className={` relative z-999 ${paddings}`}>
 
@@ -89,7 +82,7 @@ const FaqSection = ({ paddings }) => {
                                                   className={`text-[18px] md:text-[24px] cursor-pointer transition ${isOpen ? "text-cust-orange" : "text-dark-black"
                                                        }`}
                                              >
-                                                  {faq.question}
+                                                  {faq.question || faq.ques}
                                              </span>
 
                                              <span className="relative text-lg md:text-xl w-5 h-5 inline-block">
@@ -120,7 +113,7 @@ const FaqSection = ({ paddings }) => {
                                              <div className="overflow-hidden">
 
                                                   <p className="text-dark-black  text-[12px] md:text-[16px] lg:text-[18px] leading-5 md:leading-6 lg:leading-8">
-                                                       {faq.answer}
+                                                       {faq.answer || faq.ans}
                                                   </p>
 
                                              </div>

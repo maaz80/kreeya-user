@@ -1,5 +1,6 @@
 import CardImg from "../../assets/404-bg.webp";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
+import OptimizedImage from '../OptimizedImage';
 
 const Services = ({ service }) => {
      const data = service?.page?.service;
@@ -21,7 +22,7 @@ const Services = ({ service }) => {
 
 
                {/* Content */}
-               <div className="relative max-w-310 mx-auto text-center plus-jakarta-sans flex flex-col justify-center items-center">
+               <div className="relative max-w-[1240px] mx-auto text-center plus-jakarta-sans flex flex-col justify-center items-center">
 
                     {/* Heading */}
                     <h2 className="poiret-one-regular text-[32px] md:text-[56px] xl:text-[72px] leading-10 md:leading-15">
@@ -29,7 +30,7 @@ const Services = ({ service }) => {
                     </h2>
 
                     {/* Subtext */}
-                    <p className="mt-4 md:mt-6 text-sm md:text-base xl:text-[20px] text-white max-w-190 mx-auto leading-7 md:leading-8">
+                    <p className="mt-4 md:mt-6 text-sm md:text-base xl:text-[20px] text-white max-w-[760px] mx-auto leading-7 md:leading-8">
                          {data?.description ||
                               `We're a [City]-based creative studio helping local businesses and startups
                          build brands people remember — from logo to launch.`}
@@ -40,28 +41,21 @@ const Services = ({ service }) => {
 
                          {(data?.cards?.length > 0 ? data.cards : services).map((item, i) => {
                               const imageSrc = item.image || CardImg;
-                              const optimizedSmall = optimizeImage(imageSrc, 480);
-                              const optimizedMedium = optimizeImage(imageSrc, 768);
-                              const optimizedLarge = optimizeImage(imageSrc, 960);
 
                               return (
                               <div
                                    key={i}
-                                   className="group bg-white/5 border border-white/10 overflow-hidden hover:-translate-y-1 transition duration-300 w-75.5 min-h-88 max-h-90"
+                                   className="group bg-white/5 border border-white/10 overflow-hidden hover:-translate-y-1 transition duration-300 w-[302px] min-h-88 max-h-[360px]"
                               >
                                    {/* Image */}
-                                   <div className="w-full h-55.75 overflow-hidden">
-                                        <img
-                                             src={optimizedLarge}
-                                             srcSet={`
-                                                  ${optimizedSmall} 480w,
-                                                  ${optimizedMedium} 768w,
-                                                  ${optimizedLarge} 960w
-                                             `}
-                                             sizes="(max-width: 640px) 90vw, (max-width: 1280px) 45vw, 23rem"
-                                             loading="lazy"
-                                             decoding="async"
+                                   <div className="w-full h-[223px] overflow-hidden">
+                                        <OptimizedImage
+                                             src={imageSrc}
                                              alt={`${item.para || item.title || "Service"} - Service Image`}
+                                             width={302}
+                                             height={224}
+                                             aspectRatio="35:26"
+                                             sizes="(max-width: 340px) calc(100vw - 32px), 302px"
                                              className="w-full h-full object-fill group-hover:scale-105 transition duration-300"
                                         />
                                    </div>
@@ -82,7 +76,7 @@ const Services = ({ service }) => {
                          <button
                               onClick={handleClick}
                               type="submit"
-                              className="service-btn group relative isolate overflow-hidden text-white bg-transparent text-[15px] md:text-[18px] w-44 md:w-60 h-12 lg:h-15 flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 hover:text-blue border-white border cursor-pointer active:scale-99 text-center"
+                              className="service-btn group relative isolate overflow-hidden text-white bg-transparent text-[15px] md:text-[18px] w-44 md:w-60 h-12 lg:h-[60px] flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 hover:text-blue border-white border cursor-pointer active:scale-99 text-center"
                          >
                               <span className="relative z-10">Get in Touch</span>
 
