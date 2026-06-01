@@ -1,7 +1,7 @@
 // utils/imageOptimizer.js
 const CLOUDINARY_BASE = 'https://res.cloudinary.com/dlek2xgkd/image/upload';
 
-export const optimizeImage = (url, width = 1200) => {
+export const optimizeImage = (url, width = 1200, aspectRatio = null) => {
      if (!url || typeof url !== 'string') return url;
 
      // Clean the URL
@@ -30,7 +30,8 @@ export const optimizeImage = (url, width = 1200) => {
      // Remove leading/trailing slashes
      cleanPath = cleanPath.replace(/^\/+|\/+$/g, '');
 
-     return `${CLOUDINARY_BASE}/q_auto:eco,f_auto,w_${width}/${cleanPath}`;
+     const arTransform = aspectRatio ? `ar_${aspectRatio},c_fill,g_auto,` : '';
+     return `${CLOUDINARY_BASE}/${arTransform}q_auto:eco,f_auto,w_${width}/${cleanPath}`;
 };
 
 export const getResponsiveImageProps = (url, options = {}) => {

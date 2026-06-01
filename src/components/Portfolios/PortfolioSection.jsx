@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getPortfolios } from "../../utils/portfolio";
 import { getResponsiveImageProps } from "../../utils/cloudinary";
 import FallbackImg from "../../assets/404-bg.webp";
+import { HiOutlineArrowLongRight } from "react-icons/hi2";
 
 const PortfolioSection = () => {
      const { itemSlug } = useParams();
@@ -249,7 +250,7 @@ const PortfolioSection = () => {
                                                        className="border-2 border-cust-orange text-cust-orange hover:text-white px-4 md:px-14 py-2 md:py-5 rounded-full flex items-center gap-4 text-[14px] md:text-[20px] font-medium hover:bg-cust-orange transition-all duration-300 cursor-pointer"
                                                   >
                                                        Behance
-                                                       <GoArrowRight size={24} />
+                                                       <HiOutlineArrowLongRight size={24} />
                                                   </a>
                                              )}
                                         </div>

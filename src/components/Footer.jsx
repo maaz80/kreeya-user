@@ -84,7 +84,7 @@ const Footer = () => {
      }, []);
 
      return (
-          <footer className="relative bg-[#ff5a00] text-white overflow-hidden z-999 plus-jakarta-sans min-h-[800px] md:min-h-[660px]">
+          <footer className="relative bg-[#ff5a00] text-white overflow-hidden z-999 plus-jakarta-sans min-h-200 md:min-h-165">
 
                {/* decorative image */}
 

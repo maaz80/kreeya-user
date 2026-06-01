@@ -167,7 +167,8 @@ const Cards = () => {
                                                        item.image
                                                             ? optimizeImage(
                                                                  item.image,
-                                                                 640
+                                                                 640,
+                                                                 "47:28"
                                                             )
                                                             : FallbackImg
                                                   }
@@ -188,10 +189,10 @@ const Cards = () => {
                                                             : 'async'
                                                   }
                                                   srcSet={`
-                                                       ${item.image ? optimizeImage(item.image, 320) : FallbackImg} 320w,
-                                                       ${item.image ? optimizeImage(item.image, 480) : FallbackImg} 480w,
-                                                       ${item.image ? optimizeImage(item.image, 640) : FallbackImg} 640w,
-                                                       ${item.image ? optimizeImage(item.image, 768) : FallbackImg} 768w
+                                                       ${item.image ? optimizeImage(item.image, 320, "47:28") : FallbackImg} 320w,
+                                                       ${item.image ? optimizeImage(item.image, 480, "47:28") : FallbackImg} 480w,
+                                                       ${item.image ? optimizeImage(item.image, 640, "47:28") : FallbackImg} 640w,
+                                                       ${item.image ? optimizeImage(item.image, 768, "47:28") : FallbackImg} 768w
                                                   `}
                                                   sizes="(max-width: 768px) 100vw, 522px"
                                                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"

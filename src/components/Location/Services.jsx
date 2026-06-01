@@ -13,7 +13,7 @@ const Services = ({ location }) => {
           if (!url.includes("/upload/")) return url;
           return url.replace(
                "/upload/",
-               `/upload/w_${width},c_fill,q_auto:eco,f_auto/`
+               `/upload/ar_35:26,c_fill,g_auto,w_${width},q_auto:eco,f_auto/`
           );
      };
 
