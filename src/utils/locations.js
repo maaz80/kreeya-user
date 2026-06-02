@@ -1,7 +1,7 @@
-import staticData from '../data/staticData.json';
+import staticLocations from '../data/staticLocations.json';
 
 const API = import.meta.env.VITE_API_URL;
-let cachedLocations = staticData.locations || [];
+let cachedLocations = staticLocations || [];
 let hasFetchedLocations = false;
 
 export const getLocations = async (forceRefresh = false) => {

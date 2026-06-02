@@ -4,11 +4,11 @@ import { getBlogs } from "../utils/blogService";
 import blogImg from '../assets/blog-thumbnail.webp'
 import { useYouMayH2Data } from "../hooks/useYouMayH2Data";
 import OptimizedImage from "./OptimizedImage";
-import staticData from "../data/staticData.json";
+import staticBlogs from "../data/staticBlogs.json";
 
 const YouMayLike = () => {
      const navigate = useNavigate()
-     const localBlogs = (staticData.blogs || []).slice(0, 3);
+     const localBlogs = (staticBlogs || []).slice(0, 3);
      const [blogs, setBlogs] = useState(localBlogs)
      const [loading, setLoading] = useState(!localBlogs.length)
      const h2youMay = useYouMayH2Data()

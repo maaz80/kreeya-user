@@ -1,0 +1,357 @@
+[
+  {
+    "_id": "6a1403d5b805e5fac0203890",
+    "name": "Fintech",
+    "dribblelink": "https://dribbble.com/",
+    "behancelink": "https://www.behance.net/kreeyadesign",
+    "cards": [
+      {
+        "title": "Increasing ROI in Middle Eastern Banking with Strategic UX",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779724045/kreeya_media/aeyhgm5sg3ufl2xa8yvx.png",
+        "para": "The digital platform of International Banking NBD was reorganized to facilitate long-term adoption, scale, and customisation in one of the most technologically advanced markets globally."
+      },
+      {
+        "title": "Singapore Digital Banking: Creating a New Standard",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779723196/kreeya_media/bozshgtloysqfrzpy8rq.png",
+        "para": "Nexora was established as Banorte's first digital-only bank with an emphasis on guidance, clarity, and customisation to enable prudent financial decisions."
+      },
+      {
+        "title": "Developing a Unique Identity for Digital Banking",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779724060/kreeya_media/xmcbfhmimu2dyajgfb4v.png",
+        "para": "The Nectar digital platform was designed to convey a powerful digital brand while preserving control and usability."
+      },
+      {
+        "title": "Restructuring Nibble View on Digital Banking",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779725188/kreeya_media/hu3hlik95bkleh5srvo6.png",
+        "para": "By enabling customers to perform routine banking transactions independently and remotely, the Nibble mobile platform was built to eliminate reliance on in-person assistance."
+      },
+      {
+        "title": "Customizing the Dubai Retail Banking Experience",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779725561/kreeya_media/hfdosgz1qpusbuvlugev.png",
+        "para": "Rethinking important retail banking situations, such as bill payments, was the main goal of the experience in order to lessen friction and decision fatigue. The outcome is a daily banking experience that is more controlled and intuitive."
+      },
+      {
+        "title": "Customizing Retail Banking in the United Arab Emirates",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779726149/kreeya_media/gchdlsvvcce8zkhdrj2m.png",
+        "para": "Rethinking important retail banking situations, such as bill payments, was the main goal of the experience in order to lessen friction and decision fatigue. The outcome is a daily banking experience that is more controlled and intuitive."
+      },
+      {
+        "title": "Creating a Cutting-Edge Premium Banking Offer",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779726810/kreeya_media/ij8unqyms8ehp8vr9nwe.png",
+        "para": "A financial app is elevated to the status of a premium service by this special system. The experience was created to uphold loyalty, exclusivity, and confidence without sacrificing usability or effectiveness."
+      },
+      {
+        "title": "Building Financial Capability From an Early Age",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779728160/kreeya_media/xgyg7bispnmuegcq6msj.png",
+        "para": "A digital banking platform that promotes independence, knowledge, and financial responsibility at a young age."
+      },
+      {
+        "title": "Identifying Models of Conversational Banking Interaction",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779729271/kreeya_media/l4pmkc1jajqnz824n4em.png",
+        "para": "The creative experience simplifies banking interactions while preserving clarity and trust by reframing service flows into dialog-based interactions appropriate for AI-driven financial services."
+      },
+      {
+        "title": "Reinventing an Omni-Channel Banking App",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779730863/kreeya_media/h1y9usuvtzpkdwfiox7r.png",
+        "para": "White-label omnichannel banking designs are simple to customize. A customized banking experience that can be tailored to any brand's particular requirements."
+      }
+    ],
+    "createdAt": "2026-05-25T08:09:57.121Z",
+    "updatedAt": "2026-06-01T15:07:24.965Z",
+    "__v": 0,
+    "sequenceNumber": 1,
+    "faq": [
+      {
+        "ques": "How can Kreeya Design assist fintech businesses? ",
+        "ans": "Kreeya Design specializes in delivering UI/UX design, product strategy, and digital experience enhancements for fintech enterprises.",
+        "_id": "6a1da02c7a278d10509c25bc"
+      },
+      {
+        "ques": "Why is UX crucial in fintech?",
+        "ans": "A strong UX fosters trust, simplifies usability, boosts customer loyalty, and enhances overall user satisfaction.",
+        "_id": "6a1da02c7a278d10509c25bd"
+      },
+      {
+        "ques": "Do you create mobile banking applications?",
+        "ans": "Absolutely, we develop secure and intuitive mobile apps tailored for banking and financial services.",
+        "_id": "6a1da02c7a278d10509c25be"
+      },
+      {
+        "ques": "Can you revamp existing fintech platforms?",
+        "ans": "Yes, we upgrade and modernize fintech platforms by implementing cutting-edge UI designs and optimizing user experiences.",
+        "_id": "6a1da02c7a278d10509c25bf"
+      },
+      {
+        "ques": "Do your fintech solutions align with compliance standards?",
+        "ans": "Our designs adhere to recognized industry standards and integrate best practices for accessibility and regulatory compliance.",
+        "_id": "6a1da02c7a278d10509c25c0"
+      },
+      {
+        "ques": "Which industries benefit from fintech innovations?",
+        "ans": "Sectors such as banking, insurance, investment, lending, and payment processing gain significant value from fintech solutions.",
+        "_id": "6a1da02c7a278d10509c25c1"
+      },
+      {
+        "ques": "How long does it typically take to complete a fintech design project?",
+        "ans": "Project duration depends on the scope, features, and specific business needs involved.",
+        "_id": "6a1da02c7a278d10509c25c2"
+      },
+      {
+        "ques": "Why opt for Kreeya Design in fintech-related projects? ",
+        "ans": "Kreeya Design blends strategic insight, thorough user research, and contemporary design methodologies to craft impactful and engaging fintech experiences.",
+        "_id": "6a1da02c7a278d10509c25c3"
+      }
+    ]
+  },
+  {
+    "_id": "6a13fed9be6db16c44cc06d4",
+    "name": "Healthcare",
+    "dribblelink": "https://dribbble.com/",
+    "behancelink": "https://www.behance.net/kreeyadesign",
+    "cards": [
+      {
+        "title": "MediAI Healthare App ",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779730733/kreeya_media/qxfmlutekkccas6uoapq.png",
+        "para": "Develop a cutting-edge MediAI Healthcare mobile app user interface that seamlessly integrates digital healthcare, personalized wellness, and artificial intelligence."
+      },
+      {
+        "title": "MediNova: Intelligent Medical Care for a Better Future",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779769023/kreeya_media/jjah7ph5melz3xaqcpdf.png",
+        "para": "MediNova is an international healthcare platform offering online consultations, digital prescriptions, appointment booking, health tracking, and AI-powered wellness support for patients worldwide."
+      },
+      {
+        "title": "Total Digital Care, Anytime, Anywhere",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779768662/kreeya_media/zoojqw0cjt34ynanbm62.png",
+        "para": "Through a smooth mobile app and healthcare website experience, CuraSphere links people with reliable physicians, hospitals, and wellness specialists."
+      },
+      {
+        "title": "Your Customized Healthcare Partner",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779769667/kreeya_media/pihucecdetdh3tyq09ne.png",
+        "para": "With virtual consultations, medication reminders, medical records, and real-time patient support across devices, Healora streamlines contemporary healthcare."
+      },
+      {
+        "title": "Simplified Real-Time Health Monitoring",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779769858/kreeya_media/z93yfvgx53jh3zkvgmc8.png",
+        "para": "With AI-powered healthcare insights, remote monitoring, appointment scheduling, and preventive wellness solutions, VitaPulse empowers users."
+      },
+      {
+        "title": "Telemedicine & Online Doctor Consultation Apps",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779890204/kreeya_media/uzcu6swnjmfsyfhkawfk.png",
+        "para": "One of the largest telehealth platforms globally; offers virtual doctor visits, mental health services, and chronic care."
+      },
+      {
+        "title": "Mental Health & Meditation Apps",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779890277/kreeya_media/mbdzcemoyug2ky2gsy7c.png",
+        "para": "Guided meditation, mindfulness, and sleep tools.\nKnown for sleep stories, relaxation, and stress relief. Connects users with licensed therapists globally. Offers text, audio, and video therapy sessions."
+      },
+      {
+        "title": "A personalized, widget-based home screen.",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779891772/kreeya_media/dk4u9szdyyxjqxmbgs7h.png",
+        "para": "Experience healthcare tailored just for you with a smart, personalized telemedicine app designed for modern living. The home screen adapts to your needs through intuitive, widget-based modules—giving you instant access to everything that matters most."
+      },
+      {
+        "title": "Medfit Fitness App – Smart Health & Fitness Companion",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779892347/kreeya_media/bb5koclfjoyio8c9name.png",
+        "para": "Medfit Fitness App is an all-in-one digital health and wellness platform designed to help users achieve their fitness goals through personalized training, real-time health tracking, and intelligent insights. "
+      }
+    ],
+    "createdAt": "2026-05-25T07:48:41.933Z",
+    "updatedAt": "2026-06-01T15:06:13.506Z",
+    "__v": 0,
+    "sequenceNumber": 2,
+    "faq": [
+      {
+        "ques": "Why is UI/UX crucial in the healthcare sector?",
+        "ans": "It enhances patient engagement, ensures accessibility, and boosts overall user satisfaction.",
+        "_id": "6a1d9fe57a278d10509c2530"
+      },
+      {
+        "ques": "How does Kreeya Design assist healthcare businesses? ",
+        "ans": "Kreeya Design specializes in crafting user-focused healthcare websites and applications.",
+        "_id": "6a1d9fe57a278d10509c2531"
+      },
+      {
+        "ques": "What types of healthcare solutions can be developed?",
+        "ans": "Solutions include patient portals, telemedicine platforms, healthcare websites, and management systems.",
+        "_id": "6a1d9fe57a278d10509c2532"
+      },
+      {
+        "ques": "Can healthcare apps elevate the patient experience?",
+        "ans": "Yes, they simplify access to medical services and essential information.",
+        "_id": "6a1d9fe57a278d10509c2533"
+      },
+      {
+        "ques": "Does Kreeya Design provide healthcare website design?",
+        "ans": "Yes, we deliver tailored designs for healthcare websites and applications.",
+        "_id": "6a1d9fe57a278d10509c2534"
+      },
+      {
+        "ques": "What advantages do digital healthcare platforms offer?",
+        "ans": "They enhance accessibility, streamline processes, and improve patient communication.",
+        "_id": "6a1d9fe57a278d10509c2535"
+      },
+      {
+        "ques": "Why partner with Kreeya Design for healthcare projects? ",
+        "ans": "We merge deep industry knowledge with user-centered design approaches to deliver impactful solutions.",
+        "_id": "6a1d9fe57a278d10509c2536"
+      }
+    ]
+  },
+  {
+    "_id": "6a15224f2b1509b852962d1e",
+    "name": "Real Estate",
+    "dribblelink": "",
+    "behancelink": "https://www.behance.net/kreeyadesign",
+    "cards": [
+      {
+        "title": "Dubai Luxe Lifestyle App Redesign",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779893809/kreeya_media/olgapony8ovj3x7c07si.png",
+        "para": "Redefining luxury with tailored experiences, VIP access, and world-class services designed for those who expect nothing but the best."
+      },
+      {
+        "title": "Emirate Elite App– Redefining Luxury",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779894514/kreeya_media/vk4xt5ya2ff4uglgstdx.png",
+        "para": "With VIP access, a personal concierge, and seamless premium services catered to your lifestyle, enjoy carefully chosen refinement."
+      },
+      {
+        "title": "PropertySouk App Redesign – Your Real Estate Marketplace",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779951694/kreeya_media/altqnlhtuebyp1kmefwg.png",
+        "para": "Discover a vast array of properties at your fingertips. Use clever search and verified listings to find the ideal place, whether it's an apartment or a villa."
+      },
+      {
+        "title": "DubaiNest App Redesign – Your Home in Dubai",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779951897/kreeya_media/g3sasw5ojtdfcbx0ivd0.png",
+        "para": "With intelligent property search and tailored suggestions, find, evaluate, and reserve your ideal space."
+      },
+      {
+        "title": "Urban Dubai Homes Mobile App Design – Find Your Space",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779952335/kreeya_media/xq1bnvyanlwlhegfleei.png",
+        "para": "With intelligent search, verified listings, and easy navigation, you can browse, compare, and purchase the ideal urban house."
+      },
+      {
+        "title": "Golden Palm App Redesign – Live the Gold Standard",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779952667/kreeya_media/mqqqdcvuj6cbbgyzrchy.png",
+        "para": "Enter a world of luxurious living with exclusive access, specialized services, and life-changing encounters."
+      },
+      {
+        "title": "Skyline Dubai App Redesign",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779953471/kreeya_media/eczabcx5jszd4dvbbwdt.png",
+        "para": "Redesigned to provide a smooth experience. With a more sophisticated and intelligent interface, find, explore, and secure your dream home."
+      },
+      {
+        "title": "PalmSquare Realty:  Smarter Property Search Starts Here",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779954213/kreeya_media/c00mpizv8o1wzrfnhi5p.png",
+        "para": "Experience next-generation real estate browsing with AI-powered recommendations, immersive visuals, and seamless property management."
+      },
+      {
+        "title": "Vista Dubai Homes Mobile App ",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779954597/kreeya_media/ldnycb4ynbfwflcs13i6.png",
+        "para": "Explore premium apartments, villas, and investment opportunities across Dubai with a seamless and intelligent property discovery experience."
+      },
+      {
+        "title": "EliteSpace Dubai Mobile App",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779954597/kreeya_media/zhf29sm8fiybaigr5rdq.png",
+        "para": "Designed for modern living, the app helps users discover exclusive Dubai properties through a sophisticated, intuitive, and visually immersive interface."
+      }
+    ],
+    "createdAt": "2026-05-26T04:32:15.371Z",
+    "updatedAt": "2026-06-01T15:12:58.154Z",
+    "__v": 0,
+    "sequenceNumber": 3,
+    "faq": [
+      {
+        "ques": "Why is UI/UX critical for real estate websites? ",
+        "ans": "Effective UI/UX enhances navigation, simplifies property searches, and boosts lead generation efforts. ",
+        "_id": "6a1da17a7a278d10509c2600"
+      },
+      {
+        "ques": "How does Kreeya Design support real estate businesses? ",
+        "ans": "Kreeya Design develops user-focused websites and mobile apps tailored to the real estate industry. ",
+        "_id": "6a1da17a7a278d10509c2601"
+      },
+      {
+        "ques": "Are real estate websites designed to be mobile-friendly?",
+        "ans": "Absolutely. Responsive designs ensure smooth functionality across various devices, including smartphones and tablets.",
+        "_id": "6a1da17a7a278d10509c2602"
+      },
+      {
+        "ques": "How does UX contribute to higher property conversions?",
+        "ans": "A user-friendly experience motivates potential buyers to explore properties further and make inquiries. ",
+        "_id": "6a1da17a7a278d10509c2603"
+      },
+      {
+        "ques": "A user-friendly experience motivates potential buyers to explore properties further and make inquiries. ",
+        "ans": "Yes, our team provides personalized solutions aligned with each business's unique needs and goals.",
+        "_id": "6a1da17a7a278d10509c2604"
+      },
+      {
+        "ques": "What technologies are commonly used to build real estate platforms?",
+        "ans": "We leverage modern frameworks, CMS tools, and scalable cloud-based technologies to create efficient platforms. ",
+        "_id": "6a1da17a7a278d10509c2605"
+      },
+      {
+        "ques": "How can I begin working with Kreeya Design?",
+        "ans": "Simply reach out to our team to share your real estate project details and get started on creating the ideal solution.",
+        "_id": "6a1da17a7a278d10509c2606"
+      }
+    ]
+  },
+  {
+    "_id": "6a183c5666d14cefa2ab07fd",
+    "name": "Ecommerce",
+    "dribblelink": "",
+    "behancelink": "https://www.behance.net/kreeyadesign",
+    "sequenceNumber": 4,
+    "cards": [
+      {
+        "title": "CartNova: Next-Generation eCommerce Experience",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779983071/kreeya_media/yx9pdwl75oufunf9ecgu.png",
+        "para": "An AI-powered eCommerce platform crafted with modern UX principles, seamless product discovery, frictionless checkout, and premium visual experiences to maximize customer engagement and conversions."
+      },
+      {
+        "title": "LuxCart Commerce",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779986388/kreeya_media/qp5oqjx7n0ynrrnnjf8u.png",
+        "para": "LuxCart Commerce is a premium eCommerce UX/UI portfolio project crafted to help modern brands increase conversions, enhance customer engagement, and deliver seamless shopping experiences across mobile and web platforms. "
+      },
+      {
+        "title": "Shopora : Designed for Seamless Online Shopping",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779986149/kreeya_media/ommfk8clxxahfqeim8ia.png",
+        "para": "A premium eCommerce design experience crafted to help brands increase engagement, improve usability, and maximize online conversions through seamless customer journeys."
+      },
+      {
+        "title": "NexaCart: Modern Commerce, Simplified",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779987343/kreeya_media/bsxlfydo1swmi8jnz3li.png",
+        "para": "NexaCart is a premium eCommerce UX/UI portfolio project designed to create seamless, conversion-focused shopping experiences for modern digital brands."
+      },
+      {
+        "title": "GlowCart: Smart Shopping Meets Stunning Design",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779987954/kreeya_media/hatv5gkf8t5ovc7fhizr.png",
+        "para": "GlowCart is a modern eCommerce UX/UI portfolio project crafted to deliver visually engaging, conversion-driven shopping experiences for ambitious digital brands."
+      },
+      {
+        "title": "PrimeShelf: Premium Shopping UI for Modern Brands",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779988491/kreeya_media/cdyyw6uc4qu7y55dxdvy.png",
+        "para": "PrimeShelf is a premium eCommerce UX/UI portfolio project designed to help modern brands create seamless, visually engaging, and conversion-focused online shopping experiences."
+      },
+      {
+        "title": "SwiftBuy Commerce",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779988905/kreeya_media/jcebnwgrieu7ncta0dqa.png",
+        "para": "SwiftBuy Commerce is a modern eCommerce UX/UI portfolio project crafted to help brands deliver faster, smarter, and more engaging online shopping experiences."
+      },
+      {
+        "title": "EliteBasket App Redesign",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779990504/kreeya_media/yybntacjhbjdsvdyubnv.png",
+        "para": "EliteBasket App Redesign is a premium eCommerce UX/UI case study focused on transforming digital shopping experiences through modern design, intuitive navigation, and conversion-driven user journeys."
+      },
+      {
+        "title": "UrbanCart Studio",
+        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1780057636/kreeya_media/q6fyzx7uz5gunlybybnb.png",
+        "para": "UrbanCart Studio is a premium eCommerce UX/UI portfolio project designed to create seamless, visually engaging, and conversion-focused shopping experiences for modern digital products"
+      }
+    ],
+    "createdAt": "2026-05-28T13:00:06.352Z",
+    "updatedAt": "2026-05-29T12:44:31.650Z",
+    "__v": 0,
+    "faq": []
+  }
+]

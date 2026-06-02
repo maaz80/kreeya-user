@@ -22,10 +22,9 @@ const Location = () => {
   const [location, setLocation] = useState(null);
 
   useEffect(() => {
-    // 1. Asynchronously fetch fallback data from dynamic staticData import
-    import('../data/staticData.json').then((module) => {
-      const staticData = module.default;
-      const localLocations = staticData.locations || [];
+    // 1. Asynchronously fetch fallback data from dynamic staticLocations import
+    import('../data/staticLocations.json').then((module) => {
+      const localLocations = module.default || [];
       for (const l of localLocations) {
         const found = l.items?.find((i) => matchesRouteSlug(i, itemSlug));
         if (found) {
@@ -34,7 +33,7 @@ const Location = () => {
         }
       }
     }).catch((err) => {
-      console.error("Dynamic staticData load failed:", err);
+      console.error("Dynamic staticLocations load failed:", err);
     });
 
     // 2. Asynchronously fetch latest data in background silently

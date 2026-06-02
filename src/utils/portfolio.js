@@ -1,7 +1,7 @@
-import staticData from '../data/staticData.json';
+import staticPortfolios from '../data/staticPortfolios.json';
 
 const API = import.meta.env.VITE_API_URL;
-let cachedPortfolios = staticData.portfolios || [];
+let cachedPortfolios = staticPortfolios || [];
 let hasFetchedPortfolios = false;
 
 export const getPortfolios = async (forceRefresh = false) => {

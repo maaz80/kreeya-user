@@ -1,7 +1,7 @@
-import staticData from '../data/staticData.json';
+import staticServices from '../data/staticServices.json';
 
 const API = import.meta.env.VITE_API_URL;
-let cachedServices = staticData.services || [];
+let cachedServices = staticServices || [];
 let hasFetchedServices = false;
 
 export const getServices = async (forceRefresh = false) => {

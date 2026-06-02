@@ -10,7 +10,6 @@ import Portfolios from './Portfolios'
 import BlogDetails from './BlogDetails'
 import NotFound from './404NotFound'
 import { matchesRouteSlug } from '../utils/slug'
-import staticData from '../data/staticData.json'
 
 const ItemPage = () => {
      const { itemSlug } = useParams()
@@ -33,11 +32,18 @@ const ItemPage = () => {
                     return
                }
 
-               // 1. Try to resolve from local staticData instantly (0ms)
-               const localLocations = staticData.locations || []
-               const localServices = staticData.services || []
-               const localPortfolios = staticData.portfolios || []
-               const localBlogs = staticData.blogs || []
+               // 1. Try to resolve from local static split files dynamically (0ms to 5ms)
+               const [
+                    { default: localLocations },
+                    { default: localServices },
+                    { default: localPortfolios },
+                    { default: localBlogs }
+               ] = await Promise.all([
+                    import('../data/staticLocations.json'),
+                    import('../data/staticServices.json'),
+                    import('../data/staticPortfolios.json'),
+                    import('../data/staticBlogs.json')
+               ]);
 
                const isLocationLocal = localLocations.some((location) =>
                     location.items?.some((item) => matchesRouteSlug(item, itemSlug))

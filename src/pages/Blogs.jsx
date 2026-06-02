@@ -14,14 +14,14 @@ import { useH1Data } from "../hooks/useH1Data";
 import { useh3Data } from "../hooks/useH3Data";
 import useFaq from "../hooks/useFaq";
 import OptimizedImage from "../components/OptimizedImage";
-import staticData from "../data/staticData.json";
+import staticBlogs from "../data/staticBlogs.json";
 
 
 const Blogs = () => {
      const navigate = useNavigate();
      const blogsPerPage = 6;
-     const [blogs, setBlogs] = useState(staticData.blogs || []);
-     const [isLoading, setIsLoading] = useState(!staticData.blogs?.length);
+     const [blogs, setBlogs] = useState(staticBlogs || []);
+     const [isLoading, setIsLoading] = useState(!(staticBlogs || []).length);
      const [currentPage, setCurrentPage] = useState(1);
      const h1Blogs = useH1Data();
      const h3Blogs = useh3Data();

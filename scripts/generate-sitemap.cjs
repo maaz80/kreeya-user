@@ -156,17 +156,54 @@ async function main() {
       // console.log(`✅ sitemap.xml copied to dist/sitemap.xml`);
     }
 
-    // Write dynamic content to src/data/staticData.json
-    const staticDataPath = path.join(__dirname, '..', 'src', 'data', 'staticData.json');
-    const staticData = {
-      locations: locations,
-      services: services,
-      portfolios: portfolios,
-      blogs: blogs,
-      updatedAt: new Date().toISOString()
-    };
-    fs.writeFileSync(staticDataPath, JSON.stringify(staticData, null, 2), 'utf8');
-    // console.log(`✅ staticData.json successfully written to src/data/staticData.json`);
+      // Write dynamic content to src/data/staticData.json
+      const staticDataPath = path.join(__dirname, '..', 'src', 'data', 'staticData.json');
+      const staticData = {
+        locations: locations,
+        services: services,
+        portfolios: portfolios,
+        blogs: blogs,
+        updatedAt: new Date().toISOString()
+      };
+      fs.writeFileSync(staticDataPath, JSON.stringify(staticData, null, 2), 'utf8');
+
+      // Fetch static page SEO configs for SWR acceleration
+      const STATIC_PAGE_SEO_IDS = [
+        "home",
+        "landing-page",
+        "contact-us",
+        "blogs",
+        "about-us",
+        "location",
+        "policy",
+        "disclaimer",
+        "portfolio-beyekls",
+        "portfolio-daccord",
+        "portfolio-coinpay",
+        "portfolio-nectar",
+        "not-found",
+        "portfolios",
+        "services"
+      ];
+      const pagesSeo = {};
+      await Promise.all(
+        STATIC_PAGE_SEO_IDS.map(async (id) => {
+          try {
+            const data = await fetchJson(`${API_URL}/pages/${id}/seo`);
+            if (data) pagesSeo[id] = data;
+          } catch (e) {
+            console.warn(`⚠️ Warning: Could not fetch SEO for static page ${id}:`, e.message);
+          }
+        })
+      );
+
+      // Write individual split files for performance optimizations (to avoid loading 640kB in client chunks)
+      const dataDir = path.dirname(staticDataPath);
+      fs.writeFileSync(path.join(dataDir, 'staticLocations.json'), JSON.stringify(locations, null, 2), 'utf8');
+      fs.writeFileSync(path.join(dataDir, 'staticServices.json'), JSON.stringify(services, null, 2), 'utf8');
+      fs.writeFileSync(path.join(dataDir, 'staticPortfolios.json'), JSON.stringify(portfolios, null, 2), 'utf8');
+      fs.writeFileSync(path.join(dataDir, 'staticBlogs.json'), JSON.stringify(blogs, null, 2), 'utf8');
+      fs.writeFileSync(path.join(dataDir, 'staticPagesSeo.json'), JSON.stringify(pagesSeo, null, 2), 'utf8');
 
   } catch (error) {
     console.error("❌ Failed to generate sitemap.xml:", error);

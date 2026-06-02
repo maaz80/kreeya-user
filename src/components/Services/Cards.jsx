@@ -8,12 +8,12 @@ import { optimizeImage } from '../../utils/cloudinary';
 import OptimizedImage from '../OptimizedImage';
 
 import FallbackImg from '../../assets/nectar-casestudy-mobile.webp';
-import staticData from '../../data/staticData.json';
+import staticServices from '../../data/staticServices.json';
 
 const Cards = () => {
 
      // Synchronously retrieve service items from build-generated cache
-     const localServices = staticData.services || [];
+     const localServices = staticServices || [];
      const initialItems = (() => {
           const filtered = [];
           localServices.forEach((service) => {

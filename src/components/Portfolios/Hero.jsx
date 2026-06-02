@@ -37,8 +37,12 @@ const Hero = () => {
                               >
                                    {/* Thumbnail Image */}
                                    <img 
-                                        src="https://img.youtube.com/vi/YHQ2AjuJ8Oc/maxresdefault.jpg" 
+                                        src="/yt-thumbnail.webp"
+                                        width={690} 
+                                        height={388}
                                         alt="Banking UX Case Study Video Thumbnail" 
+                                        loading="eager"
+                                        fetchpriority="high"
                                         className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition duration-500" 
                                    />
                                    {/* Semi-transparent dark overlay */}
@@ -46,7 +50,7 @@ const Hero = () => {
                                    {/* Play Button */}
                                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#FF0000] flex items-center justify-center absolute left-1/2 top-1/2 -translate-1/2 text-white shadow-lg group-hover:scale-110 active:scale-95 transition duration-300">
                                         <FaPlay size={30} className="ml-1" />
-                                    </div>
+                                   </div>
                               </button>
                          )}
                     </div>

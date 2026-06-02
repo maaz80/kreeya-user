@@ -7,7 +7,7 @@ import { getBlogBySlug } from "../utils/blogService";
 import useFaq from "../hooks/useFaq";
 import OptimizedImage from "../components/OptimizedImage";
 import { Helmet } from "react-helmet-async";
-import staticData from "../data/staticData.json";
+import staticBlogs from "../data/staticBlogs.json";
 
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
@@ -17,7 +17,7 @@ const BlogDetails = () => {
      const { faqData } = useFaq('blogs-details');
      const { slug, itemSlug } = useParams();
      const blogSlug = slug || itemSlug;
-     const localBlog = (staticData.blogs || []).find((b) => b.slug === blogSlug);
+     const localBlog = (staticBlogs || []).find((b) => b.slug === blogSlug);
      const [blog, setBlog] = useState(localBlog || null);
 
 
@@ -64,10 +64,10 @@ const BlogDetails = () => {
                {!blog ? (
                     <div className="animate-pulse">
                          {/* Title Skeleton */}
-                         <div className="mx-auto mt-8 h-10 md:h-16 lg:h-24 bg-slate-200/85 rounded-sm w-4/5 max-w-[1000px] mb-6 pt-8"></div>
+                         <div className="mx-auto mt-8 h-10 md:h-16 lg:h-24 bg-slate-200/85 rounded-sm w-4/5 max-w-250 mb-6 pt-8"></div>
 
                          {/* Meta Skeleton */}
-                         <div className="mx-auto h-4 bg-slate-200/85 rounded-sm w-1/3 max-w-[280px] mt-4 md:mt-0 mb-4 md:mb-10"></div>
+                         <div className="mx-auto h-4 bg-slate-200/85 rounded-sm w-1/3 max-w-70 mt-4 md:mt-0 mb-4 md:mb-10"></div>
 
                          {/* Image Skeleton */}
                          <div className="w-full max-w-332.5 h-50 md:h-90 lg:h-180 bg-slate-200/85 rounded-md mx-auto mb-10"></div>
@@ -85,7 +85,7 @@ const BlogDetails = () => {
                     <>
                          {/* Title */}
 
-                         <h1 className="text-center leading-11 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] poiret-one-regular text-dark-black pt-8 min-h-[100px] md:min-h-[150px]">
+                         <h1 className="text-center leading-11 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] poiret-one-regular text-dark-black pt-8 min-h-25 md:min-h-37.5">
 
                               {blog.title ? blog.title : '5 Mistakes Startups Make in Branding'}
 
@@ -93,7 +93,7 @@ const BlogDetails = () => {
 
                          {/* Meta */}
 
-                         <p className="text-center text-dark-gray mb-4 md:mb-10 mt-4 md:mt-0 min-h-[15px] md:min-h-[20px]">
+                         <p className="text-center text-dark-gray mb-4 md:mb-10 mt-4 md:mt-0 min-h-3.75 md:min-h-5">
 
                               {blog.date ? blog.date : '2026-03-18'} | {blog.read ? blog.read : '5'} min read |{" "}
                               <span className="text-cust-orange">
@@ -117,7 +117,7 @@ const BlogDetails = () => {
                                         aspectRatio="133:60"
                                         sizes="(max-width: 768px) 100vw, 1330px"
                                         loading="eager"
-                                        className="w-full max-w-[1330px] h-50 md:h-90 lg:h-180 object-cover rounded-md mx-auto"
+                                        className="w-full max-w-332.5 h-50 md:h-90 lg:h-180 object-cover rounded-md mx-auto"
                                    />
                               )}
 

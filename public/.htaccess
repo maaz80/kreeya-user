@@ -146,6 +146,8 @@ RewriteRule ^sitemap\.xml$ sitemap.php [L]
                https://www.facebook.com \
                https://googleads.g.doubleclick.net \
                https://*.googlesyndication.com \
+               https://img.youtube.com \
+               https://*.ytimg.com \
                https://*.adtrafficquality.google; \
           font-src 'self' data: \
                https://fonts.gstatic.com; \

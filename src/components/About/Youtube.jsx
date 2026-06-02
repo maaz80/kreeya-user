@@ -24,7 +24,7 @@ const Youtube = () => {
                            className='relative block w-full cursor-pointer'
                       >
                            <div className='w-15 md:w-20 h-15 md:h-20 rounded-full bg-[#FF0000] flex items-center justify-center absolute left-1/2 top-1/2 -translate-1/2 text-white'><FaPlay size={30}/></div>
-                           <img src={YtThumbnail} alt="Youtube Thumbnail" width={800} height={450} className='w-full object-cover rounded-[3px]' />
+                           <img src={YtThumbnail} alt="Youtube Thumbnail" width={665} height={375} className='w-full object-cover rounded-[3px]' />
                       </button>
                  )}
           </div>

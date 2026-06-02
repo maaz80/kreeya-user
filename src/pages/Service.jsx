@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { getServices } from '../utils/service'
 import { Helmet } from 'react-helmet-async';
 import { matchesRouteSlug } from '../utils/slug';
-import staticData from '../data/staticData.json';
+import staticServices from '../data/staticServices.json';
 import ServiceHeroBG from '../assets/location-hero-bg.webp';
 
 //  Lazy sections
@@ -19,7 +19,7 @@ const FaqSection = lazy(() => import('../components/Location/LocationFaq'))
 
 const Service = () => {
   const { itemSlug } = useParams();
-  const localServices = staticData.services || [];
+  const localServices = staticServices || [];
   const initialService = (() => {
     for (const s of localServices) {
       const found = s.items?.find((i) => matchesRouteSlug(i, itemSlug));
