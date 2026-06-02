@@ -22,7 +22,7 @@ const Hero = ({ service }) => {
                <div className="absolute inset-0">
                     <img
                          src={ServiceHeroBG}
-                         alt="Service Hero Bg"
+                         alt={service?.hero?.title || "Kreeya Design Service Hero"}
                          className="w-full min-h-[144vh] sm:min-h-[158vh] lg:min-h-screen h-full object-cover"
                     />
                </div>

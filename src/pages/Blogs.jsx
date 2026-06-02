@@ -3,7 +3,7 @@ import blogImg from "../assets/blog-thumbnail.webp";
 import HomeNavbar from "../components/HomeNavbar";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 const BackgroundShapes = lazy(() => import("../components/BackgroundShapes"));
-// const FaqSection = lazy(() => import("../components/FaqSection"));
+const FaqSection = lazy(() => import("../components/FaqSection"));
 import { useNavigate } from "react-router-dom";
 import Breadcrumb from "../components/BreadCrumb";
 import { Helmet } from "react-helmet-async";
@@ -14,12 +14,14 @@ import { useH1Data } from "../hooks/useH1Data";
 import { useh3Data } from "../hooks/useH3Data";
 import useFaq from "../hooks/useFaq";
 import OptimizedImage from "../components/OptimizedImage";
+import staticData from "../data/staticData.json";
 
 
 const Blogs = () => {
      const navigate = useNavigate();
      const blogsPerPage = 6;
-     const [blogs, setBlogs] = useState([])
+     const [blogs, setBlogs] = useState(staticData.blogs || []);
+     const [isLoading, setIsLoading] = useState(!staticData.blogs?.length);
      const [currentPage, setCurrentPage] = useState(1);
      const h1Blogs = useH1Data();
      const h3Blogs = useh3Data();
@@ -27,6 +29,7 @@ const Blogs = () => {
      const { faqData } = useFaq();
      const startIndex = (currentPage - 1) * blogsPerPage;
      const currentBlogs = blogs.slice(startIndex, startIndex + blogsPerPage);
+     const isDesktop = window.innerWidth >= 768;
 
      useEffect(() => {
           window.scrollTo({
@@ -38,10 +41,14 @@ const Blogs = () => {
      useEffect(() => {
 
           const fetchBlogs = async () => {
-
-               const data = await getBlogs();
-               setBlogs(data);
-
+               try {
+                    const data = await getBlogs();
+                    setBlogs(data);
+               } catch (error) {
+                    console.error("Error fetching blogs:", error);
+               } finally {
+                    setIsLoading(false);
+               }
           };
 
           fetchBlogs();
@@ -72,16 +79,7 @@ const Blogs = () => {
                          rel="preload"
                          as="image"
                          href={heroImg}
-                    />
-                    <link
-                         rel="preload"
-                         as="image"
-                         href={optimizeImage(blogs[0]?.image, 800)}
-                    />
-                    <link
-                         rel="preload"
-                         as="image"
-                         href={optimizeImage(blogs[1]?.image, 800)}
+                         media="(min-width: 768px)"
                     />
                </Helmet>
                <Breadcrumb />
@@ -94,8 +92,8 @@ const Blogs = () => {
                </Suspense>
                {/* Heading */}
 
-               <div className="text-center mb-2 md:mb-6 relative z-999 min-w-[300px] lg:min-w-[1300px] min-h-[110px] lg:min-h-[200px] mx-auto">
-                    <h1 className="text-center  text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px]  poiret-one-regular text-dark-black mt-8 min-h-[35px] md:min-h-[60px] lg:min-h-[75px] 2xl:min-h-[90px]">
+               <div className="text-center mb-2 md:mb-6 relative z-999 min-w-75 lg:min-w-325 min-h-27.5 lg:min-h-50 mx-auto">
+                    <h1 className="text-center  text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px]  poiret-one-regular text-dark-black mt-8 min-h-8.75 md:min-h-15 lg:min-h-18.75 2xl:min-h-22.5">
                          {h1Blogs.main_heading || 'The Growth Journal'}
                     </h1>
                     {/* leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 */}
@@ -106,18 +104,20 @@ const Blogs = () => {
 
                {/* Featured Blog */}
 
-               <div className="relative group md:flex items-center justify-center mb-16 hidden z-999 w-142 lg:w-290 2xl:w-7xl mx-auto md:h-[319px] lg:h-[652px] 2xl:h-[720px]">
+               <div className="relative group md:flex items-center justify-center mb-16 hidden z-999 w-142 lg:w-290 2xl:w-7xl mx-auto md:h-79.75 lg:h-163 2xl:h-180">
 
-                    <img
-                         src={blogImg}
-                         alt='The Growth Journal'
-                         fetchPriority="high"
-                         className="hidden md:block w-142 lg:w-290 2xl:w-7xl object-cover md:h-[319px] lg:h-[652px] 2xl:h-[720px] group-hover:scale-105 transition-all duration-500 ease-in-out md:ml-70 lg:ml-105"
-                    />
+                    {isDesktop && (
+                         <img
+                              src={blogImg}
+                              alt='The Growth Journal'
+                              fetchPriority="high"
+                              className="hidden md:block w-142 lg:w-290 2xl:w-7xl object-cover md:h-79.75 lg:h-163 2xl:h-180 group-hover:scale-105 transition-all duration-500 ease-in-out md:ml-70 lg:ml-105"
+                         />
+                    )}
 
                     {/* Floating card */}
 
-                    <div className="hidden md:block absolute right-95 -bottom-10  bg-white shadow-[0_0_30px_rgba(0,0,0,0.12)]  p-6 lg:p-10 w-61.25 lg:w-107.5 shrink-0 plus-jakarta-sans  relative overflow-hidden animated-card md:min-h-[180px] xl:min-h-80">
+                    <div className="hidden md:block absolute right-95 -bottom-10  bg-white shadow-[0_0_30px_rgba(0,0,0,0.12)]  p-6 lg:p-10 w-61.25 lg:w-107.5 shrink-0 plus-jakarta-sans  relative overflow-hidden animated-card md:min-h-45 xl:min-h-80">
 
                          <p className="text-[12px] lg:text-[16px] text-dark-gray mb-2 group-hover:text-white transition-all duration-300 ease-in-out">
                               22nd July, 2026 | 3 min read |
@@ -137,58 +137,84 @@ const Blogs = () => {
 
                <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 plus-jakarta-sans relative z-999">
 
-                    {currentBlogs.map((blog, index) => (
+                    {isLoading ? (
+                         Array.from({ length: blogsPerPage }).map((_, index) => (
+                              <div key={index} className="animate-pulse flex flex-col w-full">
 
-                         <div key={blog._id}
-                              onClick={() => navigate(`/blogs_details/${blog.slug}`)}
-                              className="group cursor-pointer">
+                                   {/* Image Skeleton */}
+                                   <div className="overflow-hidden min-h-55 max-h-55 w-full bg-slate-200/85"></div>
 
-                              {/* Image */}
+                                   {/* Meta Skeleton */}
+                                   <div className="mt-3 flex gap-2 flex-wrap items-center">
+                                        <div className="h-4 bg-slate-200/85 rounded w-16"></div>
+                                        <span className="text-gray-300">|</span>
+                                        <div className="h-4 bg-slate-200/85 rounded w-16"></div>
+                                        <span className="text-gray-300">|</span>
+                                        <div className="h-4 bg-slate-200/85 rounded w-20"></div>
+                                   </div>
 
-                              <div className="overflow-hidden min-h-[220px] max-h-[220px]">
+                                   {/* Title Skeleton */}
+                                   <div className="mt-2 space-y-2">
+                                        <div className="h-7 md:h-10 bg-slate-200/85 rounded w-11/12"></div>
+                                        <div className="h-7 md:h-10 bg-slate-200/85 rounded w-2/3"></div>
+                                   </div>
 
-                                   <OptimizedImage
-                                        src={blog.image || blogImg}
-                                        alt={blog.alt}
-                                        width={500}
-                                        height={220}
-                                        aspectRatio="25:11"
-                                        sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) calc(50vw - 40px), 386px"
-                                        loading={index < 3 ? "eager" : "lazy"}
-                                        className="w-full min-h-[220px] max-h-[220px] object-fill transition duration-500 group-hover:scale-105"
-                                   />
+                              </div>
+                         ))
+                    ) : (
+                         currentBlogs.map((blog, index) => (
+
+                              <div key={blog._id}
+                                   onClick={() => navigate(`/${blog.slug}`)}
+                                   className="group cursor-pointer">
+
+                                   {/* Image */}
+
+                                   <div className="overflow-hidden min-h-55 max-h-55">
+
+                                        <OptimizedImage
+                                             src={blog.image || blogImg}
+                                             alt={blog?.alt || `The Growth Journal ${index + 1}`}
+                                             width={500}
+                                             height={220}
+                                             aspectRatio="25:11"
+                                             sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) calc(50vw - 40px), 386px"
+                                             loading={index < 3 ? "eager" : "lazy"}
+                                             className="w-full min-h-55 max-h-55 object-fill transition duration-500 group-hover:scale-105"
+                                        />
+
+                                   </div>
+
+                                   {/* Meta */}
+
+                                   <div className="mt-3 text-[12px] md:text-[16px] leading-5 md:leading-6 text-blue flex gap-2 flex-wrap">
+
+                                        <span>{blog.date ? blog.date : '2026-03-16'}</span>
+
+                                        <span>|</span>
+
+                                        <span>{blog.read ? blog.read : '5'} min read</span>
+
+                                        <span>|</span>
+
+                                        <span className="text-cust-orange">
+                                             {blog.category ? blog.category : 'Technology'}
+                                        </span>
+
+                                   </div>
+
+                                   {/* Title */}
+
+                                   <h3 className="mt-2 text-[18px] md:text-[32px] leading-6 md:leading-10 text-[#0a2742] group-hover:text-orange-500 transition">
+
+                                        {blog.title ? blog.title : '5 Mistakes Startups Make in Branding'}
+
+                                   </h3>
 
                               </div>
 
-                              {/* Meta */}
-
-                              <div className="mt-3 text-[12px] md:text-[16px] leading-5 md:leading-6 text-blue flex gap-2 flex-wrap">
-
-                                   <span>{blog.date ? blog.date : '2026-03-16'}</span>
-
-                                   <span>|</span>
-
-                                   <span>{blog.read ? blog.read : '5'} min read</span>
-
-                                   <span>|</span>
-
-                                   <span className="text-cust-orange">
-                                        {blog.category ? blog.category : 'Technology'}
-                                   </span>
-
-                              </div>
-
-                              {/* Title */}
-
-                              <h3 className="mt-2 text-[18px] md:text-[32px] leading-6 md:leading-10 text-[#0a2742] group-hover:text-orange-500 transition">
-
-                                   {blog.title ? blog.title : '5 Mistakes Startups Make in Branding'}
-
-                              </h3>
-
-                         </div>
-
-                    ))}
+                         ))
+                    )}
                </div>
                <div className={`flex justify-center items-center gap-4 mt-12 md:mt-16 plus-jakarta-sans  relative z-999 ${blogs.length <= blogsPerPage ? 'hidden' : 'block'}`}>
 
@@ -242,9 +268,9 @@ const Blogs = () => {
                     </button>
 
                </div>
-               {/* <Suspense fallback={null}>
-                    <FaqSection paddings={'pt-10 pb-24 md:py-24 px-1 md:px-20'} faqData={faqData} />
-               </Suspense> */}
+               <Suspense fallback={null}>
+                    <FaqSection paddings={'pt-10 pb-24 md:py-24 px-1 md:px-5'} faqData={faqData} />
+               </Suspense>
           </section>
      );
 };

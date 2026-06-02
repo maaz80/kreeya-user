@@ -47,7 +47,7 @@ const GrowthJournal = () => {
 
                          {blogs.map((blog) => (
 
-                              <div key={blog._id} onClick={() => navigate(`/blogs_details/${createSlug(blog.title)}`)} className="group cursor-pointer">
+                              <div key={blog._id} onClick={() => navigate(`/${blog.slug}`)} className="group cursor-pointer">
 
                                    {/* Image */}
 

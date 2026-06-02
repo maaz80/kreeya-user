@@ -33,7 +33,7 @@ const LogoMarquee = () => {
                          <img
                               key={index}
                               src={logo}
-                              alt={`${title}`}
+                              alt={title[index] || "Kreeya Client Logo"}
                               width="200"
                               height="120"
                               className="w-25 md:w-50 h-[72px] md:h-[120px] grayscale hover:grayscale-0 transition-all flex-shrink-0"
@@ -45,7 +45,7 @@ const LogoMarquee = () => {
                          <img
                               key={`dup-${index}`}
                               src={logo}
-                              alt={`${title}`}
+                              alt={title[index] || "Kreeya Client Logo"}
                               width="200"
                               height="120"
                               className="w-25 md:w-50 h-[72px] md:h-[120px] grayscale hover:grayscale-0 transition-all"
@@ -60,7 +60,7 @@ const LogoMarquee = () => {
                          <img
                               key={index}
                               src={logo}
-                              alt={`${title}`}
+                              alt={title[index] || "Kreeya Client Logo"}
                               width="200"
                               height="120"
                               className="w-25 md:w-50 h-[72px] md:h-[120px] grayscale hover:grayscale-0 transition"
@@ -72,7 +72,7 @@ const LogoMarquee = () => {
                          <img
                               key={`dup-${index}`}
                               src={logo}
-                              alt={`${title}`}
+                              alt={title[index] || "Kreeya Client Logo"}
                               width="200"
                               height="120"
                               className="w-25 md:w-50 h-[72px] md:h-[120px] grayscale hover:grayscale-0 transition"

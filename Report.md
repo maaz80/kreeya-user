@@ -1,113 +1,118 @@
-# Lighthouse Performance Audit & Optimization Report
+# Services Page Performance & UX Optimization Report
 
-We have completed a comprehensive performance audit and successfully executed major architectural optimizations across the **Kreeya User Frontend Application**. 
-
-As a direct result of these modifications, the initial bundle size has been reduced by **85%**, paving the way for a **Mobile Lighthouse Performance Score of 95+**.
+Kreeya website ke **Services page** (`src/pages/Services.jsx`) aur uske core card renderer (`src/components/Services/Cards.jsx`) ka detail performance and UX analysis niche diya gaya hai:
 
 ---
 
-## 🚀 Performance Optimizations Summary
+## 1. Bottlenecks Identified
 
-| Parameter | Before | After | Improvement |
-| :--- | :---: | :---: | :---: |
-| **Initial JS Bundle Size** | **751.61 kB** | **114.26 kB** | **⚡ 85% Reduction** |
-| **Route-Based Lazy Loading** | Partially Static | **100% Lazy Loaded** | **Optimized Bundle Split** |
-| **Poppins Font Loading** | Weight 500 (Sub-optimal Bolding) | **Weight 800 (Native Extrabold)** | **Better CLS & Aesthetics** |
-| **GSAP Animation Loading** | Dynamic / Deferred | **Dynamic / Deferred & Cleaned** | **Removed from Critical Path** |
+### A. Dynamic API Latency (API fetch roundtrip dependency)
+* **Problem**: Har baar jab user `/services` route par visit karta hai, to `Cards.jsx` database API (`getServices()`) call karta hai jo server response aur network speed par dependent hai. 
+* **Impact**: Response aane tak page par loading skeleton grid dikhta hai (0.5s se 1.5s tak). Is se **Cumulative Layout Shift (CLS)** aur **First Contentful Paint (FCP)** score increase hote hain aur user experience slow feel hota hai.
 
----
+### B. Late Discovery of Eager Images (LCP Impact)
+* **Problem**: Pehle do card images par `loading="eager"` set hai, jo ki LCP (Largest Contentful Paint) optimize karne ke liye sahi hai. But, kyuki cards ka data API se dynamic load hota hai, isliye browser in images ko compile-time ya initial HTML render par fetch karna start nahi kar pata.
+* **Impact**: LCP image fetch tabhi start hoti hai jab API call complete ho jati hai, jisse LCP timeline delay ho jati hai.
 
-## 🛠️ Detailed Audit & Optimization Breakdown
-
-### 1. Reduce LCP/FCP Below 2s
-* **Status:** **Fully Optimized**
-* **Actions:**
-  * The Hero section title (H1) `"One Stop Solution"` has been configured as **static text** inside the HTML/React template. This ensures that browsers detect it instantly on first paint without needing to load or parse dynamic JSON APIs first.
-  * Injected CSS is deferred until `DOMContentLoaded` inside `vite.config.js` to ensure the main rendering thread is never blocked.
-  * LCP element loads instantly.
-
-### 2. Check Hero Section Assets / Animations Delay
-* **Status:** **Fully Optimized**
-* **Actions:**
-  * The hero section's central video is lazily loaded via `IntersectionObserver` only when the element is actually visible in the viewport.
-  * GSAP animations inside `HeroSection.jsx` are postponed until the user starts scrolling or touches the screen, ensuring first-paint has zero layout thrashing or animation processor overhead.
-
-### 3. Route-Based Lazy Loading Verification
-* **Status:** **Completed & Optimized**
-* **Actions:**
-  * Verified that route elements are split into separate async chunks.
-  * **Critical Fix:** Statically imported pages (`Location`, `ItemPage`, `About`, `Services`, and `Portfolios`) were converted to modern `lazy()` imports in `App.jsx`.
-  * **Result:** Successfully split large sections out of the initial build, shifting massive payloads into dynamic page chunks (e.g., the heavy `Location` map features now load as a separate `584 kB` chunk only when visited!).
-
-### 4. GSAP Global Imports Check
-* **Status:** **100% Dynamic**
-* **Actions:**
-  * Conducted a thorough codebase search to confirm GSAP is **never statically imported** in any component (`from 'gsap'`).
-  * All animations load GSAP dynamically using `utils/gsapLoader.js` (`initGSAP()` & `loadGSAP()`) inside async scopes.
-  * Fully eliminated GSAP from the initial critical request chains.
-
-### 5. Reduce Unused JavaScript in Bundle
-* **Status:** **Fully Optimized**
-* **Actions:**
-  * Enabled standard Rollup `manualChunks` splitting in `vite.config.js` to isolate `gsap`, `react-dom`, `router`, and `helmet` dependencies.
-  * Unused page templates and dependencies are automatically purged during the tree-shaking phase of the production build.
-
-### 6. Optimize Initial JS Bundle Size
-* **Status:** **Fully Optimized (114 kB Bundle)**
-* **Actions:**
-  * Configured `terser` minification inside `vite.config.js`.
-  * Stripped all console logging (`console.log`, `console.info`, `console.debug`, `console.trace`) and debugger triggers from production builds via `terserOptions`.
-  * The bundle now compiles into a ultra-compact **114.26 kB** primary `index.js` file, ensuring instant parse and execution times.
-
-### 7. Google Font Optimization
-* **Status:** **Completed & Corrected**
-* **Actions:**
-  * Verified loaded Google Font weights inside `index.html`.
-  * **Critical Fix:** Noticed that while dynamic Portfolio pages request `font-extrabold` (weight 800) for Poppins headers, the `index.html` was loading weight `500`. We updated the Google Fonts load link to fetch `Poppins:wght@800` directly.
-  * This avoids synthetic bolding, decreases layout shifting (CLS), and provides crisp, native rendering.
-
-### 8. Hero Image WebP + `fetchpriority="high"`
-* **Status:** **100% Optimized**
-* **Actions:**
-  * Confirmed that the company logos inside `HomeNavbar.jsx` are served as WebP, loaded with `loading="eager"`, and possess `fetchPriority="high"` to pre-render the branding immediately.
-  * All Dynamic Portfolio hero components (`Beyekls`, `Daccord`, `Coinpay`, `Nectar`) use pre-compressed WebP hero assets wrapped inside `<picture>` tags with media queries for optimized responsive loading.
-
-### 9. Lazy Loading of Non-Critical Images/Components
-* **Status:** **100% Optimized**
-* **Actions:**
-  * Implemented an advanced `<OptimizedImage />` wrapper component which serves as the framework standard.
-  * It intercepts standard image sources, calculates exact dynamic aspect ratios to prevent CLS, and automatically configures native browser `loading="lazy"` along with responsive `srcSet` sizes.
-
-### 10. Critical Request Chains & Resource Deferral
-* **Status:** **100% Optimized**
-* **Actions:**
-  * All third-party analytics trackers (Google Tag Manager GTM, Adsense, and Meta Pixel) are **fully deferred** and injected into the DOM **only on real user interaction** (first scroll, touchstart, click, or mousemove).
-  * This guarantees that Lighthouse mobile performance scores do not suffer from third-party advertising scripts or tracking payloads during critical load times.
+### C. Pagination UI Bug (Next button never disabled)
+* **Problem**: Pagination section mein "Previous" button par `disabled={currentPage === 1}` aur visual disabled state to laga hai, lekin "Next" button par `disabled={currentPage === totalPages}` validation aur visual styling missing hai.
+* **Impact**: User last page par pahunchne ke baad bhi "Next" button click kar sakta hai jo dynamic slice logic mein confusion aur unexpected state updates create karega.
 
 ---
 
-## 🚀 Production Build Verification
+## 2. Proposed Optimization Plan (SWR Pattern)
 
-A complete clean compilation of the production build has been validated:
-```bash
-npm run build
+Hum page speed ko **0ms** load time (instant load) tak lane ke liye niche diye gaye steps implement karenge:
+
+1. **Synchronous Local Bootstrapping (SWR pattern)**:
+   * Build-time generated static file `src/data/staticData.json` se services list ko initial render par hi read karenge.
+   * React state ko dynamic JSON data se instantaneously bootstrap karenge. Pehle render par hi saare cards 0ms mein paint ho jayenge aur loading skeleton flash nahi hoga.
+2. **Silent Background Revalidation**:
+   * Component mount hone par background mein dynamic `getServices()` query run hogi. Agar latest database changes aate hain, to UI seamless updates receive karega bina layout flashing ke.
+3. **Fix Pagination Button Validation**:
+   * Next button mein state validation lagana: `disabled={currentPage === totalPages}` aur layout classes: `disabled:opacity-30 disabled:cursor-not-allowed`.
+
+---
+
+## 3. Recommended Code Changes
+
+### Fix 1: Bootstrapping with SWR in `Cards.jsx`
+```diff
++ import staticData from '../../data/staticData.json';
+
+  const Cards = () => {
++      // Synchronously retrieve service items from build-generated cache
++      const localServices = staticData.services || [];
++      const initialItems = (() => {
++           const filtered = [];
++           localServices.forEach((service) => {
++                if (service.items) {
++                     service.items.forEach((item) => {
++                          if (item?.hero?.title) {
++                               filtered.push(item);
++                          }
++                     });
++                }
++           });
++           return filtered;
++      })();
+
+-      const [items, setItems] = useState([]);
+-      const [loading, setLoading] = useState(true);
++      const [items, setItems] = useState(initialItems);
++      const [loading, setLoading] = useState(initialItems.length === 0);
+       const [currentPage, setCurrentPage] = useState(1);
 ```
 
-**Build Output File Metrics:**
-```text
-✓ built in 16.90s
-dist/assets/index-C89idmsw.js                         114.26 kB  <-- ULTRA-LIGHTWEIGHT BUNDLE
-dist/assets/react-dom-vvfjSwl9.js                     189.66 kB  <-- Core Library Chunk
-dist/assets/Location-knuyhDR5.js                      584.94 kB  <-- Heavy dynamic page separated
-dist/assets/gsap-vgt6wiKs.js                          112.68 kB  <-- GSAP isolated and deferred
-dist/assets/Portfolios-hfgQBFSK.js                      9.18 kB  <-- Separated dynamic route
-dist/assets/ItemPage-Gf1Tqvq4.js                        8.32 kB  <-- Separated dynamic route
-dist/assets/Services-DbcVzIVX.js                        6.24 kB  <-- Separated dynamic route
-dist/assets/About-DVKvhanO.js                           3.96 kB  <-- Separated dynamic route
-
-🚀 Starting Dynamic sitemap.xml generation...
-✅ sitemap.xml successfully written to public/sitemap.xml (43 URLs mapped)
-✅ staticData.json successfully written to src/data/staticData.json
+### Fix 2: Background silently query in `Cards.jsx`
+```diff
+       useEffect(() => {
+            const fetchAndFilterServices = async () => {
+                 try {
+                      const services = await getServices();
+                      const filtered = [];
+                      services.forEach((service) => {
+                           if (service.items) {
+                                service.items.forEach((item) => {
+                                     if (item?.hero?.title) {
+                                          filtered.push(item);
+                                     }
+                                });
+                           }
+                      });
+                      setItems(filtered);
+                 } catch (error) {
+                      console.error('Error fetching services for Cards:', error);
+                 } finally {
+                      setLoading(false);
+                 }
+            };
+            fetchAndFilterServices();
+       }, []);
 ```
 
-All dynamic files have been optimized and partitioned. The page load performance is now extremely lightweight and fully primed for **Mobile Lighthouse Performance 95+**.
+### Fix 3: Fix Next Pagination Button in `Cards.jsx`
+```diff
+                                    {/* NEXT BUTTON */}
+                                    <button
+                                         onClick={() =>
+                                              setCurrentPage((prev) =>
+                                                   Math.min(
+                                                        prev + 1,
+                                                        totalPages
+                                                   )
+                                              )
+                                         }
++                                        disabled={currentPage === totalPages}
+                                         aria-label='Next Services'
+-                                        className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-cust-orange flex items-center justify-center text-cust-orange hover:text-cust-orange cursor-pointer hover:bg-cust-orange/8 transition-all duration-300"
++                                        className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-cust-orange flex items-center justify-center text-cust-orange hover:text-cust-orange cursor-pointer hover:bg-cust-orange/8 transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                                    >
+                                         <GoArrowRight
+                                              size={24}
+                                         />
+                                    </button>
+```
+
+---
+*Report end. Hum dynamic optimization apply karne ke liye ready hain. Aapke signal ka wait hai!*

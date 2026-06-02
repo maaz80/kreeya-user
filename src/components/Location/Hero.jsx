@@ -15,7 +15,7 @@ const Hero = ({ location }) => {
                <div className="absolute inset-0">
                     <img
                          src={LocationHeroBG}
-                         alt="Location Hero Bg"
+                         alt={location?.hero?.title || "Kreeya Design Location Hero"}
                          className="w-full min-h-[144vh] sm:min-h-[158vh] lg:min-h-screen h-full object-cover"
                     />
                </div>

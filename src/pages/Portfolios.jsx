@@ -5,6 +5,7 @@ import HomeNavbar from '../components/HomeNavbar'
 import Breadcrumb from '../components/BreadCrumb'
 import Hero from '../components/Portfolios/Hero'
 import PortfolioSection from '../components/Portfolios/PortfolioSection'
+import staticData from '../data/staticData.json'
 
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
 const FaqSection = lazy(() => import('../components/DynamicFaq'))
@@ -33,7 +34,25 @@ const defaultFaqs = [
 
 const Portfolios = () => {
      const { itemSlug } = useParams();
-     const [faqs, setFaqs] = useState(defaultFaqs);
+
+     // Synchronously resolve matching category FAQs from build-generated cache
+     const initialFaqs = (() => {
+          const localPortfolios = staticData.portfolios || [];
+          if (itemSlug && localPortfolios.length > 0) {
+               const matched = localPortfolios.find(
+                    (p) => p.name.toLowerCase().replace(/\s+/g, '-') === itemSlug
+               );
+               if (matched?.faq && matched.faq.length > 0) {
+                    return matched.faq.map((f) => ({
+                         question: f.ques || "",
+                         answer: f.ans || "",
+                    }));
+               }
+          }
+          return defaultFaqs;
+     })();
+
+     const [faqs, setFaqs] = useState(initialFaqs);
 
      useEffect(() => {
           const loadFaqs = async () => {
@@ -55,7 +74,6 @@ const Portfolios = () => {
                     setFaqs(defaultFaqs);
                } catch (err) {
                     console.error("Error setting portfolio FAQs:", err);
-                    setFaqs(defaultFaqs);
                }
           };
 

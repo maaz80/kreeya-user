@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FaPlay } from 'react-icons/fa'
 
 const Hero = () => {
+     const [isPlaying, setIsPlaying] = useState(false);
+
      return (
           <div className='max-w-275 mx-auto mt-35 px-2 md:px-0'>
                {/* Heading */}
@@ -16,17 +19,36 @@ const Hero = () => {
                <div className="mt-14 rounded-[36px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(139,92,246,0.15)]">
 
                     <div className="relative w-full pt-[56.25%] bg-black">
-
-                         <iframe
-                              className="absolute top-0 left-0 w-full h-full"
-                              src="https://www.youtube-nocookie.com/embed/YHQ2AjuJ8Oc?autoplay=1&mute=1&loop=1&playlist=YHQ2AjuJ8Oc&controls=1&rel=0&modestbranding=1"
-                              title="Banking UX Video"
-                              loading="lazy"
-                              referrerPolicy="strict-origin-when-cross-origin"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                              allowFullScreen
-                         ></iframe>
-
+                         {isPlaying ? (
+                              <iframe
+                                   className="absolute top-0 left-0 w-full h-full"
+                                   src="https://www.youtube-nocookie.com/embed/YHQ2AjuJ8Oc?autoplay=1&loop=1&playlist=YHQ2AjuJ8Oc&controls=1&rel=0&modestbranding=1"
+                                   title="Banking UX Video"
+                                   referrerPolicy="strict-origin-when-cross-origin"
+                                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                   allowFullScreen
+                              ></iframe>
+                         ) : (
+                              <button
+                                   type='button'
+                                   onClick={() => setIsPlaying(true)}
+                                   aria-label='Play Banking UX Video'
+                                   className='absolute inset-0 w-full h-full cursor-pointer group'
+                              >
+                                   {/* Thumbnail Image */}
+                                   <img 
+                                        src="https://img.youtube.com/vi/YHQ2AjuJ8Oc/maxresdefault.jpg" 
+                                        alt="Banking UX Case Study Video Thumbnail" 
+                                        className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition duration-500" 
+                                   />
+                                   {/* Semi-transparent dark overlay */}
+                                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-300" />
+                                   {/* Play Button */}
+                                   <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#FF0000] flex items-center justify-center absolute left-1/2 top-1/2 -translate-1/2 text-white shadow-lg group-hover:scale-110 active:scale-95 transition duration-300">
+                                        <FaPlay size={30} className="ml-1" />
+                                    </div>
+                              </button>
+                         )}
                     </div>
                </div>
           </div>

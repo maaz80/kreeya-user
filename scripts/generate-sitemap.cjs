@@ -58,7 +58,7 @@ async function main() {
     { loc: `${SITE_URL}/`, lastmod: "2025-03-18", changefreq: "weekly", priority: "1.0" },
     { loc: `${SITE_URL}/contact-us`, lastmod: "2025-03-18", changefreq: "monthly", priority: "0.8" },
     { loc: `${SITE_URL}/about-us`, lastmod: TODAY, changefreq: "monthly", priority: "0.8" },
-    { loc: `${SITE_URL}/blogs`, lastmod: "2025-03-18", changefreq: "weekly", priority: "0.8" },
+    { loc: `${SITE_URL}/category/blogs`, lastmod: "2025-03-18", changefreq: "weekly", priority: "0.8" },
     { loc: `${SITE_URL}/portfolio-beyekls`, lastmod: "2025-03-18", changefreq: "monthly", priority: "0.7" },
     { loc: `${SITE_URL}/portfolio-nectar`, lastmod: "2025-03-18", changefreq: "monthly", priority: "0.7" },
     { loc: `${SITE_URL}/portfolio-coinpay`, lastmod: "2025-03-18", changefreq: "monthly", priority: "0.7" },
@@ -73,15 +73,17 @@ async function main() {
   try {
     // 2. Fetch Dynamic data from API
     // console.log(`📡 Fetching locations, services, and portfolios from API: ${API_URL}`);
-    const [locationsRes, servicesRes, portfoliosRes] = await Promise.all([
+    const [locationsRes, servicesRes, portfoliosRes, blogsRes] = await Promise.all([
       fetchJson(`${API_URL}/locations`),
       fetchJson(`${API_URL}/services`),
-      fetchJson(`${API_URL}/portfolios`)
+      fetchJson(`${API_URL}/portfolios`),
+      fetchJson(`${API_URL}/blogs`)
     ]);
 
     const locations = normalizeListResponse(locationsRes);
     const services = normalizeListResponse(servicesRes);
     const portfolios = normalizeListResponse(portfoliosRes);
+    const blogs = normalizeListResponse(blogsRes);
 
     // console.log(`📈 Fetched ${locations.length} locations, ${services.length} services, and ${portfolios.length} portfolios.`);
 
@@ -115,7 +117,20 @@ async function main() {
       }
     });
 
-    // 5. Generate XML Structure
+    // 5. Extract and normalize blog items
+    blogs.forEach(blog => {
+      if (blog.slug) {
+        const slug = normalizeRouteSlug(blog.slug);
+        urls.push({
+          loc: `${SITE_URL}/${slug}`,
+          lastmod: TODAY,
+          changefreq: "weekly",
+          priority: "0.9"
+        });
+      }
+    });
+
+    // 6. Generate XML Structure
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
     xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
@@ -147,6 +162,7 @@ async function main() {
       locations: locations,
       services: services,
       portfolios: portfolios,
+      blogs: blogs,
       updatedAt: new Date().toISOString()
     };
     fs.writeFileSync(staticDataPath, JSON.stringify(staticData, null, 2), 'utf8');

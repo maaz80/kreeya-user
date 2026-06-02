@@ -8,11 +8,28 @@ import { optimizeImage } from '../../utils/cloudinary';
 import OptimizedImage from '../OptimizedImage';
 
 import FallbackImg from '../../assets/nectar-casestudy-mobile.webp';
+import staticData from '../../data/staticData.json';
 
 const Cards = () => {
 
-     const [items, setItems] = useState([]);
-     const [loading, setLoading] = useState(true);
+     // Synchronously retrieve service items from build-generated cache
+     const localServices = staticData.services || [];
+     const initialItems = (() => {
+          const filtered = [];
+          localServices.forEach((service) => {
+               if (service.items) {
+                    service.items.forEach((item) => {
+                         if (item?.hero?.title) {
+                              filtered.push(item);
+                         }
+                    });
+               }
+          });
+          return filtered;
+     })();
+
+     const [items, setItems] = useState(initialItems);
+     const [loading, setLoading] = useState(initialItems.length === 0);
      const [currentPage, setCurrentPage] = useState(1);
 
      const navigate = useNavigate();
@@ -272,8 +289,9 @@ const Cards = () => {
                                                   )
                                              )
                                         }
+                                        disabled={currentPage === totalPages}
                                         aria-label='Next Services'
-                                        className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-cust-orange flex items-center justify-center text-cust-orange hover:text-cust-orange cursor-pointer hover:bg-cust-orange/8 transition-all duration-300"
+                                        className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-cust-orange flex items-center justify-center text-cust-orange hover:text-cust-orange cursor-pointer hover:bg-cust-orange/8 transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
                                    >
 
                                         <GoArrowRight

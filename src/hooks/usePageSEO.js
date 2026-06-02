@@ -35,7 +35,7 @@ const RESERVED_PAGE_PATHS = new Set([
      "contact-us",
      "blogs",
      "about-us",
-     "blogs_details",
+     "blogs-details",
      "location",
      "policy",
      "disclaimer",
@@ -168,6 +168,7 @@ export function usePageSEO() {
                // Try to resolve from local staticData instantly (0ms)
                const localLocations = staticData.locations || [];
                const localServices = staticData.services || [];
+               const localBlogs = staticData.blogs || [];
 
                const locationItem = localLocations
                     .flatMap((location) => location.items || [])
@@ -183,11 +184,21 @@ export function usePageSEO() {
                     return getItemSeo(serviceItem);
                }
 
+               const blogItem = localBlogs.find((blog) => matchesRouteSlug(blog, slug));
+               if (blogItem) {
+                    return {
+                         title: blogItem.seoTitle || blogItem.title,
+                         description: blogItem.seoDescription || blogItem.content?.replace(/<[^>]+>/g, '').slice(0, 150),
+                         keywords: blogItem.seoKeywords || ""
+                    };
+               }
+
                // 2. Fallback to dynamic live API calls in case sitemap/build is not updated yet
                try {
-                    const [allLocations, allServices] = await Promise.all([
+                    const [allLocations, allServices, allBlogs] = await Promise.all([
                          normalizeListResponse(await fetchJson(`${API_URL}/locations`)),
                          normalizeListResponse(await fetchJson(`${API_URL}/services`)),
+                         normalizeListResponse(await fetchJson(`${API_URL}/blogs`))
                     ]);
 
                     const dynamicLocationItem = allLocations
@@ -203,6 +214,15 @@ export function usePageSEO() {
                     if (dynamicServiceItem) {
                          return getItemSeo(dynamicServiceItem);
                     }
+
+                    const dynamicBlogItem = allBlogs.find((blog) => matchesRouteSlug(blog, slug));
+                    if (dynamicBlogItem) {
+                         return {
+                              title: dynamicBlogItem.seoTitle || dynamicBlogItem.title,
+                              description: dynamicBlogItem.seoDescription || dynamicBlogItem.content?.replace(/<[^>]+>/g, '').slice(0, 150),
+                              keywords: dynamicBlogItem.seoKeywords || ""
+                         };
+                    }
                } catch (err) {
                     console.error("Background SEO fetch failed:", err);
                }
@@ -216,7 +236,7 @@ export function usePageSEO() {
                     const cache = seoCache.current;
                     const isMultiSegmentPath = segments.length > 1;
 
-                    if (segments[0] === "blogs_details" && segments[1]) {
+                    if (segments[0] === "blogs-details" && segments[1]) {
                          const slug = segments[1];
                          const cacheKey = `blog:${slug}`;
 
@@ -264,9 +284,11 @@ export function usePageSEO() {
 
                     const path = !segments.length
                          ? "home"
-                         : isMultiSegmentPath || !STATIC_PAGE_SEO_IDS.has(segments[0])
-                              ? "not-found"
-                              : segments[0];
+                         : segments[0] === "category" && segments[1] === "blogs"
+                              ? "blogs"
+                              : isMultiSegmentPath || !STATIC_PAGE_SEO_IDS.has(segments[0])
+                                   ? "not-found"
+                                   : segments[0];
                     const cacheKey = `page:${path}`;
 
                     if (cache.has(cacheKey)) {

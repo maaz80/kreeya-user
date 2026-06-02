@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom'
 import { getLocations } from '../utils/locations'
 import { getServices } from '../utils/service'
 import { getPortfolios } from '../utils/portfolio'
+import { getBlogs } from '../utils/blogService'
 import Location from './Location'
 import Service from './Service'
 import Portfolios from './Portfolios'
+import BlogDetails from './BlogDetails'
 import NotFound from './404NotFound'
 import { matchesRouteSlug } from '../utils/slug'
 import staticData from '../data/staticData.json'
@@ -35,6 +37,7 @@ const ItemPage = () => {
                const localLocations = staticData.locations || []
                const localServices = staticData.services || []
                const localPortfolios = staticData.portfolios || []
+               const localBlogs = staticData.blogs || []
 
                const isLocationLocal = localLocations.some((location) =>
                     location.items?.some((item) => matchesRouteSlug(item, itemSlug))
@@ -61,12 +64,19 @@ const ItemPage = () => {
                     return
                }
 
+               const isBlogLocal = localBlogs.some((blog) => matchesRouteSlug(blog, itemSlug))
+               if (isBlogLocal) {
+                    setPageType('blog')
+                    return
+               }
+
                // 2. Fallback to dynamic live API calls in case sitemap/build is not updated yet
                try {
-                    const [locations, services, portfolios] = await Promise.all([
+                    const [locations, services, portfolios, blogs] = await Promise.all([
                          getLocations(),
                          getServices(),
                          getPortfolios(),
+                         getBlogs()
                     ])
 
                     const isLocation = locations.some((location) =>
@@ -91,6 +101,12 @@ const ItemPage = () => {
                     })
                     if (isPortfolio) {
                          setPageType('portfolio')
+                         return
+                    }
+
+                    const isBlog = blogs.some((blog) => matchesRouteSlug(blog, itemSlug))
+                    if (isBlog) {
+                         setPageType('blog')
                          return
                     }
 
@@ -167,6 +183,10 @@ const ItemPage = () => {
 
      if (pageType === 'portfolio') {
           return <Portfolios />
+     }
+
+     if (pageType === 'blog') {
+          return <BlogDetails />
      }
 
      return <NotFound />

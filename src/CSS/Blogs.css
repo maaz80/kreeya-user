@@ -74,3 +74,10 @@
 .blog-content h2 strong {
      font-weight: 800;
 }
+
+.blog-content img {
+     max-width: 100%;
+     height: auto;
+     content-visibility: auto;
+     aspect-ratio: attr(width) / attr(height);
+}

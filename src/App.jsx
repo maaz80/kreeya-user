@@ -104,8 +104,8 @@ function App() {
           <Route path="/portfolio-coinpay" element={<Portfolio3 />} />
           <Route path="/portfolio-nectar" element={<Portfolio4 />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogs_details/:slug" element={<BlogDetails />} />
+          <Route path="/category/blogs" element={<Blogs />} />
+          {/* <Route path="/blogs-details/:slug" element={<BlogDetails />} /> */}
           <Route path="/location" element={<Location />} />
           <Route path="/:itemSlug" element={<ItemPage />} />
           <Route path="/policy" element={<PrivacyPolicy />} />

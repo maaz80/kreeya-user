@@ -5,13 +5,15 @@ import { getPortfolios } from "../../utils/portfolio";
 import { getResponsiveImageProps } from "../../utils/cloudinary";
 import FallbackImg from "../../assets/404-bg.webp";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
+import staticData from "../../data/staticData.json";
 
 const PortfolioSection = () => {
      const { itemSlug } = useParams();
      const navigate = useNavigate();
-     const [portfolios, setPortfolios] = useState([]);
+     const localPortfolios = staticData.portfolios || [];
+     const [portfolios, setPortfolios] = useState(localPortfolios);
      const [activeCategory, setActiveCategory] = useState("All");
-     const [loading, setLoading] = useState(true);
+     const [loading, setLoading] = useState(localPortfolios.length === 0);
      const [currentPage, setCurrentPage] = useState(1);
 
      useEffect(() => {

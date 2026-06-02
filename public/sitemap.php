@@ -44,7 +44,7 @@ $urls = [
     ["loc" => "$siteUrl/", "lastmod" => "2025-03-18", "changefreq" => "weekly", "priority" => "1.0"],
     ["loc" => "$siteUrl/contact-us", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.8"],
     ["loc" => "$siteUrl/about-us", "lastmod" => $today, "changefreq" => "monthly", "priority" => "0.8"],
-    ["loc" => "$siteUrl/blogs", "lastmod" => "2025-03-18", "changefreq" => "weekly", "priority" => "0.8"],
+    ["loc" => "$siteUrl/category/blogs", "lastmod" => "2025-03-18", "changefreq" => "weekly", "priority" => "0.8"],
     ["loc" => "$siteUrl/portfolio-beyekls", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"],
     ["loc" => "$siteUrl/portfolio-nectar", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"],
     ["loc" => "$siteUrl/portfolio-coinpay", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"],
@@ -54,12 +54,14 @@ $urls = [
     ["loc" => "$siteUrl/landing-page", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"]
 ];
 
-// 2. Fetch locations & services from live API
+// 2. Fetch locations, services & blogs from live API
 $locationsRes = fetchJson("$apiUrl/locations");
 $servicesRes = fetchJson("$apiUrl/services");
+$blogsRes = fetchJson("$apiUrl/blogs");
 
 $locations = getItems($locationsRes);
 $services = getItems($servicesRes);
+$blogs = getItems($blogsRes);
 
 if (is_array($locations)) {
     foreach ($locations as $loc) {
@@ -91,6 +93,20 @@ if (is_array($services)) {
                     "priority" => "0.9"
                 ];
             }
+        }
+    }
+}
+
+if (is_array($blogs)) {
+    foreach ($blogs as $blog) {
+        if (isset($blog['slug']) && !empty($blog['slug'])) {
+            $slug = normalizeRouteSlug($blog['slug']);
+            $urls[] = [
+                "loc" => "$siteUrl/$slug",
+                "lastmod" => $today,
+                "changefreq" => "weekly",
+                "priority" => "0.9"
+            ];
         }
     }
 }

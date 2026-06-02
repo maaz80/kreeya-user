@@ -6,10 +6,11 @@ const Breadcrumb = () => {
 
      const pathnames = location.pathname.split("/").filter((x) => x);
 
-     const filteredPathnames =
+     const filteredPathnames = (
           pathnames[0] === "location" && pathnames.length >= 3
                ? [pathnames[pathnames.length - 1]]
-               : pathnames;
+               : pathnames
+     ).filter((x) => x !== "category");
 
      const isPortfolio = location.pathname === "/portfolio-beyekls" || location.pathname === "/portfolio-daccord" || location.pathname === "/portfolio-coinpay" || location.pathname === "/portfolio-nectar";
      const isLocation = location.pathname.startsWith("/location");
@@ -27,7 +28,10 @@ const Breadcrumb = () => {
 
                {filteredPathnames.map((name, index) => {
 
-                    const routeTo = "/" + filteredPathnames.slice(0, index + 1).join("/");
+                    const originalIndex = pathnames.indexOf(name);
+                    const routeTo = originalIndex !== -1
+                         ? "/" + pathnames.slice(0, originalIndex + 1).join("/")
+                         : "/" + filteredPathnames.slice(0, index + 1).join("/");
                     const isLast = index === filteredPathnames.length - 1;
 
                     const label = name

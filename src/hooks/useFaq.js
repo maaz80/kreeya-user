@@ -7,7 +7,7 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 // Per-page cache — sirf jo fetch hua woh store hoga
 const faqCache = new Map();
 
-const useFaq = () => {
+const useFaq = (customSlug) => {
      const location = useLocation();
      const [faqData, setFaqData] = useState(null);
      const [loading, setLoading] = useState(true);
@@ -18,9 +18,19 @@ const useFaq = () => {
                     setLoading(true);
 
                     // Current page ka slug nikalo
-                    const slug = location.pathname === '/'
-                         ? 'home'
-                         : location.pathname.replace(/\//g, '');
+                    let slug = customSlug;
+                    if (!slug) {
+                         slug = 'home';
+                         if (location.pathname !== '/') {
+                              if (location.pathname.startsWith('/blogs-details/')) {
+                                   slug = 'blogs-details';
+                              } else if (location.pathname === '/category/blogs') {
+                                   slug = 'blogs';
+                              } else {
+                                   slug = location.pathname.replace(/\//g, '');
+                              }
+                         }
+                    }
 
                     //  Cache mein hai toh fetch mat karo
                     if (faqCache.has(slug)) {

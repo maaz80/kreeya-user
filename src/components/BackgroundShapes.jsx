@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { loadGSAP } from "../utils/gsapLoader";
 
 const shapes = [
      {
@@ -60,37 +59,44 @@ const BackgroundShapes = () => {
      const shapesRef = useRef([]);
 
      useEffect(() => {
-          let animations = [];
+          const animations = [];
 
-          const initAnimations = async () => {
-               const gsap = await loadGSAP();
+          const randomRange = (min, max) => Math.random() * (max - min) + min;
 
-               shapesRef.current.forEach((shape) => {
-                    if (!shape) return;
+          shapesRef.current.forEach((shape) => {
+               if (!shape) return;
 
-                    const randomX = gsap.utils.random(-200, 200);
-                    const randomY = gsap.utils.random(-200, 200);
-                    const duration = gsap.utils.random(5, 10);
+               const randomX = randomRange(-200, 200);
+               const randomY = randomRange(-200, 200);
+               const randomRotation = randomRange(-180, 180);
+               const duration = randomRange(5, 10) * 1000; // convert to milliseconds
 
-                    const animation = gsap.to(shape, {
-                         x: randomX,
-                         y: randomY,
-                         rotation: gsap.utils.random(-180, 180),
-                         duration: duration,
-                         repeat: -1,
-                         yoyo: true,
-                         ease: "sine.inOut",
-                    });
-
+               try {
+                    const animation = shape.animate(
+                         [
+                              { transform: "translate(0px, 0px) rotate(0deg)" },
+                              { transform: `translate(${randomX}px, ${randomY}px) rotate(${randomRotation}deg)` }
+                         ],
+                         {
+                              duration: duration,
+                              iterations: Infinity,
+                              direction: "alternate",
+                              easing: "cubic-bezier(0.445, 0.05, 0.55, 0.95)", // sine.inOut equivalent
+                         }
+                    );
                     animations.push(animation);
-               });
-          };
-
-          initAnimations();
+               } catch (error) {
+                    console.error("Failed to animate shape with WAAPI:", error);
+               }
+          });
 
           return () => {
-               animations.forEach(animation => {
-                    if (animation) animation.kill();
+               animations.forEach((animation) => {
+                    try {
+                         animation.cancel();
+                    } catch (e) {
+                         // ignore unmount cancel errors
+                    }
                });
           };
      }, []);
