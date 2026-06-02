@@ -43,7 +43,7 @@ const Hero = () => {
                                         alt="Banking UX Case Study Video Thumbnail" 
                                         loading="eager"
                                         fetchpriority="high"
-                                        className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition duration-500" 
+                                        className="w-full h-full object-cover absolute inset-0 " 
                                    />
                                    {/* Semi-transparent dark overlay */}
                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-300" />

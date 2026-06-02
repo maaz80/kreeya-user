@@ -15,7 +15,7 @@ const ItemPage = () => {
      const { itemSlug } = useParams()
      const [pageType, setPageType] = useState(null)
 
-     useLayoutEffect(() => {
+     useEffect(() => {
           window.scrollTo(0, 0)
      }, [itemSlug])
 

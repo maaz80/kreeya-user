@@ -58,7 +58,7 @@ const Service = () => {
 
   }, [itemSlug]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0)
   }, [itemSlug])
 

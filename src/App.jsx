@@ -33,6 +33,7 @@ const ContactUs = lazy(() => import("./pages/ContactUs"));
 function App() {
 
   const [showFooter, setShowFooter] = useState(false);
+  const [loadChatbot, setLoadChatbot] = useState(false);
   const location = useLocation();
   const isOpeningVideoRoute = location.pathname === "/";
   const [areGlobalWidgetsReady, setAreGlobalWidgetsReady] = useState(!isOpeningVideoRoute);
@@ -41,6 +42,29 @@ function App() {
 
   useEffect(() => {
     setTimeout(() => setShowFooter(true), 3000);
+
+    let timeoutId;
+    const triggerLoad = () => {
+      setLoadChatbot(true);
+      cleanup();
+    };
+
+    const cleanup = () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("scroll", triggerLoad);
+      window.removeEventListener("mousemove", triggerLoad);
+      window.removeEventListener("touchstart", triggerLoad);
+      window.removeEventListener("click", triggerLoad);
+    };
+
+    timeoutId = setTimeout(triggerLoad, 4000);
+
+    window.addEventListener("scroll", triggerLoad, { once: true, passive: true });
+    window.addEventListener("mousemove", triggerLoad, { once: true, passive: true });
+    window.addEventListener("touchstart", triggerLoad, { once: true, passive: true });
+    window.addEventListener("click", triggerLoad, { once: true, passive: true });
+
+    return cleanup;
   }, []);
 
   useEffect(() => {
@@ -87,9 +111,11 @@ function App() {
             <BsChevronUp />
           </button>
 
-          <Suspense fallback={null}>
-            <ChatBot />
-          </Suspense>
+          {loadChatbot && (
+               <Suspense fallback={null}>
+                    <ChatBot />
+               </Suspense>
+          )}
         </>
       )}
       <Suspense fallback={<div className="min-h-screen bg-black" />}>

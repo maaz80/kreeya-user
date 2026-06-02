@@ -317,14 +317,7 @@ export function usePageSEO() {
                               if (cachedSeo) {
                                    setSEO(cachedSeo.title || DEFAULT_TITLE, cachedSeo.description || DEFAULT_DESCRIPTION, cachedSeo.keywords || "");
                               }
-
-                              // Silent background fetch to update the SEO from CMS
-                              fetchJson(`${API_URL}/pages/portfolios/seo`).then((seo) => {
-                                   if (isActive) {
-                                        cache.set(cacheKeyPort, seo);
-                                        setSEO(seo.title || DEFAULT_TITLE, seo.description || DEFAULT_DESCRIPTION, seo.keywords || "");
-                                   }
-                              }).catch(err => console.warn("Background portfolios SEO fetch failed:", err));
+                              // Completely bypass background fetch for portfolios since we want one static SEO
                               return;
                          }
 
@@ -368,6 +361,11 @@ export function usePageSEO() {
                     const initialSeo = cache.get(cacheKey) || staticPagesSeo[path];
                     if (initialSeo) {
                          setSEO(initialSeo.title || DEFAULT_TITLE, initialSeo.description || DEFAULT_DESCRIPTION, initialSeo.keywords || "");
+                    }
+
+                    // If path is portfolios, bypass background API revalidation to prevent portfolios/seo call
+                    if (path === "portfolios") {
+                         return;
                     }
 
                     // Silent background fetch to check for CMS updates

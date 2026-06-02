@@ -166,7 +166,7 @@ const PortfolioSection = () => {
                               // Premium Grid Skeleton Loaders
                               Array.from({ length: 4 }).map((_, index) => (
                                    <div key={index} className="animate-pulse flex flex-col gap-6 w-full">
-                                        <div className="rounded-[38px] w-full min-h-120 bg-slate-200/85"></div>
+                                        <div className="rounded-[38px] w-full min-h-150 md:min-h-200 bg-slate-200/85"></div>
                                         <div className="pt-4 space-y-4">
                                              <div className="h-8 bg-slate-200/85 rounded w-3/4"></div>
                                              <div className="h-4 bg-slate-200/85 rounded w-full"></div>
