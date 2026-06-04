@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import BgImage from '../assets/bg.webp'
 import Breadcrumb from '../components/BreadCrumb';
 const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
-import SeoTags from '../components/SeoTags';
+// import SeoTags from '../components/SeoTags';
 import { useH1Data } from '../hooks/useH1Data';
 import useFaq from '../hooks/useFaq';
 

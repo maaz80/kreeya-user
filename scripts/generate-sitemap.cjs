@@ -155,7 +155,25 @@ async function main() {
       }
     });
 
-    // 6. Generate XML Structure
+     // 5.5 Extract and normalize portfolio items
+     portfolios.forEach(portfolio => {
+       if (portfolio.name) {
+         const slug = normalizeRouteSlug(portfolio.name.toLowerCase().replace(/\s+/g, '-'));
+         urls.push({
+           loc: `${SITE_URL}/${slug}`,
+           lastmod: TODAY,
+           changefreq: "weekly",
+           priority: "0.9",
+           image: portfolio.cards?.[0]?.image ? {
+             loc: portfolio.cards[0].image,
+             title: portfolio.title || portfolio.name,
+             caption: portfolio.description || ""
+           } : undefined
+         });
+       }
+     });
+
+     // 6. Generate XML Structure
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
     xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n';
     xml += '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';

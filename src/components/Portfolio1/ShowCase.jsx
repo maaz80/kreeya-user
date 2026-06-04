@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import tires from '../../assets/beyekls-bg.webp'
-import tiresMobile from '../../assets/beyekls-bg-mobile.webp'
+import tiresMobile from '/images/beyekls-bg-mobile.webp'
 import Port1 from '../../assets/beyekls-artifacts.webp'
 import Port1Mobile from '../../assets/beyekls-artifacts-mobile.webp'
 import { initGSAP } from "../../utils/gsapLoader"

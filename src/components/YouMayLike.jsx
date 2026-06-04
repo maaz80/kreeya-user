@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getBlogs } from "../utils/blogService";
-import blogImg from '../assets/blog-thumbnail.webp'
+import blogImg from '/images/blog-thumbnail.webp'
 import { useYouMayH2Data } from "../hooks/useYouMayH2Data";
 import OptimizedImage from "./OptimizedImage";
 import staticBlogs from "../data/staticBlogs.json";

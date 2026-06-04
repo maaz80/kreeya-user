@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import work1 from "../../assets/coinpay-casestudy.webp";
-import work2 from "../../assets/nectar-casestudy.webp";
-import work3 from "../../assets/beyekls-casestudy.webp";
-import work4 from "../../assets/daccord-casestudy.webp";
+import work1 from "../../assets/coinpay-casestudy-landing-page.webp";
+import work2 from "../../assets/nectar-casestudy-landing-page.webp";
+import work3 from "../../assets/beyekls-casestudy-landing-page.webp";
+import work4 from "../../assets/daccord-casestudy-landing-page.webp";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import Profile from '../../assets/profile.webp'
 import { initGSAP, loadGSAP } from "../../utils/gsapLoader";
@@ -151,7 +151,6 @@ const WorkShowcase = () => {
                <div className="relative w-full max-w-150 lg:max-w-300 h-65 md:h-90 lg:h-100 mx-auto grid grid-cols-2 gap-0 md:gap-8 lg:block">
 
                     {works?.map((work, index) => (
-
                          <img
                               key={index}
                               ref={(el) => (imagesRef.current[index] = el)}
@@ -162,8 +161,11 @@ const WorkShowcase = () => {
                                    left: `${index * 23}%`,
                                    transform: "translateY(200px)"
                               }}
+                              loading="lazy"        // ← add karo
+                              decoding="async"      // ← add karo
+                              width="900"           // ← add karo
+                              height="554"          // ← add karo
                          />
-
                     ))}
 
                </div>
@@ -219,6 +221,7 @@ const WorkShowcase = () => {
 
                                    <button
                                         onClick={prevSlide}
+                                        aria-label="Previous Testimonial"
                                         className="w-10 lg:w-12 h-10 lg:h-12 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
                                    >
                                         <HiArrowLeft />
@@ -226,6 +229,7 @@ const WorkShowcase = () => {
 
                                    <button
                                         onClick={nextSlide}
+                                        aria-label="Next Testimonial"
                                         className="w-10 lg:w-12 h-10 lg:h-12 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
                                    >
                                         <HiArrowRight />

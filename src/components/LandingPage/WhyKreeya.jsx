@@ -15,9 +15,15 @@ const WhyKreeya = () => {
           <section className="relative pt-5 pb-20 overflow-hidden z-9999">
 
                {/* Background Dots */}
-               <div className="absolute inset-0 flex justify-center items-center opacity-20 pointer-events-none">
-                    <img src={dots} className="w-full" alt="Dotted Design" />
-               </div>
+               <div
+                    className="absolute inset-0 opacity-20 pointer-events-none"
+                    style={{
+                         backgroundImage: `url(${dots})`,
+                         backgroundSize: 'cover',
+                         backgroundPosition: 'center'
+                    }}
+                    aria-hidden="true"
+               />
 
                <div className="relative max-w-300 mx-auto text-center">
 

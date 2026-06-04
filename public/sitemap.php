@@ -42,26 +42,28 @@ function getItems($res) {
 // 1. Static Pages
 $urls = [
     ["loc" => "$siteUrl/", "lastmod" => "2025-03-18", "changefreq" => "weekly", "priority" => "1.0"],
-    ["loc" => "$siteUrl/contact-us", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.8"],
-    ["loc" => "$siteUrl/about-us", "lastmod" => $today, "changefreq" => "monthly", "priority" => "0.8"],
-    ["loc" => "$siteUrl/category/blogs", "lastmod" => "2025-03-18", "changefreq" => "weekly", "priority" => "0.8"],
-    ["loc" => "$siteUrl/portfolio-beyekls", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"],
-    ["loc" => "$siteUrl/portfolio-nectar", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"],
-    ["loc" => "$siteUrl/portfolio-coinpay", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"],
-    ["loc" => "$siteUrl/portfolio-daccord", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"],
-    ["loc" => "$siteUrl/privacy-policy", "lastmod" => "2025-03-18", "changefreq" => "yearly", "priority" => "0.5"],
-    ["loc" => "$siteUrl/disclaimer", "lastmod" => "2025-03-18", "changefreq" => "yearly", "priority" => "0.5"],
-    ["loc" => "$siteUrl/landing-page", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"]
+    ["loc" => "$siteUrl/contact-us", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.9"],
+    ["loc" => "$siteUrl/about-us", "lastmod" => $today, "changefreq" => "monthly", "priority" => "0.9"],
+    ["loc" => "$siteUrl/category/blogs", "lastmod" => "2025-03-18", "changefreq" => "weekly", "priority" => "0.9"],
+    ["loc" => "$siteUrl/portfolio-beyekls", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.9"],
+    ["loc" => "$siteUrl/portfolio-nectar", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.9"],
+    ["loc" => "$siteUrl/portfolio-coinpay", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.9"],
+    ["loc" => "$siteUrl/portfolio-daccord", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.9"],
+    ["loc" => "$siteUrl/privacy-policy", "lastmod" => "2025-03-18", "changefreq" => "yearly", "priority" => "0.9"],
+    ["loc" => "$siteUrl/disclaimer", "lastmod" => "2025-03-18", "changefreq" => "yearly", "priority" => "0.9"],
+    ["loc" => "$siteUrl/landing-page", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.9"]
 ];
 
-// 2. Fetch locations, services & blogs from live API
+// 2. Fetch locations, services, blogs & portfolios from live API
 $locationsRes = fetchJson("$apiUrl/locations");
 $servicesRes = fetchJson("$apiUrl/services");
 $blogsRes = fetchJson("$apiUrl/blogs");
+$portfoliosRes = fetchJson("$apiUrl/portfolios");
 
 $locations = getItems($locationsRes);
 $services = getItems($servicesRes);
 $blogs = getItems($blogsRes);
+$portfolios = getItems($portfoliosRes);
 
 if (is_array($locations)) {
     foreach ($locations as $loc) {
@@ -132,6 +134,30 @@ if (is_array($blogs)) {
                 $caption = isset($blog['alt']) ? $blog['alt'] : (isset($blog['title']) ? $blog['title'] : '');
                 $urlData["image"] = [
                     "loc" => $blog['image'],
+                    "title" => $title,
+                    "caption" => $caption
+                ];
+            }
+            $urls[] = $urlData;
+        }
+    }
+}
+
+if (is_array($portfolios)) {
+    foreach ($portfolios as $portfolio) {
+        if (isset($portfolio['name']) && !empty($portfolio['name'])) {
+            $slug = normalizeRouteSlug(str_replace(' ', '-', strtolower($portfolio['name'])));
+            $urlData = [
+                "loc" => "$siteUrl/$slug",
+                "lastmod" => $today,
+                "changefreq" => "weekly",
+                "priority" => "0.9"
+            ];
+            if (isset($portfolio['cards'][0]['image']) && !empty($portfolio['cards'][0]['image'])) {
+                $title = isset($portfolio['title']) ? $portfolio['title'] : $portfolio['name'];
+                $caption = isset($portfolio['description']) ? $portfolio['description'] : '';
+                $urlData["image"] = [
+                    "loc" => $portfolio['cards'][0]['image'],
                     "title" => $title,
                     "caption" => $caption
                 ];

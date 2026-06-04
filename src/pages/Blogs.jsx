@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import blogImg from "../assets/blog-thumbnail.webp";
+import blogImg from "/images/blog-thumbnail.webp";
 import HomeNavbar from "../components/HomeNavbar";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 const BackgroundShapes = lazy(() => import("../components/BackgroundShapes"));
@@ -55,16 +55,16 @@ const Blogs = () => {
 
      }, []);
 
-     const optimizeImage = (url, width = 500) => {
-          if (!url) return "";
+     // const optimizeImage = (url, width = 500) => {
+     //      if (!url) return "";
 
-          return url.replace(
-               "/upload/",
-               `/upload/ar_25:11,c_fill,g_auto,w_${width},q_auto:eco,f_auto/`
-          );
-     };
+     //      return url.replace(
+     //           "/upload/",
+     //           `/upload/ar_25:11,c_fill,g_auto,w_${width},q_auto:eco,f_auto/`
+     //      );
+     // };
 
-     const heroImg = optimizeImage(blogImg, 1200);
+     // const heroImg = optimizeImage(blogImg, 1200);
 
      return (
           <section className="relative px-3 md:px-12 lg:px-20 pt-20 pb-5">
@@ -74,14 +74,14 @@ const Blogs = () => {
                     keywords="design blog, branding insights, UI UX tips, marketing blog, digital agency content"
                     canonical="https://kreeyadesign.com/blogs"
                /> */}
-               <Helmet>
+               {/* <Helmet>
                     <link
                          rel="preload"
                          as="image"
-                         href={heroImg}
+                         href='/images/blog-thumbnail.webp'
                          media="(min-width: 768px)"
                     />
-               </Helmet>
+               </Helmet> */}
                <Breadcrumb />
                <HomeNavbar useScrollTriggers={false} />
 
@@ -108,7 +108,7 @@ const Blogs = () => {
 
                     {isDesktop && (
                          <img
-                              src={blogImg}
+                              src='/images/blog-thumbnail.webp'
                               alt='The Growth Journal'
                               fetchPriority="high"
                               className="hidden md:block w-142 lg:w-290 2xl:w-7xl object-cover md:h-79.75 lg:h-163 2xl:h-180 group-hover:scale-105 transition-all duration-500 ease-in-out md:ml-70 lg:ml-105"

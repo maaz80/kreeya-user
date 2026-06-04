@@ -1,5 +1,5 @@
 import tires from '../../assets/beyekls-bg.webp'
-import tiresMobile from '../../assets/beyekls-bg-mobile.webp'
+// import tiresMobile from '../../assets/beyekls-bg-mobile.webp'
 import PortLogo from '../../assets/beyekls-logo.webp'
 // import WhiteDotted from '../../assets/white-dotted.webp'
 import { CiMobile1 } from "react-icons/ci";
@@ -11,7 +11,7 @@ const Hero = () => {
                {/* Center Background Image */}
                <div className="absolute inset-0">
                     <picture>
-                         <source media="(max-width: 768px)" srcSet={tiresMobile} />
+                         <source media="(max-width: 768px)" srcSet='/images/beyekls-bg-mobile.webp' />
                          <img
                               src={tires}
                               alt="Beyekls Bg"
