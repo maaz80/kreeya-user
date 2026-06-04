@@ -91,7 +91,7 @@ const HomeNavbar = ({ startFetch = true, useScrollTriggers = true }) => {
                     "blog",
                     "blogs",
                     "disclaimer",
-                    "policy",
+                    "privacy-policy",
                     "portfolio-beyekls",
                     "portfolio-daccord",
                     "portfolio-coinpay",
@@ -134,7 +134,7 @@ const HomeNavbar = ({ startFetch = true, useScrollTriggers = true }) => {
           };
      }, [location.pathname, useScrollTriggers]);
 
-     const isDisclaimer = location.pathname === "/disclaimer" || location.pathname === "/policy" || location.pathname === '/contact';
+     const isDisclaimer = location.pathname === "/disclaimer" || location.pathname === "/privacy-policy" || location.pathname === '/contact';
      const isPortfolio = location.pathname === "/portfolio-beyekls" || location.pathname === "/portfolio-daccord" || location.pathname === "/portfolio-coinpay" || location.pathname === "/portfolio-nectar";
 
      const handleClick = () => {

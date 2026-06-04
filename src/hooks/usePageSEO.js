@@ -38,7 +38,7 @@ const RESERVED_PAGE_PATHS = new Set([
      "about-us",
      "blogs-details",
      "location",
-     "policy",
+     "privacy-policy",
      "disclaimer",
      "contact-us",
      "portfolios",
@@ -52,7 +52,7 @@ const STATIC_PAGE_SEO_IDS = new Set([
      "blogs",
      "about-us",
      "location",
-     "policy",
+     "privacy-policy",
      "disclaimer",
      "portfolio-beyekls",
      "portfolio-daccord",
@@ -319,7 +319,16 @@ export function usePageSEO() {
                               if (cachedSeo) {
                                    setSEO(cachedSeo.title || DEFAULT_TITLE, cachedSeo.description || DEFAULT_DESCRIPTION, cachedSeo.keywords || "");
                               }
-                              // Completely bypass background fetch for portfolios since we want one static SEO
+
+                              // Perform background revalidation for portfolios SEO from live CMS API
+                              fetchJson(`${API_URL}/pages/portfolios/seo`).then((seo) => {
+                                   if (isActive) {
+                                        cache.set(cacheKeyPort, seo);
+                                        setSEO(seo.title || DEFAULT_TITLE, seo.description || DEFAULT_DESCRIPTION, seo.keywords || "");
+                                   }
+                              }).catch((err) => {
+                                   console.warn("Background portfolios SEO fetch failed:", err);
+                              });
                               return;
                          }
 
@@ -352,7 +361,7 @@ export function usePageSEO() {
                               if (isActive) {
                                    cache.set("page:not-found", seo);
                                    setSEO(seo.title || DEFAULT_TITLE, seo.description || DEFAULT_DESCRIPTION, seo.keywords || "");
-                               }
+                              }
                          }).catch(() => {});
                          return;
                     }

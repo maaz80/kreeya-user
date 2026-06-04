@@ -78,8 +78,8 @@ const YouMayLike = () => {
                                                   src={blog.image || blogImg}
                                                   alt={blog.alt}
                                                   width={500}
-                                                  height={220}
-                                                  aspectRatio="25:11"
+                                                  height={240}
+                                                  // aspectRatio="25:11"
                                                   sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) calc(50vw - 40px), 386px"
                                                   loading={index === 0 ? "eager" : "lazy"}
                                                   className="

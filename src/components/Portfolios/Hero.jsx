@@ -37,7 +37,7 @@ const Hero = ({ title, description }) => {
                                >
                                     {/* Thumbnail Image */}
                                     <img 
-                                             src="/Build-your-first-ai-agent-in-15-no-coding.webp"
+                                             src="/images/Build-your-first-ai-agent-in-15-no-coding.webp"
                                          width={690} 
                                          height={388}
                                          alt="Banking UX Case Study Video Thumbnail" 

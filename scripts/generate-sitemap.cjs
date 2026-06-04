@@ -73,7 +73,7 @@ async function main() {
     { loc: `${SITE_URL}/portfolio-nectar`, lastmod: "2025-03-18", changefreq: "monthly", priority: "0.7" },
     { loc: `${SITE_URL}/portfolio-coinpay`, lastmod: "2025-03-18", changefreq: "monthly", priority: "0.7" },
     { loc: `${SITE_URL}/portfolio-daccord`, lastmod: "2025-03-18", changefreq: "monthly", priority: "0.7" },
-    { loc: `${SITE_URL}/policy`, lastmod: "2025-03-18", changefreq: "yearly", priority: "0.5" },
+    { loc: `${SITE_URL}/privacy-policy`, lastmod: "2025-03-18", changefreq: "yearly", priority: "0.5" },
     { loc: `${SITE_URL}/disclaimer`, lastmod: "2025-03-18", changefreq: "yearly", priority: "0.5" },
     { loc: `${SITE_URL}/landing-page`, lastmod: "2025-03-18", changefreq: "monthly", priority: "0.7" },
   ];
@@ -212,7 +212,7 @@ async function main() {
         "blogs",
         "about-us",
         "location",
-        "policy",
+        "privacy-policy",
         "disclaimer",
         "portfolio-beyekls",
         "portfolio-daccord",

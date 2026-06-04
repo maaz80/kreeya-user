@@ -75,7 +75,7 @@ const Portfolios = () => {
                     <link
                          rel="preload"
                          as="image"
-                         href='/Build-your-first-ai-agent-in-15-no-coding.webp'
+                         href='/images/Build-your-first-ai-agent-in-15-no-coding.webp'
                          fetchpriority="high"
                     />
                </Helmet>

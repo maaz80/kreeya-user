@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import botIcon from "../assets/chatbot.webp";
+// import botIcon from "../assets/chatbot.webp";
 import logo from "../assets/chatbot-logo.webp";
 import { IoSend } from "react-icons/io5";
 import { FaCamera } from "react-icons/fa6";
@@ -120,7 +120,7 @@ export default function ChatBot() {
                          {/* Icon (RIGHT) */}
 
                          <img
-                              src={botIcon}
+                              src='/images/chatbot.webp'
                               alt="Chatbot Icon"
                               className="w-10 h-10 shrink-0 group-hover:scale-102"
                          />

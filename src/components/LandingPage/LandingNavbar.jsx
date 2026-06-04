@@ -1,5 +1,5 @@
-import logo from "../../assets/logo.webp";
-import LogoWhite from '../../assets/white-logo.webp'
+import logo from "/images/logo.webp";
+import LogoWhite from '/images/white-logo.webp'
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import { useEffect, useState } from "react";
 import MenuOverlay from "../MenuOverlay";

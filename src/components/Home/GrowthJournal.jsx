@@ -57,8 +57,8 @@ const GrowthJournal = () => {
                                              src={blog.image}
                                              alt={blog.alt}
                                              width="400"
-                                             height="250"
-                                             className=" w-full h-55 object-fill transition duration-500 group-hover:scale-105 "
+                                             height="190"
+                                             className=" w-full h-50 object-cover transition duration-500 group-hover:scale-105 "
                                         />
 
                                    </div>

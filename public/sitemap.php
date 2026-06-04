@@ -49,7 +49,7 @@ $urls = [
     ["loc" => "$siteUrl/portfolio-nectar", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"],
     ["loc" => "$siteUrl/portfolio-coinpay", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"],
     ["loc" => "$siteUrl/portfolio-daccord", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"],
-    ["loc" => "$siteUrl/policy", "lastmod" => "2025-03-18", "changefreq" => "yearly", "priority" => "0.5"],
+    ["loc" => "$siteUrl/privacy-policy", "lastmod" => "2025-03-18", "changefreq" => "yearly", "priority" => "0.5"],
     ["loc" => "$siteUrl/disclaimer", "lastmod" => "2025-03-18", "changefreq" => "yearly", "priority" => "0.5"],
     ["loc" => "$siteUrl/landing-page", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.7"]
 ];

@@ -29,7 +29,7 @@ const Testimonial = () => {
      const [testimonials, setTestimonials] = useState(staticTestimonials);
      const [current, setCurrent] = useState(0);
      const [animate, setAnimate] = useState(true);
-     
+
      useEffect(() => {
           setAnimate(false);
 
@@ -103,7 +103,7 @@ const Testimonial = () => {
                          {/* Content */}
                          <div className="flex flex-col gap-3 w-[70%] ">
 
-                         <div className={`testimonial-anim ${animate ? "show" : ""}`}>
+                              <div className={`testimonial-anim ${animate ? "show" : ""}`}>
                                    <p className="text-sm md:text-lg opacity-90">
                                         “{testimonial.quote}”
                                    </p>

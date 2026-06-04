@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
                     title="Privacy Policy | Kreeya Design"
                     description="Read Kreeya Design's privacy policy for how we collect, use, and secure customer data while providing UI/UX, branding, and web design services."
                     keywords="privacy policy, data protection, user privacy, UI UX agency privacy, Kreeya Design policy"
-                    canonical="https://kreeyadesign.com/policy"
+                    canonical="https://kreeyadesign.com/privacy-policy"
                /> */}
                <Suspense fallback={null}>
                     <HomeNavbar />

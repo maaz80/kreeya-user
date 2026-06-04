@@ -1,7 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { BsChevronUp } from "react-icons/bs";
-import whatsapp from "./assets/whatsapp-icon.webp";
+// import whatsapp from "./assets/whatsapp-icon.webp";
 import "./CSS/Home.css";
 // import Footer from "./components/Footer";
 const Footer = lazy(() => import("./components/Footer"));
@@ -93,7 +93,7 @@ function App() {
             className="whatsapp_cont hover:scale-110 fixed bottom-20 md:bottom-25 right-7.5 md:right-8 z-9999 bg-white rounded-full w-16 md:w-20 h-16 md:h-20 overflow-hidden transition-all cursor-pointer"
           >
             <img
-              src={whatsapp}
+              src='/images/whatsapp-icon.webp'
               alt="Whatsapp Icon"
               width="80"
               height="80"
@@ -134,7 +134,7 @@ function App() {
           {/* <Route path="/blogs-details/:slug" element={<BlogDetails />} /> */}
           <Route path="/location" element={<Location />} />
           <Route path="/:itemSlug" element={<ItemPage />} />
-          <Route path="/policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

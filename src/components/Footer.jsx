@@ -6,7 +6,7 @@ import footerImgMobile from "../assets/footer-img-mobile.webp";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getFooter } from "../utils/footerService";
-import Logo from '../assets/white-logo.webp'
+import Logo from '/images/white-logo.webp'
 import { FaXTwitter } from "react-icons/fa6";
 import { getLocations } from "../utils/locations";
 const Footer = () => {
@@ -327,7 +327,7 @@ const Footer = () => {
 
                          <div className="flex gap-8">
 
-                              <Link to='/policy' className="cursor-pointer hover:opacity-70">
+                              <Link to='/privacy-policy' className="cursor-pointer hover:opacity-70">
                                    PRIVACY POLICY
                               </Link>
 

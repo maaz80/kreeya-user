@@ -41,7 +41,7 @@ const CookieBanner = () => {
                     <p className="text-[14px] md:text-[16px] lg:text-[18px] text-dark-black text-left">
                          We use cookies to personalize content and analyze traffic.
                          <a
-                              href="/policy"
+                              href="/privacy-policy"
                               className="underline ml-1"
                          >
                               Learn more about Privacy
