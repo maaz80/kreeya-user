@@ -1,34 +1,15 @@
 import { useEffect, useState, useMemo } from "react";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useParams, useNavigate } from "react-router-dom";
-import { getPortfolios } from "../../utils/portfolio";
 import { getResponsiveImageProps } from "../../utils/cloudinary";
 import FallbackImg from "../../assets/404-bg.webp";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
-import staticPortfolios from "../../data/staticPortfolios.json";
 
-const PortfolioSection = () => {
+const PortfolioSection = ({ portfolios = [], loading = false }) => {
      const { itemSlug } = useParams();
      const navigate = useNavigate();
-     const localPortfolios = staticPortfolios || [];
-     const [portfolios, setPortfolios] = useState(localPortfolios);
      const [activeCategory, setActiveCategory] = useState("All");
-     const [loading, setLoading] = useState(localPortfolios.length === 0);
      const [currentPage, setCurrentPage] = useState(1);
-
-     useEffect(() => {
-          const fetchPortfoliosData = async () => {
-               try {
-                    const data = await getPortfolios();
-                    setPortfolios(data);
-               } catch (err) {
-                    console.error("Error fetching portfolios in section:", err);
-               } finally {
-                    setLoading(false);
-               }
-          };
-          fetchPortfoliosData();
-     }, []);
 
      useEffect(() => {
           if (portfolios.length > 0) {

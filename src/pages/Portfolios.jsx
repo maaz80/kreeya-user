@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from 'react'
+import { useEffect, useState, useMemo, lazy, Suspense } from 'react'
 import { useParams } from 'react-router-dom'
 import { getPortfolios } from '../utils/portfolio'
 import HomeNavbar from '../components/HomeNavbar'
@@ -35,51 +35,39 @@ const defaultFaqs = [
 
 const Portfolios = () => {
      const { itemSlug } = useParams();
-
-     // Synchronously resolve matching category FAQs from build-generated cache
-     const initialFaqs = (() => {
-          const localPortfolios = staticPortfolios || [];
-          if (itemSlug && localPortfolios.length > 0) {
-               const matched = localPortfolios.find(
-                    (p) => p.name.toLowerCase().replace(/\s+/g, '-') === itemSlug
-               );
-               if (matched?.faq && matched.faq.length > 0) {
-                    return matched.faq.map((f) => ({
-                         question: f.ques || "",
-                         answer: f.ans || "",
-                    }));
-               }
-          }
-          return defaultFaqs;
-     })();
-
-     const [faqs, setFaqs] = useState(initialFaqs);
+     const [portfolios, setPortfolios] = useState(staticPortfolios || []);
+     const [loading, setLoading] = useState(staticPortfolios.length === 0);
 
      useEffect(() => {
-          const loadFaqs = async () => {
+          const loadPortfoliosData = async () => {
                try {
-                    const portfolios = await getPortfolios();
-                    if (itemSlug && portfolios.length > 0) {
-                         const matched = portfolios.find(
-                              (p) => p.name.toLowerCase().replace(/\s+/g, '-') === itemSlug
-                         );
-                         if (matched?.faq && matched.faq.length > 0) {
-                              const portfolioFaqs = matched.faq.map((f) => ({
-                                   question: f.ques || "",
-                                   answer: f.ans || "",
-                              }));
-                              setFaqs(portfolioFaqs);
-                              return;
-                         }
-                    }
-                    setFaqs(defaultFaqs);
+                    const data = await getPortfolios();
+                    setPortfolios(data);
                } catch (err) {
-                    console.error("Error setting portfolio FAQs:", err);
+                    console.error("Error loading portfolios in parent page:", err);
+               } finally {
+                    setLoading(false);
                }
           };
+          loadPortfoliosData();
+     }, []);
 
-          loadFaqs();
-     }, [itemSlug]);
+     const activePortfolio = useMemo(() => {
+          if (!itemSlug || portfolios.length === 0) return null;
+          return portfolios.find(
+               (p) => p.name.toLowerCase().replace(/\s+/g, '-') === itemSlug
+          ) || null;
+     }, [itemSlug, portfolios]);
+
+     const faqs = useMemo(() => {
+          if (activePortfolio?.faq && activePortfolio.faq.length > 0) {
+               return activePortfolio.faq.map((f) => ({
+                    question: f.ques || "",
+                    answer: f.ans || "",
+               }));
+          }
+          return defaultFaqs;
+     }, [activePortfolio]);
 
      return (
           <div className=''>
@@ -87,14 +75,14 @@ const Portfolios = () => {
                     <link
                          rel="preload"
                          as="image"
-                         href='/yt-thumbnail.webp'
+                         href='/Build-your-first-ai-agent-in-15-no-coding.webp'
                          fetchpriority="high"
                     />
                </Helmet>
                <HomeNavbar />
                <Breadcrumb />
-               <Hero />
-               <PortfolioSection />
+               <Hero title={activePortfolio?.title} description={activePortfolio?.description} />
+               <PortfolioSection portfolios={portfolios} loading={loading} />
                <div className="max-w-325 mx-auto px-2 md:px-0">
                     <Suspense fallback={null}>
                          <YouMayLike />

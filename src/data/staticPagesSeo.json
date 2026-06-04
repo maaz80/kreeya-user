@@ -1,18 +1,38 @@
 {
-  "home": {
-    "_id": "69e8d669e49d0edfa2a1ce45",
-    "pageSlug": "home",
-    "title": "Best UI UX Design Company in india - Kreeya Design",
-    "description": "Best UI UX Design Company in india - Kreeya Design is a top UI/UX design firm in Delhi NCR and throughout India. Delhi's most cutting-edge and reasonably priced agency in India.",
-    "createdAt": "2026-04-22T14:08:41.270Z",
-    "updatedAt": "2026-06-03T07:00:50.188Z",
-    "__v": 0,
-    "keywords": ""
-  },
   "landing-page": {
     "title": "",
     "description": "",
     "keywords": ""
+  },
+  "home": {
+    "_id": "69e8d669e49d0edfa2a1ce45",
+    "pageSlug": "home",
+    "title": "Best UI UX Design Company in india - Kreeya Design",
+    "description": "Kreeya Design is a best UI UX design company in India delivering user-focused web, mobile app, SaaS, and product design solutions.",
+    "createdAt": "2026-04-22T14:08:41.270Z",
+    "updatedAt": "2026-06-04T06:31:08.908Z",
+    "__v": 0,
+    "keywords": ""
+  },
+  "policy": {
+    "_id": "6a06edacb08c73659c5ace9c",
+    "pageSlug": "policy",
+    "title": "Privacy Policy - Kreeya Design",
+    "description": "Privacy Policy - Kreeya Design",
+    "keywords": "",
+    "createdAt": "2026-05-15T09:55:56.917Z",
+    "updatedAt": "2026-06-03T06:27:11.039Z",
+    "__v": 0
+  },
+  "about-us": {
+    "_id": "6a0d7b5333a6904c8686b7c1",
+    "pageSlug": "about-us",
+    "title": "About Us | Kreeya Design | UI UX Design Company India",
+    "description": "Discover more about Kreeya Design, a top UI/UX design firm that offers cutting-edge web solutions, product design, branding, and digital experiences.",
+    "keywords": "",
+    "createdAt": "2026-05-20T09:13:55.442Z",
+    "updatedAt": "2026-06-04T06:28:22.990Z",
+    "__v": 0
   },
   "blogs": {
     "_id": "6a06d5334d15b85c9df75171",
@@ -27,82 +47,12 @@
   "contact-us": {
     "_id": "6a040808e7d102931393a19f",
     "pageSlug": "contact-us",
-    "title": "Contact Us - Kreeya Design",
-    "description": "Contact Us - Kreeya Design",
+    "title": "Contact Us | Kreeya Design | UI UX Design Company",
+    "description": "Contact Kreeya Design for expert UI UX design, product design, web design, and mobile app design services. Get a free consultation today.",
     "createdAt": "2026-05-13T05:11:37.052Z",
-    "updatedAt": "2026-06-03T06:27:09.908Z",
+    "updatedAt": "2026-06-04T06:33:40.177Z",
     "__v": 0,
     "keywords": ""
-  },
-  "services": {
-    "_id": "6a1fcca90625dfc73317c505",
-    "pageSlug": "services",
-    "title": "UI UX Design Services Delhi | UI UX Design Agency Near Me",
-    "description": "Get UI UX Design Services Delhi. We offer the most convenient pricing for UI UX Design agency in Delhi. Know why you need to hire a Cheap & Low-Cost UI UX Design agency in India",
-    "keywords": "",
-    "createdAt": "2026-06-03T06:41:45.927Z",
-    "updatedAt": "2026-06-03T07:03:27.683Z",
-    "__v": 0
-  },
-  "policy": {
-    "_id": "6a06edacb08c73659c5ace9c",
-    "pageSlug": "policy",
-    "title": "Privacy Policy - Kreeya Design",
-    "description": "Privacy Policy - Kreeya Design",
-    "keywords": "",
-    "createdAt": "2026-05-15T09:55:56.917Z",
-    "updatedAt": "2026-06-03T06:27:11.039Z",
-    "__v": 0
-  },
-  "portfolios": {
-    "_id": "6a1ea74f90a6bdf5f88b393d",
-    "pageSlug": "portfolios",
-    "title": "Portfolio - Kreeya Design",
-    "description": "Portfolio - Kreeya Design",
-    "keywords": "",
-    "createdAt": "2026-06-02T09:50:07.120Z",
-    "updatedAt": "2026-06-03T07:04:14.536Z",
-    "__v": 0
-  },
-  "portfolio-daccord": {
-    "title": "",
-    "description": "",
-    "keywords": ""
-  },
-  "location": {
-    "title": "",
-    "description": "",
-    "keywords": ""
-  },
-  "about-us": {
-    "_id": "6a0d7b5333a6904c8686b7c1",
-    "pageSlug": "about-us",
-    "title": "About Us | Kreeya Design | Kreeya Design Official",
-    "description": "About Us - Kreeya Design, future of UI UX Design with Kreeya Design",
-    "keywords": "",
-    "createdAt": "2026-05-20T09:13:55.442Z",
-    "updatedAt": "2026-06-03T07:02:29.248Z",
-    "__v": 0
-  },
-  "not-found": {
-    "_id": "6a040f4e465ed2470beefb7d",
-    "pageSlug": "not-found",
-    "title": "Page not found - Kreeya Design",
-    "description": "Page not found - Kreeya Design",
-    "keywords": "",
-    "createdAt": "2026-05-13T05:42:38.054Z",
-    "updatedAt": "2026-06-03T07:09:11.139Z",
-    "__v": 0
-  },
-  "portfolio-coinpay": {
-    "_id": "6a06f03db08c73659c5aceb0",
-    "pageSlug": "portfolio-coinpay",
-    "title": "Coinpay Portfolio - Kreeya Design",
-    "description": "Explore the CoinPay portfolio by Kreeya Design showcasing modern UI UX design, fintech app experience, dashboard design, and secure digital payment solutions.",
-    "keywords": "",
-    "createdAt": "2026-05-15T10:06:53.493Z",
-    "updatedAt": "2026-06-03T06:23:41.023Z",
-    "__v": 0
   },
   "portfolio-beyekls": {
     "_id": "6a06de6ad1d500e5262c25f8",
@@ -113,6 +63,11 @@
     "createdAt": "2026-05-15T08:50:50.790Z",
     "updatedAt": "2026-06-03T06:23:41.041Z",
     "__v": 0
+  },
+  "portfolio-daccord": {
+    "title": "",
+    "description": "",
+    "keywords": ""
   },
   "disclaimer": {
     "_id": "6a06edfeb08c73659c5ace9f",
@@ -132,6 +87,51 @@
     "keywords": "",
     "createdAt": "2026-05-15T10:12:40.782Z",
     "updatedAt": "2026-06-03T06:23:41.024Z",
+    "__v": 0
+  },
+  "portfolios": {
+    "_id": "6a1ea74f90a6bdf5f88b393d",
+    "pageSlug": "portfolios",
+    "title": "Portfolio - Kreeya Design",
+    "description": "Portfolio - Kreeya Design",
+    "keywords": "",
+    "createdAt": "2026-06-02T09:50:07.120Z",
+    "updatedAt": "2026-06-03T07:04:14.536Z",
+    "__v": 0
+  },
+  "services": {
+    "_id": "6a1fcca90625dfc73317c505",
+    "pageSlug": "services",
+    "title": "UI UX Design Services Delhi | UI UX Design Agency Near Me",
+    "description": "We offer the most convenient pricing for UI UX Design Services Delhi. Know why you need to hire a Cheap & Low-Cost UI UX Design agency in India",
+    "keywords": "",
+    "createdAt": "2026-06-03T06:41:45.927Z",
+    "updatedAt": "2026-06-04T06:44:41.818Z",
+    "__v": 0
+  },
+  "location": {
+    "title": "",
+    "description": "",
+    "keywords": ""
+  },
+  "not-found": {
+    "_id": "6a040f4e465ed2470beefb7d",
+    "pageSlug": "not-found",
+    "title": "Page not found - Kreeya Design",
+    "description": "Page not found - Kreeya Design",
+    "keywords": "",
+    "createdAt": "2026-05-13T05:42:38.054Z",
+    "updatedAt": "2026-06-03T07:09:11.139Z",
+    "__v": 0
+  },
+  "portfolio-coinpay": {
+    "_id": "6a06f03db08c73659c5aceb0",
+    "pageSlug": "portfolio-coinpay",
+    "title": "Coinpay Portfolio - Kreeya Design",
+    "description": "Explore the CoinPay portfolio by Kreeya Design showcasing modern UI UX design, fintech app experience, dashboard design, and secure digital payment solutions.",
+    "keywords": "",
+    "createdAt": "2026-05-15T10:06:53.493Z",
+    "updatedAt": "2026-06-03T06:23:41.023Z",
     "__v": 0
   }
 }
