@@ -3,13 +3,13 @@ import HomeNavbar from '../components/HomeNavbar'
 import Breadcrumb from '../components/BreadCrumb'
 import Cards from '../components/Services/Cards'
 import useFaq from '../hooks/useFaq'
+import { useEffect } from 'react'
 
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
 const FaqSection = lazy(() => import('../components/FaqSection'))
 
 const Services = () => {
      const { faqData } = useFaq();
-
      return (
           <div>
                <HomeNavbar />

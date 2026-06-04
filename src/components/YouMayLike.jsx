@@ -72,7 +72,7 @@ const YouMayLike = () => {
 
                                         {/* Image */}
 
-                                        <div className="overflow-hidden min-h-[220px] max-h-[220px]">
+                                        <div className="overflow-hidden min-h-50 max-h-50">
 
                                              <OptimizedImage
                                                   src={blog.image || blogImg}
@@ -84,7 +84,7 @@ const YouMayLike = () => {
                                                   loading={index === 0 ? "eager" : "lazy"}
                                                   className="
                         w-full
-                        min-h-[220px] max-h-[220px] 
+                        min-h-50 max-h-50 
                         object-fill
                         transition
                         duration-500

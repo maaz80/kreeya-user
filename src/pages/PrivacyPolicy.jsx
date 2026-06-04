@@ -18,7 +18,12 @@ const PrivacyPolicy = () => {
 
      return (
           <section
-               className="relative px-4 md:px-15 lg:px-20 2xl:px-30 py-20 bg-cover bg-center text-dark-black/50"
+               style={{
+                    backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${BgImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+               }}
+               className="relative px-4 md:px-15 lg:px-20 2xl:px-30 py-20 text-[#8a8a8a]"
           >
                {/* <SeoTags
                     title="Privacy Policy | Kreeya Design"
@@ -30,17 +35,6 @@ const PrivacyPolicy = () => {
                     <HomeNavbar />
                </Suspense>
                <Breadcrumb />
-               {/* Background Image */}
-               <img
-                    src={BgImage}
-                    alt="Background"
-                    className="absolute inset-0 w-full h-full object-cover z-0"
-                    loading="eager"
-                    fetchpriority="high"
-               />
-
-               {/* Overlay */}
-               <div className="absolute inset-0 bg-white/80 z-10"></div>
 
                {/* title */}
                <h1 className="relative text-center leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-6 md:mb-12 z-20 text-dark-black poiret-one-regular mt-8">
@@ -335,9 +329,11 @@ const PrivacyPolicy = () => {
                </div>
 
                <Suspense fallback={<div className="min-h-40" />}>
-                    <YouMayLike />
-                    <div className="mt-10 md:mt-20">
-                         <FaqSection faqData={faqData} />
+                    <div style={{ contentVisibility: 'auto', containIntrinsicSize: '0 400px' }}>
+                         <YouMayLike />
+                         <div className="mt-10 md:mt-20">
+                              <FaqSection faqData={faqData} />
+                         </div>
                     </div>
                </Suspense>
 

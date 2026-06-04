@@ -117,7 +117,7 @@ const BlogDetails = () => {
                                         aspectRatio="133:60"
                                         sizes="(max-width: 768px) 100vw, 1330px"
                                         loading="eager"
-                                        className="w-full max-w-332.5 h-50 md:h-90 lg:h-180 object-cover rounded-md mx-auto"
+                                        className="w-full max-w-332.5 h-50 md:h-90 lg:h-140 object-cover rounded-md mx-auto"
                                    />
                               )}
 

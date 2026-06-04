@@ -123,9 +123,9 @@ const Cards = () => {
      }, [currentPage, totalPages]);
 
      return (
-          <section className="w-full mt-[140px]">
+          <section className="w-full mt-35">
 
-               <div className="max-w-[1430px] mx-auto px-4 md:px-6 lg:px-8">
+               <div className="max-w-357.5 mx-auto px-4 md:px-6 lg:px-8">
 
                     {/* HEADING */}
                     <div className="flex items-center justify-start mb-14">
@@ -148,10 +148,10 @@ const Cards = () => {
 
                                    <div
                                         key={index}
-                                        className="w-full max-w-[470px] rounded-[28px] overflow-hidden bg-white animate-pulse"
+                                        className="w-full max-w-117.5 rounded-[28px] overflow-hidden bg-white animate-pulse"
                                    >
 
-                                        <div className="h-[280px] bg-slate-200"></div>
+                                        <div className="h-70 bg-slate-200"></div>
 
                                         <div className="p-6">
 
@@ -174,19 +174,19 @@ const Cards = () => {
                                                   getServiceItemRoute(item)
                                              )
                                         }
-                                        className="group w-full max-w-[470px] rounded-[28px] overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 shadow-2xl bg-white"
+                                        className="group w-full max-w-117.5 rounded-[28px] overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 shadow-2xl bg-white"
                                    >
 
                                         {/* IMAGE */}
-                                        <div className="relative overflow-hidden h-[250px] md:h-[280px]">
+                                        <div className="relative overflow-hidden h-62.5 md:h-70">
 
-                                             <OptimizedImage 
-                                                  src={item.image || FallbackImg} 
+                                             <OptimizedImage
+                                                  src={item.image || FallbackImg}
                                                   alt={item.title || 'Portfolio Project'}
                                                   width={470}
                                                   height={280}
                                                   aspectRatio="47:28"
-                                                  sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1279px) calc(50vw - 32px), 470px"
+                                                  sizes="(max-width: 767px) 92vw, (max-width: 1279px) 45vw, 470px"
                                                   loading={index < 2 ? 'eager' : 'lazy'}
                                                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                              />

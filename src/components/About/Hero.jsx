@@ -1,4 +1,3 @@
-import AboutHeroBg from '../../assets/about-hero-bg.webp';
 
 const Hero = () => {
      return (

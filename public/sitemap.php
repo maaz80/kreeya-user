@@ -69,12 +69,22 @@ if (is_array($locations)) {
         foreach ($items as $item) {
             if (isset($item['slug']) && !empty($item['slug'])) {
                 $slug = normalizeRouteSlug($item['slug']);
-                $urls[] = [
+                $urlData = [
                     "loc" => "$siteUrl/$slug",
                     "lastmod" => $today,
                     "changefreq" => "weekly",
                     "priority" => "0.9"
                 ];
+                if (isset($item['image']) && !empty($item['image'])) {
+                    $title = isset($item['title']) ? $item['title'] : (isset($item['hero']['title']) ? $item['hero']['title'] : '');
+                    $caption = isset($item['description']) ? $item['description'] : (isset($item['hero']['description']) ? $item['hero']['description'] : '');
+                    $urlData["image"] = [
+                        "loc" => $item['image'],
+                        "title" => $title,
+                        "caption" => $caption
+                    ];
+                }
+                $urls[] = $urlData;
             }
         }
     }
@@ -86,12 +96,22 @@ if (is_array($services)) {
         foreach ($items as $item) {
             if (isset($item['slug']) && !empty($item['slug'])) {
                 $slug = normalizeRouteSlug($item['slug']);
-                $urls[] = [
+                $urlData = [
                     "loc" => "$siteUrl/$slug",
                     "lastmod" => $today,
                     "changefreq" => "weekly",
                     "priority" => "0.9"
                 ];
+                if (isset($item['image']) && !empty($item['image'])) {
+                    $title = isset($item['title']) ? $item['title'] : (isset($item['hero']['title']) ? $item['hero']['title'] : '');
+                    $caption = isset($item['description']) ? $item['description'] : (isset($item['hero']['description']) ? $item['hero']['description'] : '');
+                    $urlData["image"] = [
+                        "loc" => $item['image'],
+                        "title" => $title,
+                        "caption" => $caption
+                    ];
+                }
+                $urls[] = $urlData;
             }
         }
     }
@@ -101,24 +121,46 @@ if (is_array($blogs)) {
     foreach ($blogs as $blog) {
         if (isset($blog['slug']) && !empty($blog['slug'])) {
             $slug = normalizeRouteSlug($blog['slug']);
-            $urls[] = [
+            $urlData = [
                 "loc" => "$siteUrl/$slug",
                 "lastmod" => $today,
                 "changefreq" => "weekly",
                 "priority" => "0.9"
             ];
+            if (isset($blog['image']) && !empty($blog['image'])) {
+                $title = isset($blog['title']) ? $blog['title'] : '';
+                $caption = isset($blog['alt']) ? $blog['alt'] : (isset($blog['title']) ? $blog['title'] : '');
+                $urlData["image"] = [
+                    "loc" => $blog['image'],
+                    "title" => $title,
+                    "caption" => $caption
+                ];
+            }
+            $urls[] = $urlData;
         }
     }
 }
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
-echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
+echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . PHP_EOL;
+echo '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' . PHP_EOL;
 foreach ($urls as $url) {
     echo '  <url>' . PHP_EOL;
     echo '    <loc>' . htmlspecialchars($url['loc']) . '</loc>' . PHP_EOL;
     echo '    <lastmod>' . $url['lastmod'] . '</lastmod>' . PHP_EOL;
     echo '    <changefreq>' . $url['changefreq'] . '</changefreq>' . PHP_EOL;
     echo '    <priority>' . $url['priority'] . '</priority>' . PHP_EOL;
+    if (isset($url['image']) && !empty($url['image'])) {
+        echo '    <image:image>' . PHP_EOL;
+        echo '      <image:loc>' . htmlspecialchars($url['image']['loc']) . '</image:loc>' . PHP_EOL;
+        if (!empty($url['image']['title'])) {
+            echo '      <image:title>' . htmlspecialchars($url['image']['title']) . '</image:title>' . PHP_EOL;
+        }
+        if (!empty($url['image']['caption'])) {
+            echo '      <image:caption>' . htmlspecialchars($url['image']['caption']) . '</image:caption>' . PHP_EOL;
+        }
+        echo '    </image:image>' . PHP_EOL;
+    }
     echo '  </url>' . PHP_EOL;
 }
 echo '</urlset>' . PHP_EOL;

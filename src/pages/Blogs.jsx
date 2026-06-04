@@ -170,7 +170,7 @@ const Blogs = () => {
 
                                    {/* Image */}
 
-                                   <div className="overflow-hidden min-h-55 max-h-55">
+                                   <div className="overflow-hidden min-h-50 max-h-50">
 
                                         <OptimizedImage
                                              src={blog.image || blogImg}
@@ -180,7 +180,7 @@ const Blogs = () => {
                                              aspectRatio="25:11"
                                              sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) calc(50vw - 40px), 386px"
                                              loading={index < 3 ? "eager" : "lazy"}
-                                             className="w-full min-h-55 max-h-55 object-fill transition duration-500 group-hover:scale-105"
+                                             className="w-full min-h-50 max-h-50 object-fill transition duration-500 group-hover:scale-105"
                                         />
 
                                    </div>

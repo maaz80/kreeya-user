@@ -162,40 +162,42 @@ export function usePageSEO() {
                return res.json();
           };
 
-          const resolveItemSlugSeo = async (slug) => {
-               // 1. Dynamically import split json files to keep initial bundle size tiny
-               const [
-                    { default: localLocations },
-                    { default: localServices },
-                    { default: localBlogs }
-               ] = await Promise.all([
-                    import("../data/staticLocations.json"),
-                    import("../data/staticServices.json"),
-                    import("../data/staticBlogs.json")
-               ]);
+          const resolveItemSlugSeo = async (slug, skipLocal = false) => {
+               if (!skipLocal) {
+                    // 1. Dynamically import split json files to keep initial bundle size tiny
+                    const [
+                         { default: localLocations },
+                         { default: localServices },
+                         { default: localBlogs }
+                    ] = await Promise.all([
+                         import("../data/staticLocations.json"),
+                         import("../data/staticServices.json"),
+                         import("../data/staticBlogs.json")
+                    ]);
 
-               // Try to resolve from local static split files instantly (0ms)
-               const locationItem = localLocations
-                    .flatMap((location) => location.items || [])
-                    .find((item) => matchesRouteSlug(item, slug));
-               if (locationItem) {
-                    return getItemSeo(locationItem);
-               }
+                    // Try to resolve from local static split files instantly (0ms)
+                    const locationItem = localLocations
+                         .flatMap((location) => location.items || [])
+                         .find((item) => matchesRouteSlug(item, slug));
+                    if (locationItem) {
+                         return getItemSeo(locationItem);
+                    }
 
-               const serviceItem = localServices
-                    .flatMap((service) => service.items || [])
-                    .find((item) => matchesRouteSlug(item, slug));
-               if (serviceItem) {
-                    return getItemSeo(serviceItem);
-               }
+                    const serviceItem = localServices
+                         .flatMap((service) => service.items || [])
+                         .find((item) => matchesRouteSlug(item, slug));
+                    if (serviceItem) {
+                         return getItemSeo(serviceItem);
+                    }
 
-               const blogItem = localBlogs.find((blog) => matchesRouteSlug(blog, slug));
-               if (blogItem) {
-                    return {
-                         title: blogItem.seoTitle || blogItem.title,
-                         description: blogItem.seoDescription || blogItem.content?.replace(/<[^>]+>/g, '').slice(0, 150),
-                         keywords: blogItem.seoKeywords || ""
-                    };
+                    const blogItem = localBlogs.find((blog) => matchesRouteSlug(blog, slug));
+                    if (blogItem) {
+                         return {
+                              title: blogItem.seoTitle || blogItem.title,
+                              description: blogItem.seoDescription || blogItem.content?.replace(/<[^>]+>/g, '').slice(0, 150),
+                              keywords: blogItem.seoKeywords || ""
+                         };
+                    }
                }
 
                // 2. Fallback to dynamic live API calls in case sitemap/build is not updated yet
@@ -292,7 +294,7 @@ export function usePageSEO() {
                               setSEO(itemSeo.title || DEFAULT_TITLE, itemSeo.description || DEFAULT_DESCRIPTION, itemSeo.keywords || "");
                               
                               // Silent background revalidation
-                              resolveItemSlugSeo(slug).then((updatedSeo) => {
+                              resolveItemSlugSeo(slug, true).then((updatedSeo) => {
                                    if (updatedSeo && isActive) {
                                         cache.set(cacheKey, updatedSeo);
                                         setSEO(updatedSeo.title || DEFAULT_TITLE, updatedSeo.description || DEFAULT_DESCRIPTION, updatedSeo.keywords || "");
@@ -326,6 +328,14 @@ export function usePageSEO() {
                          if (itemSeo) {
                               cache.set(cacheKey, itemSeo);
                               setSEO(itemSeo.title || DEFAULT_TITLE, itemSeo.description || DEFAULT_DESCRIPTION, itemSeo.keywords || "");
+                              
+                              // Trigger background revalidation to fetch updated CMS data
+                              resolveItemSlugSeo(slug, true).then((updatedSeo) => {
+                                   if (updatedSeo && isActive) {
+                                        cache.set(cacheKey, updatedSeo);
+                                        setSEO(updatedSeo.title || DEFAULT_TITLE, updatedSeo.description || DEFAULT_DESCRIPTION, updatedSeo.keywords || "");
+                                   }
+                              }).catch(() => {});
                               return;
                          }
 

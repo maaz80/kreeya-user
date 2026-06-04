@@ -115,14 +115,23 @@ const OptimizedImage = ({
           } else {
                fallbackTrans.push('w_1024', 'c_scale'); // High-quality default desktop size
           }
-          fallbackTrans.push('q_auto', 'f_auto');
+          fallbackTrans.push('f_avif', 'q_auto:eco');
           const finalSrc = `${baseUrl}/${fallbackTrans.join(',')}/${cleanPath}`;
 
           // Generate srcSet (Retina-optimized if width is specified, otherwise viewport-responsive)
           let widths = [];
           if (width) {
                const w = Number(width);
-               widths = [w, w * 2, w * 3].filter(w => w <= 2560); // 1x, 2x, 3x Retina densities
+
+               widths = [
+                    Math.round(w * 0.5),
+                    Math.round(w * 0.75),
+                    w,
+                    Math.round(w * 1.5),
+                    w * 2,
+               ]
+                    .filter(v => v <= 2560)
+                    .filter((v, i, arr) => arr.indexOf(v) === i);
           } else {
                widths = [320, 480, 640, 768, 1024, 1280, 1600, 2000];
           }
@@ -144,7 +153,7 @@ const OptimizedImage = ({
                     trans.push('c_scale');
                }
                
-               trans.push('q_auto', 'f_auto');
+               trans.push('f_avif', 'q_auto:eco');
                return `${baseUrl}/${trans.join(',')}/${cleanPath} ${w}w`;
           });
 
@@ -178,6 +187,8 @@ const OptimizedImage = ({
                srcSet={finalSrcSet}
                sizes={finalSrcSet ? finalSizes : undefined}
                alt={alt}
+               decoding="async"
+               fetchPriority={loading === 'eager' ? 'high' : 'auto'}
                className={className}
                loading={loading}
                width={width}

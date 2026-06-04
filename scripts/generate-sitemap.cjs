@@ -6,6 +6,16 @@ const API_URL = "https://api.kreeyadesign.com/api";
 const SITE_URL = "https://kreeyadesign.com";
 const TODAY = new Date().toISOString().split('T')[0];
 
+function escapeXml(unsafe) {
+  if (!unsafe) return '';
+  return String(unsafe)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 function fetchJson(url) {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
@@ -97,7 +107,12 @@ async function main() {
           loc: `${SITE_URL}/${slug}`,
           lastmod: TODAY,
           changefreq: "weekly",
-          priority: "0.9"
+          priority: "0.9",
+          image: item.image ? {
+            loc: item.image,
+            title: item.title || item.hero?.title,
+            caption: item.description || item.hero?.description
+          } : undefined
         });
       }
     });
@@ -112,7 +127,12 @@ async function main() {
           loc: `${SITE_URL}/${slug}`,
           lastmod: TODAY,
           changefreq: "weekly",
-          priority: "0.9"
+          priority: "0.9",
+          image: item.image ? {
+            loc: item.image,
+            title: item.title || item.hero?.title,
+            caption: item.description || item.hero?.description
+          } : undefined
         });
       }
     });
@@ -125,14 +145,20 @@ async function main() {
           loc: `${SITE_URL}/${slug}`,
           lastmod: TODAY,
           changefreq: "weekly",
-          priority: "0.9"
+          priority: "0.9",
+          image: blog.image ? {
+            loc: blog.image,
+            title: blog.title,
+            caption: blog.alt || blog.title
+          } : undefined
         });
       }
     });
 
     // 6. Generate XML Structure
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n';
+    xml += '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';
 
     urls.forEach(url => {
       xml += '  <url>\n';
@@ -140,6 +166,17 @@ async function main() {
       xml += `    <lastmod>${url.lastmod}</lastmod>\n`;
       xml += `    <changefreq>${url.changefreq}</changefreq>\n`;
       xml += `    <priority>${url.priority}</priority>\n`;
+      if (url.image) {
+        xml += '    <image:image>\n';
+        xml += `      <image:loc>${escapeXml(url.image.loc)}</image:loc>\n`;
+        if (url.image.title) {
+          xml += `      <image:title>${escapeXml(url.image.title)}</image:title>\n`;
+        }
+        if (url.image.caption) {
+          xml += `      <image:caption>${escapeXml(url.image.caption)}</image:caption>\n`;
+        }
+        xml += '    </image:image>\n';
+      }
       xml += '  </url>\n';
     });
 
