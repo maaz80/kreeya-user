@@ -1,19 +1,4 @@
 {
-  "landing-page": {
-    "title": "",
-    "description": "",
-    "keywords": ""
-  },
-  "blogs": {
-    "_id": "6a06d5334d15b85c9df75171",
-    "pageSlug": "blogs",
-    "title": "Kreeya Design's Official Blog - Insights, Updates and Tips",
-    "description": "Visit Kreeya Design's blog to learn about the latest developments in UI/UX design trends, news, and tactics that work.",
-    "keywords": "",
-    "createdAt": "2026-05-15T08:11:31.889Z",
-    "updatedAt": "2026-06-03T07:07:26.532Z",
-    "__v": 0
-  },
   "home": {
     "_id": "69e8d669e49d0edfa2a1ce45",
     "pageSlug": "home",
@@ -34,19 +19,29 @@
     "__v": 0,
     "keywords": ""
   },
-  "location": {
+  "landing-page": {
     "title": "",
     "description": "",
     "keywords": ""
   },
-  "privacy-policy": {
-    "_id": "6a21439b5bc6d33caa10147c",
-    "pageSlug": "privacy-policy",
-    "title": "Privacy Policy | Kreeya Design | Kreeya Design Official",
-    "description": "To learn how we gather, utilize, safeguard, and handle your personal information and data, read Kreeya Design's Privacy Policy.",
+  "blogs": {
+    "_id": "6a06d5334d15b85c9df75171",
+    "pageSlug": "blogs",
+    "title": "Kreeya Design's Official Blog - Insights, Updates and Tips",
+    "description": "Visit Kreeya Design's blog to learn about the latest developments in UI/UX design trends, news, and tactics that work.",
     "keywords": "",
-    "createdAt": "2026-06-04T09:21:31.776Z",
-    "updatedAt": "2026-06-04T09:21:31.776Z",
+    "createdAt": "2026-05-15T08:11:31.889Z",
+    "updatedAt": "2026-06-03T07:07:26.532Z",
+    "__v": 0
+  },
+  "portfolios": {
+    "_id": "6a1ea74f90a6bdf5f88b393d",
+    "pageSlug": "portfolios",
+    "title": "Portfolio | Kreeya Design | UI UX Design Projects",
+    "description": "View the portfolio of Kreeya Design, which includes projects related to digital transformation, product design, web design, mobile app design, and UI/UX design.",
+    "keywords": "",
+    "createdAt": "2026-06-02T09:50:07.120Z",
+    "updatedAt": "2026-06-04T09:00:51.964Z",
     "__v": 0
   },
   "services": {
@@ -69,6 +64,26 @@
     "updatedAt": "2026-06-04T06:51:58.321Z",
     "__v": 0
   },
+  "not-found": {
+    "_id": "6a040f4e465ed2470beefb7d",
+    "pageSlug": "not-found",
+    "title": "Page not found - Kreeya Design",
+    "description": "You can't find the page you're searching for. View Kreeya Design's digital solutions, blogs, portfolio, and UI/UX design services.",
+    "keywords": "",
+    "createdAt": "2026-05-13T05:42:38.054Z",
+    "updatedAt": "2026-06-04T07:01:25.972Z",
+    "__v": 0
+  },
+  "about-us": {
+    "_id": "6a0d7b5333a6904c8686b7c1",
+    "pageSlug": "about-us",
+    "title": "About Us | Kreeya Design | UI UX Design Company India",
+    "description": "Learn about Kreeya Design, a leading UI UX Design Company India helping startups and enterprises create impactful digital experiences.",
+    "keywords": "",
+    "createdAt": "2026-05-20T09:13:55.442Z",
+    "updatedAt": "2026-06-04T14:01:09.903Z",
+    "__v": 0
+  },
   "portfolio-daccord": {
     "_id": "6a2135f0539db6a64e225aff",
     "pageSlug": "portfolio-daccord",
@@ -89,14 +104,14 @@
     "updatedAt": "2026-06-04T06:46:34.738Z",
     "__v": 0
   },
-  "not-found": {
-    "_id": "6a040f4e465ed2470beefb7d",
-    "pageSlug": "not-found",
-    "title": "Page not found - Kreeya Design",
-    "description": "You can't find the page you're searching for. View Kreeya Design's digital solutions, blogs, portfolio, and UI/UX design services.",
+  "privacy-policy": {
+    "_id": "6a21439b5bc6d33caa10147c",
+    "pageSlug": "privacy-policy",
+    "title": "Privacy Policy | Kreeya Design | Kreeya Design Official",
+    "description": "To learn how we gather, utilize, safeguard, and handle your personal information and data, read Kreeya Design's Privacy Policy.",
     "keywords": "",
-    "createdAt": "2026-05-13T05:42:38.054Z",
-    "updatedAt": "2026-06-04T07:01:25.972Z",
+    "createdAt": "2026-06-04T09:21:31.776Z",
+    "updatedAt": "2026-06-04T09:21:31.776Z",
     "__v": 0
   },
   "portfolio-coinpay": {
@@ -109,6 +124,11 @@
     "updatedAt": "2026-06-04T06:58:09.658Z",
     "__v": 0
   },
+  "location": {
+    "title": "",
+    "description": "",
+    "keywords": ""
+  },
   "portfolio-nectar": {
     "_id": "6a06f198b08c73659c5aceb8",
     "pageSlug": "portfolio-nectar",
@@ -117,26 +137,6 @@
     "keywords": "",
     "createdAt": "2026-05-15T10:12:40.782Z",
     "updatedAt": "2026-06-04T07:00:17.865Z",
-    "__v": 0
-  },
-  "about-us": {
-    "_id": "6a0d7b5333a6904c8686b7c1",
-    "pageSlug": "about-us",
-    "title": "About Us | Kreeya Design | UI UX Design Company India",
-    "description": "Discover more about Kreeya Design, a top UI/UX design firm that offers cutting-edge web solutions, product design, branding, and digital experiences.",
-    "keywords": "",
-    "createdAt": "2026-05-20T09:13:55.442Z",
-    "updatedAt": "2026-06-04T06:28:22.990Z",
-    "__v": 0
-  },
-  "portfolios": {
-    "_id": "6a1ea74f90a6bdf5f88b393d",
-    "pageSlug": "portfolios",
-    "title": "Portfolio | Kreeya Design | UI UX Design Projects",
-    "description": "View the portfolio of Kreeya Design, which includes projects related to digital transformation, product design, web design, mobile app design, and UI/UX design.",
-    "keywords": "",
-    "createdAt": "2026-06-02T09:50:07.120Z",
-    "updatedAt": "2026-06-04T09:00:51.964Z",
     "__v": 0
   }
 }

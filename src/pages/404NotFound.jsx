@@ -8,7 +8,7 @@ const NotFound = () => {
           <section className="min-h-screen flex items-center justify-center px-6">
                <Helmet>
                     <link rel="canonical" href="https://kreeyadesign.com/not-found" />
-                    <meta name="robots" content="noindex,follow" />
+                    {/* <meta name="robots" content="noindex,follow" /> */}
                </Helmet>
                <HomeNavbar />
                <BackgroundShapes />

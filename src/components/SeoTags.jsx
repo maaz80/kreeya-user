@@ -36,7 +36,7 @@ const SeoTags = ({
                <meta name="twitter:image" content={metaImage} />
                <meta name="twitter:creator" content={DEFAULT_TWITTER_CREATOR} />
                {canonical && <link rel="canonical" href={canonical} />}
-               {noIndex && <meta name="robots" content="noindex,follow" />}
+               {/* {noIndex && <meta name="robots" content="noindex,follow" />} */}
           </Helmet>
      );
 };
