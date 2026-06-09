@@ -6,6 +6,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getNavbar } from "../utils/navbar";
 import defaultDarkLogo from '/images/logo.webp'
 import defaultWhiteLogo from '/images/white-logo.webp'
+import { FaInstagram, FaLinkedinIn, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { SiFacebook, SiYoutube } from "react-icons/si";
+import { FaXTwitter } from "react-icons/fa6";
 
 const HomeNavbar = ({ startFetch = true, useScrollTriggers = true }) => {
      const [menuOpen, setMenuOpen] = useState(false);
@@ -175,71 +178,108 @@ const HomeNavbar = ({ startFetch = true, useScrollTriggers = true }) => {
           window.location.href = "https://calendly.com/pyush-anand7/new-meeting";
      };
      return (
-          <header className={`w-full fixed top-0 left-0 bg-white/4 ${isDisclaimer ? 'backdrop-blur-sm' : 'backdrop-blur-2xl'} z-9999 plus-jakarta-sans`}>
+          <header className="w-full fixed top-0 left-0 z-9999 plus-jakarta-sans">
                <MenuOverlay isOpen={menuOpen} setIsOpen={setMenuOpen} startFetch={startFetch} />
-               <div className="max-w-350.5 mx-auto flex items-center justify-between px-3 md:px-6 py-4">
 
-                    {/* Portfolio Logo */}
-                    {isPortfolio && (
-                         <Link to='/' className="flex items-center gap-2 cursor-pointer">
-                              <img
-                                   src={logoAlt ? (navbar.logo1 ? navbar.logo1 : defaultDarkLogo) : (navbar.logo2 ? navbar.logo2 : defaultWhiteLogo)}
-                                  alt="Kreeya Design Logo"
-                                   loading="eager"
-                                   fetchPriority="high"
-                                   width="160"
-                                   height="42"
-                                   className="w-23.75 md:w-31.75 lg:w-40 h-6 md:h-8 lg:h-10.5 object-contain"
-                              />
-                         </Link>
-                    )}
+               {/* Top Bar */}
+               <div className="w-full bg-[#ff5a00] text-white py-1.5 md:py-2 text-[11px] md:text-[13px] font-semibold border-b border-white/10 z-[10000]">
+                    <div className="max-w-350.5 mx-auto flex items-center justify-between px-3 md:px-6">
+                         <div className="flex items-center gap-4 md:gap-6">
+                              <a href="tel:+919311500423" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                                   <FaPhoneAlt size={12} className="md:w-3.5 md:h-3.5" />
+                                   <span>+91 9311500423</span>
+                              </a>
+                              <a href="mailto:business@kreeyadesign.com" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                                   <FaEnvelope size={12} className="md:w-3.5 md:h-3.5" />
+                                   <span className="hidden sm:inline">business@kreeyadesign.com</span>
+                              </a>
+                         </div>
+                         <div className="flex items-center gap-4 md:gap-5">
+                              <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-[2px] transition-all duration-200">
+                                   <SiFacebook size={14} className="md:w-4 md:h-4" />
+                              </a>
+                              <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-[2px] transition-all duration-200">
+                                   <FaInstagram size={14} className="md:w-4 md:h-4" />
+                              </a>
+                              <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-[2px] transition-all duration-200">
+                                   <FaLinkedinIn size={14} className="md:w-4 md:h-4" />
+                              </a>
+                              <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-[2px] transition-all duration-200">
+                                   <SiYoutube size={14} className="md:w-4 md:h-4" />
+                              </a>
+                              <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-[2px] transition-all duration-200">
+                                   <FaXTwitter size={14} className="md:w-4 md:h-4" />
+                              </a>
+                         </div>
+                    </div>
+               </div>
 
-                    {!isPortfolio && (
-                         <Link to='/' className="flex items-center gap-2 cursor-pointer">
-                              <img
-                                   src={logoAltForHome ? (navbar.logo2 ? navbar.logo2 : defaultWhiteLogo) : (navbar.logo1 ? navbar.logo1 : defaultDarkLogo)}
-                                   alt="Kreeya Design Logo"
-                                   loading="eager"
-                                   fetchpriority="high"
-                                   width="160"
-                                   height="42"
-                                   className="w-23.75 md:w-31.75 lg:w-40 h-6 md:h-8 lg:h-10.5 object-contain"
-                              />
-                         </Link>
-                    )}
+               {/* Navbar */}
+               <div className={`w-full bg-white/4 ${isDisclaimer ? 'backdrop-blur-sm' : 'backdrop-blur-2xl'} border-b border-black/5`}>
+                    <div className="max-w-350.5 mx-auto flex items-center justify-between px-3 md:px-6 py-4">
 
-                    {/* Right Actions */}
-                    <div className="flex items-center gap-3 md:gap-6">
-                         <button
-                              onClick={handleClick}
-                              className="header-btn group relative isolate overflow-hidden bg-cust-orange text-white text-[12px] lg:text-[14px] w-32.25 lg:w-38.75 h-10 lg:h-12 flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 hover:text-cust-orange  cursor-pointer active:scale-99"
-                         >
-                              <span className="relative z-10">{navbar.buttonText ? navbar.buttonText : 'Get in Touch'}</span>
-                              <HiOutlineArrowLongRight
-                                   size={20}
-                                   className="relative z-10 text-white transition-all duration-300 group-hover:text-cust-orange min-w-5 min-h-5"
-                              />
-                         </button>
-
+                         {/* Portfolio Logo */}
                          {isPortfolio && (
-                              <button
-                                   aria-label="Open menu"
-                                   onClick={() => setMenuOpen(true)}
-                                   className={`p-1 cursor-pointer hover:text-cust-orange ${logoAlt ? 'text-dark-black' : 'text-white'}`}
-                              >
-                                   <HiMenuAlt4 size={22} />
-                              </button>
+                              <Link to='/' className="flex items-center gap-2 cursor-pointer">
+                                   <img
+                                        src={logoAlt ? (navbar.logo1 ? navbar.logo1 : defaultDarkLogo) : (navbar.logo2 ? navbar.logo2 : defaultWhiteLogo)}
+                                        alt="Kreeya Design Logo"
+                                        loading="eager"
+                                        fetchPriority="high"
+                                        width="160"
+                                        height="42"
+                                        className="w-23.75 md:w-31.75 lg:w-40 h-6 md:h-8 lg:h-10.5 object-contain"
+                                   />
+                              </Link>
                          )}
 
                          {!isPortfolio && (
-                              <button
-                                   aria-label="Open menu"
-                                   onClick={() => setMenuOpen(true)}
-                                   className={`p-1 cursor-pointer hover:text-cust-orange ${logoAltForHome ? 'text-white' : 'text-dark-black'}`}
-                              >
-                                   <HiMenuAlt4 size={22} />
-                              </button>
+                              <Link to='/' className="flex items-center gap-2 cursor-pointer">
+                                   <img
+                                        src={logoAltForHome ? (navbar.logo2 ? navbar.logo2 : defaultWhiteLogo) : (navbar.logo1 ? navbar.logo1 : defaultDarkLogo)}
+                                        alt="Kreeya Design Logo"
+                                        loading="eager"
+                                        fetchpriority="high"
+                                        width="160"
+                                        height="42"
+                                        className="w-23.75 md:w-31.75 lg:w-40 h-6 md:h-8 lg:h-10.5 object-contain"
+                                   />
+                              </Link>
                          )}
+
+                         {/* Right Actions */}
+                         <div className="flex items-center gap-3 md:gap-6">
+                              <button
+                                   onClick={handleClick}
+                                   className="header-btn group relative isolate overflow-hidden bg-cust-orange text-white text-[12px] lg:text-[14px] w-32.25 lg:w-38.75 h-10 lg:h-12 flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 hover:text-cust-orange  cursor-pointer active:scale-99"
+                              >
+                                   <span className="relative z-10">{navbar.buttonText ? navbar.buttonText : 'Get in Touch'}</span>
+                                   <HiOutlineArrowLongRight
+                                        size={20}
+                                        className="relative z-10 text-white transition-all duration-300 group-hover:text-cust-orange min-w-5 min-h-5"
+                                   />
+                              </button>
+
+                              {isPortfolio && (
+                                   <button
+                                        aria-label="Open menu"
+                                        onClick={() => setMenuOpen(true)}
+                                        className={`p-1 cursor-pointer hover:text-cust-orange ${logoAlt ? 'text-dark-black' : 'text-white'}`}
+                                   >
+                                        <HiMenuAlt4 size={22} />
+                                   </button>
+                              )}
+
+                              {!isPortfolio && (
+                                   <button
+                                        aria-label="Open menu"
+                                        onClick={() => setMenuOpen(true)}
+                                        className={`p-1 cursor-pointer hover:text-cust-orange ${logoAltForHome ? 'text-white' : 'text-dark-black'}`}
+                                   >
+                                        <HiMenuAlt4 size={22} />
+                                   </button>
+                              )}
+                         </div>
                     </div>
                </div>
           </header>

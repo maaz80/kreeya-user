@@ -19,7 +19,7 @@ const NotFound = () => {
                     {/* 404 */}
 
                     <h1
-                         className="-mt-10 md:-mt-20 text-[150px] md:text-[280px] lg:text-[420px] font-bold leading-none bg-cover bg-center text-transparent bg-clip-text "
+                         className="-mt-10 md:mt-10 text-[150px] md:text-[280px] lg:text-[420px] font-bold leading-none bg-cover bg-center text-transparent bg-clip-text "
                          style={{
                               backgroundImage: `url(${bgPattern})`
                          }}

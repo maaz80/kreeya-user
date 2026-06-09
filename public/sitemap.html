@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Sitemap</title>
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Poiret+One&display=swap"
+          rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+     <style>
+          * {
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+          }
+
+          body {
+               font-family: "Plus Jakarta Sans", sans-serif;
+               background: #f7f7f7;
+          }
+
+          .navbar {
+               position: relative;
+               z-index: 100;
+               width: 100%;
+               background: #f7f7f7;
+               padding: 14px 0;
+          }
+
+          .navbar-container {
+               max-width: 1440px;
+               margin: 0 auto;
+               padding: 0 32px;
+
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+          }
+
+          .logo {
+               display: flex;
+               align-items: center;
+          }
+
+          .logo img {
+               width: 160px;
+               height: 42px;
+               object-fit: contain;
+               display: block;
+          }
+
+          .navbar-actions {
+               display: flex;
+               align-items: center;
+               gap: 32px;
+          }
+
+          .contact-btn {
+               width: 155px;
+               height: 48px;
+
+               background: #ff6b00;
+               color: #fff;
+
+               border-radius: 999px;
+               text-decoration: none;
+
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               gap: 10px;
+
+               font-size: 15px;
+               font-weight: 600;
+
+               position: relative;
+               isolation: isolate;
+               overflow: hidden;
+
+               transition: color .3s ease;
+          }
+
+          .contact-btn span,
+          .contact-btn svg {
+               position: relative;
+               z-index: 2;
+          }
+
+          .contact-btn svg {
+               min-width: 18px;
+               transition: color .3s ease;
+          }
+
+          @media (hover: hover) {
+
+               .contact-btn::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    margin: auto;
+
+                    width: 10px;
+                    height: 10px;
+
+                    bottom: -50px;
+
+                    background: white;
+                    border-radius: 50%;
+
+                    transform: scale(0);
+
+                    transition: transform 1s cubic-bezier(0.25,
+                              0.46,
+                              0.45,
+                              0.94);
+
+                    z-index: 1;
+               }
+
+               .contact-btn:hover::after {
+                    transform: scale(60);
+               }
+
+               .contact-btn:hover {
+                    color: #ff6b00;
+               }
+          }
+
+          .menu-btn {
+               border: none;
+               background: transparent;
+               cursor: pointer;
+
+               display: flex;
+               flex-direction: column;
+               gap: 6px;
+
+               padding: 4px;
+          }
+
+          .menu-btn span {
+               width: 18px;
+               height: 2px;
+               background: #111;
+               display: block;
+               border-radius: 999px;
+          }
+
+          .menu-overlay {
+               position: fixed;
+               inset: 0;
+               z-index: 99999;
+
+               display: flex;
+
+               transform: translateY(-100%);
+               transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1), visibility 1s;
+
+               visibility: hidden;
+          }
+
+          .menu-overlay.active {
+               transform: translateY(0);
+               visibility: visible;
+          }
+
+          .menu-left {
+               width: 70%;
+               background: #f5f5f5;
+
+               padding: 80px;
+
+               display: flex;
+               flex-direction: column;
+               justify-content: space-between;
+
+               position: relative;
+          }
+
+          .menu-right {
+               width: 30%;
+               background: #ff5a00;
+
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+
+               padding: 50px;
+          }
+
+          .close-btn {
+               position: absolute;
+               right: 40px;
+               top: 30px;
+
+               border: none;
+               background: transparent;
+
+               font-size: 34px;
+               cursor: pointer;
+          }
+
+          .menu-content {
+               display: flex;
+               justify-content: space-between;
+          }
+
+          .menu-links {
+               display: flex;
+               flex-direction: column;
+               gap: 35px;
+          }
+
+          .menu-links a {
+               font-family: "Poiret One", sans-serif;
+               font-size: 55px;
+               color: #222;
+               text-decoration: none;
+          }
+
+          .menu-categories {
+               display: flex;
+               flex-direction: column;
+               gap: 28px;
+               margin-right: 120px;
+          }
+
+          .menu-categories a {
+               text-decoration: none;
+               color: #222;
+               font-size: 20px;
+          }
+
+          .menu-socials {
+               display: flex;
+               gap: 50px;
+          }
+
+          .menu-socials a {
+               text-decoration: none;
+               color: #222;
+          }
+
+          .menu-right h2 {
+               font-family: "Poiret One", sans-serif;
+               font-size: 55px;
+               font-weight: 400;
+               line-height: 1.2;
+               margin-bottom: 40px;
+               color: white;
+          }
+
+          /* Tablet */
+
+          @media (max-width: 768px) {
+               .navbar-container {
+                    padding: 0 16px;
+               }
+
+               .logo img {
+                    width: 128px;
+                    height: auto;
+               }
+
+               .navbar-actions {
+                    gap: 18px;
+               }
+
+               .contact-btn {
+                    width: 130px;
+                    height: 42px;
+                    font-size: 14px;
+               }
+
+               .menu-overlay {
+                    flex-direction: column;
+                    overflow-y: auto;
+               }
+
+               .menu-left {
+                    width: 100%;
+                    min-height: 60vh;
+                    padding: 15px;
+               }
+
+               .menu-right {
+                    width: 100%;
+                    min-height: 40vh;
+                    padding: 15px;
+                    justify-content: flex-start;
+                    padding-top: 30px;
+               }
+
+               .menu-content {
+                    justify-content: space-between;
+                    align-items: flex-start;
+               }
+
+               .menu-links {
+                    gap: 18px;
+               }
+
+               .menu-links a {
+                    font-size: 34px;
+               }
+
+               .menu-categories {
+                    gap: 18px;
+                    margin-right: 0;
+               }
+
+               .menu-categories a {
+                    font-size: 16px;
+               }
+
+               .menu-socials {
+                    flex-wrap: wrap;
+                    gap: 12px 20px;
+                    margin-top: 30px;
+               }
+
+               .menu-right h2 {
+                    font-size: 36px;
+                    max-width: 380px;
+               }
+
+               .close-btn {
+                    top: 10px;
+                    right: 15px;
+                    font-size: 28px;
+               }
+          }
+
+          /* Mobile */
+
+          @media (max-width: 480px) {
+               .navbar {
+                    padding: 12px 0;
+               }
+
+               .logo img {
+                    width: 115px;
+               }
+
+               .contact-btn {
+                    width: 130px;
+                    height: 40px;
+                    font-size: 13px;
+               }
+
+               .navbar-actions {
+                    gap: 14px;
+               }
+          }
+
+          /* Footer M */
+          .footer {
+               background: #ff5a00;
+               color: #fff;
+               position: relative;
+               overflow: hidden;
+          }
+
+          .footer-container {
+               max-width: 1400px;
+               margin: 0 auto;
+               padding: 80px 32px 40px;
+          }
+
+          .footer-top {
+               display: flex;
+               align-items: center;
+               gap: 40px;
+               margin-bottom: 70px;
+          }
+
+          .footer-heading {
+               font-family: "Poiret One", sans-serif;
+               font-size: 96px;
+               font-weight: 400;
+               line-height: 1;
+          }
+
+          .footer-btn {
+               width: 400px;
+               height: 100px;
+               border: 2px solid #fff;
+               border-radius: 999px;
+               text-decoration: none;
+               color: #fff;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               gap: 12px;
+               font-size: 30px;
+               position: relative;
+               overflow: hidden;
+               isolation: isolate;
+          }
+
+          .footer-btn span,
+          .footer-btn svg {
+               position: relative;
+               z-index: 2;
+          }
+
+          @media (hover:hover) {
+               .footer-btn::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    margin: auto;
+                    width: 10px;
+                    height: 10px;
+                    bottom: -50px;
+                    background: white;
+                    border-radius: 50%;
+                    transform: scale(0);
+                    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    z-index: 1;
+               }
+
+               .footer-btn:hover::after {
+                    transform: scale(70);
+               }
+
+               .footer-btn:hover {
+                    color: #ff5a00;
+               }
+          }
+
+          .footer-grid {
+               display: grid;
+               grid-template-columns: 1fr 1fr 1fr;
+               gap: 80px;
+               border-bottom: 1px solid rgba(255, 255, 255, .35);
+               padding-bottom: 50px;
+          }
+
+          .footer-logo img {
+               width: 180px;
+          }
+
+          .socials {
+               display: flex;
+               gap: 18px;
+               margin-top: 25px;
+          }
+
+          .socials a {
+               color: #fff;
+               text-decoration: none;
+               font-size: 30px;
+               transition: opacity .3s ease;
+          }
+
+          .socials a:hover {
+               opacity: .8;
+          }
+
+          .footer-title {
+               font-family: "Poiret One", sans-serif;
+               font-size: 52px;
+               margin-bottom: 24px;
+          }
+
+          .footer-small {
+               font-size: 18px;
+               margin-bottom: 10px;
+          }
+
+          .footer-big {
+               font-size: 24px;
+               font-weight: 500;
+               margin-bottom: 30px;
+          }
+
+          .city {
+               font-size: 24px;
+               font-weight: 700;
+               margin-bottom: 18px;
+          }
+
+          .address {
+               font-size: 18px;
+               line-height: 1.8;
+          }
+
+          .popular-services {
+               padding: 50px 0;
+               border-bottom: 1px solid rgba(255, 255, 255, .35);
+          }
+
+          .popular-services h3 {
+               font-size: 20px;
+               margin-bottom: 24px;
+          }
+
+          .services-links {
+               display: flex;
+               flex-wrap: wrap;
+               gap: 10px;
+               line-height: 2;
+          }
+
+          .services-links a {
+               color: rgba(255, 255, 255, .85);
+               text-decoration: none;
+          }
+
+          .footer-bottom {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               gap: 60px;
+               padding-top: 30px;
+               font-size: 16px;
+          }
+
+          .footer-bottom a {
+               color: #fff;
+               text-decoration: none;
+          }
+
+          /* mobile logo row */
+
+          .mobile-logo-row {
+               display: none;
+          }
+
+          .footer-decoration {
+               position: absolute;
+               top: 0;
+               right: 0;
+               width: 320px;
+               pointer-events: none;
+          }
+
+          /* Tablet */
+
+          @media (max-width:1024px) {
+
+               .footer-heading {
+                    font-size: 72px;
+               }
+
+               .footer-btn {
+                    width: 280px;
+                    height: 80px;
+                    font-size: 24px;
+               }
+
+               .footer-grid {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 40px;
+               }
+
+               .footer-logo {
+                    display: none;
+               }
+
+               .mobile-logo-row {
+                    display: flex;
+                    align-items: center;
+                    gap: 30px;
+                    border-bottom: 1px solid rgba(255, 255, 255, .35);
+                    padding: 40px 0;
+               }
+
+               .mobile-logo-row img {
+                    width: 160px;
+               }
+          }
+
+          /* Mobile */
+
+          @media (max-width:768px) {
+
+               .footer-container {
+                    padding: 50px 16px 30px;
+               }
+
+               .footer-top {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    margin-bottom: 50px;
+               }
+
+               .footer-heading {
+                    font-size: 38px;
+               }
+
+               .footer-btn {
+                    width: 190px;
+                    height: 48px;
+                    font-size: 18px;
+               }
+
+               .footer-grid {
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+               }
+
+               .footer-title {
+                    font-size: 28px;
+               }
+
+               .footer-small {
+                    font-size: 14px;
+               }
+
+               .footer-big {
+                    font-size: 18px;
+               }
+
+               .city {
+                    font-size: 18px;
+               }
+
+               .address {
+                    font-size: 14px;
+               }
+
+               .mobile-logo-row {
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+               }
+
+               .socials a {
+                    font-size: 28px;
+               }
+
+               .footer-bottom {
+                    flex-direction: column;
+                    gap: 18px;
+                    text-align: center;
+                    font-size: 13px;
+               }
+
+               .footer-decoration {
+                    width: 200px;
+               }
+          }
+
+          .main-pages-card {
+               background: #f8f8f8;
+               border: 1px solid #ffd8c0;
+               border-radius: 20px;
+               padding: 24px;
+               margin: 40px auto;
+               max-width: 1376px;
+               width: calc(100% - 64px);
+               font-family: "Plus Jakarta Sans", sans-serif;
+          }
+
+          .main-pages-header {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               gap: 16px;
+               padding-bottom: 20px;
+               border-bottom: 1px solid #e5e5e5;
+          }
+
+          .main-pages-title {
+               display: flex;
+               align-items: center;
+               gap: 16px;
+          }
+
+          .main-pages-icon {
+               width: 54px;
+               height: 54px;
+               background: #ff5a00;
+               border-radius: 14px;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               box-shadow: 0 6px 16px rgba(255, 90, 0, 0.25);
+          }
+
+          .main-pages-icon svg {
+               width: 22px;
+               height: 22px;
+               fill: #fff;
+          }
+
+          .main-pages-title h2 {
+               font-size: 18px;
+               font-weight: 700;
+               color: #17233c;
+          }
+
+          .page-count {
+               background: #ffece0;
+               color: #ff5a00;
+               font-size: 13px;
+               font-weight: 600;
+               padding: 8px 14px;
+               border-radius: 999px;
+               border: 1px solid #ffd8c0;
+          }
+
+          .main-pages-grid {
+               display: grid;
+               grid-template-columns: repeat(4, 1fr);
+               gap: 26px 40px;
+               padding-top: 28px;
+          }
+
+          .page-link {
+               display: flex;
+               align-items: center;
+               gap: 12px;
+               color: #2d2d2d;
+               text-decoration: none;
+               font-size: 16px;
+               font-weight: 600;
+               transition: .3s;
+          }
+
+          .page-link:hover {
+               color: #ff5a00;
+          }
+
+          .page-dot {
+               width: 12px;
+               height: 12px;
+               border: 3px solid #ff5a00;
+               border-radius: 50%;
+               flex-shrink: 0;
+          }
+
+          /* Tablet */
+          @media (max-width: 1024px) {
+               .main-pages-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 22px;
+               }
+          }
+
+          /* Mobile */
+          @media (max-width: 768px) {
+
+               .main-pages-card {
+                    padding: 18px;
+                    border-radius: 16px;
+                    margin: 20px auto;
+                    width: calc(100% - 32px);
+               }
+
+               .main-pages-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 12px;
+               }
+
+               .main-pages-icon {
+                    width: 48px;
+                    height: 48px;
+               }
+
+               .main-pages-title h2 {
+                    font-size: 17px;
+               }
+
+               .main-pages-grid {
+                    grid-template-columns: 1fr;
+                    gap: 18px;
+               }
+
+               .page-link {
+                    font-size: 15px;
+                    line-height: 1.5;
+               }
+          }
+
+          /* Sitemap Hero Section Styles (Copied from HeroSection.jsx design) */
+          .sitemap-hero {
+               position: relative;
+               min-height: 100vh;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               color: #161616;
+               padding: 100px 20px 40px;
+               background: transparent;
+               margin-top: -50px;
+          }
+
+          .sitemap-hero-container {
+               position: relative;
+               z-index: 20;
+               width: 100%;
+               max-width: 1440px;
+               margin: 0 auto;
+               text-align: center;
+               font-family: "Poiret One", sans-serif;
+               font-weight: 600;
+          }
+
+          .sitemap-hero-title-top {
+               font-family: "Poiret One", sans-serif;
+               font-size: 40px;
+               font-weight: 600;
+               letter-spacing: -0.025em;
+               margin-bottom: 16px;
+               line-height: 1.1;
+               min-height: 44px;
+               color: #161616;
+          }
+
+          .sitemap-hero-mid-row {
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               gap: 16px;
+               font-size: 40px;
+               line-height: 1.1;
+               min-height: 56px;
+               letter-spacing: -0.025em;
+          }
+
+          .sitemap-hero-video-wrapper {
+               display: inline-block;
+               width: 96px;
+               height: 52px;
+               background-color: #e5e7eb;
+               border-radius: 4px;
+               overflow: hidden;
+               flex-shrink: 0;
+          }
+
+          .sitemap-hero-video {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               display: block;
+          }
+
+          .sitemap-hero-title-bottom {
+               font-size: 40px;
+               margin-top: 4px;
+               line-height: 1.1;
+               min-height: 44px;
+               letter-spacing: -0.025em;
+          }
+
+          .sitemap-hero-desc {
+               width: 100%;
+               max-width: 300px;
+               margin-left: auto;
+               margin-top: 40px;
+               min-height: 72px;
+               font-size: 16px;
+               line-height: 1.625;
+               text-align: right;
+               color: #003D63;
+               font-family: "Plus Jakarta Sans", sans-serif;
+               font-weight: 400;
+          }
+
+          @media (min-width: 768px) {
+               .sitemap-hero {
+                    min-height: 80vh;
+                    padding: 128px 80px 80px;
+               }
+
+               .sitemap-hero-container {
+                    font-weight: 400;
+               }
+
+               .sitemap-hero-title-top {
+                    font-size: 56px;
+                    font-weight: 400;
+                    margin-bottom: 4px;
+                    min-height: 62px;
+               }
+
+               .sitemap-hero-mid-row {
+                    font-size: 56px;
+                    min-height: 72px;
+               }
+
+               .sitemap-hero-video-wrapper {
+                    width: 160px;
+                    height: 60px;
+               }
+
+               .sitemap-hero-title-bottom {
+                    font-size: 56px;
+                    min-height: 62px;
+               }
+
+               .sitemap-hero-desc {
+                    max-width: 440px;
+                    min-height: 84px;
+                    font-size: 18px;
+               }
+          }
+
+          @media (min-width: 1024px) {
+               .sitemap-hero-title-top {
+                    font-size: 120px;
+                    min-height: 132px;
+               }
+
+               .sitemap-hero-mid-row {
+                    font-size: 120px;
+                    min-height: 138px;
+               }
+
+               .sitemap-hero-video-wrapper {
+                    width: 208px;
+                    height: 120px;
+                    border-radius: 8px;
+               }
+
+               .sitemap-hero-title-bottom {
+                    font-size: 120px;
+                    min-height: 132px;
+               }
+          }
+
+          /* Sitemap Logo Marquee Section Styles (Copied from LogoMarque.jsx design) */
+          .sitemap-marquee-container {
+               width: 100%;
+               overflow: hidden;
+               padding-top: 24px;
+               padding-bottom: 24px;
+               z-index: 999;
+               position: relative;
+               display: flex;
+               flex-direction: column;
+               gap: 16px;
+          }
+
+          .sitemap-marquee-left {
+               display: flex;
+               align-items: center;
+               gap: 40px;
+               width: max-content;
+               animation: sitemap-marquee-left 25s linear infinite;
+          }
+
+          .sitemap-marquee-right {
+               display: flex;
+               align-items: center;
+               gap: 40px;
+               width: max-content;
+               animation: sitemap-marquee-right 25s linear infinite;
+          }
+
+          .sitemap-marquee-logo {
+               width: 100px;
+               height: 72px;
+               object-fit: contain;
+               filter: grayscale(100%);
+               transition: all 0.3s ease;
+               flex-shrink: 0;
+          }
+
+          .sitemap-marquee-logo:hover {
+               filter: grayscale(0%);
+          }
+
+          @keyframes sitemap-marquee-left {
+               from {
+                    transform: translateX(0);
+               }
+               to {
+                    transform: translateX(-50%);
+               }
+          }
+
+          @keyframes sitemap-marquee-right {
+               from {
+                    transform: translateX(-50%);
+               }
+               to {
+                    transform: translateX(0);
+               }
+          }
+
+          @media (min-width: 768px) {
+               .sitemap-marquee-container {
+                    gap: 24px;
+                    padding-top: 40px;
+                    padding-bottom: 40px;
+               }
+
+               .sitemap-marquee-left {
+                    gap: 80px;
+               }
+
+               .sitemap-marquee-right {
+                    gap: 80px;
+               }
+
+               .sitemap-marquee-logo {
+                    width: 200px;
+                    height: 120px;
+               }
+          }
+
+          /* Floating Widgets (WhatsApp & Scroll-to-Top) */
+          .whatsapp-float {
+               position: fixed;
+               bottom: 80px;
+               right: 30px;
+               width: 64px;
+               height: 64px;
+               background: #ffffff;
+               border-radius: 50%;
+               overflow: hidden;
+               box-shadow: #8b8b8b 0px 1px 12px;
+               z-index: 9999;
+               transition: all 0.3s ease;
+               cursor: pointer;
+               display: block;
+               animation: whatsappAnim 1s cubic-bezier(.034, 1.59, .64, 1) infinite;
+          }
+
+          .whatsapp-float:hover {
+               transform: scale(1.1);
+          }
+
+          .whatsapp-float img {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               position: relative;
+               z-index: 9999;
+          }
+
+          .scroll-to-top {
+               position: fixed;
+               bottom: 16px;
+               right: 32px;
+               width: 52px;
+               height: 52px;
+               background: #ffffff;
+               color: #111;
+               border: none;
+               border-radius: 50%;
+               box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
+               z-index: 9999;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-size: 18px;
+               cursor: pointer;
+               transition: transform 0.25s ease, background-color 0.25s ease;
+          }
+
+          .scroll-to-top:hover {
+               transform: scale(1.05);
+               background-color: #f0f0f0;
+          }
+
+          @media (min-width: 768px) {
+               .whatsapp-float {
+                    bottom: 100px;
+                    right: 32px;
+                    width: 80px;
+                    height: 80px;
+               }
+          }
+
+          @keyframes whatsappAnim {
+               0% {
+                    transform: scale(1.1);
+               }
+               25% {
+                    transform: scale(1.1);
+               }
+               50% {
+                    transform: scale(1.1);
+               }
+               75% {
+                    transform: scale(1.1);
+               }
+               100% {
+                    transform: scale(1.0);
+               }
+          }
+
+          .faq-question-btn {
+               width: 100%;
+               background: none;
+               border: none;
+               padding: 0;
+               margin: 0;
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               text-align: left;
+               font-family: inherit;
+               cursor: pointer;
+               color: #161616;
+               font-size: 18px;
+               font-weight: 400;
+               transition: color 0.3s ease;
+          }
+
+          .faq-question-btn:focus {
+               outline: none;
+          }
+
+          .faq-item.active .faq-question-btn {
+               color: #ff5500;
+          }
+
+          .faq-icon-wrapper {
+               position: relative;
+               width: 20px;
+               height: 20px;
+               flex-shrink: 0;
+               font-size: 18px;
+          }
+
+          @media (min-width: 768px) {
+               .faq-icon-wrapper {
+                    font-size: 20px;
+               }
+               .faq-question-btn {
+                    font-size: 24px;
+               }
+          }
+
+          .faq-icon-plus, .faq-icon-minus {
+               position: absolute;
+               inset: 0;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               transition: transform 0.3s ease, opacity 0.3s ease;
+          }
+
+          .faq-icon-minus {
+               color: #ff5500;
+               opacity: 0;
+               transform: rotate(-180deg);
+          }
+
+          .faq-item.active .faq-icon-plus {
+               opacity: 0;
+               transform: rotate(180deg);
+          }
+
+          .faq-item.active .faq-icon-minus {
+               opacity: 1;
+               transform: rotate(0);
+          }
+
+          .faq-answer-wrapper {
+               display: grid;
+               grid-template-rows: 0fr;
+               margin-top: 0;
+               transition: grid-template-rows 0.3s ease-out, margin-top 0.3s ease-out;
+          }
+
+          .faq-item.active .faq-answer-wrapper {
+               grid-template-rows: 1fr;
+               margin-top: 16px;
+          }
+
+          .faq-answer-content {
+               overflow: hidden;
+          }
+
+          .faq-answer-text {
+               font-size: 12px;
+               line-height: 20px;
+               color: #161616;
+               margin: 0;
+          }
+
+          @media (min-width: 768px) {
+               .faq-answer-text {
+                    font-size: 16px;
+                    line-height: 24px;
+               }
+          }
+
+          @media (min-width: 1024px) {
+               .faq-answer-text {
+                    font-size: 18px;
+                    line-height: 32px;
+               }
+          }
+
+          /* You May Also Like Section Layout */
+          .sitemap-you-may-like {
+               max-width: 1346px;
+               width: calc(100% - 64px);
+               margin: 40px auto;
+               font-family: "Plus Jakarta Sans", sans-serif;
+          }
+
+          @media (min-width: 768px) {
+               .sitemap-you-may-like {
+                    margin: 80px auto;
+               }
+          }
+
+          /* Heading style matching Poiret One */
+          .sitemap-section-title, .faq-title {
+               font-family: "Poiret One", Georgia, serif;
+               font-size: 36px;
+               font-weight: 400;
+               text-align: left;
+               color: #161616;
+               margin-bottom: 16px;
+               line-height: 3rem;
+          }
+
+          .faq-title {
+               text-align: center;
+               margin-bottom: 48px;
+          }
+
+          @media (min-width: 768px) {
+               .sitemap-section-title, .faq-title {
+                    font-size: 56px;
+                    line-height: 3.75rem;
+                    margin-bottom: 64px;
+               }
+               .faq-title {
+                    margin-bottom: 64px;
+               }
+          }
+
+          @media (min-width: 1024px) {
+               .sitemap-section-title, .faq-title {
+                    font-size: 72px;
+                    line-height: 5.25rem;
+               }
+          }
+
+          @media (min-width: 1536px) {
+               .sitemap-section-title, .faq-title {
+                    font-size: 96px;
+               }
+          }
+
+          /* Grid */
+          .you-may-like-grid {
+               display: grid;
+               grid-template-columns: 1fr;
+               gap: 40px;
+          }
+
+          @media (min-width: 768px) {
+               .you-may-like-grid {
+                    grid-template-columns: repeat(2, 1fr);
+               }
+          }
+
+          @media (min-width: 1024px) {
+               .you-may-like-grid {
+                    grid-template-columns: repeat(3, 1fr);
+               }
+          }
+
+          /* Card is completely flat with no borders or shadows */
+          .blog-card {
+               cursor: pointer;
+               display: flex;
+               flex-direction: column;
+               text-decoration: none;
+               color: inherit;
+          }
+
+          .blog-card-img-wrapper {
+               width: 100%;
+               min-height: 200px;
+               max-height: 200px;
+               overflow: hidden;
+               position: relative;
+          }
+
+          .blog-card-img-wrapper img {
+               width: 100%;
+               min-height: 200px;
+               max-height: 200px;
+               object-fit: fill;
+               transition: transform 0.5s ease;
+          }
+
+          .blog-card:hover .blog-card-img-wrapper img {
+               transform: scale(1.05);
+          }
+
+          .blog-card-content {
+               padding: 0;
+               display: flex;
+               flex-direction: column;
+               flex-grow: 1;
+          }
+
+          .blog-card-meta {
+               margin-top: 12px;
+               font-size: 12px;
+               line-height: 20px;
+               color: #003D63;
+               display: flex;
+               gap: 8px;
+               flex-wrap: wrap;
+               align-items: center;
+               margin-bottom: 8px;
+          }
+
+          @media (min-width: 768px) {
+               .blog-card-meta {
+                    font-size: 16px;
+                    line-height: 24px;
+               }
+          }
+
+          .blog-card-category {
+               color: #ff5500;
+          }
+
+          .blog-card-title {
+               margin-top: 8px;
+               font-size: 18px;
+               line-height: 24px;
+               color: #0a2742;
+               font-weight: 400;
+               margin-bottom: 0;
+               transition: color 0.2s ease;
+               display: -webkit-box;
+               -webkit-line-clamp: 3;
+               -webkit-box-orient: vertical;
+               overflow: hidden;
+          }
+
+          @media (min-width: 768px) {
+               .blog-card-title {
+                    font-size: 32px;
+                    line-height: 40px;
+                }
+          }
+
+          .blog-card:hover .blog-card-title {
+               color: #f97316;
+          }
+
+          /* FAQ Section Layout */
+          .sitemap-faq-section {
+               max-width: 1350px;
+               width: calc(100% - 64px);
+               margin: 40px auto 80px;
+               font-family: "Plus Jakarta Sans", sans-serif;
+          }
+
+          @media (min-width: 768px) {
+               .sitemap-faq-section {
+                    margin: 80px auto 120px;
+               }
+          }
+
+          .faq-list {
+               display: flex;
+               flex-direction: column;
+          }
+
+          .faq-item {
+               border-bottom: 1px solid #d1d5db;
+               padding-bottom: 24px;
+               margin-top: 24px;
+          }
+
+          .faq-item:first-child {
+               margin-top: 0;
+          }
+     </style>
+</head>
+
+<body>
+
+     <header class="navbar">
+          <div class="navbar-container">
+
+               <!-- Logo -->
+               <a href="/" class="logo">
+                    <img src="images/logo.webp" alt="Kreeya Design Logo">
+               </a>
+
+               <!-- Right Actions -->
+               <div class="navbar-actions">
+
+                    <a href="https://calendly.com/pyush-anand7/new-meeting" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                         <span>Get in Touch</span>
+
+                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                              stroke="currentColor" stroke-width="2">
+                              <path d="M5 12h14"></path>
+                              <path d="m12 5 7 7-7 7"></path>
+                         </svg>
+                    </a>
+
+                    <button class="menu-btn" aria-label="Open Menu">
+                         <span></span>
+                         <span></span>
+                    </button>
+
+               </div>
+
+          </div>
+     </header>
+     <div class="menu-overlay" id="menuOverlay">
+
+          <div class="menu-left">
+
+               <button class="close-btn" onclick="closeMenu()">
+                    ✕
+               </button>
+
+               <div class="menu-content">
+                     <div class="menu-links">
+
+                          <a href="/portfolio-beyekls">WORK</a>
+                          <a href="/category/blogs">BLOGS</a>
+                          <a href="/about-us">ABOUT US</a>
+                          <a href="/contact-us">CONTACT US</a>
+                          <a href="/services">SERVICES</a>
+
+                     </div>
+
+                     <div class="menu-categories">
+
+                          <a href="/ui-ux-design-company-in-delhi-for-fintech">Fintech</a>
+                          <a href="/ui-ux-design-company-in-delhi-for-healthcare">Healthcare</a>
+                          <a href="/ui-ux-design-company-in-delhi-for-real-estate">Real Estate</a>
+                          <a href="/ui-ux-design-ccompany-in-delhi-for-e-commerce">Ecommerce</a>
+
+                     </div>
+
+                </div>
+
+                <div class="menu-socials">
+
+                     <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer">Facebook</a>
+                     <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank" rel="noopener noreferrer">Youtube</a>
+                     <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                     <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank" rel="noopener noreferrer">Linked In</a>
+                     <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer">Twitter</a>
+
+                </div>
+
+          </div>
+
+          <div class="menu-right">
+
+               <h2>
+                    Got something in mind?
+                    We'd love to help.
+               </h2>
+
+                <a href="https://calendly.com/pyush-anand7/new-meeting" target="_blank" rel="noopener noreferrer" class="footer-btn">
+                     <span>Get in Touch</span>
+                     →
+                </a>
+
+          </div>
+
+     </div>
+
+     <!-- Sitemap Hero Section (Copied from HeroSection.jsx design without background and animations) -->
+     <section class="sitemap-hero">
+          <div class="sitemap-hero-container">
+               <h1 class="sitemap-hero-title-top">One Stop Solution</h1>
+
+               <div class="sitemap-hero-mid-row">
+                    <span>For</span>
+                    <div class="sitemap-hero-video-wrapper">
+                         <video
+                              src="https://res.cloudinary.com/dlek2xgkd/video/upload/q_auto,f_auto,vc_auto/v1775042032/kreeya_media/dgxhzs0ahvkgukedmlcq.mp4"
+                              autoPlay muted loop playsInline class="sitemap-hero-video"></video>
+                    </div>
+                    <span>All</span>
+               </div>
+
+               <div class="sitemap-hero-title-bottom">
+                    Your Design Needs
+               </div>
+
+               <p class="sitemap-hero-desc">
+                    We design exceptional brands, products, web apps, mobile apps, websites for startups and
+                    enterprises.
+               </p>
+          </div>
+     </section>
+
+     <!-- Sitemap Logo Marquee Section (Copied from LogoMarque.jsx design with infinite scrolling animation) -->
+     <div class="sitemap-marquee-container">
+
+          <!-- Marquee Left (Scrolling Left) -->
+          <div class="sitemap-marquee-left">
+               <!-- First Set -->
+               <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
+
+               <!-- Duplicate Set for Infinite Loop -->
+               <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
+          </div>
+
+          <!-- Marquee Right (Scrolling Right) -->
+          <div class="sitemap-marquee-right">
+               <!-- First Set -->
+               <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
+
+               <!-- Duplicate Set for Infinite Loop -->
+               <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
+          </div>
+
+     </div>      <main class="sitemap-content-wrapper">
+
+           <!-- Box 1: Main Pages -->
+           <section class="main-pages-card">
+                <div class="main-pages-header">
+                     <div class="main-pages-title">
+                          <div class="main-pages-icon">
+                               <svg viewBox="0 0 24 24">
+                                    <path d="M12 3L3 10.5V21H9V15H15V21H21V10.5L12 3Z" />
+                               </svg>
+                          </div>
+                          <h2>Main Pages</h2>
+                     </div>
+                     <span class="page-count">13 Pages</span>
+                </div>
+
+                <div class="main-pages-grid">
+                     <a href="/" class="page-link">
+                          <span class="page-dot"></span>
+                          Home
+                     </a>
+                     <a href="/about-us" class="page-link">
+                          <span class="page-dot"></span>
+                          About Us
+                     </a>
+                     <a href="/contact-us" class="page-link">
+                          <span class="page-dot"></span>
+                          Contact Us
+                     </a>
+                     <a href="/services" class="page-link">
+                          <span class="page-dot"></span>
+                          Services
+                     </a>
+                     <a href="/category/blogs" class="page-link">
+                          <span class="page-dot"></span>
+                          Blogs
+                     </a>
+                     <a href="/landing-page" class="page-link">
+                          <span class="page-dot"></span>
+                          Landing Page
+                     </a>
+                     <a href="/portfolio-beyekls" class="page-link">
+                          <span class="page-dot"></span>
+                          Portfolio Beyekls
+                     </a>
+                     <a href="/portfolio-daccord" class="page-link">
+                          <span class="page-dot"></span>
+                          Portfolio Daccord
+                     </a>
+                     <a href="/portfolio-coinpay" class="page-link">
+                          <span class="page-dot"></span>
+                          Portfolio Coinpay
+                     </a>
+                     <a href="/portfolio-nectar" class="page-link">
+                          <span class="page-dot"></span>
+                          Portfolio Nectar
+                     </a>
+                     <a href="/privacy-policy" class="page-link">
+                          <span class="page-dot"></span>
+                          Privacy Policy
+                     </a>
+                     <a href="/disclaimer" class="page-link">
+                          <span class="page-dot"></span>
+                          Disclaimer
+                     </a>
+                     <a href="/sitemap.html" class="page-link">
+                          <span class="page-dot"></span>
+                          Sitemap
+                     </a>
+                </div>
+           </section>
+
+           <!-- Box 2: Services -->
+           <section class="main-pages-card">
+                <div class="main-pages-header">
+                     <div class="main-pages-title">
+                          <div class="main-pages-icon">
+                               <svg viewBox="0 0 24 24">
+                                    <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                               </svg>
+                          </div>
+                          <h2>Service Pages</h2>
+                     </div>
+                     <span class="page-count">24 Pages</span>
+                </div>
+
+                <div class="main-pages-grid">
+                     <a href="/performance-marketing-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Performance Marketing Service In Delhi
+                     </a>
+                     <a href="/instagram-marketing-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Instagram Marketing Service In Delhi
+                     </a>
+                     <a href="/search-engine-optimization-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Search Engine Optimization Service In Delhi
+                     </a>
+                     <a href="/linkedin-marketing-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Linkedin Marketing Service In Delhi
+                     </a>
+                     <a href="/social-media-marketing-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Social Media Marketing Service In Delhi
+                     </a>
+                     <a href="/search-engine-marketing-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Search Engine Marketing Service In Delhi
+                     </a>
+                     <a href="/web-development-services-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Web Development Services In Delhi
+                     </a>
+                     <a href="/webflow-development-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Webflow Development Service In Delhi
+                     </a>
+                     <a href="/mobile-app-development-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Mobile App Development Service In Delhi
+                     </a>
+                     <a href="/shopify-development-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Shopify Development Service In Delhi
+                     </a>
+                     <a href="/word-press-expert-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Word Press Expert Service In Delhi
+                     </a>
+                     <a href="/ui-development-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Ui Development Service In Delhi
+                     </a>
+                     <a href="/logo-design-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Logo Design Service In Delhi
+                     </a>
+                     <a href="/social-media-creatives-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Social Media Creatives Service In Delhi
+                     </a>
+                     <a href="/graphic-design-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Graphic Design Service In Delhi
+                     </a>
+                     <a href="/brand-identity-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Brand Identity Service In Delhi
+                     </a>
+                     <a href="/video-editing-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Video Editing Service In Delhi
+                     </a>
+                     <a href="/print-design-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Print Design Service In Delhi
+                     </a>
+                     <a href="/ui-ux-design-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Ui Ux Design Service In Delhi
+                     </a>
+                     <a href="/mobile-app-design-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Mobile App Design Service In Delhi
+                     </a>
+                     <a href="/gen-ai-design-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Gen Ai Design Service In Delhi
+                     </a>
+                     <a href="/product-design-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Product Design Service In Delhi
+                     </a>
+                     <a href="/motion-graphics-design-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Motion Graphics Design Service In Delhi
+                     </a>
+                     <a href="/website-design-service-in-delhi" class="page-link">
+                          <span class="page-dot"></span>
+                          Website Design Service In Delhi
+                     </a>
+                </div>
+           </section>
+
+           <!-- Box 3: Locations -->
+           <section class="main-pages-card">
+                <div class="main-pages-header">
+                     <div class="main-pages-title">
+                          <div class="main-pages-icon">
+                               <svg viewBox="0 0 24 24">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                               </svg>
+                          </div>
+                          <h2>Location Pages</h2>
+                     </div>
+                     <span class="page-count">8 Pages</span>
+                </div>
+
+                <div class="main-pages-grid">
+                     <a href="/ui-ux-design-company-in-delhi-for-saas" class="page-link">
+                          <span class="page-dot"></span>
+                          Ui Ux Design Company In Delhi For Saas
+                     </a>
+                     <a href="/ui-ux-design-ccompany-in-delhi-for-e-commerce" class="page-link">
+                          <span class="page-dot"></span>
+                          Ui Ux Design Company In Delhi For E Commerce
+                     </a>
+                     <a href="/ui-ux-design-company-in-delhi-for-real-estate" class="page-link">
+                          <span class="page-dot"></span>
+                          Ui Ux Design Company In Delhi For Real Estate
+                     </a>
+                     <a href="/ui-ux-design-company-in-delhi-for-healthcare" class="page-link">
+                          <span class="page-dot"></span>
+                          Ui Ux Design Company In Delhi For Healthcare
+                     </a>
+                     <a href="/ui-ux-design-company-in-delhi-for-fintech" class="page-link">
+                          <span class="page-dot"></span>
+                          Ui Ux Design Company In Delhi For Fintech
+                     </a>
+                     <a href="/product-design-company-in-delhi-for-fintech" class="page-link">
+                          <span class="page-dot"></span>
+                          Product Design Company In Delhi For Fintech
+                     </a>
+                     <a href="/product-design-company-in-delhi-for-healthcare" class="page-link">
+                          <span class="page-dot"></span>
+                          Product Design Company In Delhi For Healthcare
+                     </a>
+                     <a href="/product-design-company-in-delhi-for-e-commerce" class="page-link">
+                          <span class="page-dot"></span>
+                          Product Design Company In Delhi For E Commerce
+                     </a>
+                </div>
+           </section>
+
+           <!-- Box 4: Blogs -->
+           <section class="main-pages-card">
+                <div class="main-pages-header">
+                     <div class="main-pages-title">
+                          <div class="main-pages-icon">
+                               <svg viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                               </svg>
+                          </div>
+                          <h2>Blog Pages</h2>
+                     </div>
+                     <span class="page-count">4 Pages</span>
+                </div>
+
+                <div class="main-pages-grid">
+                     <a href="/top-benefits-of-working-with-a-professional-ui-ux-design-expert" class="page-link">
+                          <span class="page-dot"></span>
+                          Top Benefits Of Working With A Professional Ui Ux Design Expert
+                     </a>
+                     <a href="/why-hiring-a-ui-ux-design-expert-can-transform-your-business-website" class="page-link">
+                          <span class="page-dot"></span>
+                          Why Hiring A Ui Ux Design Expert Can Transform Your Business Website
+                     </a>
+                     <a href="/leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design" class="page-link">
+                          <span class="page-dot"></span>
+                          Leading Uiux Design Companies In Gurgaon For Web Mobile App Design
+                     </a>
+                     <a href="/best-uiux-design-agency-in-delhi-key-features-to-look-for" class="page-link">
+                          <span class="page-dot"></span>
+                          Best Uiux Design Agency In Delhi Key Features To Look For
+                     </a>
+                </div>
+           </section>
+
+           <!-- You May Also Like Section (Design from YouMayLike.jsx) -->
+           <section class="sitemap-you-may-like">
+                <h2 class="sitemap-section-title">You May Also Like This</h2>
+                <div class="you-may-like-grid">
+                     
+                     <!-- Blog 1 -->
+                     <a href="/top-benefits-of-working-with-a-professional-ui-ux-design-expert" class="blog-card">
+                          <div class="blog-card-img-wrapper">
+                               <img src="https://res.cloudinary.com/dlek2xgkd/image/upload/v1780492053/kreeya_media/top-benefits-of-working-with-a-professional-ui-ux-design-expert-csb.png" alt="Top Benefits of Working with a Professional UI UX Design Expert">
+                          </div>
+                          <div class="blog-card-content">
+                               <div class="blog-card-meta">
+                                    <span>2026-05-14</span>
+                                    <span>|</span>
+                                    <span>4 min read</span>
+                                    <span>|</span>
+                                    <span class="blog-card-category">UI/UX design</span>
+                               </div>
+                               <h3 class="blog-card-title">Top Benefits of Working with a Professional UI UX Design Expert</h3>
+                          </div>
+                     </a>
+
+                     <!-- Blog 2 -->
+                     <a href="/why-hiring-a-ui-ux-design-expert-can-transform-your-business-website" class="blog-card">
+                          <div class="blog-card-img-wrapper">
+                               <img src="https://res.cloudinary.com/dlek2xgkd/image/upload/v1780492154/kreeya_media/why-hiring-a-ui-ux-design-expert-can-transform-your-business-website-xym.png" alt="Why Hiring a UI UX Design Expert Can Transform Your Business Website">
+                          </div>
+                          <div class="blog-card-content">
+                               <div class="blog-card-meta">
+                                    <span>2026-05-08</span>
+                                    <span>|</span>
+                                    <span>1 min read</span>
+                                    <span>|</span>
+                                    <span class="blog-card-category">web design</span>
+                               </div>
+                               <h3 class="blog-card-title">Why Hiring a UI UX Design Expert Can Transform Your Business Website</h3>
+                          </div>
+                     </a>
+
+                     <!-- Blog 3 -->
+                     <a href="/leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design" class="blog-card">
+                          <div class="blog-card-img-wrapper">
+                               <img src="https://res.cloudinary.com/dlek2xgkd/image/upload/v1780492175/kreeya_media/leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design-4zb.png" alt="Leading UI/UX Design Companies in Gurgaon for Web & Mobile App Design">
+                          </div>
+                          <div class="blog-card-content">
+                               <div class="blog-card-meta">
+                                    <span>2026-04-09</span>
+                                    <span>|</span>
+                                    <span>20 min read</span>
+                                    <span>|</span>
+                                    <span class="blog-card-category">web</span>
+                               </div>
+                               <h3 class="blog-card-title">Leading UI/UX Design Companies in Gurgaon for Web & Mobile App Design</h3>
+                          </div>
+                     </a>
+
+                </div>
+           </section>
+
+           <!-- FAQ Section (Design from FaqSection.jsx) -->
+           <section class="sitemap-faq-section">
+                <h3 class="faq-title">Want To Know More? Ask Us</h3>
+                <div class="faq-list">
+                     
+                     <!-- FAQ 1 -->
+                     <div class="faq-item active">
+                          <button class="faq-question-btn" onclick="toggleFaq(0)">
+                               <span>What services do UI UX design agencies offer?</span>
+                               <span class="faq-icon-wrapper">
+                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                               </span>
+                          </button>
+                          <div class="faq-answer-wrapper">
+                               <div class="faq-answer-content">
+                                    <p class="faq-answer-text">User research, UX strategy, wireframing, UI design, prototyping, and usability testing are all provided by UI/UX design firms to produce user-friendly, conversion-focused digital products for the web and mobile platforms.</p>
+                               </div>
+                          </div>
+                     </div>
+
+                     <!-- FAQ 2 -->
+                     <div class="faq-item">
+                          <button class="faq-question-btn" onclick="toggleFaq(1)">
+                               <span>Why do I need a UI UX design company for my business?</span>
+                               <span class="faq-icon-wrapper">
+                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                               </span>
+                          </button>
+                          <div class="faq-answer-wrapper">
+                               <div class="faq-answer-content">
+                                    <p class="faq-answer-text">By matching design with business objectives, a UI/UX design firm assists you in creating aesthetically pleasing, user-friendly solutions that enhance customer happiness, boost conversions, and minimize expensive usability problems.</p>
+                               </div>
+                          </div>
+                     </div>
+
+                     <!-- FAQ 3 -->
+                     <div class="faq-item">
+                          <button class="faq-question-btn" onclick="toggleFaq(2)">
+                               <span>How long does it take to complete a UI UX design project?</span>
+                               <span class="faq-icon-wrapper">
+                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                               </span>
+                          </button>
+                          <div class="faq-answer-wrapper">
+                               <div class="faq-answer-content">
+                                    <p class="faq-answer-text">Depending on scope, research depth, number of screens, and iterations, a UI/UX design project usually takes four to eight weeks to complete; simpler projects are completed more quickly, whereas complicated products take longer.</p>
+                               </div>
+                          </div>
+                     </div>
+
+                     <!-- FAQ 4 -->
+                     <div class="faq-item">
+                          <button class="faq-question-btn" onclick="toggleFaq(3)">
+                               <span>How does UI UX design increase conversions?</span>
+                               <span class="faq-icon-wrapper">
+                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                               </span>
+                          </button>
+                          <div class="faq-answer-wrapper">
+                               <div class="faq-answer-content">
+                                    <p class="faq-answer-text">A UI/UX design firm assists you in developing user-friendly, intuitive digital experiences that increase conversions, lower friction, and foster trust—all of which help you achieve your business objectives and transform users into devoted clients.</p>
+                               </div>
+                          </div>
+                     </div>
+
+                     <!-- FAQ 5 -->
+                     <div class="faq-item">
+                          <button class="faq-question-btn" onclick="toggleFaq(4)">
+                               <span>How do I choose the right UI UX design agency for my business?</span>
+                               <span class="faq-icon-wrapper">
+                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                               </span>
+                          </button>
+                          <div class="faq-answer-wrapper">
+                               <div class="faq-answer-content">
+                                    <p class="faq-answer-text">When selecting a UI/UX design firm, make sure they can address your unique business difficulties by looking at their portfolio relevancy, customer testimonials, industry experience, design process clarity, and alignment with your budget and objectives.</p>
+                               </div>
+                          </div>
+                     </div>
+
+                     <!-- FAQ 6 -->
+                     <div class="faq-item">
+                          <button class="faq-question-btn" onclick="toggleFaq(5)">
+                               <span>What is a UI UX design agency?</span>
+                               <span class="faq-icon-wrapper">
+                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                               </span>
+                          </button>
+                          <div class="faq-answer-wrapper">
+                               <div class="faq-answer-content">
+                                    <p class="faq-answer-text">A UI/UX design firm specializes in creating user-centered digital experiences by fusing interaction design, visual design, and user research to create products that are simple to use, captivating, and efficient.</p>
+                               </div>
+                          </div>
+                     </div>
+
+                </div>
+           </section>
+
+      </main>
+      <footer class="footer">
+
+          <img src="images/footer-img.webp" alt="" class="footer-decoration">
+
+          <div class="footer-container">
+
+               <div class="footer-top">
+
+                    <h2 class="footer-heading">
+                         SAY HELLO !
+                    </h2>
+
+                    <a href="https://calendly.com/pyush-anand7/new-meeting" target="_blank" rel="noopener noreferrer" class="footer-btn">
+                         <span>Get in Touch</span>
+
+                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none"
+                              stroke="currentColor" stroke-width="2">
+                              <path d="M5 12h14"></path>
+                              <path d="m12 5 7 7-7 7"></path>
+                         </svg>
+                    </a>
+
+               </div>
+
+               <div class="footer-grid">
+
+                    <!-- Desktop Logo -->
+
+                    <div class="footer-logo">
+                         <img src="images/white-logo.webp" alt="Kreeya">
+
+                         <div class="socials">
+                              <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
+                              <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                              <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                              <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                              <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+                         </div>
+                    </div>
+
+                    <!-- Contact -->
+
+                    <div>
+                         <h3 class="footer-title">Write to us</h3>
+
+                         <div class="footer-small">mail us at</div>
+                         <div class="footer-big"><a href="mailto:business@kreeyadesign.com" style="color: #fff; text-decoration: none;">business@kreeyadesign.com</a></div>
+
+                         <div class="footer-small">Call us at</div>
+                         <div class="footer-big"><a href="tel:+919311500423" style="color: #fff; text-decoration: none;">9311500423</a></div>
+                    </div>
+
+                    <!-- Address -->
+
+                    <div>
+                         <h3 class="footer-title">Join us at</h3>
+
+                         <div class="city">Noida</div>
+
+                         <div class="address">
+                              Springboard D Block, Sector 2,<br>
+                              Noida, Uttar Pradesh 201301
+                         </div>
+                    </div>
+
+               </div>
+
+               <!-- Mobile Logo -->
+
+               <div class="mobile-logo-row">
+
+                    <img src="images/white-logo.webp" alt="Kreeya">
+
+                    <div class="socials">
+                         <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
+                         <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                         <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                         <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                         <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+
+               </div>
+
+               <div class="popular-services">
+
+                    <h3>Popular Services</h3>
+
+                    <div class="services-links">
+
+                         <a href="/ui-ux-design-company-in-delhi-for-saas">UI UX Design Company in Delhi for SaaS</a> |
+                         <a href="/ui-ux-design-ccompany-in-delhi-for-e-commerce">UI UX Design Company in Delhi for E-commerce</a> |
+                         <a href="/ui-ux-design-company-in-delhi-for-real-estate">UI UX Design Company in Delhi for Real Estate</a> |
+                         <a href="/ui-ux-design-company-in-delhi-for-healthcare">UI UX Design Company in Delhi for Healthcare</a> |
+                         <a href="/ui-ux-design-company-in-delhi-for-fintech">UI UX Design Company in Delhi for Fintech</a> |
+                         <a href="/product-design-company-in-delhi-for-fintech">Product Design Company in Delhi for Fintech</a> |
+                         <a href="/product-design-company-in-delhi-for-healthcare">Product Design Company in Delhi for Healthcare</a> |
+                         <a href="/product-design-company-in-delhi-for-e-commerce">Product Design Company in Delhi for E-commerce</a>
+
+                    </div>
+
+               </div>
+
+               <div class="footer-bottom">
+
+                    <a href="/privacy-policy">PRIVACY POLICY</a>
+
+                    <a href="/disclaimer">DISCLAIMER</a>
+
+                    <span>©2026 KREEYA DESIGN. ALL RIGHTS RESERVED</span>
+
+               </div>
+
+          </div>
+
+     </footer>
+
+     <!-- Floating Widgets -->
+     <a href="https://wa.me/919311500423" target="_blank" aria-label="Whatsapp Icon" rel="noopener noreferrer" class="whatsapp-float">
+          <img src="images/whatsapp-icon.webp" alt="Whatsapp Icon" width="80" height="80" style="aspect-ratio: 1/1;">
+     </a>
+
+     <button type="button" aria-label="Scroll to top" class="scroll-to-top" onclick="scrollToTop()">
+          <i class="fa-solid fa-chevron-up"></i>
+     </button>
+
+     <script>
+          function openMenu() {
+               document.getElementById("menuOverlay").classList.add("active");
+               document.body.style.overflow = "hidden";
+          }
+
+          function closeMenu() {
+               document.getElementById("menuOverlay").classList.remove("active");
+               document.body.style.overflow = "";
+          }
+
+          function scrollToTop() {
+               window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+               });
+          }
+
+          function toggleFaq(index) {
+               const faqItems = document.querySelectorAll(".faq-item");
+               faqItems.forEach((item, idx) => {
+                    if (idx === index) {
+                         item.classList.toggle("active");
+                    } else {
+                         item.classList.remove("active");
+                    }
+               });
+          }
+
+          document.querySelector(".menu-btn")
+               .addEventListener("click", openMenu);
+     </script>
+</body>
+
+</html>
