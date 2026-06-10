@@ -24,18 +24,116 @@
           }
 
           .navbar {
-               position: relative;
-               z-index: 100;
+               position: fixed;
+               top: 0;
+               left: 0;
                width: 100%;
-               background: #f7f7f7;
-               padding: 14px 0;
+               z-index: 9999;
+               background: rgba(255, 255, 255, 0.85);
+               backdrop-filter: blur(24px);
+               -webkit-backdrop-filter: blur(24px);
+               border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+               padding: 0;
+               font-family: "Plus Jakarta Sans", sans-serif;
+          }
+
+          .top-bar {
+               width: 100%;
+               background: #ff5a00;
+               color: #fff;
+               padding: 6px 0;
+               font-size: 11px;
+               font-weight: 600;
+               border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          }
+
+          @media (min-width: 768px) {
+               .top-bar {
+                    padding: 8px 0;
+                    font-size: 13px;
+               }
+          }
+
+          .top-bar-container {
+               max-width: 1440px;
+               margin: 0 auto;
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               padding: 0 32px;
+          }
+
+          @media (max-width: 768px) {
+               .top-bar-container {
+                    padding: 0 16px;
+               }
+          }
+
+          .top-bar-contact {
+               display: flex;
+               align-items: center;
+               gap: 16px;
+          }
+
+          @media (min-width: 768px) {
+               .top-bar-contact {
+                    gap: 24px;
+               }
+          }
+
+          .top-bar-contact a {
+               color: #fff;
+               text-decoration: none;
+               display: flex;
+               align-items: center;
+               gap: 8px;
+               transition: opacity 0.2s;
+          }
+
+          .top-bar-contact a:hover {
+               opacity: 0.8;
+          }
+
+          .email-text {
+               display: none;
+          }
+
+          @media (min-width: 640px) {
+               .email-text {
+                    display: inline;
+               }
+          }
+
+          .top-bar-socials {
+               display: flex;
+               align-items: center;
+               gap: 16px;
+          }
+
+          @media (min-width: 768px) {
+               .top-bar-socials {
+                    gap: 20px;
+               }
+          }
+
+          .top-bar-socials a {
+               color: #fff;
+               text-decoration: none;
+               transition: transform 0.2s, opacity 0.2s;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+          }
+
+          .top-bar-socials a:hover {
+               opacity: 0.8;
+               transform: translateY(-2px);
           }
 
           .navbar-container {
                max-width: 1440px;
                margin: 0 auto;
-               padding: 0 32px;
-
+               padding: 16px 32px;
                display: flex;
                align-items: center;
                justify-content: space-between;
@@ -47,41 +145,61 @@
           }
 
           .logo img {
-               width: 160px;
-               height: 42px;
+               width: 110px;
+               height: auto;
                object-fit: contain;
                display: block;
+          }
+
+          @media (min-width: 768px) {
+               .logo img {
+                    width: 135px;
+               }
+          }
+
+          @media (min-width: 1024px) {
+               .logo img {
+                    width: 160px;
+               }
           }
 
           .navbar-actions {
                display: flex;
                align-items: center;
-               gap: 32px;
+               gap: 16px;
+          }
+
+          @media (min-width: 768px) {
+               .navbar-actions {
+                    gap: 24px;
+               }
           }
 
           .contact-btn {
-               width: 155px;
-               height: 48px;
-
-               background: #ff6b00;
+               background: #ff5a00;
                color: #fff;
-
-               border-radius: 999px;
-               text-decoration: none;
-
+               font-size: 12px;
+               width: 129px;
+               height: 40px;
                display: flex;
                align-items: center;
                justify-content: center;
-               gap: 10px;
-
-               font-size: 15px;
+               gap: 8px;
+               border-radius: 9999px;
                font-weight: 600;
-
+               text-decoration: none;
+               transition: all 0.3s ease;
                position: relative;
                isolation: isolate;
                overflow: hidden;
+          }
 
-               transition: color .3s ease;
+          @media (min-width: 1024px) {
+               .contact-btn {
+                    font-size: 14px;
+                    width: 155px;
+                    height: 48px;
+               }
           }
 
           .contact-btn span,
@@ -96,28 +214,18 @@
           }
 
           @media (hover: hover) {
-
                .contact-btn::after {
                     content: "";
                     position: absolute;
                     inset: 0;
                     margin: auto;
-
                     width: 10px;
                     height: 10px;
-
                     bottom: -50px;
-
                     background: white;
                     border-radius: 50%;
-
                     transform: scale(0);
-
-                    transition: transform 1s cubic-bezier(0.25,
-                              0.46,
-                              0.45,
-                              0.94);
-
+                    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                     z-index: 1;
                }
 
@@ -126,7 +234,7 @@
                }
 
                .contact-btn:hover {
-                    color: #ff6b00;
+                    color: #ff5a00;
                }
           }
 
@@ -134,20 +242,32 @@
                border: none;
                background: transparent;
                cursor: pointer;
-
                display: flex;
-               flex-direction: column;
-               gap: 6px;
-
+               align-items: center;
+               justify-content: center;
                padding: 4px;
+               color: #111;
+               transition: color 0.3s ease;
           }
 
-          .menu-btn span {
-               width: 18px;
-               height: 2px;
-               background: #111;
+          .menu-btn:hover {
+               color: #ff5a00;
+          }
+
+          .menu-btn svg {
+               width: 22px;
+               height: 22px;
                display: block;
-               border-radius: 999px;
+          }
+
+          body {
+               padding-top: 104px;
+          }
+
+          @media (min-width: 768px) {
+               body {
+                    padding-top: 124px;
+               }
           }
 
           .menu-overlay {
@@ -190,18 +310,49 @@
                justify-content: center;
 
                padding: 50px;
+               position: relative;
           }
 
           .close-btn {
                position: absolute;
-               right: 40px;
-               top: 30px;
-
                border: none;
                background: transparent;
-
-               font-size: 34px;
                cursor: pointer;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               transition: color 0.2s ease;
+               color: #222;
+               z-index: 99999;
+          }
+
+          .close-btn-mobile {
+               display: block;
+               font-size: 25px;
+               top: 20px;
+               right: 16px;
+          }
+
+          .close-btn-desktop {
+               display: none;
+          }
+
+          @media (min-width: 769px) {
+               .close-btn-mobile {
+                    display: none;
+               }
+
+               .close-btn-desktop {
+                    display: flex;
+                    font-size: 30px;
+                    top: 32px;
+                    right: 32px;
+                    color: #111;
+               }
+
+               .close-btn-desktop:hover {
+                    color: #fff;
+               }
           }
 
           .menu-content {
@@ -257,24 +408,6 @@
           /* Tablet */
 
           @media (max-width: 768px) {
-               .navbar-container {
-                    padding: 0 16px;
-               }
-
-               .logo img {
-                    width: 128px;
-                    height: auto;
-               }
-
-               .navbar-actions {
-                    gap: 18px;
-               }
-
-               .contact-btn {
-                    width: 130px;
-                    height: 42px;
-                    font-size: 14px;
-               }
 
                .menu-overlay {
                     flex-direction: column;
@@ -284,7 +417,7 @@
                .menu-left {
                     width: 100%;
                     min-height: 60vh;
-                    padding: 15px;
+                    padding: 30px;
                }
 
                .menu-right {
@@ -328,34 +461,10 @@
                     max-width: 380px;
                }
 
-               .close-btn {
-                    top: 10px;
-                    right: 15px;
-                    font-size: 28px;
-               }
+               /* close-btn styles handled by global responsive classes */
           }
 
           /* Mobile */
-
-          @media (max-width: 480px) {
-               .navbar {
-                    padding: 12px 0;
-               }
-
-               .logo img {
-                    width: 115px;
-               }
-
-               .contact-btn {
-                    width: 130px;
-                    height: 40px;
-                    font-size: 13px;
-               }
-
-               .navbar-actions {
-                    gap: 14px;
-               }
-          }
 
           /* Footer M */
           .footer {
@@ -972,6 +1081,7 @@
                from {
                     transform: translateX(0);
                }
+
                to {
                     transform: translateX(-50%);
                }
@@ -981,6 +1091,7 @@
                from {
                     transform: translateX(-50%);
                }
+
                to {
                     transform: translateX(0);
                }
@@ -1075,15 +1186,19 @@
                0% {
                     transform: scale(1.1);
                }
+
                25% {
                     transform: scale(1.1);
                }
+
                50% {
                     transform: scale(1.1);
                }
+
                75% {
                     transform: scale(1.1);
                }
+
                100% {
                     transform: scale(1.0);
                }
@@ -1127,12 +1242,14 @@
                .faq-icon-wrapper {
                     font-size: 20px;
                }
+
                .faq-question-btn {
                     font-size: 24px;
                }
           }
 
-          .faq-icon-plus, .faq-icon-minus {
+          .faq-icon-plus,
+          .faq-icon-minus {
                position: absolute;
                inset: 0;
                display: flex;
@@ -1209,7 +1326,8 @@
           }
 
           /* Heading style matching Poiret One */
-          .sitemap-section-title, .faq-title {
+          .sitemap-section-title,
+          .faq-title {
                font-family: "Poiret One", Georgia, serif;
                font-size: 36px;
                font-weight: 400;
@@ -1225,25 +1343,32 @@
           }
 
           @media (min-width: 768px) {
-               .sitemap-section-title, .faq-title {
+
+               .sitemap-section-title,
+               .faq-title {
                     font-size: 56px;
                     line-height: 3.75rem;
                     margin-bottom: 64px;
                }
+
                .faq-title {
                     margin-bottom: 64px;
                }
           }
 
           @media (min-width: 1024px) {
-               .sitemap-section-title, .faq-title {
+
+               .sitemap-section-title,
+               .faq-title {
                     font-size: 72px;
                     line-height: 5.25rem;
                }
           }
 
           @media (min-width: 1536px) {
-               .sitemap-section-title, .faq-title {
+
+               .sitemap-section-title,
+               .faq-title {
                     font-size: 96px;
                }
           }
@@ -1344,7 +1469,7 @@
                .blog-card-title {
                     font-size: 32px;
                     line-height: 40px;
-                }
+               }
           }
 
           .blog-card:hover .blog-card-title {
@@ -1385,6 +1510,44 @@
 <body>
 
      <header class="navbar">
+          <!-- Top Bar -->
+          <div class="top-bar">
+               <div class="top-bar-container">
+                    <div class="top-bar-contact">
+                         <a href="tel:+919311500423">
+                              <i class="fa-solid fa-phone"></i>
+                              <span>+91 9311500423</span>
+                         </a>
+                         <a href="mailto:business@kreeyadesign.com">
+                              <i class="fa-solid fa-envelope"></i>
+                              <span class="email-text">business@kreeyadesign.com</span>
+                         </a>
+                    </div>
+                    <div class="top-bar-socials">
+                         <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank"
+                              rel="noopener noreferrer">
+                              <i class="fa-brands fa-facebook"></i>
+                         </a>
+                         <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank"
+                              rel="noopener noreferrer">
+                              <i class="fa-brands fa-instagram"></i>
+                         </a>
+                         <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank"
+                              rel="noopener noreferrer">
+                              <i class="fa-brands fa-linkedin-in"></i>
+                         </a>
+                         <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank"
+                              rel="noopener noreferrer">
+                              <i class="fa-brands fa-youtube"></i>
+                         </a>
+                         <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer">
+                              <i class="fa-brands fa-x-twitter"></i>
+                         </a>
+                    </div>
+               </div>
+          </div>
+
+          <!-- Main Navbar -->
           <div class="navbar-container">
 
                <!-- Logo -->
@@ -1395,7 +1558,8 @@
                <!-- Right Actions -->
                <div class="navbar-actions">
 
-                    <a href="https://calendly.com/pyush-anand7/new-meeting" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                    <a href="https://calendly.com/pyush-anand7/new-meeting" target="_blank" rel="noopener noreferrer"
+                         class="contact-btn">
                          <span>Get in Touch</span>
 
                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -1406,8 +1570,10 @@
                     </a>
 
                     <button class="menu-btn" aria-label="Open Menu">
-                         <span></span>
-                         <span></span>
+                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4 6H20M4 12H20M4 18H15" stroke="currentColor" stroke-width="2"
+                                   stroke-linecap="round" stroke-linejoin="round" />
+                         </svg>
                     </button>
 
                </div>
@@ -1418,566 +1584,628 @@
 
           <div class="menu-left">
 
-               <button class="close-btn" onclick="closeMenu()">
+               <button class="close-btn close-btn-mobile" onclick="closeMenu()">
                     ✕
                </button>
 
                <div class="menu-content">
-                     <div class="menu-links">
+                    <div class="menu-links">
 
-                          <a href="/portfolio-beyekls">WORK</a>
-                          <a href="/category/blogs">BLOGS</a>
-                          <a href="/about-us">ABOUT US</a>
-                          <a href="/contact-us">CONTACT US</a>
-                          <a href="/services">SERVICES</a>
+                         <a href="/portfolio-beyekls">WORK</a>
+                         <a href="/category/blogs">BLOGS</a>
+                         <a href="/about-us">ABOUT US</a>
+                         <a href="/contact-us">CONTACT US</a>
+                         <a href="/services">SERVICES</a>
 
-                     </div>
+                    </div>
 
-                     <div class="menu-categories">
+                    <div class="menu-categories">
 
-                          <a href="/ui-ux-design-company-in-delhi-for-fintech">Fintech</a>
-                          <a href="/ui-ux-design-company-in-delhi-for-healthcare">Healthcare</a>
-                          <a href="/ui-ux-design-company-in-delhi-for-real-estate">Real Estate</a>
-                          <a href="/ui-ux-design-ccompany-in-delhi-for-e-commerce">Ecommerce</a>
+                         <a href="/fintech">Fintech</a>
+                         <a href="/healthcare">Healthcare</a>
+                         <a href="/real-estate">Real Estate</a>
+                         <a href="/ecommerce">Ecommerce</a>
 
-                     </div>
+                    </div>
 
-                </div>
+               </div>
 
-                <div class="menu-socials">
+               <div class="menu-socials">
 
-                     <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer">Facebook</a>
-                     <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank" rel="noopener noreferrer">Youtube</a>
-                     <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                     <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank" rel="noopener noreferrer">Linked In</a>
-                     <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer">Twitter</a>
+                    <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank"
+                         rel="noopener noreferrer">Facebook</a>
+                    <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank"
+                         rel="noopener noreferrer">Youtube</a>
+                    <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank"
+                         rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank"
+                         rel="noopener noreferrer">Linked In</a>
+                    <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer">Twitter</a>
 
-                </div>
+               </div>
 
           </div>
 
           <div class="menu-right">
+
+               <button class="close-btn close-btn-desktop" onclick="closeMenu()">
+                    ✕
+               </button>
 
                <h2>
                     Got something in mind?
                     We'd love to help.
                </h2>
 
-                <a href="https://calendly.com/pyush-anand7/new-meeting" target="_blank" rel="noopener noreferrer" class="footer-btn">
-                     <span>Get in Touch</span>
-                     →
-                </a>
+               <a href="https://calendly.com/pyush-anand7/new-meeting" target="_blank" rel="noopener noreferrer"
+                    class="footer-btn">
+                    <span>Get in Touch</span>
+                    →
+               </a>
 
           </div>
 
      </div>
 
-     <!-- Sitemap Hero Section (Copied from HeroSection.jsx design without background and animations) -->
-     <section class="sitemap-hero">
-          <div class="sitemap-hero-container">
-               <h1 class="sitemap-hero-title-top">One Stop Solution</h1>
+     <!-- Sitemap Hero Section (Copied from HeroSection.jsx design without background and animations)
+      <section class="sitemap-hero">
+           <div class="sitemap-hero-container">
+                <h1 class="sitemap-hero-title-top">One Stop Solution</h1>
 
-               <div class="sitemap-hero-mid-row">
-                    <span>For</span>
-                    <div class="sitemap-hero-video-wrapper">
-                         <video
-                              src="https://res.cloudinary.com/dlek2xgkd/video/upload/q_auto,f_auto,vc_auto/v1775042032/kreeya_media/dgxhzs0ahvkgukedmlcq.mp4"
-                              autoPlay muted loop playsInline class="sitemap-hero-video"></video>
+                <div class="sitemap-hero-mid-row">
+                     <span>For</span>
+                     <div class="sitemap-hero-video-wrapper">
+                          <video
+                               src="https://res.cloudinary.com/dlek2xgkd/video/upload/q_auto,f_auto,vc_auto/v1775042032/kreeya_media/dgxhzs0ahvkgukedmlcq.mp4"
+                               autoPlay muted loop playsInline class="sitemap-hero-video"></video>
+                     </div>
+                     <span>All</span>
+                </div>
+
+                <div class="sitemap-hero-title-bottom">
+                     Your Design Needs
+                </div>
+
+                <p class="sitemap-hero-desc">
+                     We design exceptional brands, products, web apps, mobile apps, websites for startups and
+                     enterprises.
+                </p>
+           </div>
+      </section>
+      -->
+
+     <!-- Sitemap Logo Marquee Section (Copied from LogoMarque.jsx design with infinite scrolling animation)
+      <div class="sitemap-marquee-container">
+
+           <div class="sitemap-marquee-left">
+                <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
+
+                <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
+           </div>
+
+           <div class="sitemap-marquee-right">
+                <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
+
+                <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
+                <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
+           </div>
+
+      </div>
+      -->
+     <main class="sitemap-content-wrapper">
+
+          <!-- Box 1: Main Pages -->
+          <section class="main-pages-card">
+               <div class="main-pages-header">
+                    <div class="main-pages-title">
+                         <div class="main-pages-icon">
+                              <svg viewBox="0 0 24 24">
+                                   <path d="M12 3L3 10.5V21H9V15H15V21H21V10.5L12 3Z" />
+                              </svg>
+                         </div>
+                         <h2>Main Pages</h2>
                     </div>
-                    <span>All</span>
+                    <span class="page-count">5 Pages</span>
                </div>
 
-               <div class="sitemap-hero-title-bottom">
-                    Your Design Needs
+               <div class="main-pages-grid">
+                    <a href="/" class="page-link">
+                         <span class="page-dot"></span>
+                         Home
+                    </a>
+                    <a href="/about-us" class="page-link">
+                         <span class="page-dot"></span>
+                         About Us
+                    </a>
+                    <a href="/contact-us" class="page-link">
+                         <span class="page-dot"></span>
+                         Contact Us
+                    </a>
+
+                    <a href="/privacy-policy" class="page-link">
+                         <span class="page-dot"></span>
+                         Privacy Policy
+                    </a>
+                    <a href="/disclaimer" class="page-link">
+                         <span class="page-dot"></span>
+                         Disclaimer
+                    </a>
+               </div>
+          </section>
+
+          <!-- Box 1b: Portfolio Pages -->
+          <section class="main-pages-card">
+               <div class="main-pages-header">
+                    <div class="main-pages-title">
+                         <div class="main-pages-icon">
+                              <svg viewBox="0 0 24 24">
+                                   <path
+                                        d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+                              </svg>
+                         </div>
+                         <h2>Portfolio Pages</h2>
+                    </div>
+                    <span class="page-count">8 Pages</span>
                </div>
 
-               <p class="sitemap-hero-desc">
-                    We design exceptional brands, products, web apps, mobile apps, websites for startups and
-                    enterprises.
-               </p>
-          </div>
-     </section>
+               <div class="main-pages-grid">
+                    <a href="/fintech" class="page-link">
+                         <span class="page-dot"></span>
+                         Fintech Portfolio
+                    </a>
+                    <a href="/healthcare" class="page-link">
+                         <span class="page-dot"></span>
+                         Healthcare Portfolio
+                    </a>
+                    <a href="/real-estate" class="page-link">
+                         <span class="page-dot"></span>
+                         Real Estate Portfolio
+                    </a>
+                    <a href="/ecommerce" class="page-link">
+                         <span class="page-dot"></span>
+                         Ecommerce Portfolio
+                    </a>
+                    <a href="/portfolio-beyekls" class="page-link">
+                         <span class="page-dot"></span>
+                         Beyekls Portfolio
+                    </a>
+                    <a href="/portfolio-daccord" class="page-link">
+                         <span class="page-dot"></span>
+                         Daccord Portfolio
+                    </a>
+                    <a href="/portfolio-coinpay" class="page-link">
+                         <span class="page-dot"></span>
+                         Coinpay Portfolio
+                    </a>
+                    <a href="/portfolio-nectar" class="page-link">
+                         <span class="page-dot"></span>
+                         Nectar Portfolio
+                    </a>
+               </div>
+          </section>
 
-     <!-- Sitemap Logo Marquee Section (Copied from LogoMarque.jsx design with infinite scrolling animation) -->
-     <div class="sitemap-marquee-container">
+          <!-- Box 2: Services -->
+          <section class="main-pages-card">
+               <div class="main-pages-header">
+                    <div class="main-pages-title">
+                         <div class="main-pages-icon">
+                              <svg viewBox="0 0 24 24">
+                                   <path
+                                        d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
+                              </svg>
+                         </div>
+                         <h2>Service Pages</h2>
+                    </div>
+                    <span class="page-count">25 Pages</span>
+               </div>
 
-          <!-- Marquee Left (Scrolling Left) -->
-          <div class="sitemap-marquee-left">
-               <!-- First Set -->
-               <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
+               <div class="main-pages-grid">
 
-               <!-- Duplicate Set for Infinite Loop -->
-               <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
-          </div>
+                    <a href="/services" class="page-link">
+                         <span class="page-dot"></span>
+                         Services
+                    </a>
+                    <a href="/performance-marketing-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Performance Marketing Service In Delhi
+                    </a>
+                    <a href="/instagram-marketing-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Instagram Marketing Service In Delhi
+                    </a>
+                    <a href="/search-engine-optimization-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Search Engine Optimization Service In Delhi
+                    </a>
+                    <a href="/linkedin-marketing-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Linkedin Marketing Service In Delhi
+                    </a>
+                    <a href="/social-media-marketing-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Social Media Marketing Service In Delhi
+                    </a>
+                    <a href="/search-engine-marketing-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Search Engine Marketing Service In Delhi
+                    </a>
+                    <a href="/web-development-services-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Web Development Services In Delhi
+                    </a>
+                    <a href="/webflow-development-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Webflow Development Service In Delhi
+                    </a>
+                    <a href="/mobile-app-development-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Mobile App Development Service In Delhi
+                    </a>
+                    <a href="/shopify-development-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Shopify Development Service In Delhi
+                    </a>
+                    <a href="/word-press-expert-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Word Press Expert Service In Delhi
+                    </a>
+                    <a href="/ui-development-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Ui Development Service In Delhi
+                    </a>
+                    <a href="/logo-design-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Logo Design Service In Delhi
+                    </a>
+                    <a href="/social-media-creatives-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Social Media Creatives Service In Delhi
+                    </a>
+                    <a href="/graphic-design-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Graphic Design Service In Delhi
+                    </a>
+                    <a href="/brand-identity-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Brand Identity Service In Delhi
+                    </a>
+                    <a href="/video-editing-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Video Editing Service In Delhi
+                    </a>
+                    <a href="/print-design-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Print Design Service In Delhi
+                    </a>
+                    <a href="/ui-ux-design-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Ui Ux Design Service In Delhi
+                    </a>
+                    <a href="/mobile-app-design-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Mobile App Design Service In Delhi
+                    </a>
+                    <a href="/gen-ai-design-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Gen Ai Design Service In Delhi
+                    </a>
+                    <a href="/product-design-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Product Design Service In Delhi
+                    </a>
+                    <a href="/motion-graphics-design-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Motion Graphics Design Service In Delhi
+                    </a>
+                    <a href="/website-design-service-in-delhi" class="page-link">
+                         <span class="page-dot"></span>
+                         Website Design Service In Delhi
+                    </a>
+               </div>
+          </section>
 
-          <!-- Marquee Right (Scrolling Right) -->
-          <div class="sitemap-marquee-right">
-               <!-- First Set -->
-               <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
+          <!-- Box 3: Locations -->
+          <section class="main-pages-card">
+               <div class="main-pages-header">
+                    <div class="main-pages-title">
+                         <div class="main-pages-icon">
+                              <svg viewBox="0 0 24 24">
+                                   <path
+                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                              </svg>
+                         </div>
+                         <h2>Location Pages</h2>
+                    </div>
+                    <span class="page-count">8 Pages</span>
+               </div>
 
-               <!-- Duplicate Set for Infinite Loop -->
-               <img src="images/comp2.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp3.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp4.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp5.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp6.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp7.webp" alt="Client Logo" class="sitemap-marquee-logo">
-               <img src="images/comp8.webp" alt="Client Logo" class="sitemap-marquee-logo">
-          </div>
+               <div class="main-pages-grid">
+                    <a href="/ui-ux-design-company-in-delhi-for-saas" class="page-link">
+                         <span class="page-dot"></span>
+                         Ui Ux Design Company In Delhi For Saas
+                    </a>
+                    <a href="/ui-ux-design-company-in-delhi-for-e-commerce" class="page-link">
+                         <span class="page-dot"></span>
+                         Ui Ux Design Company In Delhi For E Commerce
+                    </a>
+                    <a href="/ui-ux-design-company-in-delhi-for-real-estate" class="page-link">
+                         <span class="page-dot"></span>
+                         Ui Ux Design Company In Delhi For Real Estate
+                    </a>
+                    <a href="/ui-ux-design-company-in-delhi-for-healthcare" class="page-link">
+                         <span class="page-dot"></span>
+                         Ui Ux Design Company In Delhi For Healthcare
+                    </a>
+                    <a href="/ui-ux-design-company-in-delhi-for-fintech" class="page-link">
+                         <span class="page-dot"></span>
+                         Ui Ux Design Company In Delhi For Fintech
+                    </a>
+                    <a href="/product-design-company-in-delhi-for-fintech" class="page-link">
+                         <span class="page-dot"></span>
+                         Product Design Company In Delhi For Fintech
+                    </a>
+                    <a href="/product-design-company-in-delhi-for-healthcare" class="page-link">
+                         <span class="page-dot"></span>
+                         Product Design Company In Delhi For Healthcare
+                    </a>
+                    <a href="/product-design-company-in-delhi-for-e-commerce" class="page-link">
+                         <span class="page-dot"></span>
+                         Product Design Company In Delhi For E Commerce
+                    </a>
+               </div>
+          </section>
 
-     </div>      <main class="sitemap-content-wrapper">
+          <!-- Box 4: Blogs -->
+          <section class="main-pages-card">
+               <div class="main-pages-header">
+                    <div class="main-pages-title">
+                         <div class="main-pages-icon">
+                              <svg viewBox="0 0 24 24">
+                                   <path
+                                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                              </svg>
+                         </div>
+                         <h2>Blog Pages</h2>
+                    </div>
+                    <span class="page-count">5 Pages</span>
+               </div>
 
-           <!-- Box 1: Main Pages -->
-           <section class="main-pages-card">
-                <div class="main-pages-header">
-                     <div class="main-pages-title">
-                          <div class="main-pages-icon">
-                               <svg viewBox="0 0 24 24">
-                                    <path d="M12 3L3 10.5V21H9V15H15V21H21V10.5L12 3Z" />
-                               </svg>
-                          </div>
-                          <h2>Main Pages</h2>
-                     </div>
-                     <span class="page-count">13 Pages</span>
-                </div>
+               <div class="main-pages-grid">
+                    <a href="/category/blogs" class="page-link">
+                         <span class="page-dot"></span>
+                         Blogs
+                    </a>
+                    <a href="/top-benefits-of-working-with-a-professional-ui-ux-design-expert" class="page-link">
+                         <span class="page-dot"></span>
+                         Top Benefits Of Working With A Professional Ui Ux Design Expert
+                    </a>
+                    <a href="/why-hiring-a-ui-ux-design-expert-can-transform-your-business-website" class="page-link">
+                         <span class="page-dot"></span>
+                         Why Hiring A Ui Ux Design Expert Can Transform Your Business Website
+                    </a>
+                    <a href="/leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design" class="page-link">
+                         <span class="page-dot"></span>
+                         Leading Uiux Design Companies In Gurgaon For Web Mobile App Design
+                    </a>
+                    <a href="/best-uiux-design-agency-in-delhi-key-features-to-look-for" class="page-link">
+                         <span class="page-dot"></span>
+                         Best Uiux Design Agency In Delhi Key Features To Look For
+                    </a>
+               </div>
+          </section>
 
-                <div class="main-pages-grid">
-                     <a href="/" class="page-link">
-                          <span class="page-dot"></span>
-                          Home
-                     </a>
-                     <a href="/about-us" class="page-link">
-                          <span class="page-dot"></span>
-                          About Us
-                     </a>
-                     <a href="/contact-us" class="page-link">
-                          <span class="page-dot"></span>
-                          Contact Us
-                     </a>
-                     <a href="/services" class="page-link">
-                          <span class="page-dot"></span>
-                          Services
-                     </a>
-                     <a href="/category/blogs" class="page-link">
-                          <span class="page-dot"></span>
-                          Blogs
-                     </a>
-                     <a href="/landing-page" class="page-link">
-                          <span class="page-dot"></span>
-                          Landing Page
-                     </a>
-                     <a href="/portfolio-beyekls" class="page-link">
-                          <span class="page-dot"></span>
-                          Portfolio Beyekls
-                     </a>
-                     <a href="/portfolio-daccord" class="page-link">
-                          <span class="page-dot"></span>
-                          Portfolio Daccord
-                     </a>
-                     <a href="/portfolio-coinpay" class="page-link">
-                          <span class="page-dot"></span>
-                          Portfolio Coinpay
-                     </a>
-                     <a href="/portfolio-nectar" class="page-link">
-                          <span class="page-dot"></span>
-                          Portfolio Nectar
-                     </a>
-                     <a href="/privacy-policy" class="page-link">
-                          <span class="page-dot"></span>
-                          Privacy Policy
-                     </a>
-                     <a href="/disclaimer" class="page-link">
-                          <span class="page-dot"></span>
-                          Disclaimer
-                     </a>
-                     <a href="/sitemap.html" class="page-link">
-                          <span class="page-dot"></span>
-                          Sitemap
-                     </a>
-                </div>
-           </section>
+          <!-- You May Also Like Section (Design from YouMayLike.jsx) -->
+          <section class="sitemap-you-may-like">
+               <h2 class="sitemap-section-title">You May Also Like This</h2>
+               <div class="you-may-like-grid">
 
-           <!-- Box 2: Services -->
-           <section class="main-pages-card">
-                <div class="main-pages-header">
-                     <div class="main-pages-title">
-                          <div class="main-pages-icon">
-                               <svg viewBox="0 0 24 24">
-                                    <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
-                               </svg>
-                          </div>
-                          <h2>Service Pages</h2>
-                     </div>
-                     <span class="page-count">24 Pages</span>
-                </div>
+                    <!-- Blog 1 -->
+                    <a href="/top-benefits-of-working-with-a-professional-ui-ux-design-expert" class="blog-card">
+                         <div class="blog-card-img-wrapper">
+                              <img src="https://res.cloudinary.com/dlek2xgkd/image/upload/v1780492053/kreeya_media/top-benefits-of-working-with-a-professional-ui-ux-design-expert-csb.png"
+                                   alt="Top Benefits of Working with a Professional UI UX Design Expert">
+                         </div>
+                         <div class="blog-card-content">
+                              <div class="blog-card-meta">
+                                   <span>2026-05-14</span>
+                                   <span>|</span>
+                                   <span>4 min read</span>
+                                   <span>|</span>
+                                   <span class="blog-card-category">UI/UX design</span>
+                              </div>
+                              <h3 class="blog-card-title">Top Benefits of Working with a Professional UI UX Design
+                                   Expert</h3>
+                         </div>
+                    </a>
 
-                <div class="main-pages-grid">
-                     <a href="/performance-marketing-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Performance Marketing Service In Delhi
-                     </a>
-                     <a href="/instagram-marketing-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Instagram Marketing Service In Delhi
-                     </a>
-                     <a href="/search-engine-optimization-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Search Engine Optimization Service In Delhi
-                     </a>
-                     <a href="/linkedin-marketing-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Linkedin Marketing Service In Delhi
-                     </a>
-                     <a href="/social-media-marketing-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Social Media Marketing Service In Delhi
-                     </a>
-                     <a href="/search-engine-marketing-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Search Engine Marketing Service In Delhi
-                     </a>
-                     <a href="/web-development-services-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Web Development Services In Delhi
-                     </a>
-                     <a href="/webflow-development-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Webflow Development Service In Delhi
-                     </a>
-                     <a href="/mobile-app-development-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Mobile App Development Service In Delhi
-                     </a>
-                     <a href="/shopify-development-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Shopify Development Service In Delhi
-                     </a>
-                     <a href="/word-press-expert-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Word Press Expert Service In Delhi
-                     </a>
-                     <a href="/ui-development-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Ui Development Service In Delhi
-                     </a>
-                     <a href="/logo-design-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Logo Design Service In Delhi
-                     </a>
-                     <a href="/social-media-creatives-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Social Media Creatives Service In Delhi
-                     </a>
-                     <a href="/graphic-design-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Graphic Design Service In Delhi
-                     </a>
-                     <a href="/brand-identity-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Brand Identity Service In Delhi
-                     </a>
-                     <a href="/video-editing-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Video Editing Service In Delhi
-                     </a>
-                     <a href="/print-design-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Print Design Service In Delhi
-                     </a>
-                     <a href="/ui-ux-design-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Ui Ux Design Service In Delhi
-                     </a>
-                     <a href="/mobile-app-design-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Mobile App Design Service In Delhi
-                     </a>
-                     <a href="/gen-ai-design-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Gen Ai Design Service In Delhi
-                     </a>
-                     <a href="/product-design-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Product Design Service In Delhi
-                     </a>
-                     <a href="/motion-graphics-design-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Motion Graphics Design Service In Delhi
-                     </a>
-                     <a href="/website-design-service-in-delhi" class="page-link">
-                          <span class="page-dot"></span>
-                          Website Design Service In Delhi
-                     </a>
-                </div>
-           </section>
+                    <!-- Blog 2 -->
+                    <a href="/why-hiring-a-ui-ux-design-expert-can-transform-your-business-website" class="blog-card">
+                         <div class="blog-card-img-wrapper">
+                              <img src="https://res.cloudinary.com/dlek2xgkd/image/upload/v1780492154/kreeya_media/why-hiring-a-ui-ux-design-expert-can-transform-your-business-website-xym.png"
+                                   alt="Why Hiring a UI UX Design Expert Can Transform Your Business Website">
+                         </div>
+                         <div class="blog-card-content">
+                              <div class="blog-card-meta">
+                                   <span>2026-05-08</span>
+                                   <span>|</span>
+                                   <span>1 min read</span>
+                                   <span>|</span>
+                                   <span class="blog-card-category">web design</span>
+                              </div>
+                              <h3 class="blog-card-title">Why Hiring a UI UX Design Expert Can Transform Your Business
+                                   Website</h3>
+                         </div>
+                    </a>
 
-           <!-- Box 3: Locations -->
-           <section class="main-pages-card">
-                <div class="main-pages-header">
-                     <div class="main-pages-title">
-                          <div class="main-pages-icon">
-                               <svg viewBox="0 0 24 24">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                               </svg>
-                          </div>
-                          <h2>Location Pages</h2>
-                     </div>
-                     <span class="page-count">8 Pages</span>
-                </div>
+                    <!-- Blog 3 -->
+                    <a href="/leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design" class="blog-card">
+                         <div class="blog-card-img-wrapper">
+                              <img src="https://res.cloudinary.com/dlek2xgkd/image/upload/v1780492175/kreeya_media/leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design-4zb.png"
+                                   alt="Leading UI/UX Design Companies in Gurgaon for Web & Mobile App Design">
+                         </div>
+                         <div class="blog-card-content">
+                              <div class="blog-card-meta">
+                                   <span>2026-04-09</span>
+                                   <span>|</span>
+                                   <span>20 min read</span>
+                                   <span>|</span>
+                                   <span class="blog-card-category">web</span>
+                              </div>
+                              <h3 class="blog-card-title">Leading UI/UX Design Companies in Gurgaon for Web & Mobile App
+                                   Design</h3>
+                         </div>
+                    </a>
 
-                <div class="main-pages-grid">
-                     <a href="/ui-ux-design-company-in-delhi-for-saas" class="page-link">
-                          <span class="page-dot"></span>
-                          Ui Ux Design Company In Delhi For Saas
-                     </a>
-                     <a href="/ui-ux-design-ccompany-in-delhi-for-e-commerce" class="page-link">
-                          <span class="page-dot"></span>
-                          Ui Ux Design Company In Delhi For E Commerce
-                     </a>
-                     <a href="/ui-ux-design-company-in-delhi-for-real-estate" class="page-link">
-                          <span class="page-dot"></span>
-                          Ui Ux Design Company In Delhi For Real Estate
-                     </a>
-                     <a href="/ui-ux-design-company-in-delhi-for-healthcare" class="page-link">
-                          <span class="page-dot"></span>
-                          Ui Ux Design Company In Delhi For Healthcare
-                     </a>
-                     <a href="/ui-ux-design-company-in-delhi-for-fintech" class="page-link">
-                          <span class="page-dot"></span>
-                          Ui Ux Design Company In Delhi For Fintech
-                     </a>
-                     <a href="/product-design-company-in-delhi-for-fintech" class="page-link">
-                          <span class="page-dot"></span>
-                          Product Design Company In Delhi For Fintech
-                     </a>
-                     <a href="/product-design-company-in-delhi-for-healthcare" class="page-link">
-                          <span class="page-dot"></span>
-                          Product Design Company In Delhi For Healthcare
-                     </a>
-                     <a href="/product-design-company-in-delhi-for-e-commerce" class="page-link">
-                          <span class="page-dot"></span>
-                          Product Design Company In Delhi For E Commerce
-                     </a>
-                </div>
-           </section>
+               </div>
+          </section>
 
-           <!-- Box 4: Blogs -->
-           <section class="main-pages-card">
-                <div class="main-pages-header">
-                     <div class="main-pages-title">
-                          <div class="main-pages-icon">
-                               <svg viewBox="0 0 24 24">
-                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                               </svg>
-                          </div>
-                          <h2>Blog Pages</h2>
-                     </div>
-                     <span class="page-count">4 Pages</span>
-                </div>
+          <!-- FAQ Section (Design from FaqSection.jsx) -->
+          <section class="sitemap-faq-section">
+               <h3 class="faq-title">Want To Know More? Ask Us</h3>
+               <div class="faq-list">
 
-                <div class="main-pages-grid">
-                     <a href="/top-benefits-of-working-with-a-professional-ui-ux-design-expert" class="page-link">
-                          <span class="page-dot"></span>
-                          Top Benefits Of Working With A Professional Ui Ux Design Expert
-                     </a>
-                     <a href="/why-hiring-a-ui-ux-design-expert-can-transform-your-business-website" class="page-link">
-                          <span class="page-dot"></span>
-                          Why Hiring A Ui Ux Design Expert Can Transform Your Business Website
-                     </a>
-                     <a href="/leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design" class="page-link">
-                          <span class="page-dot"></span>
-                          Leading Uiux Design Companies In Gurgaon For Web Mobile App Design
-                     </a>
-                     <a href="/best-uiux-design-agency-in-delhi-key-features-to-look-for" class="page-link">
-                          <span class="page-dot"></span>
-                          Best Uiux Design Agency In Delhi Key Features To Look For
-                     </a>
-                </div>
-           </section>
+                    <!-- FAQ 1 -->
+                    <div class="faq-item active">
+                         <button class="faq-question-btn" onclick="toggleFaq(0)">
+                              <span>What services do UI UX design agencies offer?</span>
+                              <span class="faq-icon-wrapper">
+                                   <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                   <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                              </span>
+                         </button>
+                         <div class="faq-answer-wrapper">
+                              <div class="faq-answer-content">
+                                   <p class="faq-answer-text">User research, UX strategy, wireframing, UI design,
+                                        prototyping, and usability testing are all provided by UI/UX design firms to
+                                        produce user-friendly, conversion-focused digital products for the web and
+                                        mobile platforms.</p>
+                              </div>
+                         </div>
+                    </div>
 
-           <!-- You May Also Like Section (Design from YouMayLike.jsx) -->
-           <section class="sitemap-you-may-like">
-                <h2 class="sitemap-section-title">You May Also Like This</h2>
-                <div class="you-may-like-grid">
-                     
-                     <!-- Blog 1 -->
-                     <a href="/top-benefits-of-working-with-a-professional-ui-ux-design-expert" class="blog-card">
-                          <div class="blog-card-img-wrapper">
-                               <img src="https://res.cloudinary.com/dlek2xgkd/image/upload/v1780492053/kreeya_media/top-benefits-of-working-with-a-professional-ui-ux-design-expert-csb.png" alt="Top Benefits of Working with a Professional UI UX Design Expert">
-                          </div>
-                          <div class="blog-card-content">
-                               <div class="blog-card-meta">
-                                    <span>2026-05-14</span>
-                                    <span>|</span>
-                                    <span>4 min read</span>
-                                    <span>|</span>
-                                    <span class="blog-card-category">UI/UX design</span>
-                               </div>
-                               <h3 class="blog-card-title">Top Benefits of Working with a Professional UI UX Design Expert</h3>
-                          </div>
-                     </a>
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                         <button class="faq-question-btn" onclick="toggleFaq(1)">
+                              <span>Why do I need a UI UX design company for my business?</span>
+                              <span class="faq-icon-wrapper">
+                                   <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                   <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                              </span>
+                         </button>
+                         <div class="faq-answer-wrapper">
+                              <div class="faq-answer-content">
+                                   <p class="faq-answer-text">By matching design with business objectives, a UI/UX
+                                        design firm assists you in creating aesthetically pleasing, user-friendly
+                                        solutions that enhance customer happiness, boost conversions, and minimize
+                                        expensive usability problems.</p>
+                              </div>
+                         </div>
+                    </div>
 
-                     <!-- Blog 2 -->
-                     <a href="/why-hiring-a-ui-ux-design-expert-can-transform-your-business-website" class="blog-card">
-                          <div class="blog-card-img-wrapper">
-                               <img src="https://res.cloudinary.com/dlek2xgkd/image/upload/v1780492154/kreeya_media/why-hiring-a-ui-ux-design-expert-can-transform-your-business-website-xym.png" alt="Why Hiring a UI UX Design Expert Can Transform Your Business Website">
-                          </div>
-                          <div class="blog-card-content">
-                               <div class="blog-card-meta">
-                                    <span>2026-05-08</span>
-                                    <span>|</span>
-                                    <span>1 min read</span>
-                                    <span>|</span>
-                                    <span class="blog-card-category">web design</span>
-                               </div>
-                               <h3 class="blog-card-title">Why Hiring a UI UX Design Expert Can Transform Your Business Website</h3>
-                          </div>
-                     </a>
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                         <button class="faq-question-btn" onclick="toggleFaq(2)">
+                              <span>How long does it take to complete a UI UX design project?</span>
+                              <span class="faq-icon-wrapper">
+                                   <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                   <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                              </span>
+                         </button>
+                         <div class="faq-answer-wrapper">
+                              <div class="faq-answer-content">
+                                   <p class="faq-answer-text">Depending on scope, research depth, number of screens, and
+                                        iterations, a UI/UX design project usually takes four to eight weeks to
+                                        complete; simpler projects are completed more quickly, whereas complicated
+                                        products take longer.</p>
+                              </div>
+                         </div>
+                    </div>
 
-                     <!-- Blog 3 -->
-                     <a href="/leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design" class="blog-card">
-                          <div class="blog-card-img-wrapper">
-                               <img src="https://res.cloudinary.com/dlek2xgkd/image/upload/v1780492175/kreeya_media/leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design-4zb.png" alt="Leading UI/UX Design Companies in Gurgaon for Web & Mobile App Design">
-                          </div>
-                          <div class="blog-card-content">
-                               <div class="blog-card-meta">
-                                    <span>2026-04-09</span>
-                                    <span>|</span>
-                                    <span>20 min read</span>
-                                    <span>|</span>
-                                    <span class="blog-card-category">web</span>
-                               </div>
-                               <h3 class="blog-card-title">Leading UI/UX Design Companies in Gurgaon for Web & Mobile App Design</h3>
-                          </div>
-                     </a>
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                         <button class="faq-question-btn" onclick="toggleFaq(3)">
+                              <span>How does UI UX design increase conversions?</span>
+                              <span class="faq-icon-wrapper">
+                                   <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                   <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                              </span>
+                         </button>
+                         <div class="faq-answer-wrapper">
+                              <div class="faq-answer-content">
+                                   <p class="faq-answer-text">A UI/UX design firm assists you in developing
+                                        user-friendly, intuitive digital experiences that increase conversions, lower
+                                        friction, and foster trust—all of which help you achieve your business
+                                        objectives and transform users into devoted clients.</p>
+                              </div>
+                         </div>
+                    </div>
 
-                </div>
-           </section>
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                         <button class="faq-question-btn" onclick="toggleFaq(4)">
+                              <span>How do I choose the right UI UX design agency for my business?</span>
+                              <span class="faq-icon-wrapper">
+                                   <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                   <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                              </span>
+                         </button>
+                         <div class="faq-answer-wrapper">
+                              <div class="faq-answer-content">
+                                   <p class="faq-answer-text">When selecting a UI/UX design firm, make sure they can
+                                        address your unique business difficulties by looking at their portfolio
+                                        relevancy, customer testimonials, industry experience, design process clarity,
+                                        and alignment with your budget and objectives.</p>
+                              </div>
+                         </div>
+                    </div>
 
-           <!-- FAQ Section (Design from FaqSection.jsx) -->
-           <section class="sitemap-faq-section">
-                <h3 class="faq-title">Want To Know More? Ask Us</h3>
-                <div class="faq-list">
-                     
-                     <!-- FAQ 1 -->
-                     <div class="faq-item active">
-                          <button class="faq-question-btn" onclick="toggleFaq(0)">
-                               <span>What services do UI UX design agencies offer?</span>
-                               <span class="faq-icon-wrapper">
-                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
-                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
-                               </span>
-                          </button>
-                          <div class="faq-answer-wrapper">
-                               <div class="faq-answer-content">
-                                    <p class="faq-answer-text">User research, UX strategy, wireframing, UI design, prototyping, and usability testing are all provided by UI/UX design firms to produce user-friendly, conversion-focused digital products for the web and mobile platforms.</p>
-                               </div>
-                          </div>
-                     </div>
+                    <!-- FAQ 6 -->
+                    <div class="faq-item">
+                         <button class="faq-question-btn" onclick="toggleFaq(5)">
+                              <span>What is a UI UX design agency?</span>
+                              <span class="faq-icon-wrapper">
+                                   <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
+                                   <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
+                              </span>
+                         </button>
+                         <div class="faq-answer-wrapper">
+                              <div class="faq-answer-content">
+                                   <p class="faq-answer-text">A UI/UX design firm specializes in creating user-centered
+                                        digital experiences by fusing interaction design, visual design, and user
+                                        research to create products that are simple to use, captivating, and efficient.
+                                   </p>
+                              </div>
+                         </div>
+                    </div>
 
-                     <!-- FAQ 2 -->
-                     <div class="faq-item">
-                          <button class="faq-question-btn" onclick="toggleFaq(1)">
-                               <span>Why do I need a UI UX design company for my business?</span>
-                               <span class="faq-icon-wrapper">
-                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
-                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
-                               </span>
-                          </button>
-                          <div class="faq-answer-wrapper">
-                               <div class="faq-answer-content">
-                                    <p class="faq-answer-text">By matching design with business objectives, a UI/UX design firm assists you in creating aesthetically pleasing, user-friendly solutions that enhance customer happiness, boost conversions, and minimize expensive usability problems.</p>
-                               </div>
-                          </div>
-                     </div>
+               </div>
+          </section>
 
-                     <!-- FAQ 3 -->
-                     <div class="faq-item">
-                          <button class="faq-question-btn" onclick="toggleFaq(2)">
-                               <span>How long does it take to complete a UI UX design project?</span>
-                               <span class="faq-icon-wrapper">
-                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
-                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
-                               </span>
-                          </button>
-                          <div class="faq-answer-wrapper">
-                               <div class="faq-answer-content">
-                                    <p class="faq-answer-text">Depending on scope, research depth, number of screens, and iterations, a UI/UX design project usually takes four to eight weeks to complete; simpler projects are completed more quickly, whereas complicated products take longer.</p>
-                               </div>
-                          </div>
-                     </div>
-
-                     <!-- FAQ 4 -->
-                     <div class="faq-item">
-                          <button class="faq-question-btn" onclick="toggleFaq(3)">
-                               <span>How does UI UX design increase conversions?</span>
-                               <span class="faq-icon-wrapper">
-                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
-                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
-                               </span>
-                          </button>
-                          <div class="faq-answer-wrapper">
-                               <div class="faq-answer-content">
-                                    <p class="faq-answer-text">A UI/UX design firm assists you in developing user-friendly, intuitive digital experiences that increase conversions, lower friction, and foster trust—all of which help you achieve your business objectives and transform users into devoted clients.</p>
-                               </div>
-                          </div>
-                     </div>
-
-                     <!-- FAQ 5 -->
-                     <div class="faq-item">
-                          <button class="faq-question-btn" onclick="toggleFaq(4)">
-                               <span>How do I choose the right UI UX design agency for my business?</span>
-                               <span class="faq-icon-wrapper">
-                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
-                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
-                               </span>
-                          </button>
-                          <div class="faq-answer-wrapper">
-                               <div class="faq-answer-content">
-                                    <p class="faq-answer-text">When selecting a UI/UX design firm, make sure they can address your unique business difficulties by looking at their portfolio relevancy, customer testimonials, industry experience, design process clarity, and alignment with your budget and objectives.</p>
-                               </div>
-                          </div>
-                     </div>
-
-                     <!-- FAQ 6 -->
-                     <div class="faq-item">
-                          <button class="faq-question-btn" onclick="toggleFaq(5)">
-                               <span>What is a UI UX design agency?</span>
-                               <span class="faq-icon-wrapper">
-                                    <span class="faq-icon-plus"><i class="fa-solid fa-plus"></i></span>
-                                    <span class="faq-icon-minus"><i class="fa-solid fa-minus"></i></span>
-                               </span>
-                          </button>
-                          <div class="faq-answer-wrapper">
-                               <div class="faq-answer-content">
-                                    <p class="faq-answer-text">A UI/UX design firm specializes in creating user-centered digital experiences by fusing interaction design, visual design, and user research to create products that are simple to use, captivating, and efficient.</p>
-                               </div>
-                          </div>
-                     </div>
-
-                </div>
-           </section>
-
-      </main>
-      <footer class="footer">
+     </main>
+     <footer class="footer">
 
           <img src="images/footer-img.webp" alt="" class="footer-decoration">
 
@@ -1989,7 +2217,8 @@
                          SAY HELLO !
                     </h2>
 
-                    <a href="https://calendly.com/pyush-anand7/new-meeting" target="_blank" rel="noopener noreferrer" class="footer-btn">
+                    <a href="https://calendly.com/pyush-anand7/new-meeting" target="_blank" rel="noopener noreferrer"
+                         class="footer-btn">
                          <span>Get in Touch</span>
 
                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none"
@@ -2009,11 +2238,16 @@
                          <img src="images/white-logo.webp" alt="Kreeya">
 
                          <div class="socials">
-                              <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
-                              <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
-                              <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
-                              <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
-                              <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+                              <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank"
+                                   rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
+                              <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank"
+                                   rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                              <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank"
+                                   rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                              <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank"
+                                   rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                              <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer"><i
+                                        class="fa-brands fa-x-twitter"></i></a>
                          </div>
                     </div>
 
@@ -2023,10 +2257,12 @@
                          <h3 class="footer-title">Write to us</h3>
 
                          <div class="footer-small">mail us at</div>
-                         <div class="footer-big"><a href="mailto:business@kreeyadesign.com" style="color: #fff; text-decoration: none;">business@kreeyadesign.com</a></div>
+                         <div class="footer-big"><a href="mailto:business@kreeyadesign.com"
+                                   style="color: #fff; text-decoration: none;">business@kreeyadesign.com</a></div>
 
                          <div class="footer-small">Call us at</div>
-                         <div class="footer-big"><a href="tel:+919311500423" style="color: #fff; text-decoration: none;">9311500423</a></div>
+                         <div class="footer-big"><a href="tel:+919311500423"
+                                   style="color: #fff; text-decoration: none;">9311500423</a></div>
                     </div>
 
                     <!-- Address -->
@@ -2051,11 +2287,16 @@
                     <img src="images/white-logo.webp" alt="Kreeya">
 
                     <div class="socials">
-                         <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
-                         <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
-                         <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
-                         <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
-                         <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+                         <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank"
+                              rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
+                         <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank"
+                              rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                         <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank"
+                              rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                         <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank"
+                              rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                         <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer"><i
+                                   class="fa-brands fa-x-twitter"></i></a>
                     </div>
 
                </div>
@@ -2067,13 +2308,20 @@
                     <div class="services-links">
 
                          <a href="/ui-ux-design-company-in-delhi-for-saas">UI UX Design Company in Delhi for SaaS</a> |
-                         <a href="/ui-ux-design-ccompany-in-delhi-for-e-commerce">UI UX Design Company in Delhi for E-commerce</a> |
-                         <a href="/ui-ux-design-company-in-delhi-for-real-estate">UI UX Design Company in Delhi for Real Estate</a> |
-                         <a href="/ui-ux-design-company-in-delhi-for-healthcare">UI UX Design Company in Delhi for Healthcare</a> |
-                         <a href="/ui-ux-design-company-in-delhi-for-fintech">UI UX Design Company in Delhi for Fintech</a> |
-                         <a href="/product-design-company-in-delhi-for-fintech">Product Design Company in Delhi for Fintech</a> |
-                         <a href="/product-design-company-in-delhi-for-healthcare">Product Design Company in Delhi for Healthcare</a> |
-                         <a href="/product-design-company-in-delhi-for-e-commerce">Product Design Company in Delhi for E-commerce</a>
+                         <a href="/ui-ux-design-company-in-delhi-for-e-commerce">UI UX Design Company in Delhi for
+                              E-commerce</a> |
+                         <a href="/ui-ux-design-company-in-delhi-for-real-estate">UI UX Design Company in Delhi for Real
+                              Estate</a> |
+                         <a href="/ui-ux-design-company-in-delhi-for-healthcare">UI UX Design Company in Delhi for
+                              Healthcare</a> |
+                         <a href="/ui-ux-design-company-in-delhi-for-fintech">UI UX Design Company in Delhi for
+                              Fintech</a> |
+                         <a href="/product-design-company-in-delhi-for-fintech">Product Design Company in Delhi for
+                              Fintech</a> |
+                         <a href="/product-design-company-in-delhi-for-healthcare">Product Design Company in Delhi for
+                              Healthcare</a> |
+                         <a href="/product-design-company-in-delhi-for-e-commerce">Product Design Company in Delhi for
+                              E-commerce</a>
 
                     </div>
 
@@ -2094,7 +2342,8 @@
      </footer>
 
      <!-- Floating Widgets -->
-     <a href="https://wa.me/919311500423" target="_blank" aria-label="Whatsapp Icon" rel="noopener noreferrer" class="whatsapp-float">
+     <a href="https://wa.me/919311500423" target="_blank" aria-label="Whatsapp Icon" rel="noopener noreferrer"
+          class="whatsapp-float">
           <img src="images/whatsapp-icon.webp" alt="Whatsapp Icon" width="80" height="80" style="aspect-ratio: 1/1;">
      </a>
 

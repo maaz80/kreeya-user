@@ -1,5 +1,7 @@
 User-agent: *
-disallow: /https://kreeyadesign.com/privacy-policy/
-disallow: /https://kreeyadesign.com/disclaimer/
+Allow: /
+
+Disallow: /privacy-policy
+Disallow: /disclaimer
 
 Sitemap: https://kreeyadesign.com/sitemap.xml

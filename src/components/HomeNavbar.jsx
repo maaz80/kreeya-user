@@ -182,7 +182,7 @@ const HomeNavbar = ({ startFetch = true, useScrollTriggers = true }) => {
                <MenuOverlay isOpen={menuOpen} setIsOpen={setMenuOpen} startFetch={startFetch} />
 
                {/* Top Bar */}
-               <div className="w-full bg-[#ff5a00] text-white py-1.5 md:py-2 text-[11px] md:text-[13px] font-semibold border-b border-white/10 z-[10000]">
+               <div className="w-full bg-[#ff5a00] text-white py-1.5 md:py-2 text-[11px] md:text-[13px] font-semibold border-b border-white/10 z-10000">
                     <div className="max-w-350.5 mx-auto flex items-center justify-between px-3 md:px-6">
                          <div className="flex items-center gap-4 md:gap-6">
                               <a href="tel:+919311500423" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
@@ -195,19 +195,19 @@ const HomeNavbar = ({ startFetch = true, useScrollTriggers = true }) => {
                               </a>
                          </div>
                          <div className="flex items-center gap-4 md:gap-5">
-                              <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-[2px] transition-all duration-200">
+                              <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <SiFacebook size={14} className="md:w-4 md:h-4" />
                               </a>
-                              <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-[2px] transition-all duration-200">
+                              <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <FaInstagram size={14} className="md:w-4 md:h-4" />
                               </a>
-                              <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-[2px] transition-all duration-200">
+                              <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <FaLinkedinIn size={14} className="md:w-4 md:h-4" />
                               </a>
-                              <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-[2px] transition-all duration-200">
+                              <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <SiYoutube size={14} className="md:w-4 md:h-4" />
                               </a>
-                              <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-[2px] transition-all duration-200">
+                              <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <FaXTwitter size={14} className="md:w-4 md:h-4" />
                               </a>
                          </div>

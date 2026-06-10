@@ -67,7 +67,7 @@ const Blogs = () => {
      // const heroImg = optimizeImage(blogImg, 1200);
 
      return (
-          <section className="relative px-3 md:px-12 lg:px-20 pt-20 pb-5">
+          <section className="relative px-3 md:px-12 lg:px-20 pt-25 pb-5">
                {/* <SeoTags
                     title="Kreeya Design Blog | Marketing, UI/UX & Branding Insights"
                     description="Read the Kreeya Design blog for practical insights on UI/UX design, brand strategy, digital marketing, and growth-driven creative work."

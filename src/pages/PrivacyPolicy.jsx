@@ -37,7 +37,7 @@ const PrivacyPolicy = () => {
                <Breadcrumb />
 
                {/* title */}
-               <h1 className="relative text-center leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-6 md:mb-12 z-20 text-dark-black poiret-one-regular mt-8">
+               <h1 className="relative text-center leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-6 md:mb-12 z-20 text-dark-black poiret-one-regular mt-14 md:mt-16">
                     {h1Policy.main_heading || 'Privacy Policy'}
                </h1>
 

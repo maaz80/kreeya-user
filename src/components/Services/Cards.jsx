@@ -123,12 +123,12 @@ const Cards = () => {
      }, [currentPage, totalPages]);
 
      return (
-          <section className="w-full mt-35">
+          <section className="w-full mt-35 md:mt-40">
 
                <div className="max-w-357.5 mx-auto px-4 md:px-6 lg:px-8">
 
                     {/* HEADING */}
-                    <div className="flex items-center justify-start mb-14">
+                    <div className="flex items-center justify-start mb-7 md:mb-14">
 
                          <h1 className="text-start font-serif text-[42px] md:text-[56px] lg:text-[72px] leading-none font-medium text-black tracking-[-1px] poiret-one-regular">
                               Our Specialised{' '}

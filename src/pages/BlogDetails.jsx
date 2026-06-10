@@ -47,7 +47,7 @@ const BlogDetails = () => {
      const blogDescription = blog?.seoDescription || blog?.content?.replace(/<[^>]+>/g, '').slice(0, 150) || 'Explore design, branding and marketing insights from Kreeya Design.';
 
      return (
-          <section className="px-4 md:px-10 lg:px-20 pt-20 pb-20 plus-jakarta-sans">
+          <section className="px-4 md:px-10 lg:px-20 pt-28 pb-20 plus-jakarta-sans">
                <Helmet>
                     {blog && blog.image && (
                          <link

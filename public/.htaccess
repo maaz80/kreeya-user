@@ -15,7 +15,7 @@ RewriteEngine On
 RewriteBase /
 
 # Route sitemap.xml to the dynamic sitemap.php script
-RewriteRule ^sitemap\.xml$ sitemap.php [L]
+# RewriteRule ^sitemap\.xml$ sitemap.php [L]
 
 # ----------------------------------------------------------------
 # 3. BLOCK BAD BOTS & EMPTY USER AGENTS

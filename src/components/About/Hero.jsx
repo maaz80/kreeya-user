@@ -1,7 +1,7 @@
 
 const Hero = () => {
      return (
-          <section className="relative overflow-hidden pt-20 pb-6 md:pb-10 md:pt-28 lg:pt-36 lg:pb-14 " >
+          <section className="relative overflow-hidden pt-26 pb-6 md:pb-10 md:pt-33 lg:pt-36 lg:pb-14 " >
                {/* <img src={AboutHeroBg } alt="About Hero BG" width={1440} height={800} className="absolute inset-0 w-full object-cover" /> */}
                {/* Container */}
                <div className="max-w-300 mx-auto px-6 sm:px-10 lg:px-26 pt-10 relative z-20">

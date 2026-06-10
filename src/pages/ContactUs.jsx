@@ -249,7 +249,7 @@ const ContactUs = () => {
 
      return (
           <section
-               className="relative px-5 md:px-15 lg:px-20 2xl:px-30 py-20 bg-cover bg-center plus-jakarta-sans"
+               className="relative px-5 md:px-15 lg:px-20 2xl:px-30 py-26 bg-cover bg-center plus-jakarta-sans"
                style={{ backgroundImage: `url(${BgImage})` }}
           >
                {/* <SeoTags
