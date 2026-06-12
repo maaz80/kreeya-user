@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
-import HomeNavbar from '../components/HomeNavbar'
+// import HomeNavbar from '../components/HomeNavbar'
+import HomeNavbarV2 from '../components/HomeNavbarV2'
 import Breadcrumb from '../components/BreadCrumb'
 import Cards from '../components/Services/Cards'
 import useFaq from '../hooks/useFaq'
@@ -12,7 +13,8 @@ const Services = () => {
      const { faqData } = useFaq();
      return (
           <div>
-               <HomeNavbar />
+               {/* <HomeNavbar /> */}
+               <HomeNavbarV2 />
                <Breadcrumb />
                <Cards/>
                <div className='relative max-w-340 mx-auto plus-jakarta-sans flex flex-col justify-center items-center px-4 mt-15'>

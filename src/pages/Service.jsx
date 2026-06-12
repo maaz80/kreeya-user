@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect, useLayoutEffect, useState } from 'react'
 import Hero from '../components/Service/Hero'
-import HomeNavbar from '../components/HomeNavbar'
+// import HomeNavbar from '../components/HomeNavbar'
+import HomeNavbarV2 from '../components/HomeNavbarV2'
 import '../CSS/Location.css'
 import { useParams } from 'react-router-dom';
 import { getServices } from '../utils/service'
@@ -74,7 +75,8 @@ const Service = () => {
 
       {/* HERO (no lazy) */}
       <div id='service-form'>
-        <HomeNavbar />
+        {/* <HomeNavbar /> */}
+        <HomeNavbarV2 />
         <Hero service={service} />
       </div>
 

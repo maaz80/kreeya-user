@@ -5,23 +5,10 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="/images/logo.webp" fetchpriority="high">
   <link rel="preload" as="image" href="/images/beyekls-bg-mobile.webp" fetchpriority="high">
   <link rel="preload" as="image" href="/images/blog-thumbnail.webp" fetchpriority="high">
   <link rel="preload" as="image" href="/images/Build-your-first-ai-agent-in-15-no-coding.webp" fetchpriority="high">
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Poiret+One&family=Poppins:wght@800&display=swap">
-  
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Poiret+One&family=Poppins:wght@800&display=swap"
-    media="print" onload="this.media='all'">
-  
-  <noscript>
-    <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Poiret+One&family=Poppins:wght@800&display=swap">
-  </noscript>
 
   <link rel="preconnect" href="https://res.cloudinary.com">
   <!-- <link rel="preconnect" href="https://api.kreeyadesign.com"> -->
@@ -204,9 +191,29 @@
       }
     }
   </style> -->
+    <!-- ✅ Baaki CSS non-blocking load -->
+    <!-- <link rel="preload" as="style" href="/assets/index-9EmC7NDS.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+      <link rel="stylesheet" href="/assets/index-9EmC7NDS.css" />
+    </noscript> -->
+</head>
+<body>
   <!-- Defer main CSS until after render -->
   <main id="root"></main>
   <script type="module" src="/src/main.jsx"></script>
+  <script type='application/ld+json'>
+  {
+  	"@context": "http://schema.org",
+  	"@type": "Product",
+  	"name": "kreeya design",
+  	"aggregateRating": {
+  		"@type": "AggregateRating",
+  		"ratingValue": "4.9",
+  		"ratingCount": "5",
+  		"reviewCount": "1236"
+  	}
+  }
+  </script>
   <script>
     // Optimized analytics loading
     let scriptsLoaded = false;
@@ -268,6 +275,8 @@
       window.addEventListener(event, loadAllAnalyticsAndAds, { once: true, passive: true });
     });
   </script>
+
+
 
   <!-- <script>
     window.dataLayer = window.dataLayer || [];

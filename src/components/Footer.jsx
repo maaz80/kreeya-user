@@ -83,6 +83,9 @@ const Footer = () => {
 
      }, []);
 
+     const handleTop = () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+     }
      return (
           <footer className="relative bg-[#ff5a00] text-white overflow-hidden z-999 plus-jakarta-sans min-h-200 md:min-h-165">
 
@@ -91,7 +94,7 @@ const Footer = () => {
                <img
                     src={footerImage}
                     alt="Decorative Footer Image"
-                    className=" absolute top-0 right-0 w-50 md:w-100 lg:w-75 h-54 md:h-100 lg:h-75 pointer-events-none "
+                    className="absolute top-0 right-0 w-50 md:w-100 lg:w-75 h-auto pointer-events-none"
                />
 
                <div className="max-w-325 mx-auto px-4 md:px-6 py-16 relative z-10">
@@ -130,7 +133,7 @@ const Footer = () => {
                               {/* <h4 className="text-[36px] lg:text-[32px] mb-6 poiret-one-regular">LOGO</h4> */}
                               <div className="flex items-center gap-2 mb-6">
                                    <img src={logo} alt="Kreeya Design Logo" width={160}
-                                        height={40} className="w-23.75 md:w-31.75 lg:w-40 h-8 md:h-10 lg:h-11" />
+                                        height={40} className="w-23.75 md:w-31.75 lg:w-40 h-6 md:h-8 lg:h-10 object-contain" />
                               </div>
                               <div className="flex gap-4 text-[30px]">
 
@@ -246,7 +249,7 @@ const Footer = () => {
                          {/* <h4 className="text-[20px] md:text-[36px] lg:text-[32px] poiret-one-regular">LOGO</h4> */}
                          <div className="flex items-center gap-2">
                               <img src={logo} alt="Kreeya Design Logo" width={160}
-                                   height={40} className="w-23.75 md:w-31.75 lg:w-40 h-8 md:h-10 lg:h-12" />
+                                   height={40} className="w-23.75 md:w-31.75 lg:w-40 h-6 md:h-8 lg:h-10 object-contain" />
                          </div>
                          <div className="flex gap-4 text-[30px]">
 
@@ -323,21 +326,53 @@ const Footer = () => {
                          })}
                     {/* DIVIDER */}
 
-                    <div className="border-t border-white/40 mt-14 pt-6 flex flex-col md:flex-row md:justify-center items-center gap-5 md:gap-15 text-[12px] md:text-sm lg:text-base">
+                    <div className="border-t border-white/40 mt-14 pt-6 flex flex-col items-center gap-4 text-[12px] md:text-sm lg:text-base">
 
-                         <div className="flex gap-8">
+                         <div className="flex flex-wrap justify-center items-center gap-x-1 md:gap-x-4 gap-y-2">
 
-                              <Link to='/privacy-policy' className="cursor-pointer hover:opacity-70">
-                                   PRIVACY POLICY
+                              <Link onClick={handleTop} to='/' className="cursor-pointer hover:opacity-70">
+                                   Home
                               </Link>
 
-                              <Link to='/disclaimer' className="cursor-pointer hover:opacity-70">
-                                   DISCLAIMER
+                              <span>|</span>
+
+                              <Link onClick={handleTop} to='/services' className="cursor-pointer hover:opacity-70">
+                                   Services
+                              </Link>
+
+                              <span>|</span>
+
+                              <Link onClick={handleTop} to='/category/blogs' className="cursor-pointer hover:opacity-70">
+                                   Blogs
+                              </Link>
+
+                              <span>|</span>
+
+                              <Link onClick={handleTop} to='/about-us' className="cursor-pointer hover:opacity-70">
+                                   About Us
+                              </Link>
+
+                              <span>|</span>
+
+                              <Link onClick={handleTop} to='/contact-us' className="cursor-pointer hover:opacity-70">
+                                   Contact Us
+                              </Link>
+
+                              <span>|</span>
+
+                              <Link onClick={handleTop} to='/privacy-policy' className="cursor-pointer hover:opacity-70">
+                                   Privacy Policy
+                              </Link>
+
+                              <span>|</span>
+
+                              <Link onClick={handleTop} to='/disclaimer' className="cursor-pointer hover:opacity-70">
+                                   Disclaimer
                               </Link>
 
                          </div>
 
-                         <span>
+                         <span className="text-[12px] md:text-sm opacity-80 mt-2">
                               ©2026 KREEYA DESIGN. ALL RIGHTS RESERVED
                          </span>
 

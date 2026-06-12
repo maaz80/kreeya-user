@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
-import HomeNavbar from '../components/HomeNavbar'
+// import HomeNavbar from '../components/HomeNavbar'
+import HomeNavbarV2 from '../components/HomeNavbarV2'
 import Breadcrumb from '../components/BreadCrumb'
 import Details from '../components/About/Details'
 import Hero from '../components/About/Hero'
@@ -14,7 +15,8 @@ const About = () => {
 
      return (
           <div>
-               <HomeNavbar />
+               {/* <HomeNavbar /> */}
+               <HomeNavbarV2 />
                <Breadcrumb />
                <Hero/>
                <Youtube/>

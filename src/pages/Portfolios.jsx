@@ -1,7 +1,8 @@
 import { useEffect, useState, useMemo, lazy, Suspense } from 'react'
 import { useParams } from 'react-router-dom'
 import { getPortfolios } from '../utils/portfolio'
-import HomeNavbar from '../components/HomeNavbar'
+// import HomeNavbar from '../components/HomeNavbar'
+import HomeNavbarV2 from '../components/HomeNavbarV2'
 import Breadcrumb from '../components/BreadCrumb'
 import Hero from '../components/Portfolios/Hero'
 import PortfolioSection from '../components/Portfolios/PortfolioSection'
@@ -79,7 +80,8 @@ const Portfolios = () => {
                          fetchpriority="high"
                     />
                </Helmet>
-               <HomeNavbar />
+               {/* <HomeNavbar /> */}
+               <HomeNavbarV2 />
                <Breadcrumb />
                <Hero title={activePortfolio?.title} description={activePortfolio?.description} />
                <PortfolioSection portfolios={portfolios} loading={loading} />

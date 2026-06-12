@@ -16,7 +16,7 @@ const Breadcrumb = () => {
      const isLocation = location.pathname.startsWith("/location");
 
      return (
-          <div className={`flex items-center gap-2 flex-nowrap overflow-hidden text-sm w-full left-0 z-999 plus-jakarta-sans  h-6 md:h-8 absolute px-3 md:px-5 lg:px-20 text-[10px] md:text-[12px] lg:text-[16px] ${isPortfolio ? 'top-0' : 'top-26 lg:top-29'} ${isLocation ? 'bg-transparent' : ' bg-white/60 backdrop-blur-2xl '}`}>
+          <div className={`flex items-center gap-2 flex-nowrap overflow-hidden text-sm w-full left-0 z-999 plus-jakarta-sans  h-6 md:h-8 absolute px-3 md:px-5 lg:px-20 text-[10px] md:text-[12px] lg:text-[16px] ${isPortfolio ? 'top-0' : 'top-33 lg:top-29'} ${isLocation ? 'bg-transparent' : ' bg-white/60 backdrop-blur-2xl '}`}>
                {/* bg-dark-black/10 */}
                {/**/}
                {/* Home */}

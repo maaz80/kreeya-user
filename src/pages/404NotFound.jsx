@@ -1,7 +1,8 @@
 import bgPattern from "../assets/404-bg.webp";
 import { Helmet } from "react-helmet-async";
 import BackgroundShapes from "../components/BackgroundShapes";
-import HomeNavbar from "../components/HomeNavbar";
+// import HomeNavbar from "../components/HomeNavbar";
+import HomeNavbarV2 from "../components/HomeNavbarV2";
 
 const NotFound = () => {
      return (
@@ -10,7 +11,8 @@ const NotFound = () => {
                     <link rel="canonical" href="https://kreeyadesign.com/not-found" />
                     {/* <meta name="robots" content="noindex,follow" /> */}
                </Helmet>
-               <HomeNavbar />
+               {/* <HomeNavbar /> */}
+               <HomeNavbarV2 />
                <BackgroundShapes />
                {/* White overlay */}
                <div className="fixed inset-0 bg-white/90 md:bg-white/90 z-10" />

@@ -123,7 +123,7 @@ const Cards = () => {
      }, [currentPage, totalPages]);
 
      return (
-          <section className="w-full mt-35 md:mt-40">
+          <section className="w-full mt-42 md:mt-40">
 
                <div className="max-w-357.5 mx-auto px-4 md:px-6 lg:px-8">
 

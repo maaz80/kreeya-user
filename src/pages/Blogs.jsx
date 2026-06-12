@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import blogImg from "/images/blog-thumbnail.webp";
-import HomeNavbar from "../components/HomeNavbar";
+// import HomeNavbar from "../components/HomeNavbar";
+import HomeNavbarV2 from "../components/HomeNavbarV2";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 const BackgroundShapes = lazy(() => import("../components/BackgroundShapes"));
 const FaqSection = lazy(() => import("../components/FaqSection"));
@@ -83,7 +84,8 @@ const Blogs = () => {
                     />
                </Helmet> */}
                <Breadcrumb />
-               <HomeNavbar useScrollTriggers={false} />
+               {/* <HomeNavbar useScrollTriggers={false} /> */}
+               <HomeNavbarV2 useScrollTriggers={false} />
 
                {/* White overlay */}
                <div className="fixed inset-0 bg-white/90 md:bg-white/90 z-10 pointer-events-none" />
@@ -93,7 +95,7 @@ const Blogs = () => {
                {/* Heading */}
 
                <div className="text-center mb-2 md:mb-6 relative z-999 min-w-75 lg:min-w-325 min-h-27.5 lg:min-h-50 mx-auto">
-                    <h1 className="text-center  text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px]  poiret-one-regular text-dark-black mt-8 min-h-8.75 md:min-h-15 lg:min-h-18.75 2xl:min-h-22.5">
+                    <h1 className="text-center  text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px]  poiret-one-regular text-dark-black mt-14 md:mt-11 min-h-8.75 md:min-h-15 lg:min-h-18.75 2xl:min-h-22.5">
                          {h1Blogs.main_heading || 'The Growth Journal'}
                     </h1>
                     {/* leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 */}

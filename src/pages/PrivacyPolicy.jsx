@@ -1,7 +1,8 @@
 import { lazy, Suspense, useEffect } from 'react';
 import BgImage from '../assets/bg.webp'
 import Breadcrumb from '../components/BreadCrumb';
-const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
+// const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
+const HomeNavbarV2 = lazy(() => import('../components/HomeNavbarV2'));
 // import SeoTags from '../components/SeoTags';
 import { useH1Data } from '../hooks/useH1Data';
 import useFaq from '../hooks/useFaq';
@@ -32,12 +33,13 @@ const PrivacyPolicy = () => {
                     canonical="https://kreeyadesign.com/privacy-policy"
                /> */}
                <Suspense fallback={null}>
-                    <HomeNavbar />
+                    {/* <HomeNavbar /> */}
+                    <HomeNavbarV2 />
                </Suspense>
                <Breadcrumb />
 
                {/* title */}
-               <h1 className="relative text-center leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-6 md:mb-12 z-20 text-dark-black poiret-one-regular mt-14 md:mt-16">
+               <h1 className="relative text-center leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-6 md:mb-12 z-20 text-dark-black poiret-one-regular mt-20 md:mt-16">
                     {h1Policy.main_heading || 'Privacy Policy'}
                </h1>
 

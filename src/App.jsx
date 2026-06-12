@@ -7,6 +7,7 @@ import "./CSS/Home.css";
 const Footer = lazy(() => import("./components/Footer"));
 const CookieBanner = lazy(() => import("./components/CookieBanner"));
 const ChatBot = lazy(() => import("./components/ChatBot"));
+const LeadCaptureModal = lazy(() => import("./components/LeadCaptureModal"));
 // import CookieBanner from "./components/CookieBanner";
 
 // import Home from "./pages/Home";
@@ -82,6 +83,9 @@ function App() {
     <div>
       <Suspense fallback={null}>
         <CookieBanner />
+      </Suspense>
+      <Suspense fallback={null}>
+        <LeadCaptureModal />
       </Suspense>
       {areGlobalWidgetsReady && (
         <>

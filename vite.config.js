@@ -2,34 +2,11 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { visualizer } from 'rollup-plugin-visualizer';
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
-
 
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    cssInjectedByJsPlugin({
-      injectCodeFunction: function injectCodeCustomRunTimeFunction(cssCode, options) {
-        try {
-          if (typeof document != 'undefined') {
-            // Defer injection until first interaction or DOMContentLoaded to strictly eliminate render blocking
-            var inject = function () {
-              var elementStyle = document.createElement('style');
-              elementStyle.appendChild(document.createTextNode(cssCode));
-              document.head.appendChild(elementStyle);
-            };
-            if (document.readyState === 'loading') {
-              window.addEventListener('DOMContentLoaded', inject);
-            } else {
-              inject();
-            }
-          }
-        } catch (e) {
-          console.error('vite-plugin-css-injected-by-js', e);
-        }
-      }
-    }),
     // visualizer({
     //   open: true, 
     //   filename: 'bundle-stats.html',

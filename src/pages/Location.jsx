@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react'
 import Hero from '../components/Location/Hero'
-import HomeNavbar from '../components/HomeNavbar'
+// import HomeNavbar from '../components/HomeNavbar'
+import HomeNavbarV2 from '../components/HomeNavbarV2'
 import '../CSS/Location.css'
 import { getLocations } from '../utils/locations'
 import { useParams } from 'react-router-dom';
@@ -72,7 +73,8 @@ const Location = () => {
     <div>
       {/* HERO (no lazy) */}
       <div id='location-form'>
-        <HomeNavbar />
+        {/* <HomeNavbar /> */}
+        <HomeNavbarV2 />
         <Hero location={location} />
       </div>
 

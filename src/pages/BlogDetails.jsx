@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
-import HomeNavbar from "../components/HomeNavbar";;
+// import HomeNavbar from "../components/HomeNavbar";;
+import HomeNavbarV2 from "../components/HomeNavbarV2";
 import { lazy, Suspense, useEffect, useState } from "react";
 import Breadcrumb from "../components/BreadCrumb";
 // import SeoTags from "../components/SeoTags";
@@ -58,7 +59,8 @@ const BlogDetails = () => {
                     )}
                </Helmet>
 
-               <HomeNavbar />
+               {/* <HomeNavbar /> */}
+               <HomeNavbarV2 />
                <Breadcrumb />
 
                {!blog ? (
@@ -85,7 +87,7 @@ const BlogDetails = () => {
                     <>
                          {/* Title */}
 
-                         <h1 className="text-center leading-11 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] poiret-one-regular text-dark-black pt-8 min-h-25 md:min-h-37.5">
+                         <h1 className="text-center leading-11 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] poiret-one-regular text-dark-black pt-14 md:pt-11 min-h-25 md:min-h-37.5">
 
                               {blog.title ? blog.title : '5 Mistakes Startups Make in Branding'}
 

@@ -6,7 +6,8 @@ import HeroSection from "../components/HeroSection";
 import OpeningVideo from "../components/OpeningVideo";
 import useFaq from "../hooks/useFaq";
 
-const HomeNavbar = lazy(() => import("../components/HomeNavbar"));
+// const HomeNavbar = lazy(() => import("../components/HomeNavbar"));
+const HomeNavbarV2 = lazy(() => import("../components/HomeNavbarV2"));
 const FaqSection = lazy(() => import("../components/FaqSection"));
 const GrowthJournal = lazy(() => import("../components/Home/GrowthJournal"));
 const HelpSection = lazy(() => import("../components/Home/HelpSection"));
@@ -95,7 +96,8 @@ const Home = ({ onOpeningVideoFinished }) => {
                <div className="poiret-one-regular ">
 
                     <Suspense fallback={null}>
-                         <HomeNavbar startFetch={isVideoFinished} />
+                         {/* <HomeNavbar startFetch={isVideoFinished} /> */}
+                         <HomeNavbarV2 startFetch={isVideoFinished} />
                     </Suspense>
                     {/* White overlay */}
                     <div className="fixed inset-0 bg-white/90 md:bg-white/90 z-10 will-change-transform contain-layout" />

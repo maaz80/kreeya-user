@@ -5,7 +5,7 @@ const Hero = ({ title, description }) => {
      const [isPlaying, setIsPlaying] = useState(false);
 
      return (
-          <div className='max-w-275 mx-auto mt-35 md:mt-40  px-2 md:px-0'>
+          <div className='max-w-275 mx-auto mt-40 md:mt-40  px-2 md:px-0'>
                {/* Heading */}
                <h1 className="poiret-one-regular text-3xl md:text-5xl xl:text-[56px] leading-9 md:leading-15 max-w-300 text-start">
                     {title || "Break Limits and Unleash the Future of Financial UX"}

@@ -91,6 +91,36 @@ RewriteBase /
 </IfModule>
 
 # ----------------------------------------------------------------
+# 302 REDIRECTS FOR OLD PAGES (Page Delete & Page Rename)
+# ----------------------------------------------------------------
+<IfModule mod_alias.c>
+     Redirect 302 /contact /contact-us
+     Redirect 302 /about /about-us
+     Redirect 302 /blogs /category/blogs
+     Redirect 302 /portfolio_beyekls /portfolio-beyekls
+     Redirect 302 /portfolio_coinpay /portfolio-coinpay
+     Redirect 302 /portfolio_daccord /portfolio-daccord
+     Redirect 302 /portfolio_nectar /portfolio-nectar
+     Redirect 302 /policy /privacy-policy
+     Redirect 302 /portfolio_buyekls /portfolio-beyekls
+     Redirect 302 /ui-ux-design-service-in-delhi-for-saas /ui-ux-design-company-in-delhi-for-saas
+     Redirect 302 /ui-ux-design-service-in-delhi-for-e-commerce /ui-ux-design-company-in-delhi-for-e-commerce
+     Redirect 302 /ui-ux-design-ccompany-in-delhi-for-e-commerce /ui-ux-design-company-in-delhi-for-e-commerce
+     Redirect 302 /ui-ux-design-service-in-delhi-for-real-estate /ui-ux-design-company-in-delhi-for-real-estate
+     Redirect 302 /ui-ux-design-service-in-delhi-for-healthcare /ui-ux-design-company-in-delhi-for-healthcare
+     Redirect 302 /ui-ux-design-service-in-delhi-for-fintech /ui-ux-design-company-in-delhi-for-fintech
+     Redirect 302 /product-design-service-in-delhi-for-fintech /product-design-company-in-delhi-for-fintech
+     Redirect 302 /product-design-service-in-delhi-for-healthcare /product-design-company-in-delhi-for-healthcare
+     Redirect 302 /product-design-service-in-delhi-for-e-commerce /product-design-company-in-delhi-for-e-commerce
+     Redirect 302 /%7Bsearch_term_string%7D /
+     Redirect 302 /index /
+     Redirect 302 /blogs_details/leading_uiux_design_companies_in_gurgaon_for_web_mobile_app_design_kreeya_design /leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design
+     Redirect 302 /blogs_details/why_hiring_a_ui_ux_design_expert_can_transform_your_business_website /why-hiring-a-ui-ux-design-expert-can-transform-your-business-website
+     Redirect 302 /blogs_details/best_uiux_design_agency_in_delhi_key_features_to_look_for /best-uiux-design-agency-in-delhi-key-features-to-look-for
+     Redirect 302 /blogs_details/top_benefits_of_working_with_a_professional_ui_ux_design_expert /top-benefits-of-working-with-a-professional-ui-ux-design-expert
+</IfModule>
+
+# ----------------------------------------------------------------
 # 10. REACT ROUTER FALLBACK
 # ----------------------------------------------------------------
 <IfModule mod_rewrite.c>
@@ -208,13 +238,15 @@ RewriteBase /
      ExpiresByType image/x-icon       "access plus 1 year"
      ExpiresByType font/woff2         "access plus 1 year"
      ExpiresByType font/woff          "access plus 1 year"
+     ExpiresByType font/ttf           "access plus 1 year"
+     ExpiresByType font/otf           "access plus 1 year"
      ExpiresByType text/css           "access plus 1 month"
      ExpiresByType application/javascript "access plus 1 month"
 </IfModule>
 
 <IfModule mod_headers.c>
      # Static assets — long cache
-     <FilesMatch "\.(?:js|css|webp|png|jpg|jpeg|gif|svg|ico|woff2?|mp4)$">
+     <FilesMatch "\.(?:js|css|webp|png|jpg|jpeg|gif|svg|ico|woff2?|ttf|otf|mp4)$">
           Header set Cache-Control "public, max-age=31536000, immutable"
      </FilesMatch>
 

@@ -4,7 +4,8 @@ import BgImage from "../assets/bg.webp";
 import { useH1Data } from "../hooks/useH1Data";
 import useFaq from "../hooks/useFaq";
 
-const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
+// const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
+const HomeNavbarV2 = lazy(() => import('../components/HomeNavbarV2'));
 const Breadcrumb = lazy(() => import('../components/Breadcrumb'))
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
@@ -34,14 +35,15 @@ const Disclaimer = () => {
                     canonical="https://kreeyadesign.com/disclaimer"
                /> */}
                <Suspense fallback={null}>
-                    <HomeNavbar />
+                    {/* <HomeNavbar /> */}
+                    <HomeNavbarV2 />
                </Suspense>
                <Suspense fallback={null}>
                     <Breadcrumb />
                </Suspense>
 
                {/* title */}
-               <h1 className="relative text-center leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-6 md:mb-12 z-20 text-dark-black poiret-one-regular mt-14 md:mt-16">
+               <h1 className="relative text-center leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-6 md:mb-12 z-20 text-dark-black poiret-one-regular mt-20 md:mt-16">
                     {h1Disclaimer.main_heading || 'Disclaimer'}
                </h1>
 

@@ -9,7 +9,8 @@ import useFaq from "../hooks/useFaq";
 // import Details from "../components/Contact/Details";
 
 const Breadcrumb = lazy(() => import('../components/Breadcrumb'));
-const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
+// const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
+const HomeNavbarV2 = lazy(() => import('../components/HomeNavbarV2'));
 const FaqSection = lazy(() => import('../components/FaqSection'));
 const YouMayLike = lazy(() => import('../components/YouMayLike'));
 
@@ -260,7 +261,8 @@ const ContactUs = () => {
                /> */}
 
                <Suspense fallback={null}>
-                    <HomeNavbar />
+                    {/* <HomeNavbar /> */}
+                    <HomeNavbarV2 />
                </Suspense>
                <Suspense fallback={null}>
                     <Breadcrumb />
@@ -269,7 +271,7 @@ const ContactUs = () => {
                {/* Overlay */}
                <div className="absolute inset-0 bg-white/80 z-10"></div>
 
-               <div className="relative z-20 max-w-195 mx-auto mb-10 md:mb-20 mt-10">
+               <div className="relative z-20 max-w-195 mx-auto mb-10 md:mb-20 mt-14">
                     {/* Heading */}
                     <h1 className="text-center text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[72px] leading-tight poiret-one-regular text-dark-black mt-8 mb-8">
                          {h1Contact.first_line_heading || 'Got something in mind?'} <br /> {h1Contact.second_line_heading || "We'd love to help."}

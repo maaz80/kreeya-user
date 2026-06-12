@@ -2,7 +2,8 @@ import { lazy, Suspense, useEffect } from 'react'
 import Breadcrumb from '../components/BreadCrumb';
 import Hero from '../components/Portfolio2/Hero';
 import SeoTags from '../components/SeoTags';
-const HomeNavbar = lazy(() => import('../components/HomeNavbar'))
+// const HomeNavbar = lazy(() => import('../components/HomeNavbar'))
+const HomeNavbarV2 = lazy(() => import('../components/HomeNavbarV2'))
 const ProblemsSolved = lazy(() => import('../components/Portfolio2/ProblemSolved'))
 const ShowCase = lazy(() => import('../components/Portfolio2/ShowCase'))
 const ImpactCreated = lazy(() => import('../components/Portfolio2/Impact'))
@@ -24,7 +25,8 @@ const Portfolio2 = () => {
                /> */}
 
                <Suspense fallback={null}>
-                    <HomeNavbar />
+                    {/* <HomeNavbar /> */}
+                    <HomeNavbarV2 />
                </Suspense>
 
                <Hero />

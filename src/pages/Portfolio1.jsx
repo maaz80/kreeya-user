@@ -1,10 +1,10 @@
 import { lazy, Suspense, useEffect } from 'react'
 import Breadcrumb from '../components/BreadCrumb'
 import Hero from '../components/Portfolio1/Hero';
-import SeoTags from '../components/SeoTags';
+// import SeoTags from '../components/SeoTags';
 
-//   Lazy load — scroll pe load honge
-const HomeNavbar = lazy(() => import('../components/HomeNavbar'))
+// const HomeNavbar = lazy(() => import('../components/HomeNavbar'))
+const HomeNavbarV2 = lazy(() => import('../components/HomeNavbarV2'))
 const ImpactCreated = lazy(() => import('../components/Portfolio1/Impact'))
 const ProblemsSolved = lazy(() => import('../components/Portfolio1/ProblemSolved'))
 const ProcessFollowed = lazy(() => import('../components/Portfolio1/ProcessFollowed'))
@@ -25,9 +25,9 @@ const Portfolio1 = () => {
                     canonical="https://kreeyadesign.com/portfolio-beyekls"
                /> */}
 
-               {/*  Navbar eager — hamesha pehle */}
                <Suspense fallback={null}>
-                    <HomeNavbar />
+                    {/* <HomeNavbar /> */}
+                    <HomeNavbarV2 />
                </Suspense>
 
                <Hero />
