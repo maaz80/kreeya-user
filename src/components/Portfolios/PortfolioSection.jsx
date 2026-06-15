@@ -114,7 +114,12 @@ const PortfolioSection = ({ portfolios = [], loading = false }) => {
                     <div className="flex items-center gap-1 md:gap-4 overflow-x-auto scrollbar-hide pb-4 poppins-regular">
                          {loading ? (
                               Array.from({ length: 4 }).map((_, i) => (
-                                   <div key={i} className="h-14 bg-slate-200/80 rounded-full w-36 animate-pulse"></div>
+                                   <div
+                                        key={i}
+                                        className="whitespace-nowrap rounded-full px-3 md:px-7 py-2 md:py-2 text-[10px] md:text-[16px] border border-transparent bg-slate-200/80 animate-pulse w-24 md:w-36 select-none"
+                                   >
+                                        &nbsp;
+                                   </div>
                               ))
                          ) : (
                               categories.map((item, index) => (
@@ -147,7 +152,7 @@ const PortfolioSection = ({ portfolios = [], loading = false }) => {
                               // Premium Grid Skeleton Loaders
                               Array.from({ length: 4 }).map((_, index) => (
                                    <div key={index} className="animate-pulse flex flex-col gap-6 w-full">
-                                        <div className="rounded-[38px] w-full min-h-150 md:min-h-200 bg-slate-200/85"></div>
+                                        <div className="rounded-[38px] w-full aspect-[522/800] bg-slate-200/85"></div>
                                         <div className="pt-4 space-y-4">
                                              <div className="h-8 bg-slate-200/85 rounded w-3/4"></div>
                                              <div className="h-4 bg-slate-200/85 rounded w-full"></div>
@@ -167,7 +172,7 @@ const PortfolioSection = ({ portfolios = [], loading = false }) => {
                                    >
                                         <div>
                                              {/* Image */}
-                                             <div className="rounded-[38px] overflow-hidden bg-slate-50">
+                                             <div className="rounded-[38px] overflow-hidden bg-slate-50 aspect-[522/800]">
                                                   {(() => {
                                                        const imageProps = item.image
                                                             ? getResponsiveImageProps(item.image, {
@@ -191,7 +196,7 @@ const PortfolioSection = ({ portfolios = [], loading = false }) => {
                                                                  decoding={i < 2 ? "sync" : "async"}
                                                                  srcSet={imageProps.srcSet}
                                                                  sizes={imageProps.sizes}
-                                                                 className="w-full min-h-150 md:min-h-200 object-cover group-hover:scale-105 transition-all duration-700"
+                                                                 className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                                                             />
                                                        );
                                                   })()}

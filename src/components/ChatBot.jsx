@@ -118,13 +118,13 @@ export default function ChatBot() {
                          </span>
 
                          {/* Icon (RIGHT) */}
-
                          <img
-                              src='/images/chatbot.webp'
+                              src="/images/chatbot.webp"
+                              width={75}
+                              height={70}
                               alt="Chatbot Icon"
-                              className="w-10 h-10 shrink-0 group-hover:scale-102"
+                              className="w-10 h-auto shrink-0 group-hover:scale-102"
                          />
-
                     </button>
                )}
 

@@ -60,6 +60,20 @@ function normalizeRouteSlug(value = "") {
     .replace(/_/g, "-");
 }
 
+function getItemSeo(item) {
+  return {
+    title: item?.seoTitle || item?.metaTitle || item?.title || item?.hero?.title || "",
+    description:
+      item?.seoDescription ||
+      item?.metaDescription ||
+      item?.description ||
+      item?.hero?.description ||
+      item?.page?.help?.description ||
+      "",
+    keywords: item?.keywords || item?.seoKeywords || ""
+  };
+}
+
 async function main() {
   // console.log("🚀 Starting Dynamic sitemap.xml generation...");
 
@@ -259,6 +273,83 @@ async function main() {
       fs.writeFileSync(path.join(dataDir, 'staticPortfolios.json'), JSON.stringify(portfolios, null, 2), 'utf8');
       fs.writeFileSync(path.join(dataDir, 'staticBlogs.json'), JSON.stringify(blogs, null, 2), 'utf8');
       fs.writeFileSync(path.join(dataDir, 'staticPagesSeo.json'), JSON.stringify(pagesSeo, null, 2), 'utf8');
+
+      // Generate consolidated SEO mapping for public/seo-data.json (used by index.php for server-side meta injection)
+      const seoData = {};
+
+      const staticPathMap = {
+        "home": "/",
+        "contact-us": "/contact-us",
+        "about-us": "/about-us",
+        "blogs": "/category/blogs",
+        "portfolio-beyekls": "/portfolio-beyekls",
+        "portfolio-nectar": "/portfolio-nectar",
+        "portfolio-coinpay": "/portfolio-coinpay",
+        "portfolio-daccord": "/portfolio-daccord",
+        "privacy-policy": "/privacy-policy",
+        "disclaimer": "/disclaimer",
+        "landing-page": "/landing-page",
+        "portfolios": "/portfolios",
+        "services": "/services",
+        "not-found": "/404"
+      };
+
+      Object.keys(pagesSeo).forEach(id => {
+        const pathVal = staticPathMap[id];
+        if (pathVal) {
+          seoData[pathVal] = {
+            title: pagesSeo[id].title || "",
+            description: pagesSeo[id].description || "",
+            keywords: pagesSeo[id].keywords || ""
+          };
+        }
+      });
+
+      locationItems.forEach(item => {
+        if (item.slug) {
+          const pathVal = "/" + normalizeRouteSlug(item.slug);
+          const seo = getItemSeo(item);
+          seoData[pathVal] = seo;
+        }
+      });
+
+      serviceItems.forEach(item => {
+        if (item.slug) {
+          const pathVal = "/" + normalizeRouteSlug(item.slug);
+          const seo = getItemSeo(item);
+          seoData[pathVal] = seo;
+        }
+      });
+
+      blogs.forEach(blog => {
+        if (blog.slug) {
+          const pathVal = "/" + normalizeRouteSlug(blog.slug);
+          seoData[pathVal] = {
+            title: blog.seoTitle || blog.title || "",
+            description: blog.seoDescription || (blog.content ? blog.content.replace(/<[^>]+>/g, '').slice(0, 150) : ""),
+            keywords: blog.seoKeywords || ""
+          };
+        }
+      });
+
+      portfolios.forEach(portfolio => {
+        if (portfolio.name) {
+          const pathVal = "/" + normalizeRouteSlug(portfolio.name.toLowerCase().replace(/\s+/g, '-'));
+          seoData[pathVal] = {
+            title: portfolio.title || portfolio.name || "",
+            description: portfolio.description || "",
+            keywords: ""
+          };
+        }
+      });
+
+      const seoDataPath = path.join(__dirname, '..', 'public', 'seo-data.json');
+      fs.writeFileSync(seoDataPath, JSON.stringify(seoData, null, 2), 'utf8');
+
+      const distSeoDataPath = path.join(__dirname, '..', 'dist', 'seo-data.json');
+      if (fs.existsSync(path.dirname(distSeoDataPath))) {
+        fs.writeFileSync(distSeoDataPath, JSON.stringify(seoData, null, 2), 'utf8');
+      }
 
   } catch (error) {
     console.error("❌ Failed to generate sitemap.xml:", error);

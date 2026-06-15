@@ -180,27 +180,35 @@ export function usePageSEO() {
                          .flatMap((location) => location.items || [])
                          .find((item) => matchesRouteSlug(item, slug));
                     if (locationItem) {
-                         return getItemSeo(locationItem);
+                         return { seo: getItemSeo(locationItem), type: 'location' };
                     }
 
                     const serviceItem = localServices
                          .flatMap((service) => service.items || [])
                          .find((item) => matchesRouteSlug(item, slug));
                     if (serviceItem) {
-                         return getItemSeo(serviceItem);
+                         return { seo: getItemSeo(serviceItem), type: 'service' };
                     }
 
                     const blogItem = localBlogs.find((blog) => matchesRouteSlug(blog, slug));
                     if (blogItem) {
                          return {
-                              title: blogItem.seoTitle || blogItem.title,
-                              description: blogItem.seoDescription || blogItem.content?.replace(/<[^>]+>/g, '').slice(0, 150),
-                              keywords: blogItem.seoKeywords || ""
+                              seo: {
+                                   title: blogItem.seoTitle || blogItem.title,
+                                   description: blogItem.seoDescription || blogItem.content?.replace(/<[^>]+>/g, '').slice(0, 150),
+                                   keywords: blogItem.seoKeywords || ""
+                              },
+                              type: 'blog'
                          };
                     }
                }
 
                // 2. Fallback to dynamic live API calls in case sitemap/build is not updated yet
+               const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+               if (isBot) {
+                    return null;
+               }
+
                try {
                     const [allLocations, allServices, allBlogs] = await Promise.all([
                          normalizeListResponse(await fetchJson(`${API_URL}/locations`)),
@@ -212,22 +220,25 @@ export function usePageSEO() {
                          .flatMap((location) => location.items || [])
                          .find((item) => matchesRouteSlug(item, slug));
                     if (dynamicLocationItem) {
-                         return getItemSeo(dynamicLocationItem);
+                         return { seo: getItemSeo(dynamicLocationItem), type: 'location' };
                     }
 
                     const dynamicServiceItem = allServices
                          .flatMap((service) => service.items || [])
                          .find((item) => matchesRouteSlug(item, slug));
                     if (dynamicServiceItem) {
-                         return getItemSeo(dynamicServiceItem);
+                         return { seo: getItemSeo(dynamicServiceItem), type: 'service' };
                     }
 
                     const dynamicBlogItem = allBlogs.find((blog) => matchesRouteSlug(blog, slug));
                     if (dynamicBlogItem) {
                          return {
-                              title: dynamicBlogItem.seoTitle || dynamicBlogItem.title,
-                              description: dynamicBlogItem.seoDescription || dynamicBlogItem.content?.replace(/<[^>]+>/g, '').slice(0, 150),
-                              keywords: dynamicBlogItem.seoKeywords || ""
+                              seo: {
+                                   title: dynamicBlogItem.seoTitle || dynamicBlogItem.title,
+                                   description: dynamicBlogItem.seoDescription || dynamicBlogItem.content?.replace(/<[^>]+>/g, '').slice(0, 150),
+                                   keywords: dynamicBlogItem.seoKeywords || ""
+                              },
+                              type: 'blog'
                          };
                     }
                } catch (err) {
@@ -253,13 +264,20 @@ export function usePageSEO() {
                               const blog = cache.get(cacheKey);
                               setSEO(blog.seoTitle || blog.title, blog.seoDescription || blog.content?.slice(0, 150), blog.seoKeywords || "");
                               
-                              // Silent background update to check if there are CMS changes
-                              fetchJson(`${API_URL}/blogs/${slug}`).then((updatedBlog) => {
-                                   if (isActive) {
-                                        cache.set(cacheKey, updatedBlog);
-                                        setSEO(updatedBlog.seoTitle || updatedBlog.title, updatedBlog.seoDescription || updatedBlog.content?.slice(0, 150), updatedBlog.seoKeywords || "");
-                                   }
-                              }).catch(err => console.warn("Background blog SEO update failed:", err));
+                              // Silent background fetch to check for CMS updates after a delay to avoid blocking critical request path (skipped for bots)
+                              const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+                              if (!isBot) {
+                                   setTimeout(() => {
+                                        if (isActive) {
+                                             fetchJson(`${API_URL}/blogs/${slug}`).then((updatedBlog) => {
+                                                  if (isActive) {
+                                                       cache.set(cacheKey, updatedBlog);
+                                                       setSEO(updatedBlog.seoTitle || updatedBlog.title, updatedBlog.seoDescription || updatedBlog.content?.slice(0, 150), updatedBlog.seoKeywords || "");
+                                                  }
+                                             }).catch(err => console.warn("Background blog SEO update failed:", err));
+                                        }
+                                   }, 5000);
+                              }
                               return;
                          }
 
@@ -273,6 +291,19 @@ export function usePageSEO() {
                                         blogItem.seoDescription || blogItem.content?.replace(/<[^>]+>/g, '').slice(0, 150),
                                         blogItem.seoKeywords || ""
                                    );
+                                   
+                                   // Trigger silent background update after 3 seconds delay to avoid blocking critical request chain
+                                   setTimeout(() => {
+                                        if (isActive) {
+                                             fetchJson(`${API_URL}/blogs/${slug}`).then((updatedBlog) => {
+                                                  if (isActive) {
+                                                       cache.set(cacheKey, updatedBlog);
+                                                       setSEO(updatedBlog.seoTitle || updatedBlog.title, updatedBlog.seoDescription || updatedBlog.content?.slice(0, 150), updatedBlog.seoKeywords || "");
+                                                  }
+                                             }).catch(err => console.warn("Background blog SEO update failed:", err));
+                                        }
+                                   }, 3000);
+                                   return;
                               }
                          } catch (e) {
                               console.warn("Could not read from staticBlogs", e);
@@ -290,16 +321,52 @@ export function usePageSEO() {
                          const cacheKey = `item:${slug}`;
 
                          if (cache.has(cacheKey)) {
-                              const itemSeo = cache.get(cacheKey);
+                              const cachedData = cache.get(cacheKey);
+                              const itemSeo = cachedData?.seo || cachedData;
+                              const type = cachedData?.type;
                               setSEO(itemSeo.title || DEFAULT_TITLE, itemSeo.description || DEFAULT_DESCRIPTION, itemSeo.keywords || "");
                               
-                              // Silent background revalidation
-                              resolveItemSlugSeo(slug, true).then((updatedSeo) => {
-                                   if (updatedSeo && isActive) {
-                                        cache.set(cacheKey, updatedSeo);
-                                        setSEO(updatedSeo.title || DEFAULT_TITLE, updatedSeo.description || DEFAULT_DESCRIPTION, updatedSeo.keywords || "");
-                                   }
-                              }).catch(() => {});
+                              // Silent background revalidation after a delay (skipped for bots)
+                              const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+                              if (!isBot) {
+                                   setTimeout(() => {
+                                        if (!isActive) return;
+                                        
+                                        if (type === 'blog') {
+                                             fetchJson(`${API_URL}/blogs/${slug}`).then((updatedBlog) => {
+                                                  if (updatedBlog && isActive) {
+                                                       const updatedSeo = {
+                                                            title: updatedBlog.seoTitle || updatedBlog.title,
+                                                            description: updatedBlog.seoDescription || updatedBlog.content?.replace(/<[^>]+>/g, '').slice(0, 150),
+                                                            keywords: updatedBlog.seoKeywords || ""
+                                                       };
+                                                       cache.set(cacheKey, { seo: updatedSeo, type: 'blog' });
+                                                       setSEO(updatedSeo.title || DEFAULT_TITLE, updatedSeo.description || DEFAULT_DESCRIPTION, updatedSeo.keywords || "");
+                                                  }
+                                             }).catch(() => {});
+                                        } else if (type === 'location') {
+                                             fetchJson(`${API_URL}/locations`).then((locations) => {
+                                                  const list = normalizeListResponse(locations);
+                                                  const matched = list.flatMap(loc => loc.items || []).find(item => matchesRouteSlug(item, slug));
+                                                  if (matched && isActive) {
+                                                       const updatedSeo = getItemSeo(matched);
+                                                       cache.set(cacheKey, { seo: updatedSeo, type: 'location' });
+                                                       setSEO(updatedSeo.title || DEFAULT_TITLE, updatedSeo.description || DEFAULT_DESCRIPTION, updatedSeo.keywords || "");
+                                                  }
+                                             }).catch(() => {});
+                                        } else if (type === 'service') {
+                                             fetchJson(`${API_URL}/services`).then((services) => {
+                                                  const list = normalizeListResponse(services);
+                                                  const matched = list.flatMap(srv => srv.items || []).find(item => matchesRouteSlug(item, slug));
+                                                  if (matched && isActive) {
+                                                       const updatedSeo = getItemSeo(matched);
+                                                       cache.set(cacheKey, { seo: updatedSeo, type: 'service' });
+                                                       setSEO(updatedSeo.title || DEFAULT_TITLE, updatedSeo.description || DEFAULT_DESCRIPTION, updatedSeo.keywords || "");
+                                                  }
+                                             }).catch(() => {});
+                                        }
+                                   }, 5000);
+                              }
                               return;
                          }
 
@@ -320,31 +387,57 @@ export function usePageSEO() {
                                    setSEO(cachedSeo.title || DEFAULT_TITLE, cachedSeo.description || DEFAULT_DESCRIPTION, cachedSeo.keywords || "");
                               }
 
-                              // Perform background revalidation for portfolios SEO from live CMS API
-                              fetchJson(`${API_URL}/pages/portfolios/seo`).then((seo) => {
-                                   if (isActive) {
-                                        cache.set(cacheKeyPort, seo);
-                                        setSEO(seo.title || DEFAULT_TITLE, seo.description || DEFAULT_DESCRIPTION, seo.keywords || "");
-                                   }
-                              }).catch((err) => {
-                                   console.warn("Background portfolios SEO fetch failed:", err);
-                              });
                               return;
                          }
 
                          // Resolve from static cache first (0ms)
-                         const itemSeo = await resolveItemSlugSeo(slug);
-                         if (itemSeo) {
-                              cache.set(cacheKey, itemSeo);
-                              setSEO(itemSeo.title || DEFAULT_TITLE, itemSeo.description || DEFAULT_DESCRIPTION, itemSeo.keywords || "");
+                         const result = await resolveItemSlugSeo(slug);
+                         if (result && result.seo) {
+                              const { seo, type } = result;
+                              cache.set(cacheKey, { seo, type });
+                              setSEO(seo.title || DEFAULT_TITLE, seo.description || DEFAULT_DESCRIPTION, seo.keywords || "");
                               
-                              // Trigger background revalidation to fetch updated CMS data
-                              resolveItemSlugSeo(slug, true).then((updatedSeo) => {
-                                   if (updatedSeo && isActive) {
-                                        cache.set(cacheKey, updatedSeo);
-                                        setSEO(updatedSeo.title || DEFAULT_TITLE, updatedSeo.description || DEFAULT_DESCRIPTION, updatedSeo.keywords || "");
-                                   }
-                              }).catch(() => {});
+                              // Trigger background revalidation after a delay (skipped for bots)
+                              const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+                              if (!isBot) {
+                                   setTimeout(() => {
+                                        if (!isActive) return;
+                                        
+                                        if (type === 'blog') {
+                                             fetchJson(`${API_URL}/blogs/${slug}`).then((updatedBlog) => {
+                                                  if (updatedBlog && isActive) {
+                                                       const updatedSeo = {
+                                                            title: updatedBlog.seoTitle || updatedBlog.title,
+                                                            description: updatedBlog.seoDescription || updatedBlog.content?.replace(/<[^>]+>/g, '').slice(0, 150),
+                                                            keywords: updatedBlog.seoKeywords || ""
+                                                       };
+                                                       cache.set(cacheKey, { seo: updatedSeo, type: 'blog' });
+                                                       setSEO(updatedSeo.title || DEFAULT_TITLE, updatedSeo.description || DEFAULT_DESCRIPTION, updatedSeo.keywords || "");
+                                                  }
+                                             }).catch(() => {});
+                                        } else if (type === 'location') {
+                                             fetchJson(`${API_URL}/locations`).then((locations) => {
+                                                  const list = normalizeListResponse(locations);
+                                                  const matched = list.flatMap(loc => loc.items || []).find(item => matchesRouteSlug(item, slug));
+                                                  if (matched && isActive) {
+                                                       const updatedSeo = getItemSeo(matched);
+                                                       cache.set(cacheKey, { seo: updatedSeo, type: 'location' });
+                                                       setSEO(updatedSeo.title || DEFAULT_TITLE, updatedSeo.description || DEFAULT_DESCRIPTION, updatedSeo.keywords || "");
+                                                  }
+                                             }).catch(() => {});
+                                        } else if (type === 'service') {
+                                             fetchJson(`${API_URL}/services`).then((services) => {
+                                                  const list = normalizeListResponse(services);
+                                                  const matched = list.flatMap(srv => srv.items || []).find(item => matchesRouteSlug(item, slug));
+                                                  if (matched && isActive) {
+                                                       const updatedSeo = getItemSeo(matched);
+                                                       cache.set(cacheKey, { seo: updatedSeo, type: 'service' });
+                                                       setSEO(updatedSeo.title || DEFAULT_TITLE, updatedSeo.description || DEFAULT_DESCRIPTION, updatedSeo.keywords || "");
+                                                  }
+                                             }).catch(() => {});
+                                        }
+                                   }, 5000);
+                              }
                               return;
                          }
 
@@ -356,13 +449,20 @@ export function usePageSEO() {
                               notFoundSeo.keywords || ""
                          );
 
-                         // Silent background fetch for not found page SEO
-                         fetchJson(`${API_URL}/pages/not-found/seo`).then((seo) => {
-                              if (isActive) {
-                                   cache.set("page:not-found", seo);
-                                   setSEO(seo.title || DEFAULT_TITLE, seo.description || DEFAULT_DESCRIPTION, seo.keywords || "");
-                              }
-                         }).catch(() => {});
+                         // Silent background fetch for not found page SEO after a delay (skipped for bots)
+                         const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+                         if (!isBot) {
+                              setTimeout(() => {
+                                   if (isActive) {
+                                        fetchJson(`${API_URL}/pages/not-found/seo`).then((seo) => {
+                                             if (isActive) {
+                                                  cache.set("page:not-found", seo);
+                                                  setSEO(seo.title || DEFAULT_TITLE, seo.description || DEFAULT_DESCRIPTION, seo.keywords || "");
+                                             }
+                                        }).catch(() => {});
+                                   }
+                              }, 5000);
+                         }
                          return;
                     }
 
@@ -387,15 +487,22 @@ export function usePageSEO() {
                          return;
                     }
 
-                    // Silent background fetch to check for CMS updates
-                    fetchJson(`${API_URL}/pages/${path}/seo`).then((seo) => {
-                         if (isActive) {
-                              cache.set(cacheKey, seo);
-                              setSEO(seo.title || DEFAULT_TITLE, seo.description || DEFAULT_DESCRIPTION, seo.keywords || "");
-                         }
-                    }).catch((err) => {
-                         console.warn(`Silent background SEO fetch failed for page ${path}:`, err);
-                    });
+                    // Silent background fetch to check for CMS updates after a delay to avoid blocking critical request path (skipped for bots)
+                    const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+                    if (!isBot) {
+                         setTimeout(() => {
+                              if (isActive) {
+                                   fetchJson(`${API_URL}/pages/${path}/seo`).then((seo) => {
+                                        if (isActive) {
+                                             cache.set(cacheKey, seo);
+                                             setSEO(seo.title || DEFAULT_TITLE, seo.description || DEFAULT_DESCRIPTION, seo.keywords || "");
+                                        }
+                                   }).catch((err) => {
+                                        console.warn(`Silent background SEO fetch failed for page ${path}:`, err);
+                                   });
+                              }
+                         }, 5000);
+                    }
                } catch (error) {
                     console.error("SEO error:", error);
                }

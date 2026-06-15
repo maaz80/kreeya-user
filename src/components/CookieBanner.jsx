@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 const CookieBanner = () => {
-
+     const [consentChecked, setConsentChecked] = useState(false);
      const [visible, setVisible] = useState(false);
 
      useEffect(() => {
           const consent = localStorage.getItem("cookie-consent");
+          setConsentChecked(true);
 
           if (!consent) {
                const idle = requestIdleCallback
@@ -28,11 +29,16 @@ const CookieBanner = () => {
           setVisible(false);
      };
 
-     if (!visible) return null;
+     // Do not render anything if consent has been checked and already exists
+     if (consentChecked && localStorage.getItem("cookie-consent")) {
+          return null;
+     }
 
      return (
           <div
-               className="fixed z-99999 bottom-0 left-0 w-full bg-white border-t border-gray-200 rounded-t-lg plus-jakarta-sans [box-shadow:0_-8px_10px_rgba(0,0,0,0.15),0_-2px_8px_rgba(0,0,0,0.08)]"
+               className={`fixed z-99999 bottom-0 left-0 w-full bg-white border-t border-gray-200 rounded-t-lg plus-jakarta-sans [box-shadow:0_-8px_10px_rgba(0,0,0,0.15),0_-2px_8px_rgba(0,0,0,0.08)] transition-transform duration-500 ease-in-out ${
+                    visible ? "translate-y-0" : "translate-y-full"
+               }`}
           >
 
                <div className=" mx-auto flex flex-col md:flex-row items-end lg:items-center justify-between gap-3 px-3 md:px-14 py-3">

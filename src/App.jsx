@@ -5,10 +5,9 @@ import { BsChevronUp } from "react-icons/bs";
 import "./CSS/Home.css";
 // import Footer from "./components/Footer";
 const Footer = lazy(() => import("./components/Footer"));
-const CookieBanner = lazy(() => import("./components/CookieBanner"));
+import CookieBanner from "./components/CookieBanner";
 const ChatBot = lazy(() => import("./components/ChatBot"));
 const LeadCaptureModal = lazy(() => import("./components/LeadCaptureModal"));
-// import CookieBanner from "./components/CookieBanner";
 
 // import Home from "./pages/Home";
 import { usePageSEO } from "./hooks/usePageSEO";

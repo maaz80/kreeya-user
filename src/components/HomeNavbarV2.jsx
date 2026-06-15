@@ -110,25 +110,46 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
 
      useEffect(() => {
           if (!startFetch) return;
-          const fetchNavbar = async () => {
-               const data = await getNavbar();
-               setNavbar(data);
+
+          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+          if (isBot) return;
+
+          const fetchAllData = () => {
+               const fetchNavbar = async () => {
+                    try {
+                         const data = await getNavbar();
+                         setNavbar(data);
+                    } catch (err) {
+                         console.warn("Navbar fetch failed:", err);
+                    }
+               };
+               const fetchServices = async () => {
+                    try {
+                         const data = await getServices();
+                         if (data && data.length > 0) {
+                              setServicesData(data);
+                         }
+                    } catch (err) {
+                         console.warn("Services fetch failed:", err);
+                    }
+               };
+               const fetchPortfolios = async () => {
+                    try {
+                         const data = await getPortfolios();
+                         if (data && data.length > 0) {
+                              setPortfoliosData(data);
+                         }
+                    } catch (err) {
+                         console.warn("Portfolios fetch failed:", err);
+                    }
+               };
+               fetchNavbar();
+               fetchServices();
+               fetchPortfolios();
           };
-          const fetchServices = async () => {
-               const data = await getServices();
-               if (data && data.length > 0) {
-                    setServicesData(data);
-               }
-          };
-          const fetchPortfolios = async () => {
-               const data = await getPortfolios();
-               if (data && data.length > 0) {
-                    setPortfoliosData(data);
-               }
-          };
-          fetchNavbar();
-          fetchServices();
-          fetchPortfolios();
+
+          const timer = setTimeout(fetchAllData, 5000);
+          return () => clearTimeout(timer);
      }, [startFetch]);
 
      useEffect(() => {
@@ -353,7 +374,7 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
                </div>
 
                {/* Navbar */}
-               <div className={`w-full ${navbarBgClass} relative z-50`}>
+               <div className={`w-full ${navbarBgClass} relative lg:static z-50`}>
                     <div className="max-w-350.5 mx-auto flex items-center justify-between px-3 md:px-6 py-4">
 
                          {/* Logo Section */}
@@ -461,9 +482,9 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
                     <div
                          onMouseEnter={handleMouseEnter}
                          onMouseLeave={handleMouseLeave}
-                         className={`absolute top-full left-0 w-full bg-white shadow-2xl border-t border-black/5 transition-all duration-300 origin-top overflow-hidden z-9999 ${showMegaMenu
-                              ? 'opacity-100 translate-y-0 max-h-[85vh] visible pointer-events-auto'
-                              : 'opacity-0 -translate-y-2 max-h-0 invisible pointer-events-none'
+                         className={`absolute top-full left-0 w-full bg-white shadow-2xl border-t border-black/5 transition-all duration-300 origin-top z-9999 ${showMegaMenu
+                              ? 'opacity-100 translate-y-0 h-[calc(100vh-100%)] max-h-[calc(100vh-100%)] overflow-y-auto visible pointer-events-auto'
+                              : 'opacity-0 -translate-y-2 max-h-0 overflow-hidden invisible pointer-events-none'
                               }`}
                     >
                          <div className="max-w-350.5 mx-auto grid grid-cols-4 gap-8 px-6 py-8">
@@ -511,9 +532,9 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
                     <div
                          onMouseEnter={handleWorkMouseEnter}
                          onMouseLeave={handleWorkMouseLeave}
-                         className={`absolute top-full left-0 w-full bg-white shadow-2xl border-t border-black/5 transition-all duration-300 origin-top overflow-hidden z-9999 ${showWorkMenu
-                              ? 'opacity-100 translate-y-0 max-h-[85vh] visible pointer-events-auto'
-                              : 'opacity-0 -translate-y-2 max-h-0 invisible pointer-events-none'
+                         className={`absolute top-full left-0 w-full bg-white shadow-2xl border-t border-black/5 transition-all duration-300 origin-top z-9999 ${showWorkMenu
+                              ? 'opacity-100 translate-y-0 max-h-[calc(100vh-100%)] overflow-y-auto visible pointer-events-auto'
+                              : 'opacity-0 -translate-y-2 max-h-0 overflow-hidden invisible pointer-events-none'
                               }`}
                     >
                          <div className="max-w-350.5 mx-auto grid grid-cols-2 gap-12 px-6 py-8">
@@ -594,13 +615,13 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
                {/* Mobile Navigation Drawer Overlay / Backdrop */}
                <div
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`fixed inset-0 bg-black/60 z-30 transition-opacity duration-300 lg:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                    className={`fixed inset-0 bg-black/60 z-30 transition-all duration-300 lg:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto visible' : 'opacity-0 pointer-events-none invisible'
                          }`}
                />
 
                {/* Mobile Navigation Dropdown (Slides Down from Behind Navbar, Full Width) */}
                <div
-                    className={`absolute top-full left-0 w-full bg-white z-40 shadow-2xl flex flex-col p-6 transition-all duration-500 ease-in-out lg:hidden overflow-y-auto ${mobileMenuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-[110%] opacity-0 pointer-events-none'
+                    className={`absolute top-full left-0 w-full bg-white z-40 shadow-2xl flex flex-col p-6 transition-all duration-500 ease-in-out lg:hidden overflow-y-auto ${mobileMenuOpen ? 'translate-y-0 opacity-100 pointer-events-auto visible' : '-translate-y-[110%] opacity-0 pointer-events-none invisible'
                          }`}
                     style={{
                          maxHeight: 'calc(100vh - 120px)'

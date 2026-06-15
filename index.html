@@ -10,7 +10,12 @@
   <link rel="preload" as="image" href="/images/blog-thumbnail.webp" fetchpriority="high">
   <link rel="preload" as="image" href="/images/Build-your-first-ai-agent-in-15-no-coding.webp" fetchpriority="high">
 
+  <link rel="preload" href="/fonts/PlusJakartaSans-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/fonts/PlusJakartaSans-SemiBold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/fonts/PoiretOne-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
   <link rel="preconnect" href="https://res.cloudinary.com">
+  <link rel="preload" as="image" href="https://res.cloudinary.com/dlek2xgkd/image/upload/w_470,h_280,c_fill,g_auto,f_avif,q_auto:eco/kreeya_media/performance-marketing-w6i.png" imagesrcset="https://res.cloudinary.com/dlek2xgkd/image/upload/w_235,h_140,c_fill,g_auto,f_avif,q_auto:eco/kreeya_media/performance-marketing-w6i.png 235w, https://res.cloudinary.com/dlek2xgkd/image/upload/w_353,h_210,c_fill,g_auto,f_avif,q_auto:eco/kreeya_media/performance-marketing-w6i.png 353w, https://res.cloudinary.com/dlek2xgkd/image/upload/w_470,h_280,c_fill,g_auto,f_avif,q_auto:eco/kreeya_media/performance-marketing-w6i.png 470w, https://res.cloudinary.com/dlek2xgkd/image/upload/w_705,h_420,c_fill,g_auto,f_avif,q_auto:eco/kreeya_media/performance-marketing-w6i.png 705w, https://res.cloudinary.com/dlek2xgkd/image/upload/w_940,h_560,c_fill,g_auto,f_avif,q_auto:eco/kreeya_media/performance-marketing-w6i.png 940w" imagesizes="(max-width: 767px) 92vw, (max-width: 1279px) 45vw, 470px" fetchpriority="high">
   <!-- <link rel="preconnect" href="https://api.kreeyadesign.com"> -->
   <!-- Inline critical CSS for hero section to unblock initial render -->
   <!-- <style>
@@ -191,15 +196,32 @@
       }
     }
   </style> -->
-    <!-- ✅ Baaki CSS non-blocking load -->
-    <!-- <link rel="preload" as="style" href="/assets/index-9EmC7NDS.css" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript>
-      <link rel="stylesheet" href="/assets/index-9EmC7NDS.css" />
-    </noscript> -->
+<!-- ✅ Baaki CSS non-blocking load -->
+<!-- <link rel="preload" as="style" href="/assets/index-DO3kMDDq.css" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript>
+  <link rel="stylesheet" href="/assets/index-DO3kMDDq.css" />
+</noscript> -->
 </head>
 <body>
   <!-- Defer main CSS until after render -->
-  <main id="root"></main>
+  <main id="root">
+    <!-- Prerendered LCP Image for Services Page -->
+    <div id="prerender-services-lcp" style="display: none;">
+      <img src="https://res.cloudinary.com/dlek2xgkd/image/upload/w_470,h_280,c_fill,g_auto,f_avif,q_auto:eco/kreeya_media/performance-marketing-w6i.png" style="aspect-ratio: 1.67857; width: 100%; max-width: 470px; object-fit: cover; display: block; margin: auto;">
+    </div>
+    <!-- Prerendered LCP Image for Portfolios Page -->
+    <div id="prerender-portfolios-lcp" style="display: none;">
+      <img src="/images/Build-your-first-ai-agent-in-15-no-coding.webp" style="aspect-ratio: 1.77835; width: 100%; max-width: 690px; object-fit: cover; display: block; margin: auto; border-radius: 36px;">
+    </div>
+    <script>
+      const path = window.location.pathname.replace(/\/$/, '');
+      if (path === '/services') {
+        document.getElementById('prerender-services-lcp').style.display = 'block';
+      } else if (path === '/portfolios' || path === '/fintech' || path === '/healthcare' || path === '/real-estate' || path === '/ecommerce') {
+        document.getElementById('prerender-portfolios-lcp').style.display = 'block';
+      }
+    </script>
+  </main>
   <script type="module" src="/src/main.jsx"></script>
   <script type='application/ld+json'>
   {

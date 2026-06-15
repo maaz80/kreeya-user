@@ -1,14 +1,4 @@
 {
-  "blogs": {
-    "_id": "6a06d5334d15b85c9df75171",
-    "pageSlug": "blogs",
-    "title": "Kreeya Design's Official Blog - Insights, Updates and Tips",
-    "description": "Visit Kreeya Design's blog to learn about the latest developments in UI/UX design trends, news, and tactics that work.",
-    "keywords": "",
-    "createdAt": "2026-05-15T08:11:31.889Z",
-    "updatedAt": "2026-06-03T07:07:26.532Z",
-    "__v": 0
-  },
   "home": {
     "_id": "69e8d669e49d0edfa2a1ce45",
     "pageSlug": "home",
@@ -34,14 +24,24 @@
     "description": "",
     "keywords": ""
   },
-  "not-found": {
-    "_id": "6a040f4e465ed2470beefb7d",
-    "pageSlug": "not-found",
-    "title": "Page not found - Kreeya Design",
-    "description": "You can't find the page you're searching for. View Kreeya Design's digital solutions, blogs, portfolio, and UI/UX design services.",
+  "blogs": {
+    "_id": "6a06d5334d15b85c9df75171",
+    "pageSlug": "blogs",
+    "title": "Kreeya Design's Official Blog - Insights, Updates and Tips",
+    "description": "Visit Kreeya Design's blog to learn about the latest developments in UI/UX design trends, news, and tactics that work.",
     "keywords": "",
-    "createdAt": "2026-05-13T05:42:38.054Z",
-    "updatedAt": "2026-06-04T07:01:25.972Z",
+    "createdAt": "2026-05-15T08:11:31.889Z",
+    "updatedAt": "2026-06-03T07:07:26.532Z",
+    "__v": 0
+  },
+  "portfolio-beyekls": {
+    "_id": "6a06de6ad1d500e5262c25f8",
+    "pageSlug": "portfolio-beyekls",
+    "title": "Beyekls Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Beyekls Portfolio, which features user research, product strategy, UI/UX design, and digital experience solutions.",
+    "keywords": "",
+    "createdAt": "2026-05-15T08:50:50.790Z",
+    "updatedAt": "2026-06-04T06:46:34.738Z",
     "__v": 0
   },
   "about-us": {
@@ -64,26 +64,6 @@
     "updatedAt": "2026-06-04T06:51:58.321Z",
     "__v": 0
   },
-  "services": {
-    "_id": "6a1fcca90625dfc73317c505",
-    "pageSlug": "services",
-    "title": "UI UX Design Services Delhi | UI UX Design Agency Near Me",
-    "description": "We offer the most convenient pricing for UI UX Design Services Delhi. Know why you need to hire a Cheap & Low-Cost UI UX Design agency in India",
-    "keywords": "",
-    "createdAt": "2026-06-03T06:41:45.927Z",
-    "updatedAt": "2026-06-04T09:02:21.372Z",
-    "__v": 0
-  },
-  "portfolio-beyekls": {
-    "_id": "6a06de6ad1d500e5262c25f8",
-    "pageSlug": "portfolio-beyekls",
-    "title": "Beyekls Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Beyekls Portfolio, which features user research, product strategy, UI/UX design, and digital experience solutions.",
-    "keywords": "",
-    "createdAt": "2026-05-15T08:50:50.790Z",
-    "updatedAt": "2026-06-04T06:46:34.738Z",
-    "__v": 0
-  },
   "portfolios": {
     "_id": "6a1ea74f90a6bdf5f88b393d",
     "pageSlug": "portfolios",
@@ -104,14 +84,24 @@
     "updatedAt": "2026-06-04T08:23:12.619Z",
     "__v": 0
   },
-  "portfolio-nectar": {
-    "_id": "6a06f198b08c73659c5aceb8",
-    "pageSlug": "portfolio-nectar",
-    "title": "Nectar Portfolio | Kreeya Design Case Study",
-    "description": "Discover UI/UX design, product strategy, user research, and seamless digital experiences in Kreeya Design's Nectar Portfolio.",
+  "portfolio-coinpay": {
+    "_id": "6a06f03db08c73659c5aceb0",
+    "pageSlug": "portfolio-coinpay",
+    "title": "Coinpay Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
     "keywords": "",
-    "createdAt": "2026-05-15T10:12:40.782Z",
-    "updatedAt": "2026-06-04T07:00:17.865Z",
+    "createdAt": "2026-05-15T10:06:53.493Z",
+    "updatedAt": "2026-06-04T06:58:09.658Z",
+    "__v": 0
+  },
+  "services": {
+    "_id": "6a1fcca90625dfc73317c505",
+    "pageSlug": "services",
+    "title": "UI UX Design Services Delhi | UI UX Design Agency Near Me",
+    "description": "We offer the most convenient pricing for UI UX Design Services Delhi. Know why you need to hire a Cheap & Low-Cost UI UX Design agency in India",
+    "keywords": "",
+    "createdAt": "2026-06-03T06:41:45.927Z",
+    "updatedAt": "2026-06-15T04:57:31.713Z",
     "__v": 0
   },
   "location": {
@@ -129,14 +119,24 @@
     "updatedAt": "2026-06-04T09:21:31.776Z",
     "__v": 0
   },
-  "portfolio-coinpay": {
-    "_id": "6a06f03db08c73659c5aceb0",
-    "pageSlug": "portfolio-coinpay",
-    "title": "Coinpay Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
+  "portfolio-nectar": {
+    "_id": "6a06f198b08c73659c5aceb8",
+    "pageSlug": "portfolio-nectar",
+    "title": "Nectar Portfolio | Kreeya Design Case Study",
+    "description": "Discover UI/UX design, product strategy, user research, and seamless digital experiences in Kreeya Design's Nectar Portfolio.",
     "keywords": "",
-    "createdAt": "2026-05-15T10:06:53.493Z",
-    "updatedAt": "2026-06-04T06:58:09.658Z",
+    "createdAt": "2026-05-15T10:12:40.782Z",
+    "updatedAt": "2026-06-04T07:00:17.865Z",
+    "__v": 0
+  },
+  "not-found": {
+    "_id": "6a040f4e465ed2470beefb7d",
+    "pageSlug": "not-found",
+    "title": "Page not found - Kreeya Design",
+    "description": "You can't find the page you're searching for. View Kreeya Design's digital solutions, blogs, portfolio, and UI/UX design services.",
+    "keywords": "",
+    "createdAt": "2026-05-13T05:42:38.054Z",
+    "updatedAt": "2026-06-04T07:01:25.972Z",
     "__v": 0
   }
 }

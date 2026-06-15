@@ -11,16 +11,28 @@ import BlogDetails from './BlogDetails'
 import NotFound from './404NotFound'
 import { matchesRouteSlug } from '../utils/slug'
 
+const PORTFOLIO_SLUGS = new Set(['portfolios', 'fintech', 'healthcare', 'real-estate', 'ecommerce']);
+
 const ItemPage = () => {
      const { itemSlug } = useParams()
-     const [pageType, setPageType] = useState(null)
+     const [pageType, setPageType] = useState(() => {
+          if (itemSlug && PORTFOLIO_SLUGS.has(itemSlug.toLowerCase())) {
+               return 'portfolio';
+          }
+          return null;
+     })
 
      useEffect(() => {
           window.scrollTo(0, 0)
      }, [itemSlug])
 
      useEffect(() => {
-          setPageType(null)
+          const isPortfolio = itemSlug && PORTFOLIO_SLUGS.has(itemSlug.toLowerCase());
+          if (!isPortfolio) {
+               setPageType(null);
+          } else {
+               setPageType('portfolio');
+          }
           const resolvePage = async () => {
                if (!itemSlug) {
                     setPageType('notfound')
@@ -166,7 +178,7 @@ const ItemPage = () => {
                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-14 gap-y-8 md:gap-y-16 mt-10 pb-20">
                               {Array.from({ length: 2 }).map((_, index) => (
                                    <div key={index} className="flex flex-col gap-6 w-full">
-                                        <div className="rounded-[38px] w-full min-h-120 bg-slate-200"></div>
+                                        <div className="rounded-[38px] w-full aspect-[522/800] bg-slate-200"></div>
                                         <div className="space-y-4 pt-4">
                                              <div className="h-8 bg-slate-200 rounded w-3/4"></div>
                                              <div className="h-4 bg-slate-200 rounded w-full"></div>

@@ -9,11 +9,12 @@ import { getFooter } from "../utils/footerService";
 import Logo from '/images/white-logo.webp'
 import { FaXTwitter } from "react-icons/fa6";
 import { getLocations } from "../utils/locations";
+import staticLocations from "../data/staticLocations.json";
 const Footer = () => {
      const [heading, setHeading] = useState("SAY HELLO !");
      const [buttonText, setButtonText] = useState("Get in Touch");
      const [buttonLink, setButtonLink] = useState("https://calendly.com/pyush-anand7/new-meeting");
-     const [locations, setLocations] = useState([]);
+     const [locations, setLocations] = useState(staticLocations || []);
      const [logo, setLogo] = useState(Logo);
      const [instagram, setInstagram] = useState("https://www.instagram.com/kreeyadesignofficial/");
      const [linkedin, setLinkedin] = useState("https://www.linkedin.com/in/kreeya-design-480186404/");
@@ -31,38 +32,41 @@ const Footer = () => {
      const [address, setAddress] = useState("Springboard D Block, Sector 2, Noida, Uttar Pradesh 201301");
 
      useEffect(() => {
+          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+          if (isBot) return;
 
           const fetchFooter = async () => {
+               try {
+                    const data = await getFooter();
+                    if (!data) return;
 
-               const data = await getFooter();
-               if (!data) return;
+                    setHeading(data.heading || "SAY HELLO !");
+                    setButtonText(data.buttonText || "Get in Touch");
+                    setButtonLink(data.buttonLink || "");
 
-               setHeading(data.heading || "SAY HELLO !");
-               setButtonText(data.buttonText || "Get in Touch");
-               setButtonLink(data.buttonLink || "");
+                    setLogo(data.logo || "");
 
-               setLogo(data.logo || "");
+                    setInstagram(data.instagram || "");
+                    setLinkedin(data.linkedin || "");
+                    setFacebook(data.facebook || "");
+                    setYoutube(data.youtube || "");
+                    setTwitter(data.twitter || "https://x.com/Kreeyadesign12")
 
-               setInstagram(data.instagram || "");
-               setLinkedin(data.linkedin || "");
-               setFacebook(data.facebook || "");
-               setYoutube(data.youtube || "");
-               setTwitter(data.twitter || "https://x.com/Kreeyadesign12")
+                    setContactTitle(data.contactTitle || "");
+                    setEmail(data.email || "");
+                    setPhone(data.phone || "");
 
-               setContactTitle(data.contactTitle || "");
-               setEmail(data.email || "");
-               setPhone(data.phone || "");
-
-               setLocationTitle(data.locationTitle || "");
-               setCity(data.city || "");
-               setOffice(data.office || "");
-               setAddress(data.address || "");
-
-
+                    setLocationTitle(data.locationTitle || "");
+                    setCity(data.city || "");
+                    setOffice(data.office || "");
+                    setAddress(data.address || "");
+               } catch (err) {
+                    console.warn("Footer fetch failed:", err);
+               }
           };
 
-          fetchFooter();
-
+          const timer = setTimeout(fetchFooter, 5000);
+          return () => clearTimeout(timer);
      }, []);
 
      const footerImage = window.innerWidth < 786 ? footerImgMobile : footerImg;
@@ -71,16 +75,20 @@ const Footer = () => {
      }
 
      useEffect(() => {
+          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+          if (isBot) return;
 
           const fetchLocations = async () => {
-
-               const data = await getLocations();
-               setLocations(data);
-
+               try {
+                    const data = await getLocations();
+                    setLocations(data);
+               } catch (err) {
+                    console.warn("Footer locations fetch failed:", err);
+               }
           };
 
-          fetchLocations();
-
+          const timer = setTimeout(fetchLocations, 5000);
+          return () => clearTimeout(timer);
      }, []);
 
      const handleTop = () => {

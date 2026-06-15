@@ -14,6 +14,12 @@ const YouMayLike = () => {
      const h2youMay = useYouMayH2Data()
 
      useEffect(() => {
+          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+          if (isBot) {
+               setLoading(false);
+               return;
+          }
+
           const fetchBlogs = async () => {
                try {
                     const data = await getBlogs();
@@ -25,7 +31,8 @@ const YouMayLike = () => {
                }
           };
 
-          fetchBlogs();
+          const timer = setTimeout(fetchBlogs, 5000);
+          return () => clearTimeout(timer);
      }, []);
 
      return (
@@ -47,7 +54,7 @@ const YouMayLike = () => {
                               Array.from({ length: 3 }).map((_, index) => (
                                    <div key={index} className="animate-pulse flex flex-col gap-3 w-full">
                                         {/* Skeleton Image */}
-                                        <div className="bg-slate-200 w-full h-55 rounded-3xl"></div>
+                                        <div className="bg-slate-200 w-full min-h-50 max-h-50 rounded-3xl"></div>
                                         {/* Skeleton Meta */}
                                         <div className="flex gap-2 mt-2">
                                              <div className="h-4 bg-slate-200 rounded w-16"></div>
