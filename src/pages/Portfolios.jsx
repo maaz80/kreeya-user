@@ -1,12 +1,11 @@
 import { useEffect, useState, useMemo, lazy, Suspense } from 'react'
 import { useParams } from 'react-router-dom'
-import { getPortfolios } from '../utils/portfolio'
+import { useDataContext } from '../context/DataContext'
 // import HomeNavbar from '../components/HomeNavbar'
 import HomeNavbarV2 from '../components/HomeNavbarV2'
 import Breadcrumb from '../components/BreadCrumb'
 import Hero from '../components/Portfolios/Hero'
 import PortfolioSection from '../components/Portfolios/PortfolioSection'
-import staticPortfolios from '../data/staticPortfolios.json'
 import { Helmet } from 'react-helmet-async'
 
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
@@ -36,22 +35,8 @@ const defaultFaqs = [
 
 const Portfolios = () => {
      const { itemSlug } = useParams();
-     const [portfolios, setPortfolios] = useState(staticPortfolios || []);
-     const [loading, setLoading] = useState(staticPortfolios.length === 0);
-
-     useEffect(() => {
-          const loadPortfoliosData = async () => {
-               try {
-                    const data = await getPortfolios();
-                    setPortfolios(data);
-               } catch (err) {
-                    console.error("Error loading portfolios in parent page:", err);
-               } finally {
-                    setLoading(false);
-               }
-          };
-          loadPortfoliosData();
-     }, []);
+     const { portfolios, isLoading } = useDataContext();
+     const loading = isLoading && portfolios.length === 0;
 
      const activePortfolio = useMemo(() => {
           if (!itemSlug || portfolios.length === 0) return null;

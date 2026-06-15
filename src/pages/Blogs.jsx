@@ -10,7 +10,7 @@ import Breadcrumb from "../components/BreadCrumb";
 import { Helmet } from "react-helmet-async";
 // import SeoTags from '../components/SeoTags';
 import '../CSS/Blogs.css'
-import { getBlogs } from "../utils/blogService";
+import { useDataContext } from "../context/DataContext";
 import { useH1Data } from "../hooks/useH1Data";
 import { useh3Data } from "../hooks/useH3Data";
 import useFaq from "../hooks/useFaq";
@@ -21,8 +21,9 @@ import staticBlogs from "../data/staticBlogs.json";
 const Blogs = () => {
      const navigate = useNavigate();
      const blogsPerPage = 6;
-     const [blogs, setBlogs] = useState(staticBlogs || []);
-     const [isLoading, setIsLoading] = useState(!(staticBlogs || []).length);
+     const { blogs: ctxBlogs, isLoading: contextLoading } = useDataContext();
+     const blogs = (ctxBlogs && ctxBlogs.length > 0) ? ctxBlogs : (staticBlogs || []);
+     const isLoading = contextLoading && blogs.length === 0;
      const [currentPage, setCurrentPage] = useState(1);
      const h1Blogs = useH1Data();
      const h3Blogs = useh3Data();
@@ -38,23 +39,6 @@ const Blogs = () => {
                behavior: "smooth"
           });
      }, [])
-
-     useEffect(() => {
-
-          const fetchBlogs = async () => {
-               try {
-                    const data = await getBlogs();
-                    setBlogs(data);
-               } catch (error) {
-                    console.error("Error fetching blogs:", error);
-               } finally {
-                    setIsLoading(false);
-               }
-          };
-
-          fetchBlogs();
-
-     }, []);
 
      // const optimizeImage = (url, width = 500) => {
      //      if (!url) return "";

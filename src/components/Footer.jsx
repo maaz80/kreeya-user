@@ -8,13 +8,12 @@ import { useEffect, useState } from "react";
 import { getFooter } from "../utils/footerService";
 import Logo from '/images/white-logo.webp'
 import { FaXTwitter } from "react-icons/fa6";
-import { getLocations } from "../utils/locations";
-import staticLocations from "../data/staticLocations.json";
+import { useDataContext } from "../context/DataContext";
 const Footer = () => {
      const [heading, setHeading] = useState("SAY HELLO !");
      const [buttonText, setButtonText] = useState("Get in Touch");
      const [buttonLink, setButtonLink] = useState("https://calendly.com/pyush-anand7/new-meeting");
-     const [locations, setLocations] = useState(staticLocations || []);
+     const { locations } = useDataContext();
      const [logo, setLogo] = useState(Logo);
      const [instagram, setInstagram] = useState("https://www.instagram.com/kreeyadesignofficial/");
      const [linkedin, setLinkedin] = useState("https://www.linkedin.com/in/kreeya-design-480186404/");
@@ -73,23 +72,6 @@ const Footer = () => {
      const handleClick = () => {
           window.location.href = buttonLink;
      }
-
-     useEffect(() => {
-          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
-          if (isBot) return;
-
-          const fetchLocations = async () => {
-               try {
-                    const data = await getLocations();
-                    setLocations(data);
-               } catch (err) {
-                    console.warn("Footer locations fetch failed:", err);
-               }
-          };
-
-          const timer = setTimeout(fetchLocations, 5000);
-          return () => clearTimeout(timer);
-     }, []);
 
      const handleTop = () => {
           window.scrollTo({ top: 0, behavior: 'smooth' });

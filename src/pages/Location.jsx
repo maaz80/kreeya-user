@@ -1,9 +1,9 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react'
+import React, { lazy, Suspense, useEffect, useMemo } from 'react'
 import Hero from '../components/Location/Hero'
 // import HomeNavbar from '../components/HomeNavbar'
 import HomeNavbarV2 from '../components/HomeNavbarV2'
 import '../CSS/Location.css'
-import { getLocations } from '../utils/locations'
+import { useDataContext } from '../context/DataContext'
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async'
 import { matchesRouteSlug } from '../utils/slug';
@@ -20,50 +20,15 @@ const FaqSection = lazy(() => import('../components/Location/LocationFaq'))
 const Location = () => {
   const { itemSlug } = useParams();
   const { faqData } = useFaq();
-  const [location, setLocation] = useState(null);
+  const { locations } = useDataContext();
 
-  useEffect(() => {
-    // 1. Asynchronously fetch fallback data from dynamic staticLocations import
-    import('../data/staticLocations.json').then((module) => {
-      const localLocations = module.default || [];
-      for (const l of localLocations) {
-        const found = l.items?.find((i) => matchesRouteSlug(i, itemSlug));
-        if (found) {
-          setLocation((prev) => prev || found);
-          break;
-        }
-      }
-    }).catch((err) => {
-      console.error("Dynamic staticLocations load failed:", err);
-    });
-
-    // 2. Asynchronously fetch latest data in background silently
-    const fetchSingleService = async () => {
-      try {
-        const allLocations = await getLocations();
-        let selectedItem = null;
-
-        for (const l of allLocations) {
-          const found = l.items?.find(
-            (i) => matchesRouteSlug(i, itemSlug)
-          );
-
-          if (found) {
-            selectedItem = found;
-            break;
-          }
-        }
-        if (selectedItem) {
-          setLocation(selectedItem);
-        }
-      } catch (err) {
-        console.error("Background location fetch failed:", err);
-      }
-    };
-
-    if (itemSlug) fetchSingleService();
-
-  }, [itemSlug]);
+  const location = useMemo(() => {
+    for (const l of locations) {
+      const found = l.items?.find((i) => matchesRouteSlug(i, itemSlug));
+      if (found) return found;
+    }
+    return null;
+  }, [locations, itemSlug]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

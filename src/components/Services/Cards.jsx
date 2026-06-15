@@ -2,21 +2,23 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
-import { getServices } from '../../utils/service';
+import { useDataContext } from '../../context/DataContext';
 import { normalizeRouteSlug } from '../../utils/slug';
 import { optimizeImage } from '../../utils/cloudinary';
 import OptimizedImage from '../OptimizedImage';
 
 import FallbackImg from '../../assets/nectar-casestudy-mobile.webp';
-import staticServices from '../../data/staticServices.json';
 
 const Cards = () => {
+     const { services } = useDataContext();
+     const [currentPage, setCurrentPage] = useState(1);
+     const navigate = useNavigate();
+     const cardsPerPage = 6;
 
-     // Synchronously retrieve service items from build-generated cache
-     const localServices = staticServices || [];
-     const initialItems = (() => {
+     // Computed filtered items from dynamic context
+     const items = useMemo(() => {
           const filtered = [];
-          localServices.forEach((service) => {
+          services.forEach((service) => {
                if (service.items) {
                     service.items.forEach((item) => {
                          if (item?.hero?.title) {
@@ -26,62 +28,9 @@ const Cards = () => {
                }
           });
           return filtered;
-     })();
+     }, [services]);
 
-     const [items, setItems] = useState(initialItems);
-     const [loading, setLoading] = useState(initialItems.length === 0);
-     const [currentPage, setCurrentPage] = useState(1);
-
-     const navigate = useNavigate();
-
-     const cardsPerPage = 6;
-
-     useEffect(() => {
-
-          const fetchAndFilterServices = async () => {
-
-               try {
-
-                    const services = await getServices();
-
-                    const filtered = [];
-
-                    services.forEach((service) => {
-
-                         if (service.items) {
-
-                              service.items.forEach((item) => {
-
-                                   if (item?.hero?.title) {
-                                        filtered.push(item);
-                                   }
-
-                              });
-
-                         }
-
-                    });
-
-                    setItems(filtered);
-
-               } catch (error) {
-
-                    console.error(
-                         'Error fetching services for Cards:',
-                         error
-                    );
-
-               } finally {
-
-                    setLoading(false);
-
-               }
-
-          };
-
-          fetchAndFilterServices();
-
-     }, []);
+     const loading = false; // Always loaded with static/cached data initially
 
      const getServiceItemRoute = (item) =>
           `/${normalizeRouteSlug(item?.slug || item?._id)}`;

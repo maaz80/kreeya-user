@@ -2,20 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import { getNavigation } from "../utils/menuOverlay";
-import { getPortfolios } from "../utils/portfolio";
+import { useDataContext } from "../context/DataContext";
 import { loadGSAP } from "../utils/gsapLoader";
 import { useMenuH2Data } from "../hooks/useMenuH2Data";
 
 const MenuOverlay = ({ isOpen, setIsOpen, startFetch = true }) => {
 
      const menuRef = useRef(null);
-     const [pages, setPages] = useState([]);
-     const [projects, setProjects] = useState([]);
-     const [socials, setSocials] = useState([]);
+     const { portfolios, navigation } = useDataContext();
+     const { pages = [], projects = [], socials = [] } = navigation || {};
      const h2Menu = useMenuH2Data()
      const textRef = useRef([]);
-     const [portfolios, setPortfolios] = useState([])
 
      textRef.current = [];
 
@@ -24,34 +21,6 @@ const MenuOverlay = ({ isOpen, setIsOpen, startFetch = true }) => {
                textRef.current.push(el);
           }
      };
-     useEffect(() => {
-          if (!startFetch) return;
-          const fetchNavWithRetry = async (retry = 3) => {
-
-               try {
-
-                    const { pages, projects, socials } = await getNavigation();
-                    const data = await getPortfolios();
-                    setPortfolios(data);
-                    setPages(pages);
-                    setProjects(projects);
-                    setSocials(socials);
-
-               } catch (error) {
-
-                    if (retry > 0) {
-                         setTimeout(() => {
-                              fetchNavWithRetry(retry - 1);
-                         }, 2000);
-                    }
-
-               }
-
-          };
-
-          fetchNavWithRetry();
-
-     }, [startFetch]);
 
      const categories = [...portfolios.map((p) => p.name)];
 console.log(categories);

@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { HiPlus, HiMinus } from "react-icons/hi";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getServices } from "../../utils/service";
-import { getTestimonials } from "../../utils/testimonial";
+import { useDataContext } from "../../context/DataContext";
 import { useH2Data } from "../../hooks/useH2data";
 import { normalizeRouteSlug } from "../../utils/slug";
 import TemplateImage from '../../assets/service1.webp';
@@ -46,29 +45,15 @@ const servicesData = [
 ];
 export default function HelpSection() {
 
+     const { services, testimonials } = useDataContext();
      const [active, setActive] = useState(null);
      const [current, setCurrent] = useState(0);
      const location = useLocation();
-     const [services, setServices] = useState(servicesData)
-     const [testimonials, setTestimonials] = useState([])
      const h2Home = useH2Data()
      const navigate = useNavigate();
 
      const getServiceItemRoute = (service, item) =>
           `/${normalizeRouteSlug(item?.slug || item?._id)}`;
-
-     useEffect(() => {
-          const fetchServices = async () => {
-
-               const data = await getServices();
-               const testi = await getTestimonials();
-               setServices(data);
-               setTestimonials(testi)
-          };
-
-          fetchServices();
-
-     }, []);
 
 
      // Smooth scroll for navigation 

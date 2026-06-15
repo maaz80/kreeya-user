@@ -1,13 +1,12 @@
-import React, { lazy, Suspense, useEffect, useLayoutEffect, useState } from 'react'
+import React, { lazy, Suspense, useEffect, useLayoutEffect, useState, useMemo } from 'react'
 import Hero from '../components/Service/Hero'
 // import HomeNavbar from '../components/HomeNavbar'
 import HomeNavbarV2 from '../components/HomeNavbarV2'
 import '../CSS/Location.css'
 import { useParams } from 'react-router-dom';
-import { getServices } from '../utils/service'
+import { useDataContext } from '../context/DataContext'
 import { Helmet } from 'react-helmet-async';
 import { matchesRouteSlug } from '../utils/slug';
-import staticServices from '../data/staticServices.json';
 import ServiceHeroBG from '../assets/location-hero-bg.webp';
 
 //  Lazy sections
@@ -20,44 +19,15 @@ const FaqSection = lazy(() => import('../components/Location/LocationFaq'))
 
 const Service = () => {
   const { itemSlug } = useParams();
-  const localServices = staticServices || [];
-  const initialService = (() => {
-    for (const s of localServices) {
+  const { services } = useDataContext();
+
+  const service = useMemo(() => {
+    for (const s of services) {
       const found = s.items?.find((i) => matchesRouteSlug(i, itemSlug));
       if (found) return found;
     }
     return null;
-  })();
-  const [service, setService] = useState(initialService);
-
-  useEffect(() => {
-    // 2. Asynchronously fetch latest data in background silently
-    const fetchSingleService = async () => {
-      try {
-        const allServices = await getServices();
-        let selectedItem = null;
-
-        for (const s of allServices) {
-          const found = s.items?.find(
-            (i) => matchesRouteSlug(i, itemSlug)
-          );
-
-          if (found) {
-            selectedItem = found;
-            break;
-          }
-        }
-        if (selectedItem) {
-          setService(selectedItem);
-        }
-      } catch (err) {
-        console.error("Background service fetch failed:", err);
-      }
-    };
-
-    if (itemSlug) fetchSingleService();
-
-  }, [itemSlug]);
+  }, [services, itemSlug]);
 
   useEffect(() => {
     window.scrollTo(0, 0)

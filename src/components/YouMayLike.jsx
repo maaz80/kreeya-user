@@ -1,39 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getBlogs } from "../utils/blogService";
+import { useEffect, useState, useMemo } from "react";
+import { useDataContext } from "../context/DataContext";
 import blogImg from '/images/blog-thumbnail.webp'
 import { useYouMayH2Data } from "../hooks/useYouMayH2Data";
 import OptimizedImage from "./OptimizedImage";
-import staticBlogs from "../data/staticBlogs.json";
 
 const YouMayLike = () => {
      const navigate = useNavigate()
-     const localBlogs = (staticBlogs || []).slice(0, 3);
-     const [blogs, setBlogs] = useState(localBlogs)
-     const [loading, setLoading] = useState(!localBlogs.length)
+     const { blogs: contextBlogs } = useDataContext();
+     const blogs = useMemo(() => (contextBlogs || []).slice(0, 3), [contextBlogs]);
+     const loading = false;
      const h2youMay = useYouMayH2Data()
-
-     useEffect(() => {
-          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
-          if (isBot) {
-               setLoading(false);
-               return;
-          }
-
-          const fetchBlogs = async () => {
-               try {
-                    const data = await getBlogs();
-                    setBlogs(data.slice(0, 3));
-               } catch (error) {
-                    console.error("Error fetching blogs for YouMayLike:", error);
-               } finally {
-                    setLoading(false);
-               }
-          };
-
-          const timer = setTimeout(fetchBlogs, 5000);
-          return () => clearTimeout(timer);
-     }, []);
 
      return (
           <section className="relative z-999 mt-10 md:mt-20">

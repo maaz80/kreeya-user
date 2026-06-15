@@ -4,11 +4,7 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { getNavbar } from "../utils/navbar";
-import { getServices } from "../utils/service";
-import { getPortfolios } from "../utils/portfolio";
-import staticServices from "../data/staticServices.json";
-import staticPortfolios from "../data/staticPortfolios.json";
+import { useDataContext } from "../context/DataContext";
 import { normalizeRouteSlug } from "../utils/slug";
 import defaultDarkLogo from '/images/logo.webp';
 import defaultWhiteLogo from '/images/white-logo.webp';
@@ -103,54 +99,9 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
      const [logoAlt, setLogoAlt] = useState(false);
      const [logoAltForHome, setLogoAltForHome] = useState(false);
      const navigate = useNavigate();
-     const [navbar, setNavbar] = useState([]);
+     
+     const { navbar, services: servicesData, portfolios: portfoliosData } = useDataContext();
      const [scrollReady, setScrollReady] = useState(false);
-     const [servicesData, setServicesData] = useState(staticServices || []);
-     const [portfoliosData, setPortfoliosData] = useState(staticPortfolios || []);
-
-     useEffect(() => {
-          if (!startFetch) return;
-
-          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
-          if (isBot) return;
-
-          const fetchAllData = () => {
-               const fetchNavbar = async () => {
-                    try {
-                         const data = await getNavbar();
-                         setNavbar(data);
-                    } catch (err) {
-                         console.warn("Navbar fetch failed:", err);
-                    }
-               };
-               const fetchServices = async () => {
-                    try {
-                         const data = await getServices();
-                         if (data && data.length > 0) {
-                              setServicesData(data);
-                         }
-                    } catch (err) {
-                         console.warn("Services fetch failed:", err);
-                    }
-               };
-               const fetchPortfolios = async () => {
-                    try {
-                         const data = await getPortfolios();
-                         if (data && data.length > 0) {
-                              setPortfoliosData(data);
-                         }
-                    } catch (err) {
-                         console.warn("Portfolios fetch failed:", err);
-                    }
-               };
-               fetchNavbar();
-               fetchServices();
-               fetchPortfolios();
-          };
-
-          const timer = setTimeout(fetchAllData, 5000);
-          return () => clearTimeout(timer);
-     }, [startFetch]);
 
      useEffect(() => {
           if (!useScrollTriggers) return;

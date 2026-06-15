@@ -1,9 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getLocations } from '../utils/locations'
-import { getServices } from '../utils/service'
-import { getPortfolios } from '../utils/portfolio'
-import { getBlogs } from '../utils/blogService'
+import { useDataContext } from '../context/DataContext'
 import Location from './Location'
 import Service from './Service'
 import Portfolios from './Portfolios'
@@ -15,6 +12,7 @@ const PORTFOLIO_SLUGS = new Set(['portfolios', 'fintech', 'healthcare', 'real-es
 
 const ItemPage = () => {
      const { itemSlug } = useParams()
+     const { locations, services, portfolios, blogs } = useDataContext()
      const [pageType, setPageType] = useState(() => {
           if (itemSlug && PORTFOLIO_SLUGS.has(itemSlug.toLowerCase())) {
                return 'portfolio';
@@ -28,115 +26,55 @@ const ItemPage = () => {
 
      useEffect(() => {
           const isPortfolio = itemSlug && PORTFOLIO_SLUGS.has(itemSlug.toLowerCase());
-          if (!isPortfolio) {
-               setPageType(null);
-          } else {
+          if (isPortfolio) {
                setPageType('portfolio');
-          }
-          const resolvePage = async () => {
-               if (!itemSlug) {
-                    setPageType('notfound')
-                    return
-               }
-
-               if (itemSlug === 'portfolios') {
-                    setPageType('portfolio')
-                    return
-               }
-
-               // 1. Try to resolve from local static split files dynamically (0ms to 5ms)
-               const [
-                    { default: localLocations },
-                    { default: localServices },
-                    { default: localPortfolios },
-                    { default: localBlogs }
-               ] = await Promise.all([
-                    import('../data/staticLocations.json'),
-                    import('../data/staticServices.json'),
-                    import('../data/staticPortfolios.json'),
-                    import('../data/staticBlogs.json')
-               ]);
-
-               const isLocationLocal = localLocations.some((location) =>
-                    location.items?.some((item) => matchesRouteSlug(item, itemSlug))
-               )
-               if (isLocationLocal) {
-                    setPageType('location')
-                    return
-               }
-
-               const isServiceLocal = localServices.some((service) =>
-                    service.items?.some((item) => matchesRouteSlug(item, itemSlug))
-               )
-               if (isServiceLocal) {
-                    setPageType('service')
-                    return
-               }
-
-               const isPortfolioLocal = localPortfolios.some((portfolio) => {
-                    const slug = portfolio.name.toLowerCase().replace(/\s+/g, '-');
-                    return slug === itemSlug;
-               })
-               if (isPortfolioLocal) {
-                    setPageType('portfolio')
-                    return
-               }
-
-               const isBlogLocal = localBlogs.some((blog) => matchesRouteSlug(blog, itemSlug))
-               if (isBlogLocal) {
-                    setPageType('blog')
-                    return
-               }
-
-               // 2. Fallback to dynamic live API calls in case sitemap/build is not updated yet
-               try {
-                    const [locations, services, portfolios, blogs] = await Promise.all([
-                         getLocations(),
-                         getServices(),
-                         getPortfolios(),
-                         getBlogs()
-                    ])
-
-                    const isLocation = locations.some((location) =>
-                         location.items?.some((item) => matchesRouteSlug(item, itemSlug))
-                    )
-                    if (isLocation) {
-                         setPageType('location')
-                         return
-                    }
-
-                    const isService = services.some((service) =>
-                         service.items?.some((item) => matchesRouteSlug(item, itemSlug))
-                    )
-                    if (isService) {
-                         setPageType('service')
-                         return
-                    }
-
-                    const isPortfolio = portfolios.some((portfolio) => {
-                         const slug = portfolio.name.toLowerCase().replace(/\s+/g, '-');
-                         return slug === itemSlug;
-                    })
-                    if (isPortfolio) {
-                         setPageType('portfolio')
-                         return
-                    }
-
-                    const isBlog = blogs.some((blog) => matchesRouteSlug(blog, itemSlug))
-                    if (isBlog) {
-                         setPageType('blog')
-                         return
-                    }
-
-                    setPageType('notfound')
-               } catch (err) {
-                    console.error("Error dynamically resolving page:", err)
-                    setPageType('notfound')
-               }
+               return;
           }
 
-          resolvePage()
-     }, [itemSlug])
+          if (!itemSlug) {
+               setPageType('notfound')
+               return;
+          }
+
+          if (itemSlug === 'portfolios') {
+               setPageType('portfolio')
+               return;
+          }
+
+          const isLocation = locations.some((location) =>
+               location.items?.some((item) => matchesRouteSlug(item, itemSlug))
+          )
+          if (isLocation) {
+               setPageType('location')
+               return
+          }
+
+          const isService = services.some((service) =>
+               service.items?.some((item) => matchesRouteSlug(item, itemSlug))
+          )
+          if (isService) {
+               setPageType('service')
+               return
+          }
+
+          const isPortfolioDynamic = portfolios.some((portfolio) => {
+               const slug = portfolio.name.toLowerCase().replace(/\s+/g, '-');
+               return slug === itemSlug;
+          })
+          if (isPortfolioDynamic) {
+               setPageType('portfolio')
+               return
+          }
+
+          const isBlog = blogs.some((blog) => matchesRouteSlug(blog, itemSlug))
+          if (isBlog) {
+               setPageType('blog')
+               return
+          }
+
+          // If all checks fail, it is not found
+          setPageType('notfound')
+     }, [itemSlug, locations, services, portfolios, blogs])
 
      if (pageType === null) {
           return (

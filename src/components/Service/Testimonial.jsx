@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import TestimonialBG from "../../assets/testimonials-bg.webp";
-import { getTestimonials } from "../../utils/testimonial";
+import { useDataContext } from "../../context/DataContext";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi2";
 import Avatar from "../../assets/profile.webp";
 
@@ -26,7 +26,8 @@ const staticTestimonials = [
 ];
 
 const Testimonial = () => {
-     const [testimonials, setTestimonials] = useState(staticTestimonials);
+     const { testimonials: ctxTestimonials } = useDataContext();
+     const testimonials = (Array.isArray(ctxTestimonials) && ctxTestimonials.length > 0) ? ctxTestimonials : staticTestimonials;
      const [current, setCurrent] = useState(0);
      const [animate, setAnimate] = useState(true);
 
@@ -40,19 +41,6 @@ const Testimonial = () => {
           return () => clearTimeout(timeout);
      }, [current]);
 
-     useEffect(() => {
-          const fetchData = async () => {
-               try {
-                    const data = await getTestimonials();
-                    setTestimonials(Array.isArray(data) && data.length ? data : staticTestimonials);
-               } catch (error) {
-                    console.error(error);
-                    setTestimonials(staticTestimonials);
-               }
-          };
-          fetchData();
-     }, []);
-
      const nextSlide = () => {
           if (!testimonials.length) return;
           setCurrent((prev) => (prev + 1) % testimonials.length);
@@ -65,7 +53,8 @@ const Testimonial = () => {
           );
      };
 
-     const testimonial = testimonials[current] || {};
+     const currentIdx = current < testimonials.length ? current : 0;
+     const testimonial = testimonials[currentIdx] || {};
 
      return (
           <div className="relative min-h-150 text-white pt-27 lg:pt-8">

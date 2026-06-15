@@ -1,26 +1,15 @@
-import { useEffect, useState } from "react";
-import { getBlogs } from "../../utils/blogService";
+import { useEffect, useState, useMemo } from "react";
+import { useDataContext } from "../../context/DataContext";
 import { useNavigate } from "react-router-dom";
 import OptimizedImage from "../OptimizedImage";
 import { useH2Data } from "../../hooks/useH2data";
 
 
 const GrowthJournal = () => {
-     const [blogs, setBlogs] = useState([])
+     const { blogs: contextBlogs } = useDataContext();
+     const blogs = useMemo(() => (contextBlogs || []).slice(0, 3), [contextBlogs]);
      const navigate = useNavigate()
      const h2Home = useH2Data()
-     useEffect(() => {
-
-          const fetchBlogs = async () => {
-
-               const data = await getBlogs();
-               setBlogs(data.slice(0, 3));
-
-          };
-
-          fetchBlogs();
-
-     }, []);
 
      const createSlug = (title) => {
           return title

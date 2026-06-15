@@ -4,6 +4,7 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { Suspense } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
+import { DataProvider } from './context/DataContext.jsx'
 
 // Gracefully handle Vite chunk loading or MIME type mismatch errors by forcing a full reload to fetch fresh assets
 window.addEventListener('vite:preloadError', (event) => {
@@ -23,9 +24,11 @@ window.addEventListener('error', (event) => {
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <HelmetProvider>
-      <Suspense fallback={<div className="min-h-screen bg-black" />}>
-        <App />
-      </Suspense>
+      <DataProvider>
+        <Suspense fallback={<div className="min-h-screen bg-black" />}>
+          <App />
+        </Suspense>
+      </DataProvider>
     </HelmetProvider>
   </BrowserRouter>
 )
