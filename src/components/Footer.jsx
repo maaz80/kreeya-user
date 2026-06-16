@@ -137,7 +137,7 @@ const Footer = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                    >
-                                        <SiFacebook className="cursor-pointer hover:text-dark-black transition-all duration-300 ease-in-out" />
+                                        <SiFacebook className="cursor-pointer hover:text-dark-black transition-all duration-300 ease-in-out" aria-hidden="true" />
                                    </a>
                                    <a
                                         aria-label="Open Instagram Profile"
@@ -146,7 +146,7 @@ const Footer = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                    >
-                                        <FaInstagram className="cursor-pointer hover:text-dark-black transition-all duration-300 ease-in-out" />
+                                        <FaInstagram className="cursor-pointer hover:text-dark-black transition-all duration-300 ease-in-out" aria-hidden="true" />
                                    </a>
 
                                    <a
@@ -156,7 +156,7 @@ const Footer = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                    >
-                                        <FaLinkedinIn className="cursor-pointer hover:text-dark-black transition-all duration-300 ease-in-out" />
+                                        <FaLinkedinIn className="cursor-pointer hover:text-dark-black transition-all duration-300 ease-in-out" aria-hidden="true" />
                                    </a>
 
                                    <a
@@ -166,7 +166,7 @@ const Footer = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                    >
-                                        <SiYoutube className="cursor-pointer hover:text-dark-black transition-all duration-300 ease-in-out" />
+                                        <SiYoutube className="cursor-pointer hover:text-dark-black transition-all duration-300 ease-in-out" aria-hidden="true" />
                                    </a>
                                    <a
                                         aria-label="Open Twitter Profile"
@@ -175,7 +175,7 @@ const Footer = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                    >
-                                        <FaXTwitter className="cursor-pointer hover:text-dark-black transition-all duration-300 ease-in-out" />
+                                        <FaXTwitter className="cursor-pointer hover:text-dark-black transition-all duration-300 ease-in-out" aria-hidden="true" />
                                    </a>
                               </div>
 
@@ -249,7 +249,7 @@ const Footer = () => {
                                    target="_blank"
                                    rel="noopener noreferrer"
                               >
-                                   <SiFacebook className="cursor-pointer hover:bg-dark-black" />
+                                   <SiFacebook className="cursor-pointer hover:bg-dark-black" aria-hidden="true" />
                               </a>
                               <a
                                    aria-label="Open Instagram Profile"
@@ -257,7 +257,7 @@ const Footer = () => {
                                    target="_blank"
                                    rel="noopener noreferrer"
                               >
-                                   <FaInstagram className="cursor-pointer hover:bg-dark-black" />
+                                   <FaInstagram className="cursor-pointer hover:bg-dark-black" aria-hidden="true" />
                               </a>
 
                               <a
@@ -266,7 +266,7 @@ const Footer = () => {
                                    target="_blank"
                                    rel="noopener noreferrer"
                               >
-                                   <FaLinkedinIn className="cursor-pointer hover:bg-dark-black" />
+                                   <FaLinkedinIn className="cursor-pointer hover:bg-dark-black" aria-hidden="true" />
                               </a>
 
                               <a
@@ -275,7 +275,7 @@ const Footer = () => {
                                    target="_blank"
                                    rel="noopener noreferrer"
                               >
-                                   <SiYoutube className="cursor-pointer hover:bg-dark-black" />
+                                   <SiYoutube className="cursor-pointer hover:bg-dark-black" aria-hidden="true" />
                               </a>
 
                          </div>

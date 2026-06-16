@@ -1,12 +1,11 @@
 import { lazy, Suspense, useEffect } from 'react';
 import BgImage from '../assets/bg.webp'
-import Breadcrumb from '../components/BreadCrumb';
-// const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
-const HomeNavbarV2 = lazy(() => import('../components/HomeNavbarV2'));
 // import SeoTags from '../components/SeoTags';
 import { useH1Data } from '../hooks/useH1Data';
 import useFaq from '../hooks/useFaq';
 
+const HomeNavbarV2 = lazy(() => import('../components/HomeNavbarV2'));
+const Breadcrumb = lazy(() => import('../components/BreadCrumb'));
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
 
@@ -14,7 +13,12 @@ const PrivacyPolicy = () => {
      const h1Policy = useH1Data();
      const { faqData } = useFaq();
      useEffect(() => {
-          window.scrollTo(0, 0);
+          if (window.scrollY > 0) {
+               window.scrollTo({
+                    top: 0,
+                    behavior: 0
+               });
+          }
      }, []);
 
      return (
@@ -36,7 +40,9 @@ const PrivacyPolicy = () => {
                     {/* <HomeNavbar /> */}
                     <HomeNavbarV2 />
                </Suspense>
-               <Breadcrumb />
+               <Suspense fallback={null}>
+                    <Breadcrumb />
+               </Suspense>
 
                {/* title */}
                <h1 className="relative text-center leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-6 md:mb-12 z-20 text-dark-black poiret-one-regular mt-20 md:mt-16">
@@ -54,7 +60,7 @@ const PrivacyPolicy = () => {
                               Kreeya Design (“we”, “us”, “our”) is a UI UX design agency providing digital design and consulting services to clients worldwide.
                          </p>
 
-                         <p className="">
+                         <p className="min-h-20">
                               For data protection purposes, we act as the Data Controller for personal information collected through our website and during communication with potential or existing clients. This notice explains how we collect, use, and safeguard personal data, and outlines the rights available to you under applicable laws, including GDPR where relevant.
                          </p>
 

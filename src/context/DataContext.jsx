@@ -71,8 +71,7 @@ export const DataProvider = ({ children }) => {
                }
           };
 
-          const timer = setTimeout(fetchAllData, 2000);
-          return () => clearTimeout(timer);
+          fetchAllData();
      }, []);
 
      return (

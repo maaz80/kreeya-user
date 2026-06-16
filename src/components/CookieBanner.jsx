@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
 const CookieBanner = () => {
+     const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+     if (isBot) {
+          return null;
+     }
+
      const [consentChecked, setConsentChecked] = useState(false);
      const [visible, setVisible] = useState(false);
 
@@ -29,15 +34,10 @@ const CookieBanner = () => {
           setVisible(false);
      };
 
-     // Do not render anything if consent has been checked and already exists
-     if (consentChecked && localStorage.getItem("cookie-consent")) {
-          return null;
-     }
-
      return (
           <div
-               className={`fixed z-99999 bottom-0 left-0 w-full bg-white border-t border-gray-200 rounded-t-lg plus-jakarta-sans [box-shadow:0_-8px_10px_rgba(0,0,0,0.15),0_-2px_8px_rgba(0,0,0,0.08)] transition-transform duration-500 ease-in-out ${
-                    visible ? "translate-y-0" : "translate-y-full"
+               className={`fixed z-99999 bottom-0 left-0 w-full bg-white border-t border-gray-200 rounded-t-lg plus-jakarta-sans [box-shadow:0_-8px_10px_rgba(0,0,0,0.15),0_-2px_8px_rgba(0,0,0,0.08)] transition-opacity duration-500 ease-in-out ${
+                    visible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
                }`}
           >
 

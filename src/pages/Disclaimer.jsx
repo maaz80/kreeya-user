@@ -5,8 +5,8 @@ import { useH1Data } from "../hooks/useH1Data";
 import useFaq from "../hooks/useFaq";
 
 // const HomeNavbar = lazy(() => import('../components/HomeNavbar'));
-const HomeNavbarV2 = lazy(() => import('../components/HomeNavbarV2'));
-const Breadcrumb = lazy(() => import('../components/Breadcrumb'))
+const HomeNavbarV2 = lazy(() => import('../components/HomeNavbarV2'))
+const Breadcrumb = lazy(() => import('../components/BreadCrumb'))
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
 
@@ -14,10 +14,12 @@ const Disclaimer = () => {
      const h1Disclaimer = useH1Data();
      const { faqData } = useFaq();
      useEffect(() => {
-          window.scrollTo({
-               top: 0,
-               behavior: "smooth"
-          });
+          if (window.scrollY > 0) {
+               window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+               });
+          }
      }, []);
      return (
           <section
@@ -58,7 +60,7 @@ const Disclaimer = () => {
                               Kreeya Design (“we”, “us”, “our”) is a UI UX design agency providing digital design and consulting services to clients worldwide.
                          </p>
 
-                         <p className="">
+                         <p className="min-h-20">
                               For data protection purposes, we act as the Data Controller for personal information collected through our website and during communication with potential or existing clients. This notice explains how we collect, use, and safeguard personal data, and outlines the rights available to you under applicable laws, including GDPR where relevant.
                          </p>
 

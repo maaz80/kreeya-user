@@ -58,7 +58,11 @@ const LandingNavbar = () => {
                          <img
                               src={logoAlt ? LogoWhite : logo}
                               alt="Kreeya Design - UI UX & Branding Agency Logo"
-                              className="w-23.75 md:w-31.75 lg:w-40 transition-all duration-300 ease-in-out"
+                              loading="eager"
+                              fetchPriority="high"
+                              width="160"
+                              height="42"
+                              className="w-23.75 md:w-31.75 lg:w-40 h-6 md:h-8 lg:h-10 object-contain transition-all duration-300 ease-in-out"
                          />
                     </div>
 

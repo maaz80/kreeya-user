@@ -10,8 +10,6 @@ const ShowCase = () => {
 
      const imageRef = useRef(null)
      const sectionRef = useRef(null)
-     const showImage = window.innerWidth < 786 ? Port1Mobile : Port1;
-     const showImageBG = window.innerWidth < 786 ? tiresMobile : tires;
      //   Updated version
      useEffect(() => {
           let scrollTriggerInstance = null;
@@ -52,11 +50,14 @@ const ShowCase = () => {
 
                     <div className="absolute inset-0">
 
-                         <img
-                              src={showImageBG}
-                              alt='Beyekls Bg'
-                              className="absolute inset-0 w-full h-full object-cover scale-100 md:scale-110"
-                         />
+                         <picture>
+                              <source media="(max-width: 785px)" srcSet={tiresMobile} />
+                              <img
+                                   src={tires}
+                                   alt='Beyekls Bg'
+                                   className="absolute inset-0 w-full h-full object-cover scale-100 md:scale-110"
+                              />
+                         </picture>
 
                          <div className="absolute w-[50%] mx-auto inset-0 bg-[#1e4fff] mix-blend-color opacity-15" />
 
@@ -70,7 +71,10 @@ const ShowCase = () => {
                     ref={imageRef}
                     className='z-50 absolute -bottom-20 md:-bottom-30 2xl:-bottom-40 w-83.25 md:w-160 2xl:w-299.5 left-1/2 -translate-x-1/2'
                >
-                    <img src={showImage} alt="Beyekls Artifacts" className='w-83.25 h-60 md:w-160 md:h-100 2xl:w-299.5 2xl:h-210' />
+                    <picture>
+                         <source media="(max-width: 785px)" srcSet={Port1Mobile} />
+                         <img src={Port1} alt="Beyekls Artifacts" className='w-83.25 h-60 md:w-160 md:h-100 2xl:w-299.5 2xl:h-210' />
+                    </picture>
                </div>
 
           </div>

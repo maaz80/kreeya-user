@@ -10,6 +10,7 @@ const HelpSection = ({ service }) => {
                     <img
                          src={LocationBg}
                          alt={service?.hero?.title ? `${service.hero.title} Help Background` : ""}
+                         loading="lazy"
                          className="w-full h-full object-cover opacity-20"
                     />
                     <div className="absolute inset-0 bg-white/20" />

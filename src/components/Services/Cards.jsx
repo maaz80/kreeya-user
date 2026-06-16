@@ -8,6 +8,7 @@ import { optimizeImage } from '../../utils/cloudinary';
 import OptimizedImage from '../OptimizedImage';
 
 import FallbackImg from '../../assets/nectar-casestudy-mobile.webp';
+import '../../CSS/Blogs.css';
 
 const Cards = () => {
      const { services } = useDataContext();
@@ -77,9 +78,9 @@ const Cards = () => {
                <div className="max-w-357.5 mx-auto px-4 md:px-6 lg:px-8">
 
                     {/* HEADING */}
-                    <div className="flex items-center justify-start mb-7 md:mb-14">
+                    <div className="flex items-center justify-center mb-7 md:mb-14">
 
-                         <h1 className="text-start font-serif text-[42px] md:text-[56px] lg:text-[72px] leading-none font-medium text-black tracking-[-1px] poiret-one-regular">
+                         <h1 className="text-center font-serif text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] leading-none font-medium text-black tracking-[-1px] poiret-one-regular">
                               Our Specialised{' '}
                               <span className="text-cust-orange">
                                    Services
@@ -87,6 +88,37 @@ const Cards = () => {
                          </h1>
 
                     </div>
+
+                    {/* Featured Service */}
+                    {currentPage === 1 && (
+                         <div
+                              onClick={() => {
+                                   if (items[0]) {
+                                        navigate(getServiceItemRoute(items[0]));
+                                   }
+                              }}
+                              className="relative group flex flex-col md:flex items-center justify-center mb-5 md:mb-24 z-999 w-full md:w-142 lg:w-290 2xl:w-7xl mx-auto md:h-79.75 lg:h-163 2xl:h-180 cursor-pointer"
+                         >
+                              <img
+                                   src='/images/services-hero.webp'
+                                   srcSet="/images/services-hero-mobile.webp 480w, /images/services-hero.webp 800w"
+                                   sizes="(max-width: 767px) 100vw, 800px"
+                                   alt='Our Specialised Services'
+                                   fetchPriority="high"
+                                   className="w-full md:w-142 lg:w-290 2xl:w-7xl object-cover h-48 md:h-79.75 lg:h-163 2xl:h-180 group-hover:scale-105 transition-all duration-500 ease-in-out md:ml-70 lg:ml-5"
+                              />
+
+                              {/* Floating card */}
+                              <div className="block md:absolute relative -right-15 md:right-5 bottom-16 md:-bottom-10 bg-white shadow-[0_0_30px_rgba(0,0,0,0.12)] p-6 lg:p-10 w-[60%] md:w-61.25 lg:w-107.5 shrink-0 plus-jakarta-sans relative overflow-hidden animated-card md:min-h-45 xl:min-h-80 mt-4 md:mt-0">
+                                   <p className="text-[10px] lg:text-[16px] text-dark-gray mb-2 group-hover:text-white transition-all duration-300 ease-in-out">
+                                        Featured Service | Premium Creative Agency
+                                   </p>
+                                   <h2 className="text-[15px] md:text-[18px] lg:text-[40px] text-dark-black leading-snug group-hover:text-white transition-all duration-300 ease-in-out">
+                                        Crafting Digital Experiences That Drive Growth & Scale Brands
+                                   </h2>
+                              </div>
+                         </div>
+                    )}
 
                     {/* CARDS */}
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 place-items-center">

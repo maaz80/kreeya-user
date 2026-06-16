@@ -48,12 +48,12 @@ export default function ChatBot() {
      const messageRef = useRef();
 
      useEffect(() => {
-          if (messageRef.current) {
+          if (open && messageRef.current) {
                requestAnimationFrame(() => {
                     messageRef.current?.scrollIntoView({ block: "end" });
                });
           }
-     }, [messages]);
+     }, [messages, open]);
 
      function getBotReply(msg) {
           const text = msg.toLowerCase();

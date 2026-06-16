@@ -44,9 +44,6 @@ const processSteps = [
 const ProcessFollowed = () => {
      const chatPreviewRef = useRef(null);
      const chatPreviewSectionRef = useRef(null);
-     const showDots = window.innerWidth < 786 ? DottedMobile : Dotted;
-     const showSitemap = window.innerWidth < 786 ? sitemapSmall : sitemap;
-     const showCoinpayMobile = window.innerWidth < 786 ? coinpayMobileSmall : coinpayMobile;
      //  Updated version
      useEffect(() => {
           let scrollTriggerInstance = null;
@@ -90,11 +87,14 @@ const ProcessFollowed = () => {
 
                <div className="absolute inset-0 bg-linear-to-r from-[#304FFF] to-[#000B43] mix-blend-multiply opacity-100 z-10" />
                {/* Left Dotted Overlay */}
-               <img
-                    src={showDots}
-                    alt='Background Dots'
-                    className="absolute right-0 top-0 pointer-events-none "
-               />
+               <picture className="absolute right-0 top-0 pointer-events-none">
+                    <source media="(max-width: 785px)" srcSet={DottedMobile} />
+                    <img
+                         src={Dotted}
+                         alt='Background Dots'
+                         className="w-full h-full object-contain"
+                    />
+               </picture>
 
                <div className=" relative max-w-7xl mx-auto py-10 md:py-20 lg:py-25 px-3 md:px-15 lg:px-20 z-999">
 
@@ -184,16 +184,21 @@ const ProcessFollowed = () => {
                     <h2 className="text-center leading-12 md:leading-15 lg:leading-21 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-4 md:mb-16 poiret-one-regular">
                          The Sitemap
                     </h2>
-                    <img src={showSitemap} alt="Sitemap" className='w-170 h-50 sm:h-90 lg:w-240 lg:h-110 2xl:w-321 2xl:h-170 mx-auto' />
+                    <picture>
+                         <source media="(max-width: 785px)" srcSet={sitemapSmall} />
+                         <img src={sitemap} alt="Sitemap" className='w-170 h-50 sm:h-90 lg:w-240 lg:h-110 2xl:w-321 2xl:h-170 mx-auto' />
+                    </picture>
                </div>
                <div ref={chatPreviewSectionRef} className="relative min-h-[53vh] md:min-h-[145vh] lg:min-h-[221vh] z-50">
                     {/* Mobile Image  */}
-                    <img
-                         ref={chatPreviewRef}
-                         src={showCoinpayMobile}
-                         alt="Coinpay Artifact"
-                         className="absolute left-0 w-full top-5 pointer-events-none"
-                    />
+                    <picture ref={chatPreviewRef} className="absolute left-0 w-full top-5 pointer-events-none">
+                         <source media="(max-width: 785px)" srcSet={showCoinpayMobile} />
+                         <img
+                              src={coinpayMobile}
+                              alt="Coinpay Artifact"
+                              className="w-full h-full object-contain"
+                         />
+                    </picture>
                     <div className='bg-linear-to-r from-[#304FFF]/50 to-[#000B43]/50 backdrop-blur-2xl text-white text-[36px] md:text-[56px] lg:text-[72px] w-67 md:w-105.75 lg:w-xl absolute top-1/2 left-1/2 -translate-1/2 poiret-one-regular text-center rounded-xl px-4 py-6 md:px-8 md:py-10 lg:px-15 lg:py-20 leading-12 md:leading-15 lg:leading-21'>
                          The Experience We Created
                     </div>

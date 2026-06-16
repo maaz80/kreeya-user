@@ -187,7 +187,7 @@ const OptimizedImage = ({
                srcSet={finalSrcSet}
                sizes={finalSrcSet ? finalSizes : undefined}
                alt={alt}
-               decoding="async"
+               decoding={loading === 'eager' ? 'sync' : 'async'}
                fetchPriority={loading === 'eager' ? 'high' : 'auto'}
                className={className}
                loading={loading}

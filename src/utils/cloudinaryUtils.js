@@ -48,11 +48,11 @@ export const buildSrcSet = (src, { crop = "fill", gravity = "auto" } = {}) => {
 
      const { cleanPath, cloudName } = data;
      const base = `https://res.cloudinary.com/${cloudName}/image/upload`;
-     const widths = [388, 576, 776, 1164, 1552];
+     const widths = [388, 582, 776, 1164, 1552];
 
      return widths
           .map((w) => {
-               const h = Math.round(w / (133 / 60)); // tumhara aspectRatio 133:60
+               const h = Math.round(w * (350 / 776)); // Exactly matching 776x350 aspect ratio
                const trans = [`w_${w}`, `h_${h}`, `c_${crop}`, `g_${gravity}`, "f_avif", "q_auto:eco"];
                return `${base}/${trans.join(",")}/${cleanPath} ${w}w`;
           })

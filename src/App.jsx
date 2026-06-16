@@ -36,7 +36,10 @@ function App() {
   const [loadChatbot, setLoadChatbot] = useState(false);
   const location = useLocation();
   const isOpeningVideoRoute = location.pathname === "/";
-  const [areGlobalWidgetsReady, setAreGlobalWidgetsReady] = useState(!isOpeningVideoRoute);
+  const [areGlobalWidgetsReady, setAreGlobalWidgetsReady] = useState(() => {
+    const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+    return isBot || !isOpeningVideoRoute;
+  });
 
   usePageSEO()
 

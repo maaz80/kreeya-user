@@ -5,7 +5,14 @@ import { useLocation } from 'react-router-dom';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // Module-level cache — per pageName, ek hi API call per session
-const h1Cache = {};
+const h1Cache = {
+     'privacy-policy': { main_heading: 'Privacy Policy' },
+     'disclaimer': { main_heading: 'Disclaimer' },
+     'portfolio-beyekls': { main_heading: 'BEYEKLS' },
+     'portfolio-daccord': { main_heading: 'DACCORD' },
+     'portfolio-coinpay': { main_heading: 'Coinpay' },
+     'portfolio-nectar': { main_heading: 'Nectar' }
+};
 
 // Frontend URL → backend pageName mapping (jahan URL aur pageName alag hain)
 const urlToPageName = {

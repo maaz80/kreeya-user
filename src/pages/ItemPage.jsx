@@ -13,12 +13,35 @@ const PORTFOLIO_SLUGS = new Set(['portfolios', 'fintech', 'healthcare', 'real-es
 const ItemPage = () => {
      const { itemSlug } = useParams()
      const { locations, services, portfolios, blogs } = useDataContext()
-     const [pageType, setPageType] = useState(() => {
-          if (itemSlug && PORTFOLIO_SLUGS.has(itemSlug.toLowerCase())) {
+
+     const getInitialPageType = () => {
+          if (!itemSlug) return 'notfound';
+          if (PORTFOLIO_SLUGS.has(itemSlug.toLowerCase()) || itemSlug === 'portfolios') {
                return 'portfolio';
           }
-          return null;
-     })
+          const isLocation = locations.some((location) =>
+               location.items?.some((item) => matchesRouteSlug(item, itemSlug))
+          );
+          if (isLocation) return 'location';
+
+          const isService = services.some((service) =>
+               service.items?.some((item) => matchesRouteSlug(item, itemSlug))
+          );
+          if (isService) return 'service';
+
+          const isPortfolioDynamic = portfolios.some((portfolio) => {
+               const slug = portfolio.name.toLowerCase().replace(/\s+/g, '-');
+               return slug === itemSlug;
+          });
+          if (isPortfolioDynamic) return 'portfolio';
+
+          const isBlog = blogs.some((blog) => matchesRouteSlug(blog, itemSlug));
+          if (isBlog) return 'blog';
+
+          return null; // Fallback to effect verification if context is still loading
+     };
+
+     const [pageType, setPageType] = useState(() => getInitialPageType());
 
      useEffect(() => {
           window.scrollTo(0, 0)

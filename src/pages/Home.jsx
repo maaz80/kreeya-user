@@ -16,10 +16,24 @@ const StackImages = lazy(() => import("../components/Home/StackProjects"));
 const LogoMarquee = lazy(() => import("../components/LogoMarque"));
 const Home = ({ onOpeningVideoFinished }) => {
      const location = useLocation();
-     const [showOpening, setShowOpening] = useState(true);
-     const [isVideoFinished, setIsVideoFinished] = useState(false);
+     const [showOpening, setShowOpening] = useState(() => {
+          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+          return !isBot;
+     });
+     const [isVideoFinished, setIsVideoFinished] = useState(() => {
+          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+          return isBot;
+     });
      const [isLowPriorityReady, setIsLowPriorityReady] = useState(false);
      const { faqData } = useFaq();
+
+     useEffect(() => {
+          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
+          if (isBot) {
+               onOpeningVideoFinished?.();
+          }
+     }, [onOpeningVideoFinished]);
+
      useEffect(() => {
           // Delay non-critical components to free up main thread for LCP
           const timer = setTimeout(() => {

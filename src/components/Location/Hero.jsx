@@ -16,6 +16,8 @@ const Hero = ({ location }) => {
                     <img
                          src={LocationHeroBG}
                          alt={location?.hero?.title || "Kreeya Design Location Hero"}
+                         loading="eager"
+                         fetchPriority="high"
                          className="w-full min-h-[144vh] sm:min-h-[158vh] lg:min-h-screen h-full object-cover"
                     />
                </div>

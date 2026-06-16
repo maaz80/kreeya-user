@@ -11,6 +11,7 @@ const HelpSection = ({ location }) => {
                     <img
                          src={LocationBg}
                          alt="Location Bg"
+                         loading="lazy"
                          className="w-full h-full object-cover opacity-20"
                     />
                     <div className="absolute inset-0 bg-white/20" />

@@ -5,7 +5,6 @@ import BG from '../../assets/bg.webp'
 import { initGSAP } from "../../utils/gsapLoader"
 
 const ShowCase = () => {
-     const showImage = window.innerWidth < 786 ? coinpayShowcaseSmall : coinpayShowcase;
      const imageRef = useRef(null)
      const sectionRef = useRef(null)
 
@@ -63,7 +62,10 @@ const ShowCase = () => {
                     ref={imageRef}
                     className='z-50 absolute bottom-0 w-83.25 md:w-160 2xl:w-250.5 left-1/2 -translate-x-1/2'
                >
-                    <img src={showImage} alt="CoinPay Portfolio" className='w-100 h-60 lg:w-150 lg:h-110 2xl:w-250 2xl:h-170' />
+                    <picture>
+                         <source media="(max-width: 785px)" srcSet={coinpayShowcaseSmall} />
+                         <img src={coinpayShowcase} alt="CoinPay Portfolio" className='w-100 h-60 lg:w-150 lg:h-110 2xl:w-250 2xl:h-170' />
+                    </picture>
                </div>
 
           </div>

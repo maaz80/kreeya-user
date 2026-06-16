@@ -96,27 +96,27 @@ const Blogs = () => {
 
                {/* Featured Blog */}
 
-               <div className="relative group md:flex items-center justify-center mb-16 hidden z-999 w-142 lg:w-290 2xl:w-7xl mx-auto md:h-79.75 lg:h-163 2xl:h-180">
+               <div className="relative group flex flex-col md:flex items-center justify-center mb-5 md:mb-24 z-999 w-full md:w-142 lg:w-290 2xl:w-7xl mx-auto md:h-79.75 lg:h-163 2xl:h-180">
 
-                    {isDesktop && (
-                         <img
-                              src='/images/blog-thumbnail.webp'
-                              alt='The Growth Journal'
-                              fetchPriority="high"
-                              className="hidden md:block w-142 lg:w-290 2xl:w-7xl object-cover md:h-79.75 lg:h-163 2xl:h-180 group-hover:scale-105 transition-all duration-500 ease-in-out md:ml-70 lg:ml-105"
-                         />
-                    )}
+                    <img
+                         src='/images/blog-thumbnail.webp'
+                         srcSet="/images/blog-thumbnail-mobile.webp 480w, /images/blog-thumbnail.webp 800w"
+                         sizes="(max-width: 767px) 100vw, 800px"
+                         alt='The Growth Journal'
+                         fetchPriority="high"
+                         className="w-full md:w-142 lg:w-290 2xl:w-7xl object-cover h-48 md:h-79.75 lg:h-163 2xl:h-180 group-hover:scale-105 transition-all duration-500 ease-in-out md:ml-70 lg:ml-5"
+                    />
 
                     {/* Floating card */}
 
-                    <div className="hidden md:block absolute right-95 -bottom-10  bg-white shadow-[0_0_30px_rgba(0,0,0,0.12)]  p-6 lg:p-10 w-61.25 lg:w-107.5 shrink-0 plus-jakarta-sans  relative overflow-hidden animated-card md:min-h-45 xl:min-h-80">
+                    <div className="block md:absolute relative -right-15 md:right-5 bottom-16 md:-bottom-10 bg-white shadow-[0_0_30px_rgba(0,0,0,0.12)] p-6 lg:p-10 w-[60%] md:w-61.25 lg:w-107.5 shrink-0 plus-jakarta-sans relative overflow-hidden animated-card md:min-h-45 xl:min-h-80 mt-4 md:mt-0">
 
-                         <p className="text-[12px] lg:text-[16px] text-dark-gray mb-2 group-hover:text-white transition-all duration-300 ease-in-out">
+                         <p className="text-[10px] lg:text-[16px] text-dark-gray mb-2 group-hover:text-white transition-all duration-300 ease-in-out">
                               22nd July, 2026 | 3 min read |
                               <span className="text-cust-orange group-hover:text-dark-black transition-all duration-300 ease-in-out"> Technology</span>
                          </p>
 
-                         <h2 className="text-[18px] lg:text-[40px] text-dark-black leading-snug group-hover:text-white transition-all duration-300 ease-in-out">
+                         <h2 className="text-[15px] md:text-[18px] lg:text-[40px] text-dark-black leading-snug group-hover:text-white transition-all duration-300 ease-in-out">
                               {h3Blogs.blogs_heading_3 || 'Why Design Is the Most Powerful Business Tool You\'re Ignoring'}
                          </h2>
 

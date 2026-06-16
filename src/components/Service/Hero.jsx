@@ -5,16 +5,10 @@ import { useEffect, useState } from "react";
 import ContactForm from "../Location/Form";
 
 const Hero = ({ service }) => {
-     const [hero, setHero] = useState(null)
+     const hero = service?.hero;
      const handleClick = () => {
           window.location.href = "https://calendly.com/pyush-anand7/new-meeting";
      }
-
-     useEffect(() => {
-          setHero(service?.hero);
-          console.log(service);
-
-     }, [service]);
 
      return (
           <section className="relative w-full min-h-screen bg-linear-to-b from-[#003D64] via-[#007CC9] to-[#003D64] text-white ">
@@ -22,14 +16,16 @@ const Hero = ({ service }) => {
                <div className="absolute inset-0">
                     <img
                          src={ServiceHeroBG}
-                         alt={service?.hero?.title || "Kreeya Design Service Hero"}
+                         alt={hero?.title || "Kreeya Design Service Hero"}
+                         loading="eager"
+                         fetchPriority="high"
                          className="w-full min-h-[144vh] sm:min-h-[158vh] lg:min-h-screen h-full object-cover"
                     />
                </div>
-               <div className="max-w-300.5 mx-auto flex flex-col lg:flex-row gap-20 items-center justify-center px-3 md:px-6 py-4 pt-24 md:pt-38 plus-jakarta-sans">
+               <div className="max-w-300.5 mx-auto flex flex-col lg:flex-row gap-20 items-center justify-center px-3 md:px-6 pt-24 md:pt-38 plus-jakarta-sans">
 
                     {/* LEFT CONTENT */}
-                    <div className="space-y-6 z-999">
+                    <div className="space-y-6 z-999 pt-12">
                          <h1 className="text-3xl md:text-5xl xl:text-[56px] max-w-180 poiret-one-regular leading-10 md:leading-15">
                               {hero?.title ? hero.title : 'Local Web Design Services Delhi'}
                          </h1>

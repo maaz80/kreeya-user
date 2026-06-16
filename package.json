@@ -35,6 +35,7 @@
     "globals": "^16.5.0",
     "purgecss": "^8.0.0",
     "rollup-plugin-visualizer": "^7.0.1",
+    "sharp": "^0.35.1",
     "terser": "^5.46.1",
     "vite": "^7.3.1",
     "vite-plugin-css-injected-by-js": "^3.5.2"

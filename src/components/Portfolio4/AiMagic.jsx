@@ -49,15 +49,16 @@ const features = [
 ];
 
 const AiMagic = () => {
-     const showDots = window.innerWidth < 786 ? DottedMobile : Dotted;
-     const showImage = window.innerWidth < 786 ? MobileSmall : Mobile;
      return (
           <section className="bg-[#f7f7f7] py-16 md:py-10 relative plus-jakarta-sans">
-               <img
-                    src={showDots}
-                    alt='Background- Dots'
-                    className="absolute -top-10 md:-top-50 right-0 pointer-events-none "
-               />
+               <picture className="absolute -top-10 md:-top-50 right-0 pointer-events-none">
+                    <source media="(max-width: 785px)" srcSet={DottedMobile} />
+                    <img
+                         src={Dotted}
+                         alt='Background- Dots'
+                         className="w-full h-full object-contain"
+                    />
+               </picture>
                {/* Heading */}
                <h2 className="text-center leading-12 md:leading-15 lg:leading-21 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-4 md:mb-16 poiret-one-regular">
                     The AI Magic
@@ -107,11 +108,14 @@ const AiMagic = () => {
                     {/* RIGHT MOBILE MOCKUP */}
                     <div className="flex justify-center lg:justify-end relative z-50">
 
-                         <img
-                              src={showImage}
-                              alt="Nectar Ai"
-                              className="w-100 h-210 2xl:w-140 2xl:h-300"
-                         />
+                         <picture>
+                              <source media="(max-width: 785px)" srcSet={MobileSmall} />
+                              <img
+                                   src={Mobile}
+                                   alt="Nectar Ai"
+                                   className="w-100 h-210 2xl:w-140 2xl:h-300"
+                              />
+                         </picture>
 
                     </div>
 

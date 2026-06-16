@@ -8,9 +8,6 @@ import Portfolio from '../../assets/nectar-bg.webp'
 import PortfolioMobile from '../../assets/nectar-bg-mobile.webp'
 
 const ShowCase = () => {
-     const showMobile1 = window.innerWidth < 786 ? Mobile1Mobile : Mobile1;
-     const showMobile3 = window.innerWidth < 786 ? Mobile3Mobile : Mobile3;
-     const showBG = window.innerWidth < 786 ? PortfolioMobile : Portfolio;
      const imageRef = useRef(null)
      const sectionRef = useRef(null)
      const [isShowcaseVisible, setIsShowcaseVisible] = useState(false)
@@ -43,11 +40,14 @@ const ShowCase = () => {
 
                     <div className="absolute inset-0">
 
-                         <img
-                              src={showBG}
-                              alt='Nectar Bg'
-                              className="absolute inset-0 w-full h-full object-cover"
-                         />
+                         <picture>
+                              <source media="(max-width: 785px)" srcSet={PortfolioMobile} />
+                              <img
+                                   src={Portfolio}
+                                   alt='Nectar Bg'
+                                   className="absolute inset-0 w-full h-full object-cover"
+                              />
+                         </picture>
 
                     </div>
                     <div className="absolute inset-0 bg-linear-to-b from-[#53B175] to-[#061D0E] mix-blend-multiply opacity-100" />
@@ -60,7 +60,10 @@ const ShowCase = () => {
 
                     {/* Left phone */}
                     <div>
-                         <img src={showMobile1} alt="Nectar Main" className="w-30 md:w-50 lg:w-[320px] h-45 sm:h-60 md:h-100 lg:h-130" />
+                         <picture>
+                              <source media="(max-width: 785px)" srcSet={Mobile1Mobile} />
+                              <img src={Mobile1} alt="Nectar Main" className="w-30 md:w-50 lg:w-[320px] h-45 sm:h-60 md:h-100 lg:h-130" />
+                         </picture>
                     </div>
 
                     {/* Center phone (bigger) */}
@@ -70,7 +73,10 @@ const ShowCase = () => {
 
                     {/* Right phone */}
                     <div>
-                         <img src={showMobile3} alt="Nectar Product" className="w-30 md:w-50 lg:w-[320px] h-45 sm:h-60 md:h-100 lg:h-130" />
+                         <picture>
+                              <source media="(max-width: 785px)" srcSet={Mobile3Mobile} />
+                              <img src={Mobile3} alt="Nectar Product" className="w-30 md:w-50 lg:w-[320px] h-45 sm:h-60 md:h-100 lg:h-130" />
+                         </picture>
                     </div>
 
                </div>

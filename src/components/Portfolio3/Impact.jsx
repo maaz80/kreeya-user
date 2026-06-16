@@ -2,7 +2,6 @@ import Dotted from '../../assets/dotted.webp';
 import DottedMobile from '../../assets/Dotted-mobile.webp';
 
 const ImpactCreated = () => {
-     const showDots = window.innerWidth < 786 ? DottedMobile : Dotted;
 
      const impacts = [
           {
@@ -30,11 +29,14 @@ const ImpactCreated = () => {
      return (
           <section className="for-white-icons relative  py-10 md:py-20 px-5 md:px-12 lg:px-20 overflow-hidden plus-jakarta-sans">
                {/* Left Dotted Overlay */}
-               <img
-                    src={showDots}
-                    alt='Background Dots'
-                    className="absolute right-0 -top-10 md:-top-90 pointer-events-none "
-               />
+               <picture className="absolute right-0 -top-10 md:-top-90 pointer-events-none">
+                    <source media="(max-width: 785px)" srcSet={DottedMobile} />
+                    <img
+                         src={Dotted}
+                         alt='Background Dots'
+                         className="w-full h-full object-contain"
+                    />
+               </picture>
 
                <div className="max-w-300 3xl:max-w-400 mx-auto">
 

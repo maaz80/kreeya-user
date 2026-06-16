@@ -6,8 +6,6 @@ import frameDaccordSmall from '../../assets/daccord-portfolio-bg-small.webp'
 import { initGSAP } from "../../utils/gsapLoader"
 
 const ShowCase = () => {
-     const showDaccordFrame = window.innerWidth < 786 ? frameDaccordSmall : frameDaccord;
-     const showDaccord = window.innerWidth < 786 ? daccordSmall : daccord;
      const imageRef = useRef(null)
      const sectionRef = useRef(null)
 
@@ -51,11 +49,14 @@ const ShowCase = () => {
 
                     <div className="absolute inset-0">
 
-                         <img
-                              src={showDaccordFrame}
-                              alt='Daccord Bg'
-                              className="absolute inset-0 w-full h-full object-cover"
-                         />
+                         <picture>
+                              <source media="(max-width: 785px)" srcSet={frameDaccordSmall} />
+                              <img
+                                   src={frameDaccord}
+                                   alt='Daccord Bg'
+                                   className="absolute inset-0 w-full h-full object-cover"
+                              />
+                         </picture>
 
                     </div>
 
@@ -65,7 +66,14 @@ const ShowCase = () => {
                     ref={imageRef}
                     className='z-50 absolute top-5 w-83.25 md:w-160 2xl:w-250.5 left-1/2 -translate-x-1/2'
                >
-                    <img src={showDaccord} alt="Daccord Portfolio" className='w-100 h-55 lg:w-150 lg:h-100 2xl:w-250 2xl:h-170' />
+                    <picture>
+                         <source media="(max-width: 785px)" srcSet={daccordSmall} />
+                         <img 
+                              src={daccord} 
+                              alt="Daccord Portfolio" 
+                              className='w-100 h-55 lg:w-150 lg:h-100 2xl:w-250 2xl:h-170' 
+                         />
+                    </picture>
                </div>
 
           </div>
