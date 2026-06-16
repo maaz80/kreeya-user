@@ -199,4 +199,37 @@ const OptimizedImage = ({
      );
 };
 
+export const buildCloudinaryUrl = (src, { width, height, crop = 'fill', gravity = 'auto' } = {}) => {
+     if (!src || !src.includes('cloudinary.com')) return src;
+
+     const parts = src.split('/upload/');
+     if (parts.length < 2) return src;
+
+     const cloudName = src.split('res.cloudinary.com/')[1]?.split('/')[0];
+     const baseUrl = `https://res.cloudinary.com/${cloudName}/image/upload`;
+
+     const cleanPath = parts[1]
+          .split('/')
+          .filter(seg => {
+               if (/^v\d+$/.test(seg)) return false;
+               if (seg.includes(',') || seg.startsWith('w_') || seg.startsWith('h_') ||
+                    seg.startsWith('c_') || seg.startsWith('q_') || seg.startsWith('f_') ||
+                    seg.startsWith('dpr_') || seg.startsWith('r_')) return false;
+               return true;
+          })
+          .join('/');
+
+     let trans = [];
+     if (width && height) {
+          trans.push(`w_${width}`, `h_${height}`, `c_${crop}`, `g_${gravity}`);
+     } else if (width) {
+          trans.push(`w_${width}`, 'c_scale');
+     } else {
+          trans.push('w_750', 'h_330', `c_${crop}`, `g_${gravity}`);
+     }
+     trans.push('f_avif', 'q_auto:eco');
+
+     return `${baseUrl}/${trans.join(',')}/${cleanPath}`;
+};
 export default OptimizedImage;
+

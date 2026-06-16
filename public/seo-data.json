@@ -4,14 +4,14 @@
     "description": "Kreeya Design is a best UI UX design company in India delivering user-focused web, mobile app, SaaS, and product design solutions.",
     "keywords": ""
   },
-  "/landing-page": {
-    "title": "",
-    "description": "",
-    "keywords": ""
-  },
   "/contact-us": {
     "title": "Contact Us | Kreeya Design | UI UX Design Company India",
     "description": "Contact Kreeya Design for expert UI UX design, product design, web design, and mobile app design services. Get a free consultation today.",
+    "keywords": ""
+  },
+  "/landing-page": {
+    "title": "",
+    "description": "",
     "keywords": ""
   },
   "/category/blogs": {
@@ -19,19 +19,24 @@
     "description": "Visit Kreeya Design's blog to learn about the latest developments in UI/UX design trends, news, and tactics that work.",
     "keywords": ""
   },
-  "/disclaimer": {
-    "title": "Disclaimer | Kreeya Design | Kreeya Design Official",
-    "description": "Read the Kreeya Design Disclaimer for details on how to use the website, the accuracy of the content, responsibility restrictions, and legal information.",
-    "keywords": ""
-  },
-  "/portfolio-beyekls": {
-    "title": "Beyekls Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Beyekls Portfolio, which features user research, product strategy, UI/UX design, and digital experience solutions.",
+  "/404": {
+    "title": "Page not found - Kreeya Design",
+    "description": "You can't find the page you're searching for. View Kreeya Design's digital solutions, blogs, portfolio, and UI/UX design services.",
     "keywords": ""
   },
   "/portfolio-daccord": {
     "title": "Discord Portfolio | Kreeya Design Case Study",
     "description": "View Kreeya Design's Discord Portfolio, which includes solutions for digital experiences, product strategy, user research, and UI/UX design.",
+    "keywords": ""
+  },
+  "/about-us": {
+    "title": "About Us | Kreeya Design | UI UX Design Company India",
+    "description": "Learn about Kreeya Design, a leading UI UX Design Company India helping startups and enterprises create impactful digital experiences.",
+    "keywords": ""
+  },
+  "/portfolios": {
+    "title": "Portfolio | Kreeya Design | UI UX Design Projects",
+    "description": "View the portfolio of Kreeya Design, which includes projects related to digital transformation, product design, web design, mobile app design, and UI/UX design.",
     "keywords": ""
   },
   "/privacy-policy": {
@@ -44,9 +49,9 @@
     "description": "Discover UI/UX design, product strategy, user research, and seamless digital experiences in Kreeya Design's Nectar Portfolio.",
     "keywords": ""
   },
-  "/portfolios": {
-    "title": "Portfolio | Kreeya Design | UI UX Design Projects",
-    "description": "View the portfolio of Kreeya Design, which includes projects related to digital transformation, product design, web design, mobile app design, and UI/UX design.",
+  "/disclaimer": {
+    "title": "Disclaimer | Kreeya Design | Kreeya Design Official",
+    "description": "Read the Kreeya Design Disclaimer for details on how to use the website, the accuracy of the content, responsibility restrictions, and legal information.",
     "keywords": ""
   },
   "/portfolio-coinpay": {
@@ -54,19 +59,14 @@
     "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
     "keywords": ""
   },
+  "/portfolio-beyekls": {
+    "title": "Beyekls Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Beyekls Portfolio, which features user research, product strategy, UI/UX design, and digital experience solutions.",
+    "keywords": ""
+  },
   "/services": {
     "title": "UI UX Design Services Delhi | UI UX Design Agency Near Me",
     "description": "We offer the most convenient pricing for UI UX Design Services Delhi. Know why you need to hire a Cheap & Low-Cost UI UX Design agency in India",
-    "keywords": ""
-  },
-  "/about-us": {
-    "title": "About Us | Kreeya Design | UI UX Design Company India",
-    "description": "Learn about Kreeya Design, a leading UI UX Design Company India helping startups and enterprises create impactful digital experiences.",
-    "keywords": ""
-  },
-  "/404": {
-    "title": "Page not found - Kreeya Design",
-    "description": "You can't find the page you're searching for. View Kreeya Design's digital solutions, blogs, portfolio, and UI/UX design services.",
     "keywords": ""
   },
   "/ui-ux-design-company-in-delhi-for-saas": {

@@ -14,7 +14,7 @@ import { useDataContext } from "../context/DataContext";
 import { useH1Data } from "../hooks/useH1Data";
 import { useh3Data } from "../hooks/useH3Data";
 import useFaq from "../hooks/useFaq";
-import OptimizedImage from "../components/OptimizedImage";
+import OptimizedImage, { buildCloudinaryUrl } from "../components/OptimizedImage";
 import staticBlogs from "../data/staticBlogs.json";
 
 
@@ -32,7 +32,11 @@ const Blogs = () => {
      const startIndex = (currentPage - 1) * blogsPerPage;
      const currentBlogs = blogs.slice(startIndex, startIndex + blogsPerPage);
      const isDesktop = window.innerWidth >= 768;
-
+     const firstBlogImage = buildCloudinaryUrl(staticBlogs?.[0]?.image, {
+          width: 750,
+          height: 330
+     });
+     // console.log("First blog image:", firstBlogImage);
      useEffect(() => {
           window.scrollTo({
                top: 0,
@@ -59,14 +63,16 @@ const Blogs = () => {
                     keywords="design blog, branding insights, UI UX tips, marketing blog, digital agency content"
                     canonical="https://kreeyadesign.com/blogs"
                /> */}
-               {/* <Helmet>
-                    <link
-                         rel="preload"
-                         as="image"
-                         href='/images/blog-thumbnail.webp'
-                         media="(min-width: 768px)"
-                    />
-               </Helmet> */}
+               <Helmet>
+                    {firstBlogImage && (
+                         <link
+                              rel="preload"
+                              as="image"
+                              href={firstBlogImage}
+                              imageSizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) calc(50vw - 40px), 386px"
+                         />
+                    )}
+               </Helmet>
                <Breadcrumb />
                {/* <HomeNavbar useScrollTriggers={false} /> */}
                <HomeNavbarV2 useScrollTriggers={false} />

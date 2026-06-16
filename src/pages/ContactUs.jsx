@@ -274,7 +274,7 @@ const ContactUs = () => {
                <div className="relative z-20 max-w-195 mx-auto mb-10 md:mb-20 mt-14">
                     {/* Heading */}
                     <h1 className="text-center text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[72px] leading-tight poiret-one-regular text-dark-black mt-8 mb-8">
-                         {h1Contact.first_line_heading || 'Got something in mind?'} <br /> {h1Contact.second_line_heading || "We'd love to help."}
+                         {h1Contact?.first_line_heading || 'Got something in mind?'} <br /> {h1Contact.second_line_heading || "We'd love to help."}
                     </h1>
 
                     {/* Personal Details */}

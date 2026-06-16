@@ -9,7 +9,7 @@ import useFaq from "../hooks/useFaq";
 import OptimizedImage from "../components/OptimizedImage";
 import { Helmet } from "react-helmet-async";
 import staticBlogs from "../data/staticBlogs.json";
-
+import { buildCloudinaryUrl, buildSrcSet } from "../utils/cloudinaryUtils";
 const FaqSection = lazy(() => import('../components/FaqSection'))
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
 
@@ -20,7 +20,10 @@ const BlogDetails = () => {
      const blogSlug = slug || itemSlug;
      const localBlog = (staticBlogs || []).find((b) => b.slug === blogSlug);
      const [blog, setBlog] = useState(localBlog || null);
-
+     // ✅ lcpPreloadUrl yahan calculate karo
+     const lcpPreloadUrl = blog?.image
+          ? buildCloudinaryUrl(blog.image, { w: 776, h: 350 })
+          : null;
 
      useEffect(() => {
           window.scrollTo({ top: 0, behavior: "smooth" });
@@ -50,11 +53,13 @@ const BlogDetails = () => {
      return (
           <section className="px-4 md:px-10 lg:px-20 pt-28 pb-20 plus-jakarta-sans">
                <Helmet>
-                    {blog && blog.image && (
+                    {lcpPreloadUrl && (
                          <link
                               rel="preload"
                               as="image"
-                              href={optimizeImage(blog.image, 1330)}
+                              href={lcpPreloadUrl}
+                              imagesrcset={buildSrcSet(blog.image)} // ✅ ab defined hai
+                              imagesizes="(max-width: 768px) 100vw, 1330px"
                          />
                     )}
                </Helmet>

@@ -102,7 +102,7 @@ RewriteBase /
      Redirect 301 /portfolio_daccord /portfolio-daccord
      Redirect 301 /portfolio_nectar /portfolio-nectar
      Redirect 301 /policy /privacy-policy
-     Redirect 301 /portfolio_buyekls /portfolio-beyekls
+     Redirect 301 /portfolio_beyekls /portfolio-beyekls
      Redirect 301 /ui-ux-design-service-in-delhi-for-saas /ui-ux-design-company-in-delhi-for-saas
      Redirect 301 /ui-ux-design-service-in-delhi-for-e-commerce /ui-ux-design-company-in-delhi-for-e-commerce
      Redirect 301 /ui-ux-design-ccompany-in-delhi-for-e-commerce /ui-ux-design-company-in-delhi-for-e-commerce

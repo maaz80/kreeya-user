@@ -9,7 +9,7 @@ const TeamCraft = () => {
      const [title, setTitle] = useState('')
      const [leftImgAlt, setLeftImg] = useState('')
      const [rightImgAlt, setRightImg] = useState('')
-     const [quote, setquote] = useState('')
+     const [quote, setquote] = useState('We design exceptional brands, products, web apps, mobile apps, websites for startups and enterprises.')
 
 
      useEffect(() => {
