@@ -192,7 +192,7 @@ const ProcessFollowed = () => {
                <div ref={chatPreviewSectionRef} className="relative min-h-[53vh] md:min-h-[145vh] lg:min-h-[221vh] z-50">
                     {/* Mobile Image  */}
                     <picture ref={chatPreviewRef} className="absolute left-0 w-full top-5 pointer-events-none">
-                         <source media="(max-width: 785px)" srcSet={showCoinpayMobile} />
+                         <source media="(max-width: 785px)" srcSet={coinpayMobileSmall} />
                          <img
                               src={coinpayMobile}
                               alt="Coinpay Artifact"

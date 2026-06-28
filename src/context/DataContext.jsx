@@ -25,12 +25,6 @@ export const DataProvider = ({ children }) => {
      const [isLoading, setIsLoading] = useState(true);
 
      useEffect(() => {
-          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
-          if (isBot) {
-               setIsLoading(false);
-               return;
-          }
-
           const fetchAllData = async () => {
                try {
                     const [navbarRes, servicesRes, portfoliosRes, locationsRes, blogsRes, testimonialsRes, navigationRes] = await Promise.allSettled([

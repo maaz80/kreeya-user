@@ -31,9 +31,6 @@ const Footer = () => {
      const [address, setAddress] = useState("Springboard D Block, Sector 2, Noida, Uttar Pradesh 201301");
 
      useEffect(() => {
-          const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
-          if (isBot) return;
-
           const fetchFooter = async () => {
                try {
                     const data = await getFooter();

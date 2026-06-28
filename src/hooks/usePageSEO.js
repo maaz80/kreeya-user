@@ -202,13 +202,7 @@ export function usePageSEO() {
                          };
                     }
                }
-
                // 2. Fallback to dynamic live API calls in case sitemap/build is not updated yet
-               const isBot = typeof navigator !== 'undefined' && /SearchBot|Googlebot|Chrome-Lighthouse|Lighthouse/i.test(navigator.userAgent);
-               if (isBot) {
-                    return null;
-               }
-
                try {
                     const [allLocations, allServices, allBlogs] = await Promise.all([
                          normalizeListResponse(await fetchJson(`${API_URL}/locations`)),
