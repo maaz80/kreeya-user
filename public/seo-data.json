@@ -9,14 +9,24 @@
     "description": "",
     "keywords": ""
   },
+  "/contact-us": {
+    "title": "Contact Us | Kreeya Design | UI UX Design Company India",
+    "description": "Contact Kreeya Design for expert UI UX design, product design, web design, and mobile app design services. Get a free consultation today.",
+    "keywords": ""
+  },
   "/": {
     "title": "Best UI UX Design Company in india - Kreeya Design",
     "description": "Kreeya Design is a best UI UX design company in India delivering user-focused web, mobile app, SaaS, and product design solutions.",
     "keywords": ""
   },
-  "/contact-us": {
-    "title": "Contact Us | Kreeya Design | UI UX Design Company India",
-    "description": "Contact Kreeya Design for expert UI UX design, product design, web design, and mobile app design services. Get a free consultation today.",
+  "/portfolios": {
+    "title": "Portfolio | Kreeya Design | UI UX Design Projects",
+    "description": "View the portfolio of Kreeya Design, which includes projects related to digital transformation, product design, web design, mobile app design, and UI/UX design.",
+    "keywords": ""
+  },
+  "/portfolio-daccord": {
+    "title": "Discord Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Discord Portfolio, which includes solutions for digital experiences, product strategy, user research, and UI/UX design.",
     "keywords": ""
   },
   "/about-us": {
@@ -34,14 +44,9 @@
     "description": "To learn how we gather, utilize, safeguard, and handle your personal information and data, read Kreeya Design's Privacy Policy.",
     "keywords": ""
   },
-  "/portfolio-daccord": {
-    "title": "Discord Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Discord Portfolio, which includes solutions for digital experiences, product strategy, user research, and UI/UX design.",
-    "keywords": ""
-  },
-  "/portfolio-coinpay": {
-    "title": "Coinpay Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
+  "/disclaimer": {
+    "title": "Disclaimer | Kreeya Design | Kreeya Design Official",
+    "description": "Read the Kreeya Design Disclaimer for details on how to use the website, the accuracy of the content, responsibility restrictions, and legal information.",
     "keywords": ""
   },
   "/services": {
@@ -59,14 +64,9 @@
     "description": "You can't find the page you're searching for. View Kreeya Design's digital solutions, blogs, portfolio, and UI/UX design services.",
     "keywords": ""
   },
-  "/disclaimer": {
-    "title": "Disclaimer | Kreeya Design | Kreeya Design Official",
-    "description": "Read the Kreeya Design Disclaimer for details on how to use the website, the accuracy of the content, responsibility restrictions, and legal information.",
-    "keywords": ""
-  },
-  "/portfolios": {
-    "title": "Portfolio | Kreeya Design | UI UX Design Projects",
-    "description": "View the portfolio of Kreeya Design, which includes projects related to digital transformation, product design, web design, mobile app design, and UI/UX design.",
+  "/portfolio-coinpay": {
+    "title": "Coinpay Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
     "keywords": ""
   },
   "/ui-ux-design-company-in-delhi-for-saas": {
@@ -227,6 +227,11 @@
   "/website-design-service-in-delhi": {
     "title": "Website Design Service in Delhi | Kreeya Design",
     "description": "Kreeya Design offers expert Website Design Services in Delhi featuring innovative UI/UX design, responsive website development, contemporary layouts, and user-centered digital solutions. ",
+    "keywords": ""
+  },
+  "/best-ui-ux-agency-gurugram": {
+    "title": "Best UI UX Agency Gurugram",
+    "description": "Looking for the Best UI UX Agency Gurugram? Kreeya Design creates intuitive, user-centric digital experiences that improve engagement, increase conversions, and strengthen your brand.",
     "keywords": ""
   },
   "/top-benefits-of-working-with-a-professional-ui-ux-design-expert": {

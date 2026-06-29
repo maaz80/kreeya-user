@@ -20,6 +20,7 @@ const BlogDetails = () => {
      const blogSlug = slug || itemSlug;
      const localBlog = (staticBlogs || []).find((b) => b.slug === blogSlug);
      const [blog, setBlog] = useState(localBlog || null);
+     const faqToShow = (blog?.faq && blog.faq.length > 0) ? { faq: blog.faq } : faqData;
      // ✅ lcpPreloadUrl yahan calculate karo
      const lcpPreloadUrl = blog?.image
           ? buildCloudinaryUrl(blog.image, { w: 776, h: 350 })
@@ -139,7 +140,7 @@ const BlogDetails = () => {
                          <Suspense fallback={<div className="min-h-40" />}>
                               <YouMayLike />
 
-                              <FaqSection paddings={'px-0 pb-10 pt-10 md:pt-20'} faqData={faqData} />
+                              <FaqSection paddings={'px-0 pb-10 pt-10 md:pt-20'} faqData={faqToShow} />
                          </Suspense>
                     </>
                )}
