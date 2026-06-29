@@ -1,13 +1,13 @@
 {
-  "blogs": {
-    "_id": "6a06d5334d15b85c9df75171",
-    "pageSlug": "blogs",
-    "title": "Kreeya Design's Official Blog - Insights, Updates and Tips",
-    "description": "Visit Kreeya Design's blog to learn about the latest developments in UI/UX design trends, news, and tactics that work.",
-    "keywords": "",
-    "createdAt": "2026-05-15T08:11:31.889Z",
-    "updatedAt": "2026-06-03T07:07:26.532Z",
-    "__v": 0
+  "home": {
+    "_id": "69e8d669e49d0edfa2a1ce45",
+    "pageSlug": "home",
+    "title": "Best UI UX Design Company in india - Kreeya Design",
+    "description": "Kreeya Design is a best UI UX design company in India delivering user-focused web, mobile app, SaaS, and product design solutions.",
+    "createdAt": "2026-04-22T14:08:41.270Z",
+    "updatedAt": "2026-06-04T06:31:08.908Z",
+    "__v": 0,
+    "keywords": ""
   },
   "landing-page": {
     "title": "",
@@ -24,15 +24,15 @@
     "__v": 0,
     "keywords": ""
   },
-  "home": {
-    "_id": "69e8d669e49d0edfa2a1ce45",
-    "pageSlug": "home",
-    "title": "Best UI UX Design Company in india - Kreeya Design",
-    "description": "Kreeya Design is a best UI UX design company in India delivering user-focused web, mobile app, SaaS, and product design solutions.",
-    "createdAt": "2026-04-22T14:08:41.270Z",
-    "updatedAt": "2026-06-04T06:31:08.908Z",
-    "__v": 0,
-    "keywords": ""
+  "blogs": {
+    "_id": "6a06d5334d15b85c9df75171",
+    "pageSlug": "blogs",
+    "title": "Kreeya Design's Official Blog - Insights, Updates and Tips",
+    "description": "Visit Kreeya Design's blog to learn about the latest developments in UI/UX design trends, news, and tactics that work.",
+    "keywords": "",
+    "createdAt": "2026-05-15T08:11:31.889Z",
+    "updatedAt": "2026-06-03T07:07:26.532Z",
+    "__v": 0
   },
   "portfolios": {
     "_id": "6a1ea74f90a6bdf5f88b393d",
@@ -44,10 +44,15 @@
     "updatedAt": "2026-06-04T09:00:51.964Z",
     "__v": 0
   },
-  "location": {
-    "title": "",
-    "description": "",
-    "keywords": ""
+  "portfolio-coinpay": {
+    "_id": "6a06f03db08c73659c5aceb0",
+    "pageSlug": "portfolio-coinpay",
+    "title": "Coinpay Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
+    "keywords": "",
+    "createdAt": "2026-05-15T10:06:53.493Z",
+    "updatedAt": "2026-06-04T06:58:09.658Z",
+    "__v": 0
   },
   "portfolio-daccord": {
     "_id": "6a2135f0539db6a64e225aff",
@@ -57,6 +62,21 @@
     "keywords": "",
     "createdAt": "2026-06-04T08:23:12.619Z",
     "updatedAt": "2026-06-04T08:23:12.619Z",
+    "__v": 0
+  },
+  "location": {
+    "title": "",
+    "description": "",
+    "keywords": ""
+  },
+  "portfolio-nectar": {
+    "_id": "6a06f198b08c73659c5aceb8",
+    "pageSlug": "portfolio-nectar",
+    "title": "Nectar Portfolio | Kreeya Design Case Study",
+    "description": "Discover UI/UX design, product strategy, user research, and seamless digital experiences in Kreeya Design's Nectar Portfolio.",
+    "keywords": "",
+    "createdAt": "2026-05-15T10:12:40.782Z",
+    "updatedAt": "2026-06-04T07:00:17.865Z",
     "__v": 0
   },
   "about-us": {
@@ -69,16 +89,6 @@
     "updatedAt": "2026-06-04T14:01:09.903Z",
     "__v": 0
   },
-  "portfolio-beyekls": {
-    "_id": "6a06de6ad1d500e5262c25f8",
-    "pageSlug": "portfolio-beyekls",
-    "title": "Beyekls Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Beyekls Portfolio, which features user research, product strategy, UI/UX design, and digital experience solutions.",
-    "keywords": "",
-    "createdAt": "2026-05-15T08:50:50.790Z",
-    "updatedAt": "2026-06-04T06:46:34.738Z",
-    "__v": 0
-  },
   "privacy-policy": {
     "_id": "6a21439b5bc6d33caa10147c",
     "pageSlug": "privacy-policy",
@@ -89,16 +99,6 @@
     "updatedAt": "2026-06-04T09:21:31.776Z",
     "__v": 0
   },
-  "disclaimer": {
-    "_id": "6a06edfeb08c73659c5ace9f",
-    "pageSlug": "disclaimer",
-    "title": "Disclaimer | Kreeya Design | Kreeya Design Official",
-    "description": "Read the Kreeya Design Disclaimer for details on how to use the website, the accuracy of the content, responsibility restrictions, and legal information.",
-    "keywords": "",
-    "createdAt": "2026-05-15T09:57:18.923Z",
-    "updatedAt": "2026-06-04T06:51:58.321Z",
-    "__v": 0
-  },
   "services": {
     "_id": "6a1fcca90625dfc73317c505",
     "pageSlug": "services",
@@ -106,17 +106,17 @@
     "description": "We offer the most convenient pricing for UI UX Design Services Delhi. Know why you need to hire a Cheap & Low-Cost UI UX Design agency in India",
     "keywords": "",
     "createdAt": "2026-06-03T06:41:45.927Z",
-    "updatedAt": "2026-06-15T04:57:31.713Z",
+    "updatedAt": "2026-06-29T04:58:42.951Z",
     "__v": 0
   },
-  "portfolio-nectar": {
-    "_id": "6a06f198b08c73659c5aceb8",
-    "pageSlug": "portfolio-nectar",
-    "title": "Nectar Portfolio | Kreeya Design Case Study",
-    "description": "Discover UI/UX design, product strategy, user research, and seamless digital experiences in Kreeya Design's Nectar Portfolio.",
+  "portfolio-beyekls": {
+    "_id": "6a06de6ad1d500e5262c25f8",
+    "pageSlug": "portfolio-beyekls",
+    "title": "Beyekls Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Beyekls Portfolio, which features user research, product strategy, UI/UX design, and digital experience solutions.",
     "keywords": "",
-    "createdAt": "2026-05-15T10:12:40.782Z",
-    "updatedAt": "2026-06-04T07:00:17.865Z",
+    "createdAt": "2026-05-15T08:50:50.790Z",
+    "updatedAt": "2026-06-04T06:46:34.738Z",
     "__v": 0
   },
   "not-found": {
@@ -129,14 +129,14 @@
     "updatedAt": "2026-06-04T07:01:25.972Z",
     "__v": 0
   },
-  "portfolio-coinpay": {
-    "_id": "6a06f03db08c73659c5aceb0",
-    "pageSlug": "portfolio-coinpay",
-    "title": "Coinpay Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
+  "disclaimer": {
+    "_id": "6a06edfeb08c73659c5ace9f",
+    "pageSlug": "disclaimer",
+    "title": "Disclaimer | Kreeya Design | Kreeya Design Official",
+    "description": "Read the Kreeya Design Disclaimer for details on how to use the website, the accuracy of the content, responsibility restrictions, and legal information.",
     "keywords": "",
-    "createdAt": "2026-05-15T10:06:53.493Z",
-    "updatedAt": "2026-06-04T06:58:09.658Z",
+    "createdAt": "2026-05-15T09:57:18.923Z",
+    "updatedAt": "2026-06-04T06:51:58.321Z",
     "__v": 0
   }
 }

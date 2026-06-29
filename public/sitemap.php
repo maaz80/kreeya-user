@@ -42,6 +42,7 @@ function getItems($res) {
 // 1. Static Pages
 $urls = [
     ["loc" => "$siteUrl/", "lastmod" => "2025-03-18", "changefreq" => "weekly", "priority" => "1.0"],
+    ["loc" => "$siteUrl/services", "lastmod" => $today, "changefreq" => "weekly", "priority" => "0.9"],
     ["loc" => "$siteUrl/contact-us", "lastmod" => "2025-03-18", "changefreq" => "monthly", "priority" => "0.9"],
     ["loc" => "$siteUrl/about-us", "lastmod" => $today, "changefreq" => "monthly", "priority" => "0.9"],
     ["loc" => "$siteUrl/category/blogs", "lastmod" => "2025-03-18", "changefreq" => "weekly", "priority" => "0.9"],

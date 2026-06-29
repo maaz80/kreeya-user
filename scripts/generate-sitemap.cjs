@@ -80,6 +80,7 @@ async function main() {
   // 1. Define Static Pages
   const staticPages = [
     { loc: `${SITE_URL}/`, lastmod: "2025-03-18", changefreq: "weekly", priority: "1.0" },
+    { loc: `${SITE_URL}/services`, lastmod: TODAY, changefreq: "weekly", priority: "0.9" },
     { loc: `${SITE_URL}/contact-us`, lastmod: "2025-03-18", changefreq: "monthly", priority: "0.8" },
     { loc: `${SITE_URL}/about-us`, lastmod: TODAY, changefreq: "monthly", priority: "0.8" },
     { loc: `${SITE_URL}/category/blogs`, lastmod: "2025-03-18", changefreq: "weekly", priority: "0.8" },
