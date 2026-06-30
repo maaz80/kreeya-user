@@ -40,7 +40,7 @@ const FaqSection = ({ paddings, faqData }) => {
 
      useEffect(() => {
           if (faqData?.faq && faqData.faq.length > 0) {
-               setFaqs(faqData.faq);
+               setFaqs([...faqData.faq].reverse());
           } else {
                setFaqs(defaultFaqs);
           }

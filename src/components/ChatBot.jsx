@@ -23,6 +23,8 @@ const responses = {
      'thanks': 'You\'re welcome! Let me know if you need anything else.',
      'thank you': 'My pleasure! Feel free to ask anything.',
      'bye': 'Goodbye! Have a great day!',
+     'what are the best ux agencies for saas companies?': 'Top UX agencies for SaaS specialize in intuitive user flows, onboarding, retention, and product-led growth. Look for teams with strong B2B SaaS case studies, data-driven design, and experience in enterprise workflows.',
+     'ecommerce web design portfolio': 'Our ecommerce design portfolio includes modern shopping experiences, conversion-focused storefronts, and mobile-friendly checkout flows. Check our portfolio for examples of branded online stores that drive sales and engagement.',
      'default': 'I\'m not sure about that. Can you try asking about our services, portfolio, pricing, or contact info?'
 };
 

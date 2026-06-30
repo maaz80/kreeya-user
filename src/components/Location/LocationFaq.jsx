@@ -36,7 +36,7 @@ const LocationFaq = ({ location }) => {
      const data = location?.page?.faq;
      useEffect(() => {
           if (data && data.length > 0) {
-               setFaqs(data);
+               setFaqs([...data].reverse());
           }
      }, [data]);
 
