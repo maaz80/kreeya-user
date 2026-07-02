@@ -1,5 +1,5 @@
-import logo from "/images/logo.webp";
-import LogoWhite from '/images/white-logo.webp'
+import logo from "/images/kreeya-design-logo.webp";
+import LogoWhite from '/images/kreeya-design-white-logo.webp'
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import { useEffect, useState } from "react";
 import MenuOverlay from "../MenuOverlay";
@@ -57,7 +57,7 @@ const LandingNavbar = () => {
                     <div onClick={handleLogo} className="flex items-center gap-2 cursor-pointer">
                          <img
                               src={logoAlt ? LogoWhite : logo}
-                              alt="Kreeya Design - UI UX & Branding Agency Logo"
+                              alt="kreeya-design-logo"
                               loading="eager"
                               fetchPriority="high"
                               width="160"

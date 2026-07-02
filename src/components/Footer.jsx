@@ -6,7 +6,7 @@ import footerImgMobile from "../assets/footer-img-mobile.webp";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getFooter } from "../utils/footerService";
-import Logo from '/images/white-logo.webp'
+import Logo from '/images/kreeya-design-white-logo.webp'
 import { FaXTwitter } from "react-icons/fa6";
 import { useDataContext } from "../context/DataContext";
 const Footer = () => {

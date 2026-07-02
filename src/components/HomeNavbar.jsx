@@ -4,8 +4,8 @@ import MenuOverlay from "./MenuOverlay";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getNavbar } from "../utils/navbar";
-import defaultDarkLogo from '/images/logo.webp'
-import defaultWhiteLogo from '/images/white-logo.webp'
+import defaultDarkLogo from '/images/kreeya-design-logo.webp'
+import defaultWhiteLogo from '/images/kreeya-design-white-logo.webp'
 import { FaInstagram, FaLinkedinIn, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { SiFacebook, SiYoutube } from "react-icons/si";
 import { FaXTwitter } from "react-icons/fa6";
@@ -223,7 +223,7 @@ const HomeNavbar = ({ startFetch = true, useScrollTriggers = true }) => {
                               <Link to='/' className="flex items-center gap-2 cursor-pointer">
                                    <img
                                         src={logoAlt ? (navbar.logo1 ? navbar.logo1 : defaultDarkLogo) : (navbar.logo2 ? navbar.logo2 : defaultWhiteLogo)}
-                                        alt="Kreeya Design Logo"
+                                        alt="kreeya-design-logo"
                                         loading="eager"
                                         fetchPriority="high"
                                         width="160"
@@ -237,7 +237,7 @@ const HomeNavbar = ({ startFetch = true, useScrollTriggers = true }) => {
                               <Link to='/' className="flex items-center gap-2 cursor-pointer">
                                    <img
                                         src={logoAltForHome ? (navbar.logo2 ? navbar.logo2 : defaultWhiteLogo) : (navbar.logo1 ? navbar.logo1 : defaultDarkLogo)}
-                                        alt="Kreeya Design Logo"
+                                        alt="kreeya-design-logo"
                                         loading="eager"
                                         fetchpriority="high"
                                         width="160"

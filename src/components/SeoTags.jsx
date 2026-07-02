@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const DEFAULT_IMAGE = 'https://kreeyadesign.com/images/logo.webp';
+const DEFAULT_IMAGE = 'https://kreeyadesign.com/images/kreeya-design-logo.webp';
 const DEFAULT_DESCRIPTION = 'Kreeya Design delivers UI/UX, branding, web design, and digital strategy services for startups and enterprises seeking growth and lasting brand impact.';
 const DEFAULT_KEYWORDS = 'UI UX design agency, branding agency, web design company, app design services, digital marketing, creative agency, design strategy';
 const DEFAULT_TWITTER_CREATOR = '@kreeyadesignofficial';

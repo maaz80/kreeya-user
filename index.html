@@ -7,7 +7,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>
-    (function() {
+    (function () {
       const path = window.location.pathname.replace(/\/$/, '').replace(/^\//, '');
       const blogImages = {
         'top-benefits-of-working-with-a-professional-ui-ux-design-expert': 'top-benefits-of-working-with-a-professional-ui-ux-design-expert-csb.png',
@@ -28,7 +28,7 @@
           baseUrl + '/w_1552,h_700,c_fill,g_auto,f_avif,q_auto:eco/' + cleanPath + ' 1552w'
         ].join(', ');
         const sizes = '(max-width: 768px) 100vw, 1330px';
-        
+
         const link = document.createElement('link');
         link.rel = 'preload';
         link.as = 'image';
@@ -37,14 +37,16 @@
         link.imageSizes = sizes;
         link.setAttribute('fetchpriority', 'high');
         document.head.appendChild(link);
-        
+
         window.__blogLcp = { src, srcset, sizes };
       }
     })();
   </script>
-  <link rel="preload" as="image" href="/images/logo.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/kreeya-design-logo.webp" fetchpriority="high">
   <link rel="preload" as="image" href="/images/beyekls-bg-mobile.webp" fetchpriority="high">
-  <link rel="preload" as="image" href="/images/blog-thumbnail.webp" imagesrcset="/images/blog-thumbnail-mobile.webp 480w, /images/blog-thumbnail.webp 800w" imagesizes="(max-width: 767px) 100vw, 800px" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/blog-thumbnail.webp"
+    imagesrcset="/images/blog-thumbnail-mobile.webp 480w, /images/blog-thumbnail.webp 800w"
+    imagesizes="(max-width: 767px) 100vw, 800px" fetchpriority="high">
   <link rel="preload" as="image" href="/images/Build-your-first-ai-agent-in-15-no-coding.webp" fetchpriority="high">
 
   <link rel="preload" href="/fonts/PlusJakartaSans-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -54,173 +56,179 @@
   <link rel="preload" href="/fonts/Poppins-ExtraBold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <link rel="preconnect" href="https://res.cloudinary.com">
-  <link rel="preload" as="image" href="/images/services-hero.webp" imagesrcset="/images/services-hero-mobile.webp 480w, /images/services-hero.webp 800w" imagesizes="(max-width: 767px) 100vw, 800px" fetchpriority="high">
-  
-<!-- ✅ Baaki CSS non-blocking load -->
-<!-- <link rel="preload" as="style" href="/assets/index-DO3kMDDq.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" as="image" href="/images/services-hero.webp"
+    imagesrcset="/images/services-hero-mobile.webp 480w, /images/services-hero.webp 800w"
+    imagesizes="(max-width: 767px) 100vw, 800px" fetchpriority="high">
+
+  <!-- ✅ Baaki CSS non-blocking load -->
+  <!-- <link rel="preload" as="style" href="/assets/index-DO3kMDDq.css" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript>
   <link rel="stylesheet" href="/assets/index-DO3kMDDq.css" />
 </noscript> -->
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
       min-height: 100%;
     }
+
     #root {
       min-height: 100vh;
       display: flow-root;
     }
+
     /* Sitemap Hero Section Styles (Copied from HeroSection.jsx design) */
     .sitemap-hero {
-         position: relative;
-         min-height: 100vh;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         color: #161616;
-         padding: 100px 20px 40px;
-         background: transparent;
-         margin-top: -50px;
-         box-sizing: border-box;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #161616;
+      padding: 100px 20px 40px;
+      background: transparent;
+      margin-top: -50px;
+      box-sizing: border-box;
     }
 
     .sitemap-hero-container {
-         position: relative;
-         z-index: 20;
-         width: 100%;
-         max-width: 1440px;
-         margin: 0 auto;
-         text-align: center;
-         font-family: "Poiret One", sans-serif;
-         font-weight: 600;
+      position: relative;
+      z-index: 20;
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      text-align: center;
+      font-family: "Poiret One", sans-serif;
+      font-weight: 600;
     }
 
     .sitemap-hero-title-top {
-         font-family: "Poiret One", sans-serif;
-         font-size: 40px;
-         font-weight: 600;
-         letter-spacing: -0.025em;
-         margin-bottom: 16px;
-         line-height: 1.1;
-         min-height: 44px;
-         color: #161616;
+      font-family: "Poiret One", sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+      line-height: 1.1;
+      min-height: 44px;
+      color: #161616;
     }
 
     .sitemap-hero-mid-row {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         gap: 16px;
-         font-size: 40px;
-         line-height: 1.1;
-         min-height: 56px;
-         letter-spacing: -0.025em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 40px;
+      line-height: 1.1;
+      min-height: 56px;
+      letter-spacing: -0.025em;
     }
 
     .sitemap-hero-video-wrapper {
-         display: inline-block;
-         width: 96px;
-         height: 52px;
-         background-color: #e5e7eb;
-         border-radius: 4px;
-         overflow: hidden;
-         flex-shrink: 0;
+      display: inline-block;
+      width: 96px;
+      height: 52px;
+      background-color: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
     .sitemap-hero-video {
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .sitemap-hero-title-bottom {
-         font-size: 40px;
-         margin-top: 4px;
-         line-height: 1.1;
-         min-height: 44px;
-         letter-spacing: -0.025em;
+      font-size: 40px;
+      margin-top: 4px;
+      line-height: 1.1;
+      min-height: 44px;
+      letter-spacing: -0.025em;
     }
 
     .sitemap-hero-desc {
-         width: 100%;
-         max-width: 300px;
-         margin-left: auto;
-         margin-top: 40px;
-         min-height: 72px;
-         font-size: 16px;
-         line-height: 1.625;
-         text-align: right;
-         color: #003D63;
-         font-family: "Plus Jakarta Sans", sans-serif;
-         font-weight: 400;
+      width: 100%;
+      max-width: 300px;
+      margin-left: auto;
+      margin-top: 40px;
+      min-height: 72px;
+      font-size: 16px;
+      line-height: 1.625;
+      text-align: right;
+      color: #003D63;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 400;
     }
 
     @media (min-width: 768px) {
 
-         .sitemap-hero {
-              min-height: 80vh;
-              padding: 128px 80px 80px;
-         }
+      .sitemap-hero {
+        min-height: 80vh;
+        padding: 128px 80px 80px;
+      }
 
-         .sitemap-hero-container {
-              font-weight: 400;
-         }
+      .sitemap-hero-container {
+        font-weight: 400;
+      }
 
-         .sitemap-hero-title-top {
-              font-size: 56px;
-              font-weight: 400;
-              margin-bottom: 4px;
-              min-height: 62px;
-         }
+      .sitemap-hero-title-top {
+        font-size: 56px;
+        font-weight: 400;
+        margin-bottom: 4px;
+        min-height: 62px;
+      }
 
-         .sitemap-hero-mid-row {
-              font-size: 56px;
-              min-height: 72px;
-         }
+      .sitemap-hero-mid-row {
+        font-size: 56px;
+        min-height: 72px;
+      }
 
-         .sitemap-hero-video-wrapper {
-              width: 160px;
-              height: 60px;
-         }
+      .sitemap-hero-video-wrapper {
+        width: 160px;
+        height: 60px;
+      }
 
-         .sitemap-hero-title-bottom {
-              font-size: 56px;
-              min-height: 62px;
-         }
+      .sitemap-hero-title-bottom {
+        font-size: 56px;
+        min-height: 62px;
+      }
 
-         .sitemap-hero-desc {
-              max-width: 440px;
-              min-height: 84px;
-              font-size: 18px;
-         }
+      .sitemap-hero-desc {
+        max-width: 440px;
+        min-height: 84px;
+        font-size: 18px;
+      }
     }
 
     @media (min-width: 1024px) {
 
-         .sitemap-hero-title-top {
-              font-size: 120px;
-              min-height: 132px;
-         }
+      .sitemap-hero-title-top {
+        font-size: 120px;
+        min-height: 132px;
+      }
 
-         .sitemap-hero-mid-row {
-              font-size: 120px;
-              min-height: 138px;
-         }
+      .sitemap-hero-mid-row {
+        font-size: 120px;
+        min-height: 138px;
+      }
 
-         .sitemap-hero-video-wrapper {
-              width: 208px;
-              height: 120px;
-              border-radius: 8px;
-         }
+      .sitemap-hero-video-wrapper {
+        width: 208px;
+        height: 120px;
+        border-radius: 8px;
+      }
 
-         .sitemap-hero-title-bottom {
-              font-size: 120px;
-              min-height: 132px;
-         }
+      .sitemap-hero-title-bottom {
+        font-size: 120px;
+        min-height: 132px;
+      }
     }
+
     #prerender-contact-lcp h1 {
       font-family: "Poiret One", Georgia, serif;
       font-size: 36px;
@@ -231,11 +239,13 @@
       margin-bottom: 32px;
       text-align: center;
     }
+
     @media (min-width: 768px) {
       #prerender-contact-lcp h1 {
         font-size: 56px;
       }
     }
+
     @media (min-width: 1024px) {
       #prerender-contact-lcp h1 {
         font-size: 72px;
@@ -243,104 +253,145 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Defer main CSS until after render -->
   <main id="root">
     <!-- Prerendered LCP Image for Services Page -->
     <div id="prerender-services-lcp" style="display: none;">
-      <img src="/images/services-hero.webp" srcset="/images/services-hero-mobile.webp 480w, /images/services-hero.webp 800w" sizes="(max-width: 767px) 100vw, 800px" style="aspect-ratio: 1.77778; width: 100%; max-width: 690px; object-fit: cover; display: block; margin: auto; border-radius: 12px;">
+      <img src="/images/services-hero.webp"
+        srcset="/images/services-hero-mobile.webp 480w, /images/services-hero.webp 800w"
+        sizes="(max-width: 767px) 100vw, 800px"
+        style="aspect-ratio: 1.77778; width: 100%; max-width: 690px; object-fit: cover; display: block; margin: auto; border-radius: 12px;">
     </div>
     <!-- Prerendered LCP Image for Portfolios Page -->
     <div id="prerender-portfolios-lcp" style="display: none;">
-      <img src="/images/Build-your-first-ai-agent-in-15-no-coding.webp" style="aspect-ratio: 1.77835; width: 100%; max-width: 690px; object-fit: cover; display: block; margin: auto; border-radius: 36px;">
+      <img src="/images/Build-your-first-ai-agent-in-15-no-coding.webp"
+        style="aspect-ratio: 1.77835; width: 100%; max-width: 690px; object-fit: cover; display: block; margin: auto; border-radius: 36px;">
     </div>
     <!-- Prerendered LCP Image for Blogs Page (Featured Blog Thumbnail) -->
     <div id="prerender-blogs-lcp" style="display: none;">
-      <img src="/images/blog-thumbnail.webp" srcset="/images/blog-thumbnail-mobile.webp 480w, /images/blog-thumbnail.webp 800w" sizes="(max-width: 767px) 100vw, 800px" style="aspect-ratio: 1.77835; width: 100%; max-width: 690px; object-fit: cover; display: block; margin: auto; border-radius: 12px;">
+      <img src="/images/blog-thumbnail.webp"
+        srcset="/images/blog-thumbnail-mobile.webp 480w, /images/blog-thumbnail.webp 800w"
+        sizes="(max-width: 767px) 100vw, 800px"
+        style="aspect-ratio: 1.77835; width: 100%; max-width: 690px; object-fit: cover; display: block; margin: auto; border-radius: 12px;">
     </div>
     <!-- Prerendered LCP Image for About Page (YouTube Thumbnail) -->
     <div id="prerender-about-lcp" style="display: none;">
-      <img src="/images/Build-your-first-ai-agent-in-15-no-coding.webp" style="aspect-ratio: 1.77333; width: 100%; max-width: 665px; object-fit: cover; display: block; margin: auto; border-radius: 3px;">
+      <img src="/images/Build-your-first-ai-agent-in-15-no-coding.webp"
+        style="aspect-ratio: 1.77333; width: 100%; max-width: 665px; object-fit: cover; display: block; margin: auto; border-radius: 3px;">
     </div>
     <!-- Prerendered LCP Text for Contact Page -->
     <div id="prerender-contact-lcp" style="display: none;">
       <section style="position: relative; padding: 104px 20px; box-sizing: border-box;">
-        <div style="position: relative; z-index: 20; max-width: 780px; margin: 56px auto 40px auto; text-align: center;">
+        <div
+          style="position: relative; z-index: 20; max-width: 780px; margin: 56px auto 40px auto; text-align: center;">
           <h1>Got something in mind? <br> We'd love to help.</h1>
         </div>
       </section>
     </div>
     <!-- Prerendered HeroSection LCP Text for Home Page -->
     <div id="prerender-home-lcp" style="display: none;">
-       <section class="sitemap-hero">
-            <div class="sitemap-hero-container">
-                 <h1 class="sitemap-hero-title-top">One Stop Solution</h1>
-                 <div class="sitemap-hero-mid-row">
-                      <span>For</span>
-                      <div class="sitemap-hero-video-wrapper">
-                           <video
-                                src="https://res.cloudinary.com/dlek2xgkd/video/upload/q_auto,f_auto,vc_auto/v1775042032/kreeya_media/dgxhzs0ahvkgukedmlcq.mp4"
-                                autoPlay muted loop playsInline class="sitemap-hero-video"></video>
-                      </div>
-                      <span>All</span>
-                 </div>
-                 <div class="sitemap-hero-title-bottom">
-                      Your Design Needs
-                 </div>
-                 <p class="sitemap-hero-desc">
-                      We design exceptional brands, products, web apps, mobile apps, websites for startups and
-                      enterprises.
-                 </p>
+      <section class="sitemap-hero">
+        <div class="sitemap-hero-container">
+          <h1 class="sitemap-hero-title-top">One Stop Solution</h1>
+          <div class="sitemap-hero-mid-row">
+            <span>For</span>
+            <div class="sitemap-hero-video-wrapper">
+              <video
+                src="https://res.cloudinary.com/dlek2xgkd/video/upload/q_auto,f_auto,vc_auto/v1775042032/kreeya_media/dgxhzs0ahvkgukedmlcq.mp4"
+                autoPlay muted loop playsInline class="sitemap-hero-video"></video>
             </div>
-       </section>
+            <span>All</span>
+          </div>
+          <div class="sitemap-hero-title-bottom">
+            Your Design Needs
+          </div>
+          <p class="sitemap-hero-desc">
+            We design exceptional brands, products, web apps, mobile apps, websites for startups and
+            enterprises.
+          </p>
+        </div>
+      </section>
     </div>
     <!-- Prerendered LCP Image for Blog Details Page -->
     <div id="prerender-blogdetails-lcp" style="display: none; padding-top: 112px; box-sizing: border-box;">
       <div style="max-width: 1330px; margin: auto; padding: 0 16px;">
-        <img id="prerender-blogdetails-img" style="aspect-ratio: 2.21714; width: 100%; max-width: 776px; object-fit: cover; display: block; margin: auto; border-radius: 6px;">
+        <img id="prerender-blogdetails-img"
+          style="aspect-ratio: 2.21714; width: 100%; max-width: 776px; object-fit: cover; display: block; margin: auto; border-radius: 6px;">
       </div>
     </div>
     <!-- Prerendered LCP Text for Privacy Policy Page -->
-    <div id="prerender-privacypolicy-lcp" style="display: none; padding: 80px 16px; max-width: 1440px; margin: auto; font-family: sans-serif; color: #8a8a8a; font-size: 16px; line-height: 1.6;">
-      <h1 style="text-align: center; color: #161616; font-size: 36px; font-family: serif; margin-bottom: 24px; margin-top: 80px;">Privacy Policy</h1>
+    <div id="prerender-privacypolicy-lcp"
+      style="display: none; padding: 80px 16px; max-width: 1440px; margin: auto; font-family: sans-serif; color: #8a8a8a; font-size: 16px; line-height: 1.6;">
+      <h1
+        style="text-align: center; color: #161616; font-size: 36px; font-family: serif; margin-bottom: 24px; margin-top: 80px;">
+        Privacy Policy</h1>
       <div style="max-width: 1100px; margin: auto;">
         <h2 style="color: #161616; font-size: 18px; font-weight: bold; margin-bottom: 12px;">1. Who We Are</h2>
-        <p>Kreeya Design (“we”, “us”, “our”) is a UI UX design agency providing digital design and consulting services to clients worldwide.</p>
-        <p style="margin-top: 12px;">For data protection purposes, we act as the Data Controller for personal information collected through our website and during communication with potential or existing clients. This notice explains how we collect, use, and safeguard personal data, and outlines the rights available to you under applicable laws, including GDPR where relevant.</p>
+        <p>Kreeya Design (“we”, “us”, “our”) is a UI UX design agency providing digital design and consulting services
+          to clients worldwide.</p>
+        <p style="margin-top: 12px;">For data protection purposes, we act as the Data Controller for personal
+          information collected through our website and during communication with potential or existing clients. This
+          notice explains how we collect, use, and safeguard personal data, and outlines the rights available to you
+          under applicable laws, including GDPR where relevant.</p>
       </div>
     </div>
     <!-- Prerendered LCP Text for Disclaimer Page -->
-    <div id="prerender-disclaimer-lcp" style="display: none; padding: 80px 16px; max-width: 1440px; margin: auto; font-family: sans-serif; color: #8a8a8a; font-size: 16px; line-height: 1.6;">
-      <h1 style="text-align: center; color: #161616; font-size: 36px; font-family: serif; margin-bottom: 24px; margin-top: 80px;">Disclaimer</h1>
+    <div id="prerender-disclaimer-lcp"
+      style="display: none; padding: 80px 16px; max-width: 1440px; margin: auto; font-family: sans-serif; color: #8a8a8a; font-size: 16px; line-height: 1.6;">
+      <h1
+        style="text-align: center; color: #161616; font-size: 36px; font-family: serif; margin-bottom: 24px; margin-top: 80px;">
+        Disclaimer</h1>
       <div style="max-width: 1100px; margin: auto;">
         <h2 style="color: #161616; font-size: 18px; font-weight: bold; margin-bottom: 12px;">1. Who We Are</h2>
-        <p>Kreeya Design (“we”, “us”, “our”) is a UI UX design agency providing digital design and consulting services to clients worldwide.</p>
-        <p style="margin-top: 12px;">For data protection purposes, we act as the Data Controller for personal information collected through our website and during communication with potential or existing clients. This notice explains how we collect, use, and safeguard personal data, and outlines the rights available to you under applicable laws, including GDPR where relevant.</p>
+        <p>Kreeya Design (“we”, “us”, “our”) is a UI UX design agency providing digital design and consulting services
+          to clients worldwide.</p>
+        <p style="margin-top: 12px;">For data protection purposes, we act as the Data Controller for personal
+          information collected through our website and during communication with potential or existing clients. This
+          notice explains how we collect, use, and safeguard personal data, and outlines the rights available to you
+          under applicable laws, including GDPR where relevant.</p>
       </div>
     </div>
     <!-- Prerendered LCP Content for Portfolios Details -->
-    <div id="prerender-portfolio-beyekls-lcp" style="display: none; background-color: #161616; min-height: 100vh; color: white; padding-top: 120px; font-family: sans-serif; box-sizing: border-box;">
+    <div id="prerender-portfolio-beyekls-lcp"
+      style="display: none; background-color: #161616; min-height: 100vh; color: white; padding-top: 120px; font-family: sans-serif; box-sizing: border-box;">
       <div style="max-width: 1200px; margin: auto; padding: 0 24px;">
-        <h1 style="font-size: 58px; font-weight: 800; font-style: italic; margin: 0; color: white; font-family: sans-serif; tracking: -0.05em;">BEYEKLS</h1>
-        <p style="font-size: 16px; margin-top: 16px; color: #FAFAFA81; max-width: 640px; line-height: 1.6;">Entitledarts is an all round digital makeover business focused on building brands out of businesses.</p>
+        <h1
+          style="font-size: 58px; font-weight: 800; font-style: italic; margin: 0; color: white; font-family: sans-serif; tracking: -0.05em;">
+          BEYEKLS</h1>
+        <p style="font-size: 16px; margin-top: 16px; color: #FAFAFA81; max-width: 640px; line-height: 1.6;">Entitledarts
+          is an all round digital makeover business focused on building brands out of businesses.</p>
       </div>
     </div>
-    <div id="prerender-portfolio-daccord-lcp" style="display: none; background-color: #161616; min-height: 100vh; color: white; padding-top: 120px; font-family: sans-serif; box-sizing: border-box;">
+    <div id="prerender-portfolio-daccord-lcp"
+      style="display: none; background-color: #161616; min-height: 100vh; color: white; padding-top: 120px; font-family: sans-serif; box-sizing: border-box;">
       <div style="max-width: 1200px; margin: auto; padding: 0 24px;">
-        <h1 style="font-size: 58px; font-weight: 800; font-style: italic; margin: 0; color: white; font-family: sans-serif; tracking: -0.05em;">DACCORD</h1>
-        <p style="font-size: 16px; margin-top: 16px; color: #FAFAFA81; max-width: 640px; line-height: 1.6;">Daccord is a platform for creators to interact and engage with their audience and fans.</p>
+        <h1
+          style="font-size: 58px; font-weight: 800; font-style: italic; margin: 0; color: white; font-family: sans-serif; tracking: -0.05em;">
+          DACCORD</h1>
+        <p style="font-size: 16px; margin-top: 16px; color: #FAFAFA81; max-width: 640px; line-height: 1.6;">Daccord is a
+          platform for creators to interact and engage with their audience and fans.</p>
       </div>
     </div>
-    <div id="prerender-portfolio-coinpay-lcp" style="display: none; background-color: #161616; min-height: 100vh; color: white; padding-top: 120px; font-family: sans-serif; box-sizing: border-box;">
+    <div id="prerender-portfolio-coinpay-lcp"
+      style="display: none; background-color: #161616; min-height: 100vh; color: white; padding-top: 120px; font-family: sans-serif; box-sizing: border-box;">
       <div style="max-width: 1200px; margin: auto; padding: 0 24px;">
-        <h1 style="font-size: 58px; font-weight: 800; font-style: italic; margin: 0; color: white; font-family: sans-serif; tracking: -0.05em;">Coinpay</h1>
-        <p style="font-size: 16px; margin-top: 16px; color: #FAFAFA81; max-width: 640px; line-height: 1.6;">Coinpay is a Fintech mobile app focusing on clarity, ease of use and money management.</p>
+        <h1
+          style="font-size: 58px; font-weight: 800; font-style: italic; margin: 0; color: white; font-family: sans-serif; tracking: -0.05em;">
+          Coinpay</h1>
+        <p style="font-size: 16px; margin-top: 16px; color: #FAFAFA81; max-width: 640px; line-height: 1.6;">Coinpay is a
+          Fintech mobile app focusing on clarity, ease of use and money management.</p>
       </div>
     </div>
-    <div id="prerender-portfolio-nectar-lcp" style="display: none; background-color: #161616; min-height: 100vh; color: white; padding-top: 120px; font-family: sans-serif; box-sizing: border-box;">
+    <div id="prerender-portfolio-nectar-lcp"
+      style="display: none; background-color: #161616; min-height: 100vh; color: white; padding-top: 120px; font-family: sans-serif; box-sizing: border-box;">
       <div style="max-width: 1200px; margin: auto; padding: 0 24px;">
-        <h1 style="font-size: 58px; font-weight: 800; font-style: italic; margin: 0; color: white; font-family: sans-serif; tracking: -0.05em;">Nectar</h1>
-        <p style="font-size: 16px; margin-top: 16px; color: #FAFAFA81; max-width: 640px; line-height: 1.6;">Application for food insights, recipes, and delivery of fresh groceries</p>
+        <h1
+          style="font-size: 58px; font-weight: 800; font-style: italic; margin: 0; color: white; font-family: sans-serif; tracking: -0.05em;">
+          Nectar</h1>
+        <p style="font-size: 16px; margin-top: 16px; color: #FAFAFA81; max-width: 640px; line-height: 1.6;">Application
+          for food insights, recipes, and delivery of fresh groceries</p>
       </div>
     </div>
     <script>
@@ -489,7 +540,7 @@
     "@type": "Organization",
     "name": "Kreeya Design",
     "url": "https://kreeyadesign.com/",
-    "logo": "https://kreeyadesign.com/images/logo.webp",
+    "logo": "https://kreeyadesign.com/images/kreeya-design-logo.webp",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "9311500423",
@@ -513,7 +564,7 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Kreeya Design",
-    "image": "https://kreeyadesign.com/images/logo.webp",
+    "image": "https://kreeyadesign.com/images/kreeya-design-logo.webp",
     "@id": "",
     "url": "https://kreeyadesign.com/",
     "telephone": "9311500423",
@@ -680,6 +731,6 @@
     }]
   }
   </script>
-  </body>
+</body>
 
 </html>

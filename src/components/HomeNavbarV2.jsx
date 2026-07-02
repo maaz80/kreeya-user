@@ -6,8 +6,8 @@ import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDataContext } from "../context/DataContext";
 import { normalizeRouteSlug } from "../utils/slug";
-import defaultDarkLogo from '/images/logo.webp';
-import defaultWhiteLogo from '/images/white-logo.webp';
+import defaultDarkLogo from '/images/kreeya-design-logo.webp';
+import defaultWhiteLogo from '/images/kreeya-design-white-logo.webp';
 import { FaInstagram, FaLinkedinIn, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { SiFacebook, SiYoutube } from "react-icons/si";
 import { FaXTwitter } from "react-icons/fa6";
@@ -99,7 +99,7 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
      const [logoAlt, setLogoAlt] = useState(false);
      const [logoAltForHome, setLogoAltForHome] = useState(false);
      const navigate = useNavigate();
-     
+
      const { navbar, services: servicesData, portfolios: portfoliosData } = useDataContext();
      const [scrollReady, setScrollReady] = useState(false);
 
@@ -301,14 +301,14 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
                               </a>
                          </div>
                          <div className="flex items-center gap-4 md:gap-5">
-                              <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer" 
-                              aria-label="Facebook"
-                              className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
+                              <a href="https://www.facebook.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"
+                                   aria-label="Facebook"
+                                   className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <SiFacebook size={14} className="md:w-4 md:h-4" aria-hidden="true" />
                               </a>
-                              <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer" 
-                              aria-label="Instagram"
-                              className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
+                              <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"
+                                   aria-label="Instagram"
+                                   className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <FaInstagram size={14} className="md:w-4 md:h-4" aria-hidden="true" />
                               </a>
                               <a href="https://www.linkedin.com/in/kreeya-design-480186404/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
@@ -333,7 +333,7 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
                               <Link to='/' className="flex items-center gap-2 cursor-pointer">
                                    <img
                                         src={logoSrc}
-                                        alt="Kreeya Design Logo"
+                                        alt="kreeya-design-logo"
                                         loading="eager"
                                         fetchPriority="high"
                                         width="160"
@@ -358,7 +358,7 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
                                         to="/services"
                                         className={`flex items-center gap-1 cursor-pointer transition-colors duration-200 ${textThemeClass} ${showMegaMenu ? 'text-cust-orange' : ''}`}
                                    >
-                                             <span className={`-translate-x-1/2 w-1 h-1 bg-cust-orange rounded-full transition-all duration-300 origin-center ${showMegaMenu ? 'scale-100 opacity-100' : 'scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100'}`} />
+                                        <span className={`-translate-x-1/2 w-1 h-1 bg-cust-orange rounded-full transition-all duration-300 origin-center ${showMegaMenu ? 'scale-100 opacity-100' : 'scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100'}`} />
                                         <span className="relative">
                                              Services
                                         </span>
