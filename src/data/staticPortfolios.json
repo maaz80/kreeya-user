@@ -142,11 +142,6 @@
         "para": "One of the largest telehealth platforms globally; offers virtual doctor visits, mental health services, and chronic care."
       },
       {
-        "title": "Mental Health & Meditation Apps",
-        "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1780548605/kreeya_media/mental-health-meditation-apps-3zg.png",
-        "para": "Guided meditation, mindfulness, and sleep tools.\nKnown for sleep stories, relaxation, and stress relief. Connects users with licensed therapists globally. Offers text, audio, and video therapy sessions."
-      },
-      {
         "title": "A personalized, widget-based home screen.",
         "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1780548605/kreeya_media/a-personalized-widget-based-home-screen-g9w.png",
         "para": "Experience healthcare tailored just for you with a smart, personalized telemedicine app designed for modern living. The home screen adapts to your needs through intuitive, widget-based modules—giving you instant access to everything that matters most."
@@ -158,44 +153,44 @@
       }
     ],
     "createdAt": "2026-05-25T07:48:41.933Z",
-    "updatedAt": "2026-06-04T06:18:41.055Z",
+    "updatedAt": "2026-07-04T14:55:38.022Z",
     "__v": 0,
     "sequenceNumber": 2,
     "faq": [
       {
         "ques": "Why is UI/UX crucial in the healthcare sector?",
         "ans": "It enhances patient engagement, ensures accessibility, and boosts overall user satisfaction.",
-        "_id": "6a2118c1fd85852c7bf0eed0"
+        "_id": "6a491eea5192e327c74639f5"
       },
       {
         "ques": "How does Kreeya Design assist healthcare businesses? ",
         "ans": "Kreeya Design specializes in crafting user-focused healthcare websites and applications.",
-        "_id": "6a2118c1fd85852c7bf0eed1"
+        "_id": "6a491eea5192e327c74639f6"
       },
       {
         "ques": "What types of healthcare solutions can be developed?",
         "ans": "Solutions include patient portals, telemedicine platforms, healthcare websites, and management systems.",
-        "_id": "6a2118c1fd85852c7bf0eed2"
+        "_id": "6a491eea5192e327c74639f7"
       },
       {
         "ques": "Can healthcare apps elevate the patient experience?",
         "ans": "Yes, they simplify access to medical services and essential information.",
-        "_id": "6a2118c1fd85852c7bf0eed3"
+        "_id": "6a491eea5192e327c74639f8"
       },
       {
         "ques": "Does Kreeya Design provide healthcare website design?",
         "ans": "Yes, we deliver tailored designs for healthcare websites and applications.",
-        "_id": "6a2118c1fd85852c7bf0eed4"
+        "_id": "6a491eea5192e327c74639f9"
       },
       {
         "ques": "What advantages do digital healthcare platforms offer?",
         "ans": "They enhance accessibility, streamline processes, and improve patient communication.",
-        "_id": "6a2118c1fd85852c7bf0eed5"
+        "_id": "6a491eea5192e327c74639fa"
       },
       {
         "ques": "Why partner with Kreeya Design for healthcare projects? ",
         "ans": "We merge deep industry knowledge with user-centered design approaches to deliver impactful solutions.",
-        "_id": "6a2118c1fd85852c7bf0eed6"
+        "_id": "6a491eea5192e327c74639fb"
       }
     ],
     "description": "As leaders in healthcare UX, we reinvent rather than merely enhance. Healthcare brands are empowered by the cult fit strategy and digital experience branding, which also propel digital growth and produce rich digital experiences that go well beyond generic service design.",

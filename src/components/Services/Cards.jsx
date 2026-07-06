@@ -159,7 +159,7 @@ const Cards = () => {
                                    >
 
                                         {/* IMAGE */}
-                                        <div className="relative overflow-hidden h-62.5 md:h-70">
+                                        <div className="relative overflow-hidden w-full aspect-[47/28]">
 
                                              <OptimizedImage
                                                   src={item.image || FallbackImg}

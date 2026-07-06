@@ -3,11 +3,11 @@ import { HiMinus, HiPlus } from "react-icons/hi";
 
 
 const FaqSection = ({ faq }) => {
-     const [faqs, setFaqs] = useState(() => faq ? [...faq].reverse() : []);
+     const [faqs, setFaqs] = useState(() => faq ? [...faq] : []);
      const [activeIndex, setActiveIndex] = useState(0);
 
      useEffect(() => {
-          setFaqs(faq ? [...faq].reverse() : []);
+          setFaqs(faq ? [...faq] : []);
           setActiveIndex(0);
      }, [faq]);
 

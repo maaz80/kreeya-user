@@ -1,7 +1,7 @@
 {
-  "/contact-us": {
-    "title": "Contact Us | Kreeya Design | UI UX Design Company India",
-    "description": "Contact Kreeya Design for expert UI UX design, product design, web design, and mobile app design services. Get a free consultation today.",
+  "/landing-page": {
+    "title": "",
+    "description": "",
     "keywords": ""
   },
   "/": {
@@ -9,44 +9,14 @@
     "description": "Kreeya Design is a best UI UX design company in India delivering user-focused web, mobile app, SaaS, and product design solutions.",
     "keywords": ""
   },
-  "/landing-page": {
-    "title": "",
-    "description": "",
+  "/portfolio-nectar": {
+    "title": "Nectar Portfolio | Kreeya Design Case Study",
+    "description": "Discover UI/UX design, product strategy, user research, and seamless digital experiences in Kreeya Design's Nectar Portfolio.",
     "keywords": ""
   },
   "/category/blogs": {
     "title": "Kreeya Design's Official Blog - Insights, Updates and Tips",
     "description": "Visit Kreeya Design's blog to learn about the latest developments in UI/UX design trends, news, and tactics that work.",
-    "keywords": ""
-  },
-  "/portfolio-coinpay": {
-    "title": "Coinpay Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
-    "keywords": ""
-  },
-  "/portfolio-daccord": {
-    "title": "Discord Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Discord Portfolio, which includes solutions for digital experiences, product strategy, user research, and UI/UX design.",
-    "keywords": ""
-  },
-  "/services": {
-    "title": "Our Specialized Design Services | Kreeya Design",
-    "description": "Explore Our Specialized Services by Kreeya Design, including UI/UX design, product design, branding, motion graphics, and AI-powered design solutions.",
-    "keywords": ""
-  },
-  "/portfolios": {
-    "title": "Portfolio | Kreeya Design | UI UX Design Projects",
-    "description": "View the portfolio of Kreeya Design, which includes projects related to digital transformation, product design, web design, mobile app design, and UI/UX design.",
-    "keywords": ""
-  },
-  "/disclaimer": {
-    "title": "Disclaimer | Kreeya Design | Kreeya Design Official",
-    "description": "Read the Kreeya Design Disclaimer for details on how to use the website, the accuracy of the content, responsibility restrictions, and legal information.",
-    "keywords": ""
-  },
-  "/portfolio-beyekls": {
-    "title": "Beyekls Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Beyekls Portfolio, which features user research, product strategy, UI/UX design, and digital experience solutions.",
     "keywords": ""
   },
   "/404": {
@@ -59,14 +29,44 @@
     "description": "Learn about Kreeya Design, a leading UI UX Design Company India helping startups and enterprises create impactful digital experiences.",
     "keywords": ""
   },
+  "/portfolio-beyekls": {
+    "title": "Beyekls Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Beyekls Portfolio, which features user research, product strategy, UI/UX design, and digital experience solutions.",
+    "keywords": ""
+  },
+  "/contact-us": {
+    "title": "Contact Us | Kreeya Design | UI UX Design Company India",
+    "description": "Contact Kreeya Design for expert UI UX design, product design, web design, and mobile app design services. Get a free consultation today.",
+    "keywords": ""
+  },
+  "/portfolio-coinpay": {
+    "title": "Coinpay Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
+    "keywords": ""
+  },
   "/privacy-policy": {
     "title": "Privacy Policy | Kreeya Design | Kreeya Design Official",
     "description": "To learn how we gather, utilize, safeguard, and handle your personal information and data, read Kreeya Design's Privacy Policy.",
     "keywords": ""
   },
-  "/portfolio-nectar": {
-    "title": "Nectar Portfolio | Kreeya Design Case Study",
-    "description": "Discover UI/UX design, product strategy, user research, and seamless digital experiences in Kreeya Design's Nectar Portfolio.",
+  "/services": {
+    "title": "Our Specialized Design Services | Kreeya Design",
+    "description": "Explore Our Specialized Services by Kreeya Design, including UI/UX design, product design, branding, motion graphics, and AI-powered design solutions.",
+    "keywords": ""
+  },
+  "/portfolio-daccord": {
+    "title": "Discord Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Discord Portfolio, which includes solutions for digital experiences, product strategy, user research, and UI/UX design.",
+    "keywords": ""
+  },
+  "/portfolios": {
+    "title": "Portfolio | Kreeya Design | UI UX Design Projects",
+    "description": "View the portfolio of Kreeya Design, which includes projects related to digital transformation, product design, web design, mobile app design, and UI/UX design.",
+    "keywords": ""
+  },
+  "/disclaimer": {
+    "title": "Disclaimer | Kreeya Design | Kreeya Design Official",
+    "description": "Read the Kreeya Design Disclaimer for details on how to use the website, the accuracy of the content, responsibility restrictions, and legal information.",
     "keywords": ""
   },
   "/ui-ux-design-company-in-delhi-for-saas": {
@@ -111,7 +111,7 @@
   },
   "/performance-marketing-service-in-delhi": {
     "title": "Performance Marketing Service in Delhi | Kreeya Design",
-    "description": "Performance Marketing Service in Delhi by Kreeya Design helps businesses increase leads, sales, and ROI with expert PPC, SEO, social media, and conversion-focused campaigns.",
+    "description": "Looking for Performance Marketing Service in Delhi? Kreeya Design delivers Google Ads, Meta Ads, PPC management, lead generation and conversion-focused marketing.",
     "keywords": ""
   },
   "/instagram-marketing-service-in-delhi": {
@@ -227,6 +227,26 @@
   "/website-design-service-in-delhi": {
     "title": "Website Design Service in Delhi | Kreeya Design",
     "description": "Kreeya Design offers expert Website Design Services in Delhi featuring innovative UI/UX design, responsive website development, contemporary layouts, and user-centered digital solutions. ",
+    "keywords": ""
+  },
+  "/the-state-of-ai-in-ux-product-design-2026": {
+    "title": "The State of AI in UX & Product Design 2026",
+    "description": "Discover the State of AI in UX & Product Design: 2026. Explore AI-powered UX trends, generative design, automation, personalization, and the future of UX.",
+    "keywords": ""
+  },
+  "/what-is-zero-ui-design-a-guide-to-ux-without-screens": {
+    "title": "What is Zero-UI Design? A Guide to UX Without Screens",
+    "description": "Learn What is Zero-UI Design? A Guide to UX Without Screens. Discover voice UI, gesture control, ambient computing, AI UX, and future-ready user experiences.",
+    "keywords": ""
+  },
+  "/top-10-e-commerce-u-design-trends-in-2026": {
+    "title": "Top 10 E-Commerce UX Design Trends in 2026 | Kreeya Design",
+    "description": "Top 10 E-Commerce UX Design Trends in 2026 that boost conversions, improve user experience, and increase sales. Explore expert insights from Kreeya Design.",
+    "keywords": ""
+  },
+  "/ui-ux-design-agency-for-saas": {
+    "title": "UI UX Design Agency for SaaS | Best SaaS UI/UX Design Services | Kreeya Design",
+    "description": "Looking for a UI UX design agency for SaaS? Kreeya Design offers SaaS UI/UX design services, intuitive product design, and scalable user experiences for growing SaaS businesses.",
     "keywords": ""
   },
   "/fintech-ui-ux-design-company": {

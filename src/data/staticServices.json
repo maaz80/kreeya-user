@@ -17,8 +17,8 @@
       "PPC"
     ],
     "createdAt": "2026-03-16T05:35:07.388Z",
-    "updatedAt": "2026-06-30T05:47:00.186Z",
-    "__v": 397,
+    "updatedAt": "2026-07-04T14:11:32.680Z",
+    "__v": 416,
     "hero": {
       "title": "vrqevr",
       "description": "vrqr",
@@ -97,27 +97,23 @@
             "description": "Kreeya Design's Performance Marketing Service in Delhi helps businesses generate quality leads, increase conversions, and maximize ROI with audience targeting, Google Ads, Meta Ads, and data-driven campaign methods. ",
             "cards": [
               {
-                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779515709/kreeya_media/qczbqarezwf4l7pqhywb.png",
+                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1783170870/kreeya_media/pay-per-click-advertising.png",
                 "para": "Pay-Per-Click (PPC) Advertising"
               },
               {
-                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779515709/kreeya_media/tax9evkwscaehxntmpbg.png",
+                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1783100178/kreeya_media/paid-socia-media-campaigns.png",
                 "para": "Paid Social Media Campaigns"
               },
               {
-                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779515710/kreeya_media/kxixfca5hmwm8lxaovtg.png",
-                "para": "Programmatic Advertising "
-              },
-              {
-                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779515710/kreeya_media/yj88fe6rovyaqrfzofmm.png",
+                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1783171088/kreeya_media/affiliate-marketing-management.png",
                 "para": "Affiliate Marketing Management"
               },
               {
-                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779515711/kreeya_media/ik2dywxai53gvuyqmagf.png",
+                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1783171613/kreeya_media/conversion-rate-optimization.png",
                 "para": "Conversion Rate Optimization (CRO)"
               },
               {
-                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779515711/kreeya_media/kuhanfdl31iv8h3nlfdn.png",
+                "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1783171701/kreeya_media/retargeting-remarketing-campaigns.png",
                 "para": "Retargeting & Remarketing Campaigns"
               }
             ]
@@ -162,7 +158,7 @@
           ]
         },
         "_id": "69f9c38d7dc36b568c0ba3ab",
-        "description": "Performance Marketing Service in Delhi by Kreeya Design helps businesses increase leads, sales, and ROI with expert PPC, SEO, social media, and conversion-focused campaigns.",
+        "description": "Looking for Performance Marketing Service in Delhi? Kreeya Design delivers Google Ads, Meta Ads, PPC management, lead generation and conversion-focused marketing.",
         "seoTitle": "Performance Marketing Service in Delhi | Kreeya Design",
         "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1780494396/kreeya_media/performance-marketing-w6i.png"
       },
