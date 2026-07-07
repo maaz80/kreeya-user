@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
 import { useDataContext } from '../../context/DataContext';
@@ -90,14 +90,10 @@ const Cards = () => {
                     </div>
 
                     {/* Featured Service */}
-                    {currentPage === 1 && (
-                         <div
-                              onClick={() => {
-                                   if (items[0]) {
-                                        navigate(getServiceItemRoute(items[0]));
-                                   }
-                              }}
-                              className="relative group flex flex-col md:flex items-center justify-center mb-5 md:mb-24 z-999 w-full md:w-142 lg:w-290 2xl:w-7xl mx-auto md:h-79.75 lg:h-163 2xl:h-180 cursor-pointer"
+                    {currentPage === 1 && items[0] && (
+                         <Link
+                              to={getServiceItemRoute(items[0])}
+                              className="relative group flex flex-col md:flex items-center justify-center mb-5 md:mb-24 z-999 w-full md:w-142 lg:w-290 2xl:w-7xl mx-auto md:h-79.75 lg:h-163 2xl:h-180 cursor-pointer block"
                          >
                               <img
                                    src='/images/services-hero.webp'
@@ -117,7 +113,7 @@ const Cards = () => {
                                         Crafting Digital Experiences That Drive Growth & Scale Brands
                                    </h2>
                               </div>
-                         </div>
+                         </Link>
                     )}
 
                     {/* CARDS */}
@@ -148,14 +144,10 @@ const Cards = () => {
 
                               currentCards.map((item, index) => (
 
-                                   <div
+                                   <Link
                                         key={item._id}
-                                        onClick={() =>
-                                             navigate(
-                                                  getServiceItemRoute(item)
-                                             )
-                                        }
-                                        className="group w-full max-w-117.5 rounded-[28px] overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 shadow-2xl bg-white"
+                                        to={getServiceItemRoute(item)}
+                                        className="group w-full max-w-117.5 rounded-[28px] overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 shadow-2xl bg-white block"
                                    >
 
                                         {/* IMAGE */}
@@ -183,7 +175,7 @@ const Cards = () => {
 
                                         </div>
 
-                                   </div>
+                                   </Link>
 
                               ))
 

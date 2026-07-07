@@ -6,6 +6,20 @@ const Hero = ({ title, description }) => {
 
      return (
           <div className='max-w-275 mx-auto mt-40 md:mt-40  px-2 md:px-0'>
+               <script type="application/ld+json">
+                    {JSON.stringify({
+                         "@context": "https://schema.org",
+                         "@type": "VideoObject",
+                         "name": title || "Banking UX Video",
+                         "description": description || "Dopamine Banking UX design case study video.",
+                         "thumbnailUrl": [
+                              "https://kreeyadesign.com/images/Build-your-first-ai-agent-in-15-no-coding.webp"
+                         ],
+                         "uploadDate": "2024-01-01T08:00:00+05:30",
+                         "embedUrl": "https://www.youtube.com/embed/YHQ2AjuJ8Oc",
+                         "contentUrl": "https://www.youtube.com/watch?v=YHQ2AjuJ8Oc"
+                    })}
+               </script>
                {/* Heading */}
                <h1 className="poiret-one-regular text-3xl md:text-5xl xl:text-[56px] leading-9 md:leading-15 max-w-300 text-start">
                     {title || "Break Limits and Unleash the Future of Financial UX"}

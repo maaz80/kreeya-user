@@ -5,7 +5,7 @@ import HomeNavbarV2 from "../components/HomeNavbarV2";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 const BackgroundShapes = lazy(() => import("../components/BackgroundShapes"));
 const FaqSection = lazy(() => import("../components/FaqSection"));
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Breadcrumb from "../components/BreadCrumb";
 import { Helmet } from "react-helmet-async";
 // import SeoTags from '../components/SeoTags';
@@ -156,9 +156,9 @@ const Blogs = () => {
                     ) : (
                          currentBlogs.map((blog, index) => (
 
-                              <div key={blog._id}
-                                   onClick={() => navigate(`/${blog.slug}`)}
-                                   className="group cursor-pointer">
+                              <Link key={blog._id}
+                                   to={`/${blog.slug}`}
+                                   className="group cursor-pointer block">
 
                                    {/* Image */}
 
@@ -203,7 +203,7 @@ const Blogs = () => {
 
                                    </h3>
 
-                              </div>
+                              </Link>
 
                          ))
                     )}

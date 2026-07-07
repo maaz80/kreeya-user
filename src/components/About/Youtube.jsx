@@ -7,6 +7,20 @@ const Youtube = () => {
 
   return (
        <div className='w-full px-4 md:px-0'>
+          <script type="application/ld+json">
+               {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "VideoObject",
+                    "name": "How to Build Your First AI Agent in 15 Min (No Coding)",
+                    "description": "Watch Kreeya Design demonstrate how to build an AI agent in 15 minutes without any coding.",
+                    "thumbnailUrl": [
+                         "https://kreeyadesign.com/images/Build-your-first-ai-agent-in-15-no-coding.webp"
+                    ],
+                    "uploadDate": "2024-05-15T09:00:00+05:30",
+                    "embedUrl": "https://www.youtube.com/embed/N2LMJ5ubfcU",
+                    "contentUrl": "https://www.youtube.com/watch?v=N2LMJ5ubfcU"
+               })}
+          </script>
           <div className='max-w-250 mx-auto relative rounded-[3px] overflow-hidden'>
                  {isPlaying ? (
                       <iframe
