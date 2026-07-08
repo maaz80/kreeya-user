@@ -12,12 +12,32 @@ import { useChatBotH2Data } from "../hooks/useChatBotH2Data";
 const getPrimaryServiceCategory = (serviceText) => {
      if (!serviceText) return null;
      const text = serviceText.toLowerCase();
-     if (text.includes("ui/ux")) return "UI/UX Design";
-     if (text.includes("website")) return "Website Development";
-     if (text.includes("mobile")) return "Mobile App Development";
+     if (text.includes("ui/ux") || text.includes("website design") || text.includes("mobile app design")) {
+          return "UI/UX Design";
+     }
+     if (
+          text.includes("wordpress") ||
+          text.includes("shopify") ||
+          text.includes("web flow") ||
+          text.includes("webflow") ||
+          (text.includes("website") && text.includes("development"))
+     ) {
+          return "Website Development";
+     }
+     if (text.includes("mobile app development") || (text.includes("mobile") && text.includes("development"))) {
+          return "Mobile App Development";
+     }
      if (text.includes("seo")) return "SEO";
      if (text.includes("branding") || text.includes("logo")) return "Branding";
-     if (text.includes("performance") || text.includes("marketing") || text.includes("digital")) return "Performance Marketing";
+     if (
+          text.includes("google ads") ||
+          text.includes("meta ads") ||
+          text.includes("performance") ||
+          text.includes("marketing") ||
+          text.includes("digital")
+     ) {
+          return "Performance Marketing";
+     }
      if (text.includes("talk to")) return "Talk to an Expert";
      return null;
 };
@@ -64,22 +84,23 @@ const compileFullQueue = (currentAnswers) => {
                question: "Step 3 — Would you like to add any other services to your project? (Select all that apply)",
                type: "multi",
                options: [
-                    "UI/UX Design",
+                    "Website Maintenance",
                     "Website Design",
-                    "Website Development",
-                    "Ecommerce Development",
                     "Mobile App Design",
+                    "Website Development",
                     "Mobile App Development",
-                    "Branding",
-                    "Logo Design",
-                    "SEO",
+                    "WordPress Expert",
+                    "Shopify Development",
+                    "Web Flow Development",
+                    "CRM Solution",
+                    "ERP Solutions",
                     "Google Ads",
                     "Meta Ads",
-                    "Performance Marketing",
-                    "Social Media Marketing",
+                    "Full Stack SEO",
+                    "Branding",
+                    "Video Editing",
+                    "Motion Graphics Design",
                     "Graphic Design",
-                    "Motion Graphics",
-                    "AI Automation",
                     "None"
                ]
           }
@@ -100,7 +121,8 @@ const compileFullQueue = (currentAnswers) => {
 
      // Inject smart follow-ups for the Primary service (limits questions per user)
      if (primaryCategory === "Website Development") {
-          const isEcommerceDev = currentAnswers.welcome_service.includes("Ecommerce") || currentAnswers.welcome_service.toLowerCase().includes("ecommerce");
+          const serviceLower = currentAnswers.welcome_service.toLowerCase();
+          const isEcommerceDev = serviceLower.includes("ecommerce") || serviceLower.includes("shopify");
           
           if (!isEcommerceDev) {
                fullQueue.push({
@@ -118,12 +140,20 @@ const compileFullQueue = (currentAnswers) => {
                options: ["1–5 pages", "5–10 pages", "10–20 pages", "20+ pages"]
           });
 
-          fullQueue.push({
-               id: "web_cms",
-               question: "Do you need a Content Management System (CMS) like WordPress or Webflow?",
-               type: "single",
-               options: ["Yes", "No"]
-          });
+          // Check if CMS is already predefined (WordPress, Shopify, Webflow)
+          const hasPredefinedCMS = serviceLower.includes("wordpress") || 
+                                   serviceLower.includes("shopify") || 
+                                   serviceLower.includes("web flow") || 
+                                   serviceLower.includes("webflow");
+          
+          if (!hasPredefinedCMS) {
+               fullQueue.push({
+                    id: "web_cms",
+                    question: "Do you need a Content Management System (CMS) like WordPress or Webflow?",
+                    type: "single",
+                    options: ["Yes", "No"]
+               });
+          }
 
           fullQueue.push({
                id: "web_payment",
@@ -140,8 +170,11 @@ const compileFullQueue = (currentAnswers) => {
           });
      } 
      else if (primaryCategory === "UI/UX Design") {
-          const isMobileDesign = currentAnswers.welcome_service.includes("Mobile App");
-          if (!isMobileDesign) {
+          const serviceLower = currentAnswers.welcome_service.toLowerCase();
+          const isMobileDesign = serviceLower.includes("mobile app");
+          const isWebDesign = serviceLower.includes("website design");
+          
+          if (!isMobileDesign && !isWebDesign) {
                fullQueue.push({
                     id: "ui_platform",
                     question: "Is this design project for Web, Mobile, or Both?",
@@ -199,8 +232,9 @@ const compileFullQueue = (currentAnswers) => {
           });
      } 
      else if (primaryCategory === "Performance Marketing") {
-          const isGoogleAds = currentAnswers.welcome_service.includes("Google");
-          const isMetaAds = currentAnswers.welcome_service.includes("Meta");
+          const serviceLower = currentAnswers.welcome_service.toLowerCase();
+          const isGoogleAds = serviceLower.includes("google");
+          const isMetaAds = serviceLower.includes("meta");
           
           if (!isGoogleAds && !isMetaAds) {
                fullQueue.push({
@@ -294,14 +328,24 @@ export default function ChatBot() {
                user: false,
                time: Date.now(),
                options: [
-                    "🎨 UI/UX Design",
+                    "🛠️ Website Maintenance",
+                    "🎨 Website Design",
+                    "📱 Mobile App Design",
                     "💻 Website Development",
-                    "📱 Mobile App Development",
-                    "🚀 Digital Marketing",
-                    "🎯 SEO Services",
-                    "📈 Performance Marketing",
-                    "🎨 Branding & Logo Design",
-                    "🤝 Talk to an Expert"
+                    "📲 Mobile App Development",
+                    "📝 WordPress Expert",
+                    "🛍️ Shopify Development",
+                    "🌐 Web Flow Development",
+                    "⚙️ CRM Solution",
+                    "📊 ERP Solutions",
+                    "🔍 Google Ads",
+                    "🎯 Meta Ads",
+                    "📈 Full Stack SEO",
+                    "✨ Branding",
+                    "🎬 Video Editing",
+                    "🎥 Motion Graphics Design",
+                    "📐 Graphic Design",
+                    "🤝 Talk to Expert"
                ],
                isWelcomeCard: true
           }
@@ -584,14 +628,24 @@ export default function ChatBot() {
                          user: false,
                          time: Date.now(),
                          options: [
-                              "🎨 UI/UX Design",
+                              "🛠️ Website Maintenance",
+                              "🎨 Website Design",
+                              "📱 Mobile App Design",
                               "💻 Website Development",
-                              "📱 Mobile App Development",
-                              "🚀 Digital Marketing",
-                              "🎯 SEO Services",
-                              "📈 Performance Marketing",
-                              "🎨 Branding & Logo Design",
-                              "🤝 Talk to an Expert"
+                              "📲 Mobile App Development",
+                              "📝 WordPress Expert",
+                              "🛍️ Shopify Development",
+                              "🌐 Web Flow Development",
+                              "⚙️ CRM Solution",
+                              "📊 ERP Solutions",
+                              "🔍 Google Ads",
+                              "🎯 Meta Ads",
+                              "📈 Full Stack SEO",
+                              "✨ Branding",
+                              "🎬 Video Editing",
+                              "🎥 Motion Graphics Design",
+                              "📐 Graphic Design",
+                              "🤝 Talk to Expert"
                          ],
                          isWelcomeCard: true
                     }
@@ -692,7 +746,7 @@ export default function ChatBot() {
                                                   />
                                                   <div>
                                                        <h2 className="text-[10px] lg:text-[16px] leading-5 lg:leading-6 text-blue font-bold">
-                                                            {h2ChatBot.bot_name || 'Kreeya Bot'}
+                                                            {h2ChatBot.bot_name || 'Kreeya Design Bot'}
                                                        </h2>
                                                        <div className="text-[9px] lg:text-[14px] text-dark-gray">
                                                             {getTimeAgo(m.time)}
@@ -743,7 +797,7 @@ export default function ChatBot() {
                                                                  💼 Our Services
                                                             </a>
                                                             <a
-                                                                 href="https://wa.me/919311500423"
+                                                                 href="https://wa.me/919311500423?text=Hii"
                                                                  target="_blank"
                                                                  rel="noopener noreferrer"
                                                                  className="bg-sky-50 hover:bg-sky-100 text-sky-800 text-[10px] lg:text-xs py-2 px-2.5 rounded-md font-medium cursor-pointer transition-all border border-sky-200 hover:scale-102 text-center shadow-xs flex items-center justify-center"

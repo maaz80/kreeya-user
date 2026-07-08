@@ -92,7 +92,7 @@ function App() {
       {areGlobalWidgetsReady && (
         <>
           <a
-            href="https://wa.me/919311500423"
+            href="https://wa.me/919311500423?text=Hii"
             target="_blank"
             aria-label="Whatsapp Icon"
             rel="noopener noreferrer"
@@ -118,9 +118,9 @@ function App() {
           </button>
 
           {loadChatbot && (
-               <Suspense fallback={null}>
-                    <ChatBot />
-               </Suspense>
+            <Suspense fallback={null}>
+              <ChatBot />
+            </Suspense>
           )}
         </>
       )}

@@ -859,8 +859,8 @@
         "PPC"
       ],
       "createdAt": "2026-03-16T05:35:07.388Z",
-      "updatedAt": "2026-07-04T14:11:32.680Z",
-      "__v": 416,
+      "updatedAt": "2026-07-07T11:33:02.667Z",
+      "__v": 421,
       "hero": {
         "title": "vrqevr",
         "description": "vrqr",
@@ -1050,36 +1050,24 @@
               "description": "Through innovative content, reel marketing, influencer techniques, and focused advertising campaigns, Kreeya Design's Instagram marketing service in Delhi assists companies in increasing brand awareness, audience engagement, and lead generation. ",
               "cards": [
                 {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779517372/kreeya_media/m5gzxdnltemb7y5j5fwi.png",
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1783422954/kreeya_media/instagram-account-management.png",
                   "para": "Instagram Account Management"
                 },
                 {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779517373/kreeya_media/rjbmkyvzmpnjbfajw6s3.png",
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1783423271/kreeya_media/creative-post-reel-design.png",
                   "para": "Creative Post & Reel Design"
                 },
                 {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779517373/kreeya_media/lmjbbygyv2mxvijvlh0q.png",
-                  "para": "Instagram Growth Strategy"
-                },
-                {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779518316/kreeya_media/nufnd6vweutyvmgxtrlr.png",
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1783423762/kreeya_media/instagram-ads-campaign-management.png",
                   "para": "Instagram Ads & Campaign Management"
                 },
                 {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779518316/kreeya_media/sl1ftnwdwbks0e8tduqp.png",
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1783423762/kreeya_media/content-planning-scheduling.png",
                   "para": "Content Planning & Scheduling"
                 },
                 {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779518317/kreeya_media/e34sxdwce8qpfwm56nyq.png",
-                  "para": "Engagement & Follower Growth"
-                },
-                {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779518317/kreeya_media/i6jof29x5oppfl3psjfk.png",
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1783423981/kreeya_media/performance-tracking-analytics.png",
                   "para": "Performance Tracking & Analytics"
-                },
-                {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779518318/kreeya_media/wkkuvk4lt2xhj48ngxmv.png",
-                  "para": "Instagram Marketing for Brands & Startups"
                 }
               ]
             },
@@ -4632,5 +4620,5 @@
       "faq": []
     }
   ],
-  "updatedAt": "2026-07-07T09:21:36.140Z"
+  "updatedAt": "2026-07-08T10:40:39.344Z"
 }

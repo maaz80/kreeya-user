@@ -8,7 +8,7 @@ import { useDataContext } from "../context/DataContext";
 import { normalizeRouteSlug } from "../utils/slug";
 import defaultDarkLogo from '/images/kreeya-design-logo.webp';
 import defaultWhiteLogo from '/images/kreeya-design-white-logo.webp';
-import { FaInstagram, FaLinkedinIn, FaPhoneAlt, FaEnvelope, FaDribbble, FaBehance, FaWordpressSimple, FaPinterest } from "react-icons/fa";
+import { FaInstagram, FaLinkedinIn, FaPhoneAlt, FaEnvelope, FaDribbble, FaBehance, FaWordpressSimple, FaPinterest, FaReddit, FaBloggerB } from "react-icons/fa";
 import { SiFacebook, SiYoutube } from "react-icons/si";
 import { FaXTwitter } from "react-icons/fa6";
 import {
@@ -311,6 +311,16 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
                                    className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <FaPinterest size={14} className="md:w-4 md:h-4" aria-hidden="true" />
                               </a>
+                              {/* <a href="https://www.reddit.com/user/kreeya-design/" target="_blank" rel="noopener noreferrer"
+                                   aria-label="Reddit"
+                                   className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
+                                   <FaReddit size={14} className="md:w-4 md:h-4" aria-hidden="true" />
+                              </a> */}
+                              <a href="https://kreeyadesign.blogspot.com/" target="_blank" rel="noopener noreferrer"
+                                   aria-label="Blogspot"
+                                   className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
+                                   <FaBloggerB size={14} className="md:w-4 md:h-4" aria-hidden="true" />
+                              </a>
                               <a href="http://kreeyadesign9.wordpress.com" target="_blank" rel="noopener noreferrer"
                                    aria-label="WordPress"
                                    className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
@@ -321,11 +331,11 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
                                    className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <FaBehance size={14} className="md:w-4 md:h-4" aria-hidden="true" />
                               </a>
-                              <a href="https://dribbble.com/kreeya-design" target="_blank" rel="noopener noreferrer"
+                              {/* <a href="https://dribbble.com/kreeya-design" target="_blank" rel="noopener noreferrer"
                                    aria-label="Dribbble"
                                    className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <FaDribbble size={14} className="md:w-4 md:h-4" aria-hidden="true" />
-                              </a>
+                              </a> */}
                               <a href="https://www.instagram.com/kreeyadesignofficial/" target="_blank" rel="noopener noreferrer"
                                    aria-label="Instagram"
                                    className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
