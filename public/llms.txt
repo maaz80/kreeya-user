@@ -1,0 +1,82 @@
+# Kreeya Design
+
+> Kreeya Design is a leading UI/UX design agency providing digital design, development, and marketing consulting services. We focus on creating exceptional brands, web apps, mobile apps, and digital experiences for startups and enterprises globally.
+
+## Core Pages
+- [Home Page](https://kreeyadesign.com/)
+- [About Us](https://kreeyadesign.com/about-us/)
+- [Contact Us](https://kreeyadesign.com/contact-us/)
+- [Services](https://kreeyadesign.com/services/)
+- [Portfolios](https://kreeyadesign.com/portfolios/)
+
+## Our Portfolios
+- [Beyekls](https://kreeyadesign.com/portfolio-beyekls/)
+- [Nectar](https://kreeyadesign.com/portfolio-nectar/)
+- [Coinpay](https://kreeyadesign.com/portfolio-coinpay/)
+- [Daccord](https://kreeyadesign.com/portfolio-daccord/)
+
+## Industries We Serve
+- [Fintech](https://kreeyadesign.com/fintech/)
+- [Healthcare](https://kreeyadesign.com/healthcare/)
+- [Real Estate](https://kreeyadesign.com/real-estate/)
+- [E-Commerce](https://kreeyadesign.com/ecommerce/)
+
+## Services
+
+### UI/UX Design
+- [UI/UX Design Service](https://kreeyadesign.com/ui-ux-design-service-in-delhi/)
+- [Mobile App Design](https://kreeyadesign.com/mobile-app-design-service-in-delhi/)
+- [Website Design](https://kreeyadesign.com/website-design-service-in-delhi/)
+- [Product Design](https://kreeyadesign.com/product-design-service-in-delhi/)
+- [Generative AI Design](https://kreeyadesign.com/gen-ai-design-service-in-delhi/)
+- [UI/UX Design for SaaS](https://kreeyadesign.com/ui-ux-design-company-in-delhi-for-saas/)
+- [UI/UX Design for E-Commerce](https://kreeyadesign.com/ui-ux-design-company-in-delhi-for-e-commerce/)
+- [UI/UX Design for Real Estate](https://kreeyadesign.com/ui-ux-design-company-in-delhi-for-real-estate/)
+- [UI/UX Design for Healthcare](https://kreeyadesign.com/ui-ux-design-company-in-delhi-for-healthcare/)
+- [UI/UX Design for Fintech](https://kreeyadesign.com/ui-ux-design-company-in-delhi-for-fintech/)
+- [Product Design for Fintech](https://kreeyadesign.com/product-design-company-in-delhi-for-fintech/)
+- [Product Design for Healthcare](https://kreeyadesign.com/product-design-company-in-delhi-for-healthcare/)
+- [Product Design for E-Commerce](https://kreeyadesign.com/product-design-company-in-delhi-for-e-commerce/)
+
+### Development
+- [Web Development](https://kreeyadesign.com/web-development-services-in-delhi/)
+- [Mobile App Development](https://kreeyadesign.com/mobile-app-development-service-in-delhi/)
+- [UI Development](https://kreeyadesign.com/ui-development-service-in-delhi/)
+- [Webflow Development](https://kreeyadesign.com/webflow-development-service-in-delhi/)
+- [Shopify Development](https://kreeyadesign.com/shopify-development-service-in-delhi/)
+- [WordPress Expert Service](https://kreeyadesign.com/word-press-expert-service-in-delhi/)
+
+### Branding & Graphics
+- [Brand Identity Service](https://kreeyadesign.com/brand-identity-service-in-delhi/)
+- [Logo Design Service](https://kreeyadesign.com/logo-design-service-in-delhi/)
+- [Graphic Design Service](https://kreeyadesign.com/graphic-design-service-in-delhi/)
+- [Motion Graphics Design](https://kreeyadesign.com/motion-graphics-design-service-in-delhi/)
+- [Video Editing Service](https://kreeyadesign.com/video-editing-service-in-delhi/)
+- [Social Media Creatives](https://kreeyadesign.com/social-media-creatives-service-in-delhi/)
+- [Print Design Service](https://kreeyadesign.com/print-design-service-in-delhi/)
+
+### Digital Marketing
+- [Performance Marketing](https://kreeyadesign.com/performance-marketing-service-in-delhi/)
+- [Social Media Marketing](https://kreeyadesign.com/social-media-marketing-service-in-delhi/)
+- [Instagram Marketing](https://kreeyadesign.com/instagram-marketing-service-in-delhi/)
+- [LinkedIn Marketing](https://kreeyadesign.com/linkedin-marketing-service-in-delhi/)
+- [Search Engine Optimization (SEO)](https://kreeyadesign.com/search-engine-optimization-service-in-delhi/)
+- [Search Engine Marketing (SEM)](https://kreeyadesign.com/search-engine-marketing-service-in-delhi/)
+
+## Blogs
+- [All Blogs](https://kreeyadesign.com/category/blogs/)
+- [The State of AI in UX/Product Design 2026](https://kreeyadesign.com/the-state-of-ai-in-ux-product-design-2026/)
+- [What is Zero UI Design](https://kreeyadesign.com/what-is-zero-ui-design-a-guide-to-ux-without-screens/)
+- [Top 10 E-Commerce UI Design Trends](https://kreeyadesign.com/top-10-e-commerce-u-design-trends-in-2026/)
+- [UI/UX Design Agency for SaaS](https://kreeyadesign.com/ui-ux-design-agency-for-saas/)
+- [Fintech UI/UX Design Company](https://kreeyadesign.com/fintech-ui-ux-design-company/)
+- [Best Shopify Developers for Hire](https://kreeyadesign.com/best-shopify-developers-for-hire/)
+- [Benefits of Working With a Professional UI/UX Expert](https://kreeyadesign.com/top-benefits-of-working-with-a-professional-ui-ux-design-expert/)
+- [Why Hiring a UI/UX Expert Transforms Your Website](https://kreeyadesign.com/why-hiring-a-ui-ux-design-expert-can-transform-your-business-website/)
+- [Leading UI/UX Companies in Gurgaon](https://kreeyadesign.com/leading-uiux-design-companies-in-gurgaon-for-web-mobile-app-design/)
+- [Best UI/UX Design Agency in Delhi](https://kreeyadesign.com/best-uiux-design-agency-in-delhi-key-features-to-look-for/)
+- [Best UI/UX Agency Gurugram](https://kreeyadesign.com/best-ui-ux-agency-gurugram/)
+
+## Legal
+- [Privacy Policy](https://kreeyadesign.com/privacy-policy/)
+- [Disclaimer](https://kreeyadesign.com/disclaimer/)

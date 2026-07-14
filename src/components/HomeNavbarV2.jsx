@@ -347,7 +347,7 @@ const HomeNavbarV2 = ({ startFetch = true, useScrollTriggers = true }) => {
                               <a href="https://www.youtube.com/@kreeyadesignofficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <SiYoutube size={14} className="md:w-4 md:h-4" aria-hidden="true" />
                               </a>
-                              <a href="https://x.com/Kreeyadesign12" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
+                              <a href="https://x.com/KreeyaDesign7" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200">
                                    <FaXTwitter size={14} className="md:w-4 md:h-4" aria-hidden="true" />
                               </a>
                          </div>
