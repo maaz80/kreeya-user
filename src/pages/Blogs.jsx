@@ -90,7 +90,7 @@ const Blogs = () => {
                     </h1>
                     {/* leading-12 md:leading-15 lg:leading-21 2xl:leading-27.75 */}
                     <p className="text-dark-gray mt-1 md:mt-3 text-[12px] md:text-[18px] lg:text-[24px] leading-9">
-                         Smart reads on marketing, design, and business growth.
+                         Smart reads on <Link to="/performance-marketing-service-in-delhi" className="inline-block transition-transform duration-300 hover:scale-102 origin-center">marketing</Link>, design, and business growth.
                     </p>
                </div>
 

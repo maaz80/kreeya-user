@@ -26,9 +26,10 @@ const Footer = () => {
      const [phone, setPhone] = useState("+91 9311500423");
 
      const [locationTitle, setLocationTitle] = useState("Join Us");
-     const [city, setCity] = useState("Noida");
-     const [office, setOffice] = useState("");
-     const [address, setAddress] = useState("Springboard D Block, Sector 2, Noida, Uttar Pradesh 201301");
+     const [city1, setCity1] = useState("Noida");
+     const [address1, setAddress1] = useState("Springboard D Block, Sector 2, Noida, Uttar Pradesh 201301");
+     const [city2, setCity2] = useState("");
+     const [address2, setAddress2] = useState("");
 
      useEffect(() => {
           const fetchFooter = async () => {
@@ -53,9 +54,10 @@ const Footer = () => {
                     setPhone(data.phone || "");
 
                     setLocationTitle(data.locationTitle || "");
-                    setCity(data.city || "");
-                    setOffice(data.office || "");
-                    setAddress(data.address || "");
+                    setCity1(data.city1 || data.city || "Noida");
+                    setAddress1(data.address1 || data.address || "Springboard D Block, Sector 2, Noida, Uttar Pradesh 201301");
+                    setCity2(data.city2 || "");
+                    setAddress2(data.address2 || "");
                } catch (err) {
                     console.warn("Footer fetch failed:", err);
                }
@@ -204,16 +206,23 @@ const Footer = () => {
 
                               <h3 className="text-[20px] md:text-[36px] lg:text-[32px] mb-1 md:mb-6 poiret-one-regular">{locationTitle}</h3>
 
-                              <address style={{ fontStyle: 'normal' }}>
-                                   <p className="text-[20px] md:text-2xl font-semibold">{city}</p>
-                                   <p className=" text-[12px] md:text-base mt-2 leading-relaxed">
+                              <div className="flex flex-col  gap-6 md:gap-12">
+                                   <address style={{ fontStyle: 'normal' }}>
+                                        <p className="text-[20px] md:text-2xl font-semibold">{city1}</p>
+                                        <p className=" text-[12px] md:text-base mt-2 leading-relaxed">
+                                             {address1}
+                                        </p>
+                                   </address>
 
-                                        {office}
-                                        <br />
-                                        {address}
-
-                                   </p>
-                              </address>
+                                   {/* {(city2 || address2) && ( */}
+                                        <address style={{ fontStyle: 'normal' }}>
+                                             <p className="text-[20px] md:text-2xl font-semibold">{city2}</p>
+                                             <p className=" text-[12px] md:text-base mt-2 leading-relaxed">
+                                                  {address2}
+                                             </p>
+                                        </address>
+                                   {/* )} */}
+                              </div>
 
                               {/* <p className="text-[20px] md:text-2xl font-semibold">{city}</p>
 

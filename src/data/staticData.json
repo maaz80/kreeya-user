@@ -859,8 +859,8 @@
         "PPC"
       ],
       "createdAt": "2026-03-16T05:35:07.388Z",
-      "updatedAt": "2026-07-07T11:33:02.667Z",
-      "__v": 421,
+      "updatedAt": "2026-07-15T09:54:59.424Z",
+      "__v": 425,
       "hero": {
         "title": "vrqevr",
         "description": "vrqr",
@@ -1276,36 +1276,32 @@
               "description": "We deliver result-driven LinkedIn marketing solutions designed to help businesses build professional brand authority, generate high-quality B2B leads, and increase audience engagement. ",
               "cards": [
                 {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779521403/kreeya_media/bjtcpv7qgwpbzt9rityt.png",
-                  "para": "LinkedIn Lead Generation"
-                },
-                {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779521404/kreeya_media/fd9ikg0vm4nvjfgulirl.png",
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1784109045/kreeya_media/linkedin-ads-management.png",
                   "para": "LinkedIn Ads Management"
                 },
                 {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779521405/kreeya_media/wjoj4zbjzfp49tbslxmv.png",
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1784109045/kreeya_media/linkedin-profile-optimisation.png",
                   "para": "Profile Optimization"
                 },
                 {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779521405/kreeya_media/tuumazbhgesctn0wa3ke.png",
-                  "para": "Content Marketing Strategy"
-                },
-                {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779521406/kreeya_media/yw55xujrenxbtlxzsvfj.png",
-                  "para": "B2B Audience Targeting"
-                },
-                {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779521593/kreeya_media/qvof3wlmzhiuygpf0xqc.png",
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1784109045/kreeya_media/linkedin-brand-building.png",
                   "para": "LinkedIn Brand Building"
                 },
                 {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779521593/kreeya_media/i0y94ghyauqrsdjbg3zj.png",
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1784109045/kreeya_media/linkedin-outreach-campaigns.png",
                   "para": "LinkedIn Outreach Campaigns"
                 },
                 {
-                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1779521594/kreeya_media/ekmgzseqwzztx2u2iwk3.png",
-                  "para": "Performance Tracking & Analytics"
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1784109297/kreeya_media/linkedin-lead-generation.png",
+                  "para": "Linkedin Lead Generation"
+                },
+                {
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1784109297/kreeya_media/linkedin-content-marketing-strategy.png",
+                  "para": "Linkedin Content Marketing Strategy"
+                },
+                {
+                  "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1784109297/kreeya_media/linkedin-b2b-audiene-targeting.png",
+                  "para": "Linkedin B2B Audiene Targeting"
                 }
               ]
             },
@@ -3957,7 +3953,7 @@
           "para": "With intelligent search, verified listings, and easy navigation, you can browse, compare, and purchase the ideal urban house."
         },
         {
-          "title": "Golden Palm App Redesign – Live the Gold Standard",
+          "title": "Golden Palm App Redesign �� Live the Gold Standard",
           "image": "https://res.cloudinary.com/dlek2xgkd/image/upload/v1780587576/kreeya_media/golden-palm-app-redesign-live-the-gold-standard.png",
           "para": "Enter a world of luxurious living with exclusive access, specialized services, and life-changing encounters."
         },
@@ -4620,5 +4616,5 @@
       "faq": []
     }
   ],
-  "updatedAt": "2026-07-14T06:10:26.735Z"
+  "updatedAt": "2026-07-15T13:05:22.303Z"
 }

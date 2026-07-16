@@ -5,6 +5,7 @@ import PortLogo from '../../assets/nectar-logo.webp'
 // import WhiteDottedMobile from '../../assets/white-dotted-mobile.webp'
 import { CiMobile1 } from "react-icons/ci";
 import { useH1Data } from '../../hooks/useH1Data';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
      const h1Portfolio = useH1Data()
@@ -37,7 +38,7 @@ const Hero = () => {
                /> */}
 
                {/* Content */}
-               <div className="relative z-10  px-3 md:px-15 2xl:px-32 mt-30 pb-18 md:mt-0 md:py-32 flex flex-col xl:flex-row justify-between items-start gap-30">
+               <div className="relative z-10  px-3 md:px-15 2xl:px-32 mt-30 pb-18 md:mt-10 md:py-32 flex flex-col xl:flex-row justify-between items-start gap-30">
 
                     {/* Left */}
                     <div className="max-w-xl">
@@ -67,7 +68,7 @@ const Hero = () => {
                          <div className=''>
                               <p className="text-light-gray text-[12px] md:text-[18px]">Services</p>
                               <p className="text-[18px] md:text-[24px] font-bold">
-                                   User Research | UX Design | Development | AI Integration
+                                   User Research | UX Design | Development | <Link to="/gen-ai-design-service-in-delhi" className="inline-block transition-transform duration-300 hover:scale-102 origin-center">AI Integration</Link>
                               </p>
                          </div>
 

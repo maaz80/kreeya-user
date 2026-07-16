@@ -5,6 +5,7 @@ import PortLogo from '../../assets/daccord-logo.webp'
 // import WhiteDottedMobile from '../../assets/white-dotted-mobile.webp'
 import { CiMobile1 } from "react-icons/ci";
 import { useH1Data } from '../../hooks/useH1Data';
+import { Link } from 'react-router-dom';
 const Hero = () => {
      const h1Portfolio = useH1Data()
      // const showDots = window.innerWidth < 786 ? WhiteDottedMobile : WhiteDotted;
@@ -35,7 +36,7 @@ const Hero = () => {
                /> */}
 
                {/* Content */}
-               <div className="relative z-10  px-3 md:px-15 2xl:px-22 mt-30 pb-18 md:mt-0 md:py-32 flex flex-col xl:flex-row justify-between items-start">
+               <div className="relative z-10  px-3 md:px-15 2xl:px-22 mt-30 pb-18 md:mt-10 md:py-32 flex flex-col xl:flex-row justify-between items-start">
 
                     {/* Left */}
                     <div className="max-w-xl">
@@ -65,7 +66,7 @@ const Hero = () => {
                          <div className=''>
                               <p className="text-light-gray text-[12px] md:text-[18px]">Services</p>
                               <p className="text-[18px] md:text-[24px] font-bold">
-                                   User Research | UX Design | Development
+                                   User Research | <Link to="/ui-ux-design-service-in-delhi" className="inline-block transition-transform duration-300 hover:scale-102 origin-center">UX Design</Link> | Development
                               </p>
                          </div>
 

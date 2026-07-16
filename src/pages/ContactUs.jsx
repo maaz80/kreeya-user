@@ -6,6 +6,7 @@ import { useH2Data } from "../hooks/useH2data";
 import { useH1Data } from "../hooks/useH1Data";
 import { useh3Data } from "../hooks/useH3Data";
 import useFaq from "../hooks/useFaq";
+import { Link, Links } from "react-router-dom";
 // import Details from "../components/Contact/Details";
 
 const Breadcrumb = lazy(() => import('../components/Breadcrumb'));
@@ -381,7 +382,7 @@ const ContactUs = () => {
                                                   {h2Contact.description_heading || 'Tell us about your project requirement'}
                                              </h2>
                                              <p className="text-[12px] md:text-[14px] text-dark-gray mb-6">
-                                                  Looking for UX/UI research or product branding? Post your query now, and we'll get in touch with you soon!
+                                                  Looking for UX/UI research or <Link to="/brand-identity-service-in-delhi" className="inline-block transition-transform duration-300 hover:scale-101 origin-center">product branding</Link>? Post your query now, and we'll get in touch with you soon!
                                              </p>
 
                                              <label htmlFor="message" className="sr-only">

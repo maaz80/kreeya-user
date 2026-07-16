@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { getHeros } from "../utils/heroService";
 import { optimizeVideo } from "../utils/cloudinary";
 import { initGSAP } from "../utils/gsapLoader";
@@ -137,17 +138,17 @@ const HeroSection = ({ startFetch = true }) => {
                     <BackgroundShapes />
                </Suspense>
 
-               <div className="relative z-20 container mx-auto text-center text-dark-black font-semibold md:font-normal min-h-[400px] md:min-h-[500px] lg:min-h-[700px]">
+               <div className="relative z-20 container mx-auto text-center text-dark-black font-semibold md:font-normal min-h-100 md:min-h-125 lg:min-h-175">
                     {/* H1 is now fully static, Lighthouse will detect it immediately */}
-                    <h1 className="text-[40px] md:text-[56px] lg:text-[120px] tracking-tight mb-4 md:mb-1 leading-[1.1] min-h-[44px] md:min-h-[62px] lg:min-h-[132px]">
+                    <h1 className="text-[40px] md:text-[56px] lg:text-[120px] tracking-tight mb-4 md:mb-1 leading-[1.1] min-h-11 md:min-h-15.5 lg:min-h-33">
                          {HERO_CONTENT.topText}
                     </h1>
 
-                    <div className="flex items-center justify-center gap-4 text-[40px] md:text-[56px] lg:text-[120px] leading-[1.1] min-h-[56px] md:min-h-[72px] lg:min-h-[138px]">
+                    <div className="flex items-center justify-center gap-4 text-[40px] md:text-[56px] lg:text-[120px] leading-[1.1] min-h-14 md:min-h-18 lg:min-h-34.5">
                          <span>{HERO_CONTENT.midLeftText}</span>
                          <div
                               ref={videoRef}
-                              className="inline-block w-24 md:w-40 lg:w-52 h-[52px] md:h-[60px] lg:h-[120px] bg-gray-100 overflow-hidden shrink-0"
+                              className="inline-block w-24 md:w-40 lg:w-52 h-13 md:h-15 lg:h-30 bg-gray-100 overflow-hidden shrink-0"
                          >
                               {videoSrc && (
                                    <video
@@ -165,12 +166,14 @@ const HeroSection = ({ startFetch = true }) => {
                          <span>{HERO_CONTENT.midRightText}</span>
                     </div>
 
-                    <div className="text-[40px] md:text-[56px] lg:text-[120px] mt-1 leading-[1.1] min-h-[44px] md:min-h-[62px] lg:min-h-[132px]">
-                         {HERO_CONTENT.bottomText}
+                    <div className="text-[40px] md:text-[56px] lg:text-[120px] mt-1 leading-[1.1] min-h-11 md:min-h-15.5 lg:min-h-33">
+                         {HERO_CONTENT.bottomText.split(" ")[0]} <Link to="/ui-ux-design-service-in-delhi" className="cursor-pointer inline-block">{HERO_CONTENT.bottomText.split(" ")[1]}</Link> {HERO_CONTENT.bottomText.split(" ")[2]}
                     </div>
 
-                    <p className="w-full max-w-69 md:max-w-110 ml-auto mt-10 min-h-[72px] md:min-h-[84px] text-base md:text-lg leading-relaxed text-end text-blue plus-jakarta-sans">
-                         {HERO_CONTENT.description}
+                    <p className="w-full max-w-69 md:max-w-110 ml-auto mt-10 min-h-18 md:min-h-21 text-base md:text-lg leading-relaxed text-end text-blue plus-jakarta-sans">
+                         {HERO_CONTENT.description.split('mobile apps')[0]}
+                         <Link to="/mobile-app-design-service-in-delhi" className="inline-block transition-transform duration-300 hover:scale-105 origin-center">mobile apps</Link>
+                         {HERO_CONTENT.description.split('mobile apps')[1]}
                     </p>
                </div>
           </section>
