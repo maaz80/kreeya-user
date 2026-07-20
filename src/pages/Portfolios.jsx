@@ -62,7 +62,7 @@ const Portfolios = () => {
                          rel="preload"
                          as="image"
                          href='/images/Build-your-first-ai-agent-in-15-no-coding.webp'
-                         fetchpriority="high"
+                         fetchPriority="high"
                     />
                </Helmet>
                {/* <HomeNavbar /> */}

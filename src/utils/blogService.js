@@ -2,7 +2,7 @@ const API = import.meta.env.VITE_API_URL;
 let cachedBlogs = null;
 
 export const getBlogs = async () => {
-     if (cachedBlogs) {
+     if (import.meta.env.PROD && cachedBlogs) {
           return cachedBlogs;
      }
      try {

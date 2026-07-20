@@ -47,13 +47,13 @@ const FaqSection = ({ paddings, faqData }) => {
      }, [faqData]);
 
      return (
-          <section className={` relative z-999 ${paddings}`}>
+          <section className={` relative z-9999 ${paddings}`}>
 
                <div className="max-w-450 mx-auto">
 
                     {/* Heading */}
 
-                    <h3 className="text-center leading-12 md:leading-15 lg:leading-21 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-12 md:mb-16 poiret-one-regular">
+                    <h3 className="text-center leading-12 md:leading-15 lg:leading-21 text-[36px] md:text-[56px] lg:text-[72px] 2xl:text-[96px] mb-12 md:mb-16 poiret-one-regular ">
                          {h3Data.faq_heading || "Want To Know More? Ask Us"}
                     </h3>
 

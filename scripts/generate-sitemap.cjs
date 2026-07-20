@@ -4,7 +4,22 @@ const https = require('https');
 
 const API_URL = "https://api.kreeyadesign.com/api";
 const SITE_URL = "https://kreeyadesign.com";
-const TODAY = new Date().toISOString().split('T')[0];
+function getISTDateTimeString(date = new Date()) {
+  const utcMs = date.getTime();
+  const istDate = new Date(utcMs + (5.5 * 60 * 60 * 1000));
+  
+  const yyyy = istDate.getUTCFullYear();
+  const mm = String(istDate.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(istDate.getUTCDate()).padStart(2, '0');
+  
+  const hh = String(istDate.getUTCHours()).padStart(2, '0');
+  const min = String(istDate.getUTCMinutes()).padStart(2, '0');
+  const ss = String(istDate.getUTCSeconds()).padStart(2, '0');
+  
+  return `${yyyy}-${mm}-${dd}T${hh}:${min}:${ss}+05:30`;
+}
+
+const TODAY = getISTDateTimeString();
 
 function escapeXml(unsafe) {
   if (!unsafe) return '';

@@ -93,7 +93,7 @@ const Hero = ({ title, description }) => {
                                         height={388}
                                         alt="Banking UX Case Study Video Thumbnail"
                                         loading="eager"
-                                        fetchpriority="high"
+                                        fetchPriority="high"
                                         className="w-full h-full object-cover absolute inset-0 "
                                    />
                                    {/* Semi-transparent dark overlay */}

@@ -17,6 +17,10 @@ RewriteBase /
 # Route sitemap.xml to the dynamic sitemap.php script
 # RewriteRule ^sitemap\.xml$ sitemap.php [L]
 
+# 301 Redirect old /service and /service/[slug] to /services and /services/[slug]
+RewriteRule ^service$ /services [R=301,L]
+RewriteRule ^service/(.*)$ /services/$1 [R=301,L]
+
 # ----------------------------------------------------------------
 # 3. BLOCK BAD BOTS & EMPTY USER AGENTS
 # ----------------------------------------------------------------

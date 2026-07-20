@@ -239,7 +239,7 @@ const HomeNavbar = ({ startFetch = true, useScrollTriggers = true }) => {
                                         src={logoAltForHome ? (navbar.logo2 ? navbar.logo2 : defaultWhiteLogo) : (navbar.logo1 ? navbar.logo1 : defaultDarkLogo)}
                                         alt="kreeya-design-logo"
                                         loading="eager"
-                                        fetchpriority="high"
+                                        fetchPriority="high"
                                         width="160"
                                         height="42"
                                         className="w-23.75 md:w-31.75 lg:w-40 h-6 md:h-8 lg:h-10.5 object-contain"
