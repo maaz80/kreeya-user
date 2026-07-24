@@ -68,45 +68,61 @@ const WorkShowcase = () => {
      //   Work animation useEffect — fixed
      useEffect(() => {
           let scrollTriggerInstance = null;
+          let cleanupResize = null;
 
           const initWorkAnimation = async () => {
                const { gsap, ScrollTrigger } = await initGSAP();
 
-               const tl = gsap.timeline({
-                    scrollTrigger: {
-                         trigger: sectionRef.current,
-                         start: window.innerWidth < 800 ? "top 5%" : "top top",
-                         end: () => "+=" + sectionRef.current.offsetHeight * 3,
-                         scrub: true,
-                         pin: true,
-                         pinSpacing: true,
-                         anticipatePin: 1,
-                         invalidateOnRefresh: true,
-                    },
-               });
+               if (sectionRef.current) {
+                    let sectionHeight = sectionRef.current.offsetHeight;
 
-               imagesRef.current.forEach((img, i) => {
-                    tl.fromTo(
-                         img,
-                         { x: 500, y: 100, opacity: 0, skewY: -6 },
-                         {
-                              x: window.innerWidth < 768 ? (i % 2 === 0 ? 20 : -20) : -40,
-                              y: 20 + i * 50,
-                              opacity: 1,
-                              skewY: -4,
-                              duration: 0.5,
+                    const handleResize = () => {
+                         if (sectionRef.current) {
+                              sectionHeight = sectionRef.current.offsetHeight;
+                         }
+                    };
+                    window.addEventListener('resize', handleResize);
+
+                    const tl = gsap.timeline({
+                         scrollTrigger: {
+                              trigger: sectionRef.current,
+                              start: window.innerWidth < 800 ? "top 5%" : "top top",
+                              end: () => "+=" + sectionHeight * 3,
+                              scrub: true,
+                              pin: true,
+                              pinSpacing: true,
+                              anticipatePin: 1,
+                              invalidateOnRefresh: true,
                          },
-                         i * 0.5
-                    );
-               });
+                    });
 
-               scrollTriggerInstance = tl.scrollTrigger;
+                    imagesRef.current.forEach((img, i) => {
+                         tl.fromTo(
+                              img,
+                              { x: 500, y: 100, opacity: 0, skewY: -6 },
+                              {
+                                   x: window.innerWidth < 768 ? (i % 2 === 0 ? 20 : -20) : -40,
+                                   y: 20 + i * 50,
+                                   opacity: 1,
+                                   skewY: -4,
+                                   duration: 0.5,
+                              },
+                              i * 0.5
+                         );
+                    });
+
+                    scrollTriggerInstance = tl.scrollTrigger;
+                    cleanupResize = () => {
+                         window.removeEventListener('resize', handleResize);
+                    };
+               }
           };
 
           initWorkAnimation();
 
           return () => {
                scrollTriggerInstance?.kill();
+               if (cleanupResize) cleanupResize();
           };
      }, []);
 

@@ -7,6 +7,7 @@
 # ----------------------------------------------------------------
 Options -Indexes
 ServerSignature Off
+DirectoryIndex index.html index.php
 
 # ----------------------------------------------------------------
 # 2. REWRITE ENGINE

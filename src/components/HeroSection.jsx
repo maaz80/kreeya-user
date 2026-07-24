@@ -133,18 +133,94 @@ const HeroSection = ({ startFetch = true }) => {
      }, [videoSrc]);
 
      return (
-          <section ref={sectionRef} className="relative min-h-[60vh] md:min-h-screen flex items-center justify-center text-heading px-5 md:px-20 pt-55 md:pt-32">
+          <section ref={sectionRef} className="hero-section-inline relative min-h-[60vh] md:min-h-screen flex items-center justify-center text-heading px-5 md:px-20 pt-55 md:pt-32">
+               <style dangerouslySetInnerHTML={{ __html: `
+                    .hero-section-inline {
+                         position: relative;
+                         min-height: 60vh;
+                         display: flex;
+                         align-items: center;
+                         justify-content: center;
+                         padding-left: 1.25rem;
+                         padding-right: 1.25rem;
+                         padding-top: 13.75rem;
+                    }
+                    @media (min-width: 768px) {
+                         .hero-section-inline {
+                              min-height: 100vh;
+                              padding-left: 5rem;
+                              padding-right: 5rem;
+                              padding-top: 8rem; /* pt-32 */
+                         }
+                    }
+                    .hero-container-inline {
+                         position: relative;
+                         z-index: 20;
+                         width: 100%;
+                         margin-left: auto;
+                         margin-right: auto;
+                         text-align: center;
+                         color: #161616;
+                         font-weight: 600;
+                         min-height: 25rem;
+                    }
+                    @media (min-width: 768px) {
+                         .hero-container-inline {
+                              font-weight: 400;
+                              min-height: 31.25rem;
+                         }
+                    }
+                    @media (min-width: 1024px) {
+                         .hero-container-inline {
+                              min-height: 43.75rem;
+                         }
+                    }
+                    .hero-text-large {
+                         font-size: 40px;
+                         line-height: 1.1;
+                         letter-spacing: -0.025em;
+                    }
+                    @media (min-width: 768px) {
+                         .hero-text-large {
+                              font-size: 56px;
+                         }
+                    }
+                    @media (min-width: 1024px) {
+                         .hero-text-large {
+                              font-size: 120px;
+                         }
+                    }
+                    .hero-p-lcp-inline {
+                         width: 100%;
+                         max-width: 17.25rem;
+                         margin-left: auto;
+                         margin-top: 2.5rem;
+                         min-height: 4.5rem;
+                         font-size: 1rem;
+                         line-height: 1.625;
+                         text-align: right;
+                         color: #003D63;
+                         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                    }
+                    @media (min-width: 768px) {
+                         .hero-p-lcp-inline {
+                              max-width: 27.5rem;
+                              min-height: 5.25rem;
+                              font-size: 1.125rem;
+                         }
+                    }
+               `}} />
                <Suspense fallback={null}>
                     <BackgroundShapes />
                </Suspense>
 
-               <div className="relative z-20 container mx-auto text-center text-dark-black font-semibold md:font-normal min-h-100 md:min-h-125 lg:min-h-175">
+               <div className="hero-container-inline relative z-20 container mx-auto text-center text-dark-black font-semibold md:font-normal min-h-100 md:min-h-125 lg:min-h-175">
                     {/* H1 is now fully static, Lighthouse will detect it immediately */}
-                    <h1 className="text-[40px] md:text-[56px] lg:text-[120px] tracking-tight mb-4 md:mb-1 leading-[1.1] min-h-11 md:min-h-15.5 lg:min-h-33">
+                    <h1 className="hero-text-large text-[40px] md:text-[56px] lg:text-[120px] tracking-tight mb-4 md:mb-1 leading-[1.1] min-h-11 md:min-h-15.5 lg:min-h-33">
                          {HERO_CONTENT.topText}
                     </h1>
 
-                    <div className="flex items-center justify-center gap-4 text-[40px] md:text-[56px] lg:text-[120px] leading-[1.1] min-h-14 md:min-h-18 lg:min-h-34.5">
+                    <div className="hero-text-large flex items-center justify-center gap-4 text-[40px] md:text-[56px] lg:text-[120px] leading-[1.1] min-h-14 md:min-h-18 lg:min-h-34.5">
                          <span>{HERO_CONTENT.midLeftText}</span>
                          <div
                               ref={videoRef}
@@ -166,11 +242,11 @@ const HeroSection = ({ startFetch = true }) => {
                          <span>{HERO_CONTENT.midRightText}</span>
                     </div>
 
-                    <div className="text-[40px] md:text-[56px] lg:text-[120px] mt-1 leading-[1.1] min-h-11 md:min-h-15.5 lg:min-h-33">
+                    <div className="hero-text-large text-[40px] md:text-[56px] lg:text-[120px] mt-1 leading-[1.1] min-h-11 md:min-h-15.5 lg:min-h-33">
                          {HERO_CONTENT.bottomText.split(" ")[0]} <Link to="/ui-ux-design-service-in-delhi" className="cursor-pointer inline-block">{HERO_CONTENT.bottomText.split(" ")[1]}</Link> {HERO_CONTENT.bottomText.split(" ")[2]}
                     </div>
 
-                    <p className="w-full max-w-69 md:max-w-110 ml-auto mt-10 min-h-18 md:min-h-21 text-base md:text-lg leading-relaxed text-end text-blue plus-jakarta-sans">
+                    <p className="hero-p-lcp-inline w-full max-w-69 md:max-w-110 ml-auto mt-10 min-h-18 md:min-h-21 text-base md:text-lg leading-relaxed text-end text-blue plus-jakarta-sans">
                          {HERO_CONTENT.description.split('mobile apps')[0]}
                          <Link to="/mobile-app-design-service-in-delhi" className="inline-block transition-transform duration-300 hover:scale-105 origin-center">mobile apps</Link>
                          {HERO_CONTENT.description.split('mobile apps')[1]}

@@ -1,17 +1,12 @@
 {
-  "/category/blogs": {
-    "title": "Kreeya Design's Official Blog - Insights, Updates and Tips",
-    "description": "Visit Kreeya Design's blog to learn about the latest developments in UI/UX design trends, news, and tactics that work.",
-    "keywords": ""
-  },
-  "/landing-page": {
-    "title": "",
-    "description": "",
-    "keywords": ""
-  },
   "/": {
     "title": "Best UI UX Design Company in india - Kreeya Design",
     "description": "Kreeya Design is a best UI UX design company in India delivering user-focused web, mobile app, SaaS, and product design solutions.",
+    "keywords": ""
+  },
+  "/category/blogs": {
+    "title": "Kreeya Design's Official Blog - Insights, Updates and Tips",
+    "description": "Visit Kreeya Design's blog to learn about the latest developments in UI/UX design trends, news, and tactics that work.",
     "keywords": ""
   },
   "/contact-us": {
@@ -19,14 +14,9 @@
     "description": "Contact Kreeya Design for expert UI UX design, product design, web design, and mobile app design services. Get a free consultation today.",
     "keywords": ""
   },
-  "/portfolio-coinpay": {
-    "title": "Coinpay Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
-    "keywords": ""
-  },
-  "/portfolios": {
-    "title": "Portfolio | Kreeya Design | UI UX Design Projects",
-    "description": "View the portfolio of Kreeya Design, which includes projects related to digital transformation, product design, web design, mobile app design, and UI/UX design.",
+  "/landing-page": {
+    "title": "",
+    "description": "",
     "keywords": ""
   },
   "/services": {
@@ -34,14 +24,9 @@
     "description": "Explore Our Specialized Services by Kreeya Design, including UI/UX design, product design, branding, motion graphics, and AI-powered design solutions.",
     "keywords": ""
   },
-  "/portfolio-beyekls": {
-    "title": "Beyekls Portfolio | Kreeya Design Case Study",
-    "description": "View Kreeya Design's Beyekls Portfolio, which features user research, product strategy, UI/UX design, and digital experience solutions.",
-    "keywords": ""
-  },
-  "/404": {
-    "title": "Page not found - Kreeya Design",
-    "description": "You can't find the page you're searching for. View Kreeya Design's digital solutions, blogs, portfolio, and UI/UX design services.",
+  "/disclaimer": {
+    "title": "Disclaimer | Kreeya Design | Kreeya Design Official",
+    "description": "Read the Kreeya Design Disclaimer for details on how to use the website, the accuracy of the content, responsibility restrictions, and legal information.",
     "keywords": ""
   },
   "/portfolio-nectar": {
@@ -49,9 +34,14 @@
     "description": "Discover UI/UX design, product strategy, user research, and seamless digital experiences in Kreeya Design's Nectar Portfolio.",
     "keywords": ""
   },
-  "/privacy-policy": {
-    "title": "Privacy Policy | Kreeya Design | Kreeya Design Official",
-    "description": "To learn how we gather, utilize, safeguard, and handle your personal information and data, read Kreeya Design's Privacy Policy.",
+  "/portfolios": {
+    "title": "Portfolio | Kreeya Design | UI UX Design Projects",
+    "description": "View the portfolio of Kreeya Design, which includes projects related to digital transformation, product design, web design, mobile app design, and UI/UX design.",
+    "keywords": ""
+  },
+  "/portfolio-beyekls": {
+    "title": "Beyekls Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Beyekls Portfolio, which features user research, product strategy, UI/UX design, and digital experience solutions.",
     "keywords": ""
   },
   "/portfolio-daccord": {
@@ -59,14 +49,24 @@
     "description": "View Kreeya Design's Discord Portfolio, which includes solutions for digital experiences, product strategy, user research, and UI/UX design.",
     "keywords": ""
   },
-  "/disclaimer": {
-    "title": "Disclaimer | Kreeya Design | Kreeya Design Official",
-    "description": "Read the Kreeya Design Disclaimer for details on how to use the website, the accuracy of the content, responsibility restrictions, and legal information.",
+  "/portfolio-coinpay": {
+    "title": "Coinpay Portfolio | Kreeya Design Case Study",
+    "description": "View Kreeya Design's Coinpay Portfolio, which features digital experiences, user research, product strategy, and financial UI/UX design.",
     "keywords": ""
   },
   "/about-us": {
     "title": "About Us | Kreeya Design | UI UX Design Company India",
     "description": "Learn about Kreeya Design, a leading UI UX Design Company India helping startups and enterprises create impactful digital experiences.",
+    "keywords": ""
+  },
+  "/privacy-policy": {
+    "title": "Privacy Policy | Kreeya Design | Kreeya Design Official",
+    "description": "To learn how we gather, utilize, safeguard, and handle your personal information and data, read Kreeya Design's Privacy Policy.",
+    "keywords": ""
+  },
+  "/404": {
+    "title": "Page not found - Kreeya Design",
+    "description": "You can't find the page you're searching for. View Kreeya Design's digital solutions, blogs, portfolio, and UI/UX design services.",
     "keywords": ""
   },
   "/ui-ux-design-company-in-delhi-for-saas": {
@@ -109,123 +109,123 @@
     "description": "Kreeya Design is a leading Product Design Company in Delhi for E-commerce, creating intuitive shopping experiences that boost engagement and sales.",
     "keywords": ""
   },
-  "/performance-marketing-service-in-delhi": {
-    "title": "Performance Marketing Service in Delhi | Kreeya Design",
+  "/performance-marketing": {
+    "title": "Performance Marketing Services | Kreeya Design",
     "description": "Looking for Performance Marketing Service in Delhi? Kreeya Design delivers Google Ads, Meta Ads, PPC management, lead generation and conversion-focused marketing.",
     "keywords": ""
   },
-  "/instagram-marketing-service-in-delhi": {
-    "title": "Instagram Marketing Service in Delhi - Kreeya Design",
+  "/instagram-marketing": {
+    "title": "Instagram Marketing Services - Kreeya Design",
     "description": "Instagram Marketing Service in Delhi - Kreeya Design. Use reels, unique content strategies, and targeted advertising to increase your following, leads, and sales!",
     "keywords": ""
   },
-  "/search-engine-optimization-service-in-delhi": {
-    "title": "Search Engine Optimization Service in Delhi - Kreeya Design",
+  "/search-engine-optimization": {
+    "title": "Search Engine Optimization Services - Kreeya Design",
     "description": "Search Engine Optimization Service in Delhi - Kreeya Design. Improve your online visibility with expert Search Engine Optimization in Delhi for higher Google rankings and increased organic traffic.",
     "keywords": ""
   },
-  "/linkedin-marketing-service-in-delhi": {
-    "title": "Linkedin Marketing service in Delhi | Kreeya Design",
+  "/linkedin-marketing": {
+    "title": "Linkedin Marketing Services | Kreeya Design",
     "description": "Linkedin Marketing service in Delhi | Kreeya Design. Enhance your professional brand with advanced LinkedIn Marketing in Delhi tailored for B2B growth and corporate networking. ",
     "keywords": ""
   },
-  "/social-media-marketing-service-in-delhi": {
-    "title": "Social Media Marketing Service in Delhi - Kreeya Design",
+  "/social-media-marketing": {
+    "title": "Social Media Marketing Services - Kreeya Design",
     "description": "Social Media Marketing Service in Delhi - Kreeya Design. Take your business to the next level with expert Social Media Marketing in Delhi with kreeya design designed to increase brand awareness and customer conversions. ",
     "keywords": ""
   },
-  "/search-engine-marketing-service-in-delhi": {
-    "title": "Search Engine Marketing Service in Delhi - Kreeya Design ",
+  "/search-engine-marketing": {
+    "title": "Search Engine Marketing Services - Kreeya Design ",
     "description": "Search Engine Marketing Service in Delhi. Kreeya Design Delhi's top search engine marketing company offers PPC, Google Ads to boost traffic, generate leads, and quickly expand your company.",
     "keywords": ""
   },
-  "/web-development-services-in-delhi": {
-    "title": "Professional Web Development Service in Delhi for Business Growth",
+  "/web-development": {
+    "title": "Professional Web Development Service for Business Growth",
     "description": "Looking for reliable Professional Web Development Service in Delhi for Business Growth ? Get responsive, SEO-friendly, and custom-built websites designed to boost your online presence and business growth. ",
     "keywords": ""
   },
-  "/webflow-development-service-in-delhi": {
-    "title": "Best Webflow Development Service in Delhi - Kreeya Design",
+  "/webflow-development": {
+    "title": "Best Webflow Development Service - Kreeya Design",
     "description": "Kreeya Design offers expert best webflow development service in delhi - Kreeya Design, such as custom Webflow development, responsive website design, and CMS setup.",
     "keywords": ""
   },
-  "/mobile-app-development-service-in-delhi": {
-    "title": "Top Mobile App Development Service in Delhi for Android & iOS Apps",
+  "/mobile-app-development": {
+    "title": "Top Mobile App Development Service for Android & iOS Apps",
     "description": "Searching for top mobile app development service in delhi for android & iOS apps? We build innovative Android and iOS applications with advanced features and seamless performance. ",
     "keywords": ""
   },
-  "/shopify-development-service-in-delhi": {
-    "title": "Expert Shopify Development Service in Delhi - Kreeya Design",
+  "/shopify-development": {
+    "title": "Expert Shopify Development Service - Kreeya Design",
     "description": "Boost your online store with Expert Shopify Development Service in Delhi - Kreeya Design. We offer Shopify theme customization, app integration, payment gateway setup, and store optimization services for businesses of all sizes.",
     "keywords": ""
   },
-  "/word-press-expert-service-in-delhi": {
-    "title": "Wordpress Expert Service in Delhi - Kreeya Design",
+  "/word-press-expert": {
+    "title": "Wordpress Expert Service - Kreeya Design",
     "description": "Hire a professional Wordpress Expert Service in Delhi - Kreeya Design for responsive, secure, and SEO-optimized websites. Our experienced Wordpress developers deliver scalable and easy-to-manage websites tailored to your business goals.",
     "keywords": ""
   },
-  "/ui-development-service-in-delhi": {
-    "title": "UI Development Service in Delhi -Kreeya Design",
+  "/ui-development": {
+    "title": "UI Development Service -Kreeya Design",
     "description": "Get advanced UI Development Service in Delhi for visually appealing and interactive digital platforms. Our UI developers create modern, responsive, and user-focused interfaces that improve customer engagement.",
     "keywords": ""
   },
-  "/logo-design-service-in-delhi": {
-    "title": "Logo Design Service in Delhi - Kreeya Design",
+  "/logo-design": {
+    "title": "Logo Design Service - Kreeya Design",
     "description": "Looking for a professional Logo Design Service in Delhi ? Kreeya Design creates unique, creative, and SEO-friendly logo designs for startups, brands, and businesses.",
     "keywords": ""
   },
-  "/social-media-creatives-service-in-delhi": {
-    "title": "Social Media Creatives Service in Delhi - Kreeya Design",
+  "/social-media-creatives": {
+    "title": "Social Media Creatives Service - Kreeya Design",
     "description": "Boost your brand with Social Media Creatives Service in Delhi - Kreeya Design. For increased online visibility, get branded designs, reel creatives, and interesting social media posts.",
     "keywords": ""
   },
-  "/graphic-design-service-in-delhi": {
-    "title": "Graphic Design Service in Delhi | Kreeya Design",
+  "/graphic-design": {
+    "title": "Graphic Design Service | Kreeya Design",
     "description": "Kreeya Design provides expert Graphic Design Service in Delhi for companies, startups, and brands in Delhi. Obtain imaginative branding, social media, marketing, and graphic designs.",
     "keywords": ""
   },
-  "/brand-identity-service-in-delhi": {
-    "title": "Brand Identity Service in Delhi - Kreeya Design",
+  "/brand-identity": {
+    "title": "Brand Identity Service - Kreeya Design",
     "description": "Kreeya Design offers businesses in Delhi expert brand identity service in delhi, including logo design, brand guidelines, visual identity, and innovative branding solutions.",
     "keywords": ""
   },
-  "/video-editing-service-in-delhi": {
-    "title": "Video Editing Service in Delhi |  Kreeya Design",
+  "/video-editing": {
+    "title": "Video Editing Service |  Kreeya Design",
     "description": "Professional, quick, and reasonably priced Video Editing Service in Delhi - Kreeya Design for YouTube, weddings, advertisements, and social media videos are available in Delhi/NCR and across india or abroad as well. ",
     "keywords": ""
   },
-  "/print-design-service-in-delhi": {
-    "title": "Print Design Service in Delhi - Kreeya Design",
+  "/print-design": {
+    "title": "Print Design Service - Kreeya Design",
     "description": "Kreeya Design offers expert Print Design Service in Delhi for marketing materials with innovative branding solutions, including flyers, banners, business cards, and brochures.",
     "keywords": ""
   },
-  "/ui-ux-design-service-in-delhi": {
-    "title": "Professional UI UX Design Services in delhi - Kreeya Design",
+  "/ui-ux-design": {
+    "title": "Professional UI UX Design Services - Kreeya Design",
     "description": "Get Professional UI UX Design Services in delhi from Kreeya Design, which offers conversion-focused digital solutions, intuitive experiences, and responsive interfaces.",
     "keywords": ""
   },
-  "/mobile-app-design-service-in-delhi": {
-    "title": "Professional Mobile App Design Service in Delhi - Kreeya Design",
+  "/mobile-app-design": {
+    "title": "Professional Mobile App Design Service - Kreeya Design",
     "description": "Kreeya Design offers expert mobile app design services in Delhi that include user-focused design, intuitive interfaces, responsive UI/UX, and seamless mobile experiences.",
     "keywords": ""
   },
-  "/gen-ai-design-service-in-delhi": {
-    "title": "Gen AI / AI Design Service in Delhi | Kreeya Design",
+  "/gen-ai-design": {
+    "title": "Gen AI / AI Design Service | Kreeya Design",
     "description": "Are you trying to find Gen AI or AI design services in Delhi? For startups and companies, Kreeya Design provides AI-powered UI/UX design, AI product design, automation, branding, and innovative digital solutions.",
     "keywords": ""
   },
-  "/product-design-service-in-delhi": {
-    "title": "Product Design Service in Delhi | Kreeya Design",
+  "/product-design": {
+    "title": "Product Design Service | Kreeya Design",
     "description": "Kreeya Design provides expert product design services in Delhi. With creative UI/UX design, wireframing, prototyping, branding, and user-focused digital product solutions, ",
     "keywords": ""
   },
-  "/motion-graphics-design-service-in-delhi": {
-    "title": "Motion Graphics Design Service in Delhi | Kreeya Design",
+  "/motion-graphics-design": {
+    "title": "Motion Graphics Design Service | Kreeya Design",
     "description": "Looking for Motion Graphics Design Service in Delhi? Kreeya Design delivers creative motion graphics, animated videos, branding visuals, and engaging digital content for businesses.",
     "keywords": ""
   },
-  "/website-design-service-in-delhi": {
-    "title": "Website Design Service in Delhi | Kreeya Design",
+  "/website-design": {
+    "title": "Website Design Service | Kreeya Design",
     "description": "Kreeya Design offers expert Website Design Services in Delhi featuring innovative UI/UX design, responsive website development, contemporary layouts, and user-centered digital solutions. ",
     "keywords": ""
   },

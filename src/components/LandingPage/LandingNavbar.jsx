@@ -15,6 +15,7 @@ const LandingNavbar = () => {
 
      useEffect(() => {
           let scrollTriggerInstance = null;
+          let cleanupResize = null;
 
           const initScrollTrigger = async () => {
                const ScrollTrigger = await getScrollTrigger(); //   Get ScrollTrigger only
@@ -22,15 +23,26 @@ const LandingNavbar = () => {
                const el = document.querySelector(".work-showcase-section");
 
                if (el) {
+                    let sectionHeight = el.offsetHeight;
+
+                    const handleResize = () => {
+                         sectionHeight = el.offsetHeight;
+                    };
+                    window.addEventListener('resize', handleResize);
+
                     scrollTriggerInstance = ScrollTrigger.create({
                          trigger: el,
                          start: "top top",
-                         end: () => "+=" + el.offsetHeight * 4,
+                         end: () => "+=" + sectionHeight * 4,
                          onEnter: () => setLogoAlt(true),
                          onEnterBack: () => setLogoAlt(true),
                          onLeave: () => setLogoAlt(false),
                          onLeaveBack: () => setLogoAlt(false)
                     });
+
+                    cleanupResize = () => {
+                         window.removeEventListener('resize', handleResize);
+                    };
                }
           };
 
@@ -38,6 +50,7 @@ const LandingNavbar = () => {
 
           return () => {
                if (scrollTriggerInstance) scrollTriggerInstance.kill();
+               if (cleanupResize) cleanupResize();
           };
      }, []);
 

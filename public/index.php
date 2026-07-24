@@ -40,8 +40,8 @@ if (file_exists('index.html')) {
             $seoKeywords = $pageSeo['keywords'];
         }
         
-        // Cache lifetime: 10 minutes (600 seconds)
-        if (!isset($pageSeo['fetched_at']) || (time() - $pageSeo['fetched_at'] > 600)) {
+        // Cache lifetime: 24 hours (86400 seconds)
+        if (!isset($pageSeo['fetched_at']) || (time() - $pageSeo['fetched_at'] > 86400)) {
             $triggerFetch = true;
             $seoJson[$path]['fetched_at'] = time();
             file_put_contents('seo-data.json', json_encode($seoJson, JSON_PRETTY_PRINT), LOCK_EX);
@@ -119,15 +119,16 @@ if (file_exists('index.html')) {
             '/' => 'home',
             '/contact-us' => 'contact-us',
             '/about-us' => 'about-us',
-            '/category/blogs' => 'blogs',
-            '/portfolio-beyekls' => 'portfolio-beyekls',
-            '/portfolio-daccord' => 'portfolio-daccord',
-            '/portfolio-coinpay' => 'portfolio-coinpay',
-            '/portfolio-nectar' => 'portfolio-nectar',
+            '/blog' => 'blogs',
+            '/case-studies/beyekls-portfolio' => 'portfolio-beyekls',
+            '/case-studies/daccord-portfolio' => 'portfolio-daccord',
+            '/case-studies/coinpay-portfolio' => 'portfolio-coinpay',
+            '/case-studies/nectar-portfolio' => 'portfolio-nectar',
             '/privacy-policy' => 'privacy-policy',
             '/disclaimer' => 'disclaimer',
             '/landing-page' => 'landing-page',
-            '/portfolios' => 'portfolios',
+            '/case-studies/portfolios' => 'portfolios',
+            '/case-studies' => 'case-studies',
             '/services' => 'services'
         ];
 
@@ -140,7 +141,7 @@ if (file_exists('index.html')) {
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 1);
             $res = curl_exec($ch);
             curl_close($ch);
 
@@ -157,13 +158,22 @@ if (file_exists('index.html')) {
         } else {
             $slug = ltrim($path, '/');
             $slug = str_replace('_', '-', strtolower(trim($slug)));
+            if (strpos($slug, 'service/') === 0) {
+                $slug = substr($slug, 8);
+            }
+            if (strpos($slug, 'blog/') === 0) {
+                $slug = substr($slug, 5);
+            }
+            if (strpos($slug, 'case-studies/') === 0) {
+                $slug = substr($slug, 13);
+            }
 
             // Try blog
             $url = $apiUrl . "/blogs/" . $slug;
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 1);
             $res = curl_exec($ch);
             curl_close($ch);
 
@@ -184,7 +194,7 @@ if (file_exists('index.html')) {
                 $ch = curl_init($url);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 1);
                 $res = curl_exec($ch);
                 curl_close($ch);
 
@@ -219,7 +229,7 @@ if (file_exists('index.html')) {
                 $ch = curl_init($url);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 1);
                 $res = curl_exec($ch);
                 curl_close($ch);
 

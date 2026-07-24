@@ -1,11 +1,15 @@
 {
   "name": "frontend",
   "private": true,
+  "browserslist": [
+    "defaults and supports es6-module",
+    "maintained node versions"
+  ],
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-sitemap.cjs && node scripts/generate-ror.cjs && vite build",
+    "build": "node scripts/generate-sitemap.cjs && node scripts/generate-ror.cjs && vite build && node scripts/post-build.cjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

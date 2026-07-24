@@ -6,11 +6,13 @@ import Details from '../components/About/Details'
 import Hero from '../components/About/Hero'
 import Youtube from '../components/About/Youtube'
 import useFaq from '../hooks/useFaq'
+import { preload } from 'react-dom'
 
 const YouMayLike = lazy(() => import('../components/YouMayLike'))
 const FaqSection = lazy(() => import('../components/FaqSection'))
 
 const About = () => {
+     preload('/images/Build-your-first-ai-agent-in-15-no-coding.webp', { as: 'image', fetchPriority: 'high' });
      const { faqData } = useFaq();
 
      return (

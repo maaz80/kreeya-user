@@ -39,7 +39,7 @@ const Youtube = () => {
                               className='relative block w-full cursor-pointer'
                          >
                               <div className='w-15 md:w-20 h-15 md:h-20 rounded-full bg-[#FF0000] flex items-center justify-center absolute left-1/2 top-1/2 -translate-1/2 text-white'><FaPlay size={30} /></div>
-                              <img src='/images/Build-your-first-ai-agent-in-15-no-coding.webp' alt="Youtube Thumbnail" width={665} height={375} fetchPriority="high" loading="eager" className='w-full object-cover rounded-[3px]' />
+                              <img src='/images/Build-your-first-ai-agent-in-15-no-coding.webp' alt="Youtube Thumbnail" width={665} height={375} fetchPriority="high" loading="eager" className='w-full aspect-[665/375] object-cover rounded-[3px]' />
                          </button>
                     )}
                </div>

@@ -34,7 +34,7 @@ export default function StackCards() {
 
                const cards = cardsRef.current;
                const isMobile = window.innerWidth < 768;
-               vh = document.documentElement.clientHeight; // Cache it once
+               vh = window.innerHeight; // Cache it once
                gsap.set(cards, {
                     y: "100vh",
                     opacity: 1,
@@ -73,9 +73,15 @@ export default function StackCards() {
                requestAnimationFrame(() => ScrollTrigger.refresh());
           };
 
-          initAnimation();
+          const startSetup = () => {
+               initAnimation();
+          };
+
+          const events = ["scroll", "touchstart", "mousemove"];
+          events.forEach((e) => window.addEventListener(e, startSetup, { once: true }));
 
           return () => {
+               events.forEach((e) => window.removeEventListener(e, startSetup));
                animation?.scrollTrigger?.kill();
                animation?.kill();
           };

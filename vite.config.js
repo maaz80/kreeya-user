@@ -24,6 +24,7 @@ export default defineConfig({
     port: 4173
   },
   build: {
+    target: 'es2022',
     cssMinify: true,
     minify: 'terser',
     reportCompressedSize: false,

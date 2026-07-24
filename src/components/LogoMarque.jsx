@@ -1,27 +1,38 @@
 import { useEffect, useState } from "react";
 import { getImages } from "../utils/imageService";
+import { useDataContext } from "../context/DataContext";
 
 const LogoMarquee = () => {
+     const { logos: contextLogos } = useDataContext();
 
-     const [logos, setLogos] = useState([]);
-     const [title, setTitle] = useState([])
+     const [logos, setLogos] = useState(() => {
+          if (contextLogos && contextLogos.length > 0) {
+               return contextLogos.map(item => item.image);
+          }
+          return [];
+     });
+     const [title, setTitle] = useState(() => {
+          if (contextLogos && contextLogos.length > 0) {
+               return contextLogos.map(item => item.title);
+          }
+          return [];
+     });
+
      useEffect(() => {
-
-          const fetchImages = async () => {
-
-               const data = await getImages();
-
-               // Cloudinary URL extract
-               const imageUrls = data.map(item => item.image);
-               const itemTitles = data.map(item => item.title);
-               setTitle(itemTitles)
-               setLogos(imageUrls);
-
-          };
-
-          fetchImages();
-
-     }, []);
+          if (contextLogos && contextLogos.length > 0) {
+               setLogos(contextLogos.map(item => item.image));
+               setTitle(contextLogos.map(item => item.title));
+          } else {
+               const fetchImages = async () => {
+                    const data = await getImages();
+                    if (data) {
+                         setLogos(data.map(item => item.image));
+                         setTitle(data.map(item => item.title));
+                    }
+               };
+               fetchImages();
+          }
+     }, [contextLogos]);
 
      return (
           <div className="w-full overflow-hidden py-6 z-999 relative">
@@ -32,11 +43,12 @@ const LogoMarquee = () => {
                     {logos.map((logo, index) => (
                          <img
                               key={index}
-                              src={logo}
+                              src={logo?.src || logo}
                               alt={title[index] || "Kreeya Client Logo"}
                               width="200"
                               height="120"
-                              className="w-25 md:w-50 h-[72px] md:h-[120px] grayscale hover:grayscale-0 transition-all flex-shrink-0"
+                              loading="lazy"
+                              className="w-25 md:w-50 h-[60px] md:h-[120px] object-contain grayscale hover:grayscale-0 transition-all flex-shrink-0"
                          />
                     ))}
 
@@ -44,11 +56,12 @@ const LogoMarquee = () => {
                     {logos.map((logo, index) => (
                          <img
                               key={`dup-${index}`}
-                              src={logo}
+                              src={logo?.src || logo}
                               alt={title[index] || "Kreeya Client Logo"}
                               width="200"
                               height="120"
-                              className="w-25 md:w-50 h-[72px] md:h-[120px] grayscale hover:grayscale-0 transition-all"
+                              loading="lazy"
+                              className="w-25 md:w-50 h-[60px] md:h-[120px] object-contain grayscale hover:grayscale-0 transition-all"
                          />
                     ))}
 
@@ -59,11 +72,12 @@ const LogoMarquee = () => {
                     {logos.map((logo, index) => (
                          <img
                               key={index}
-                              src={logo}
+                              src={logo?.src || logo}
                               alt={title[index] || "Kreeya Client Logo"}
                               width="200"
                               height="120"
-                              className="w-25 md:w-50 h-[72px] md:h-[120px] grayscale hover:grayscale-0 transition"
+                              loading="lazy"
+                              className="w-25 md:w-50 h-[60px] md:h-[120px] object-contain grayscale hover:grayscale-0 transition"
                          />
                     ))}
 
@@ -71,11 +85,12 @@ const LogoMarquee = () => {
                     {logos.map((logo, index) => (
                          <img
                               key={`dup-${index}`}
-                              src={logo}
+                              src={logo?.src || logo}
                               alt={title[index] || "Kreeya Client Logo"}
                               width="200"
                               height="120"
-                              className="w-25 md:w-50 h-[72px] md:h-[120px] grayscale hover:grayscale-0 transition"
+                              loading="lazy"
+                              className="w-25 md:w-50 h-[60px] md:h-[120px] object-contain grayscale hover:grayscale-0 transition"
                          />
                     ))}
 
